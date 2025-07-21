@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Sports Monologue</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+            position: relative;
+        }
+
+        .header {
+            position: relative;
+            height: 20vh;
+            min-height: 200px;
+        }
+
+        .sports-title {
+            position: absolute;
+            top: 10%;
+            left: 3%;
+            font-size: 9vw;
+            font-family: 'Gochi Hand', cursive;
+            margin: 0;
+        }
+
+        .monologue-title {
+            position: absolute;
+            top: 45%;
+            right: 3%;
+            font-size: 7vw;
+            font-family: 'Gochi Hand', cursive;
+            margin: 0;
+        }
+
+        .subtitle {
+            position: absolute;
+            top: 35%;
+            right: 4%;
+            font-size: 1.5vw;
+        }
+
+        .speech-bubble {
+            position: absolute;
+            top: 65%;
+            left: 5%;
+            max-width: 300px;
+            padding: 1rem;
+            border: 2px solid black;
+            border-radius: 2rem;
+            background: white;
+            font-size: 1rem;
+        }
+
+        .mascot {
+            position: absolute;
+            top: 60%;
+            right: 5%;
+            width: 100px;
+        }
+
+        .blog-container {
+            max-width: 900px;
+            margin: 28vh auto 4rem auto;
+            padding: 2rem;
+            border-top: 2px solid black;
+        }
+
+        .blog-post {
+            margin-bottom: 2rem;
+        }
+
+        .blog-post h2 {
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .blog-post p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .right-controls {
+            position: fixed;
+            right: 2rem;
+            top: 35vh;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .control-button {
+            border: 2px solid black;
+            padding: 0.7rem 1rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            background: white;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .sports-title {
+                font-size: 12vw;
+                left: 5%;
+            }
+
+            .monologue-title {
+                font-size: 10vw;
+                right: 5%;
+            }
+
+            .subtitle {
+                font-size: 3vw;
+                top: 38%;
+                right: 6%;
+            }
+
+            .speech-bubble {
+                font-size: 0.9rem;
+                left: 6%;
+                top: 75%;
+            }
+
+            .mascot {
+                width: 80px;
+                right: 6%;
+            }
+
+            .blog-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="sports-title">SPORTS</h1>
+        <div class="subtitle">방구석 KBO 전력분석실</div>
+        <h1 class="monologue-title">Monologue</h1>
+        <div class="speech-bubble">현직 고등학생의 스포츠 경영 도전기</div>
+        <img class="mascot" src="mascot.png" alt="Mascot">
+    </div>
+
+    <div class="blog-container">
+        <div class="blog-post">
+            <h2>예시 글 제목</h2>
+            <p>여기에 너의 글이 들어가. 매일 업데이트할 선수 분석, 경기 예측 등도 이 공간에 올라오게 될 거야. 이 영역은 정적 페이지지만 텍스트는 자유롭게 바꿀 수 있어.</p>
+        </div>
+    </div>
+
+    <div class="right-controls">
+        <a href="player-analysis.html" class="control-button">선수별 분석</a>
+        <a href="recent-games.html" class="control-button">최근 경기 분석</a>
+    </div>
+</body>
+</html>
