@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Sports Monologue</title>
+    <link rel="icon" href="baseball_favicon_sharp_32x32.ico?v=2" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <style>
         body {
@@ -16,8 +17,8 @@
 
         .header {
             position: relative;
-            height: 20vh;
-            min-height: 200px;
+            height: 22vh;
+            min-height: 220px;
         }
 
         .sports-title {
@@ -25,8 +26,9 @@
             top: 10%;
             left: 3%;
             font-size: 9vw;
-            font-family: 'Gochi Hand', cursive;
+            font-family: 'Gochi Hand', cursive, sans-serif;
             margin: 0;
+            font-weight: 600;
         }
 
         .monologue-title {
@@ -34,8 +36,9 @@
             top: 45%;
             right: 3%;
             font-size: 7vw;
-            font-family: 'Gochi Hand', cursive;
+            font-family: 'Gochi Hand', cursive, sans-serif;
             margin: 0;
+            font-weight: 600;
         }
 
         .subtitle {
@@ -43,30 +46,32 @@
             top: 35%;
             right: 4%;
             font-size: 1.5vw;
+            font-weight: 500;
         }
 
         .speech-bubble {
             position: absolute;
-            top: 65%;
+            top: 68%;
             left: 5%;
-            max-width: 300px;
+            max-width: 320px;
             padding: 1rem;
             border: 2px solid black;
             border-radius: 2rem;
             background: white;
             font-size: 1rem;
+            font-weight: 500;
         }
 
         .mascot {
             position: absolute;
-            top: 60%;
+            top: 63%;
             right: 5%;
-            width: 100px;
+            width: 90px;
         }
 
         .blog-container {
             max-width: 900px;
-            margin: 28vh auto 4rem auto;
+            margin: 26vh auto 4rem auto;
             padding: 2rem;
             border-top: 2px solid black;
         }
@@ -108,12 +113,12 @@
 
         @media (max-width: 768px) {
             .sports-title {
-                font-size: 12vw;
+                font-size: 20vw;
                 left: 5%;
             }
 
             .monologue-title {
-                font-size: 10vw;
+                font-size: 17vw;
                 right: 5%;
             }
 
@@ -126,16 +131,18 @@
             .speech-bubble {
                 font-size: 0.9rem;
                 left: 6%;
-                top: 75%;
+                top: 78%;
             }
 
             .mascot {
-                width: 80px;
+                width: 70px;
                 right: 6%;
+                top: 75%;
             }
 
             .blog-container {
                 padding: 1rem;
+                margin: 20vh auto 3rem auto;
             }
         }
     </style>
@@ -145,13 +152,13 @@
         <h1 class="sports-title">SPORTS</h1>
         <div class="subtitle">방구석 KBO 전력분석실</div>
         <h1 class="monologue-title">Monologue</h1>
-        <div class="speech-bubble">현직 고등학생의 스포츠 경영 도전기</div>
+        <div class="speech-bubble">고등학생의 스포츠 경영 도전기</div>
         <img class="mascot" src="mascot.png" alt="Mascot">
     </div>
 
     <div class="blog-container">
         <div class="blog-post">
-            <h2>예시 글 제목</h2>
+            <h2>서문</h2>
             <p>여기에 너의 글이 들어가. 매일 업데이트할 선수 분석, 경기 예측 등도 이 공간에 올라오게 될 거야. 이 영역은 정적 페이지지만 텍스트는 자유롭게 바꿀 수 있어.</p>
         </div>
     </div>
