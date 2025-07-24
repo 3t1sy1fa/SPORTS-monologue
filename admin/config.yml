@@ -1,0 +1,17 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "data/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "제목", name: "title", widget: "string" }
+      - { label: "카테고리", name: "category", widget: "select", options: ["전력 분석", "콘텐츠 기획", "스포츠 경영", "기록 아카이브"] }
+      - { label: "내용", name: "body", widget: "markdown" }
