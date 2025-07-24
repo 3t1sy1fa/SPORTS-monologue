@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Sports Monologue</title>
-    <link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
+    <link rel="icon" href="assets/favicon.ico?v=2" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
+        /* 기본 설정 */
         body {
             font-family: 'Noto Sans KR', sans-serif;
             margin: 0;
@@ -15,6 +18,7 @@
             position: relative;
         }
 
+        /* 헤더 영역 */
         .header {
             position: relative;
             height: 22vh;
@@ -69,6 +73,7 @@
             width: 90px;
         }
 
+        /* 블로그 콘텐츠 영역 */
         .blog-container {
             max-width: 900px;
             margin: 10vh auto 4rem auto;
@@ -90,6 +95,7 @@
             line-height: 1.6;
         }
 
+        /* 오른쪽 고정 버튼 */
         .right-controls {
             position: fixed;
             right: 2rem;
@@ -109,8 +115,14 @@
             text-decoration: none;
             color: black;
             text-align: center;
+            transition: background 0.2s ease;
         }
 
+        .control-button:hover {
+            background: #f2f2f2;
+        }
+
+        /* 반응형 */
         @media (max-width: 768px) {
             .sports-title {
                 font-size: 20vw;
@@ -148,30 +160,32 @@
     </style>
 </head>
 <body>
+    <!-- 상단 브랜드 영역 -->
     <div class="header">
         <h1 class="sports-title">SPORTS</h1>
-        <div class="subtitle"></div>
+        <div class="subtitle">경기에서 콘텐츠로, 콘텐츠에서 경영으로</div>
         <h1 class="monologue-title">Monologue</h1>
-        <div class="speech-bubble">고등학생의 스포츠 경영 도전기</div>
-        <img class="mascot" src="mascot.png" alt="Mascot">
+        <div class="speech-bubble">스포츠를 콘텐츠로 설계하는 전략 노트</div>
+        <img class="mascot" src="assets/mascot.png" alt="Mascot">
     </div>
 
+    <!-- 블로그 콘텐츠 영역 -->
     <div class="blog-container">
         <div class="blog-post">
-            <h2>Title</h2>
-            <p>contents</p>
+            <h2>[LG] 김영우, 리드오프의 가능성</h2>
+            <p>6월 이후 Zone% 변화와 타석당 어프로치가 달라졌다. LG의 공격 흐름을 바꾼 조용한 변수...</p>
+        </div>
+        <div class="blog-post">
+            <h2>[분석] 임찬규 복귀 이후 불펜 운용 변화</h2>
+            <p>7월 들어 구원 ERA가 1.50으로 급감한 배경. 셋업 롤 재배치가 핵심이다...</p>
         </div>
     </div>
 
+    <!-- 오른쪽 고정 버튼 -->
     <div class="right-controls">
+        <a href="/admin/" class="control-button">글쓰기</a>
         <a href="player-analysis.html" class="control-button">선수별 분석</a>
         <a href="recent-games.html" class="control-button">최근 경기 분석</a>
     </div>
-    <div class="right-controls">
-         <a href="/admin/" class="control-button">글쓰기</a>
-         <a href="player-analysis.html" class="control-button">선수별 분석</a>
-         <a href="recent-games.html" class="control-button">최근 경기 분석</a>
-    </div>
-
 </body>
 </html>
