@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: 'SUIT', sans-serif;
+  background: white;
+  color: black;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto;
+  border: 1.5px solid black;
+}
+
+.left-top {
+  border-right: 1.5px solid black;
+  border-bottom: 1.5px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+}
+
+.sports {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.monologue {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.right-top {
+  border-bottom: 1.5px solid black;
+  padding: 20px 24px 12px;
+  position: relative;
+}
+
+.since {
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.lab {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.left-bottom {
+  border-right: 1.5px solid black;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.menu-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.right-bottom {
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+}
+
+.slogan-box {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-sizing: border-box;
+  background-color: white;
+  border: 1.5px solid black;
+  color: black;
+  white-space: nowrap;
+}
+
+.slogan-box.left {
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+  border-right: none;
+}
+
+.slogan-box.right {
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+  margin-left: -2px;
+}
