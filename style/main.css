@@ -7,8 +7,8 @@ body {
   color: #1a1a1a;
 }
 @font-face {
-  font-family: 'SF함박눈TTF';
-  src: url('../fonts/SF함박눈TTF.ttf') format('truetype');
+  font-family: '슬로건폰트';
+  src: url('../fonts/THEFACESHOP+INKLIPQUID\(윈도우용\).ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -39,7 +39,7 @@ a {
   margin: 0;
 }
 .slogan-text {
-  font-family: 'SF함박눈TTF', 'SUIT', sans-serif;
+  font-family: '슬로건폰트', 'SUIT', sans-serif;
   font-size: 1.6rem;
   line-height: 1.6;
   text-align: center;
@@ -181,7 +181,7 @@ a {
   margin-top: 8px;
 }
 .slogan-text {
-  font-family: 'SF함박눈TTF', 'SUIT', sans-serif;
+  font-family: '슬로건폰트', 'SUIT', sans-serif;
   font-size: 1.6rem;
   line-height: 1.6;
   text-align: center;
