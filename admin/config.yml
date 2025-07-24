@@ -14,3 +14,4 @@ collections:
     fields:
       - { label: "제목", name: "title", widget: "string" }
       - { label: "본문", name: "body", widget: "markdown" }
+      
