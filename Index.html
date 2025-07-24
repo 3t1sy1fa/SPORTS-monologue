@@ -23,7 +23,15 @@
       <div class="divider-line"></div>
     </div>
   </div>
+<header id="site-header"></header>
 
+<script>
+  fetch("/components/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("site-header").innerHTML = html;
+    });
+</script>
   <!-- 🔻 슬로건 (Bebas Neue 적용) -->
   <div class="slogan-text">
     <p>경기 그 이상을 보기 위해</p>
