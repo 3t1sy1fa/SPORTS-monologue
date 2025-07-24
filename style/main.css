@@ -1,0 +1,36 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background: #ffffff;
+  color: #111;
+}
+header {
+  margin-bottom: 2rem;
+}
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.subtitle {
+  font-size: 1rem;
+  color: #555;
+}
+.control-button {
+  display: inline-block;
+  margin: 0.5rem 0.5rem 0 0;
+  padding: 0.5rem 1rem;
+  border: 2px solid black;
+  background: white;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  border-radius: 0.5rem;
+}
+.right-controls {
+  position: fixed;
+  right: 2rem;
+  top: 30vh;
+  display: flex;
+  flex-direction: column;
+}

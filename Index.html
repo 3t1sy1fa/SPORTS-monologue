@@ -1,191 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Sports Monologue</title>
-    <link rel="icon" href="assets/favicon.ico?v=2" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        /* 기본 설정 */
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: white;
-            color: black;
-            position: relative;
-        }
-
-        /* 헤더 영역 */
-        .header {
-            position: relative;
-            height: 22vh;
-            min-height: 220px;
-        }
-
-        .sports-title {
-            position: absolute;
-            top: 18%;
-            right: 50%;
-            font-size: 9vw;
-            font-family: 'Gochi Hand', cursive, sans-serif;
-            margin: 0;
-            font-weight: 600;
-        }
-
-        .monologue-title {
-            position: absolute;
-            top: 56%;
-            left: 45%;
-            font-size: 7vw;
-            font-family: 'Gochi Hand', cursive, sans-serif;
-            margin: 0;
-            font-weight: 600;
-        }
-
-        .subtitle {
-            position: absolute;
-            top: 43%;
-            right: 20%;
-            font-size: 1.5vw;
-            font-weight: 500;
-        }
-
-        .speech-bubble {
-            position: absolute;
-            top: 76%;
-            right: 60%;
-            max-width: 320px;
-            padding: 1rem;
-            border: 2px solid black;
-            border-radius: 2rem;
-            background: white;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .mascot {
-            position: absolute;
-            top: 63%;
-            right: 5%;
-            width: 90px;
-        }
-
-        /* 블로그 콘텐츠 영역 */
-        .blog-container {
-            max-width: 900px;
-            margin: 10vh auto 4rem auto;
-            padding: 2rem;
-            border-top: 2px solid black;
-        }
-
-        .blog-post {
-            margin-bottom: 2rem;
-        }
-
-        .blog-post h2 {
-            margin-bottom: 0.5rem;
-            font-size: 1.8rem;
-        }
-
-        .blog-post p {
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* 오른쪽 고정 버튼 */
-        .right-controls {
-            position: fixed;
-            right: 2rem;
-            top: 35vh;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .control-button {
-            border: 2px solid black;
-            padding: 0.7rem 1rem;
-            font-size: 1rem;
-            border-radius: 0.5rem;
-            background: white;
-            cursor: pointer;
-            text-decoration: none;
-            color: black;
-            text-align: center;
-            transition: background 0.2s ease;
-        }
-
-        .control-button:hover {
-            background: #f2f2f2;
-        }
-
-        /* 반응형 */
-        @media (max-width: 768px) {
-            .sports-title {
-                font-size: 20vw;
-                left: 5%;
-            }
-
-            .monologue-title {
-                font-size: 17vw;
-                right: 5%;
-            }
-
-            .subtitle {
-                font-size: 3vw;
-                top: 38%;
-                right: 6%;
-            }
-
-            .speech-bubble {
-                font-size: 0.9rem;
-                left: 6%;
-                top: 78%;
-            }
-
-            .mascot {
-                width: 70px;
-                right: 6%;
-                top: 75%;
-            }
-
-            .blog-container {
-                padding: 1rem;
-                margin: 20vh auto 3rem auto;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Sports Monologue</title>
+  <link rel="stylesheet" href="style/main.css">
 </head>
 <body>
-    <!-- 상단 브랜드 영역 -->
-    <div class="header">
-        <h1 class="sports-title">SPORTS</h1>
-        <div class="subtitle">경기에서 콘텐츠로, 콘텐츠에서 경영으로</div>
-        <h1 class="monologue-title">Monologue</h1>
-        <div class="speech-bubble">스포츠를 콘텐츠로 설계하는 전략 노트</div>
-        <img class="mascot" src="assets/mascot.png" alt="Mascot">
-    </div>
-
-    <!-- 블로그 콘텐츠 영역 -->
-    <div class="blog-container">
-        <div class="blog-post">
-            <h2>[LG] 김영우, 리드오프의 가능성</h2>
-            <p>6월 이후 Zone% 변화와 타석당 어프로치가 달라졌다. LG의 공격 흐름을 바꾼 조용한 변수...</p>
-        </div>
-        <div class="blog-post">
-            <h2>[분석] 임찬규 복귀 이후 불펜 운용 변화</h2>
-            <p>7월 들어 구원 ERA가 1.50으로 급감한 배경. 셋업 롤 재배치가 핵심이다...</p>
-        </div>
-    </div>
-
-    <!-- 오른쪽 고정 버튼 -->
-    <div class="right-controls">
-        <a href="/admin/" class="control-button">글쓰기</a>
-        <a href="player-analysis.html" class="control-button">선수별 분석</a>
-        <a href="recent-games.html" class="control-button">최근 경기 분석</a>
-    </div>
+  <header>
+    <h1>Sports Monologue</h1>
+    <p class="subtitle">경기에서 콘텐츠로, 콘텐츠에서 경영으로</p>
+  </header>
+  <main>
+    <section class="blog-preview">
+      <h2>최근 게시물</h2>
+      <div id="posts"></div>
+    </section>
+  </main>
+  <div class="right-controls">
+    <a href="/admin/" class="control-button">글쓰기</a>
+    <a href="blog.html" class="control-button">전체 글 보기</a>
+  </div>
+  <script src="scripts/main.js"></script>
 </body>
 </html>
