@@ -8,7 +8,7 @@ body {
 }
 @font-face {
   font-family: '슬로건폰트';
-  src: url('../fonts/KBO-Dia-Gothic_bold.woff') format('truetype');
+  src: url('../fonts/KBO-Dia-Gothic_light.woff') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
