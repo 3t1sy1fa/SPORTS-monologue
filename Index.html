@@ -3,62 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <title>Sports Monologue</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/gh/spoqa/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style/main.css" />
 
-  <!-- Netlify Identity (CMS 로그인용) -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- 📌 SUIT 기본 폰트 + Bebas Neue 추가 -->
+  <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/style/main.css" />
 </head>
 <body>
-  <!-- 상단 메뉴 -->
-  <header id="site-header"></header>
+  <!-- 🔷 상단 헤더 -->
+  <div class="grid-container">
+    <div class="left-top">
+      <div class="sports">SPORTS</div>
+      <div class="monologue">Monologue</div>
+    </div>
+    <div class="right-top">
+      <div class="since">Since 2025</div>
+      <div class="lab">KBO 전력분석실</div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
 
-  <!-- 메인 콘텐츠 -->
-  <main class="main-container">
-    <!-- 슬로건 -->
-    <section class="slogan">
-      <h1>경기 그 이상을 보기 위해</h1>
-      <h2>경영의 언어로 스포츠를 말하다</h2>
-    </section>
+  <!-- 🔻 슬로건 (Bebas Neue 적용) -->
+  <div class="slogan-text">
+    <p>경기 그 이상을 보기 위해</p>
+    <p>경영의 언어로 스포츠를 말하다</p>
+  </div>
 
-    <!-- 최신 글 목록 -->
-    <section class="post-list-section">
-      <h3>📄 최신 분석글</h3>
-      <div id="post-list" class="post-list">
-        <!-- scripts/main.js가 이 부분을 채움 -->
-      </div>
-    </section>
-  </main>
+  <!-- 📝 글 목록 -->
+  <div class="post-list-container">
+    <ul id="post-list" class="post-list"></ul>
+  </div>
 
-  <!-- 하단 정보 -->
-  <footer id="site-footer"></footer>
-
-  <!-- 공통 헤더/푸터 불러오기 -->
-  <script>
-    fetch("components/header.html")
-      .then(res => res.text())
-      .then(html => (document.getElementById("site-header").innerHTML = html));
-
-    fetch("components/footer.html")
-      .then(res => res.text())
-      .then(html => (document.getElementById("site-footer").innerHTML = html));
-  </script>
-
-  <!-- CMS 로그인 자동 리디렉션 -->
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
-
-  <!-- 최신 글 목록 표시 -->
-  <script src="scripts/main.js"></script>
+  <script src="/scripts/main.js"></script>
 </body>
 </html>

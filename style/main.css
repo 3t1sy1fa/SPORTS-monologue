@@ -166,4 +166,13 @@ a {
   background-color: black;
   margin-top: 8px;
 }
+.slogan-text {
+  text-align: center;
+  margin: 36px 0 24px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  color: #111;
+}
 
