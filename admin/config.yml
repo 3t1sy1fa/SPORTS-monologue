@@ -1,17 +1,19 @@
 backend:
-  name: git-gateway
-  branch: main  # GitHub default branch
+  name: github
+  repo: so-yul/SPORTS-monologue  # ← 소율 GitHub 저장소 경로로 바꿔야 함
+  branch: main
 
-media_folder: "assets/images/uploads"
-public_folder: "/assets/images/uploads"
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
   - name: "posts"
-    label: "분석글"
+    label: "글"
     folder: "posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "제목", name: "title", widget: "string" }
       - { label: "카테고리", name: "category", widget: "select", options: ["선수 분석", "경기 분석", "구단 분석"] }
+      - { label: "날짜", name: "date", widget: "datetime" }
       - { label: "본문", name: "body", widget: "markdown" }
