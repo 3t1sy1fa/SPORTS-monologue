@@ -1,6 +1,6 @@
 [build]
-publish = "/"
-command = ""
+  publish = "public"
+  command = ""
 
 [[redirects]]
   from = "/admin"

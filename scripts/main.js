@@ -1,10 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const posts = [
+    {
+      title: "[LG] 김영우",
+      summary: "LG의 공격 흐름을 바꾼 조용한 변수...",
+      url: "#"
+    },
+    {
+      title: "[분석] 임찬규",
+      summary: "7월 들어 구원 ERA가 1.50으로 급감한 배경",
+      url: "#"
+    }
+  ];
+
   const postList = document.getElementById("post-list");
-  if (postList) {
-    postList.innerHTML = "<p>작성된 글이 여기에 표시됩니다. (.md 파싱 필요)</p>";
-  }
-  const preview = document.getElementById("posts");
-  if (preview) {
-    preview.innerHTML = "<p>최신 글 미리보기 영역입니다.</p>";
-  }
+
+  posts.forEach(post => {
+    const div = document.createElement("div");
+    div.className = "post";
+    div.innerHTML = `<h2><a href="${post.url}">${post.title}</a></h2><p>${post.summary}</p>`;
+    postList.appendChild(div);
+  });
 });
