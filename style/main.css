@@ -12,6 +12,12 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: '제목';
+  src: url('../fonts/KBO-Dia-Gothic_bold.woff') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 a {
   text-decoration: none;
@@ -171,6 +177,7 @@ a {
 
 .lab {
   font-size: 1.5rem;
+  font-family: '제목', 'SUIT', sans-serif;
   font-weight: 700;
 }
 
