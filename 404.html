@@ -1,38 +1,32 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a//dev/null b/404.html
-index 0000000000000000000000000000000000000000..e132f4120dc7cd769f41b9db75a4129f498449fd 100644
---- a//dev/null
-+++ b/404.html
-@@ -0,0 +1,31 @@
-+<!DOCTYPE html>
-+<html lang="ko">
-+<head>
-+  <meta charset="UTF-8" />
-+  <title>페이지를 찾을 수 없습니다 | Sports Monologue</title>
-+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-+  <link href="https://cdn.jsdelivr.net/gh/spoqa/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" />
-+  <link rel="stylesheet" href="/style/main.css" />
-+</head>
-+<body>
-+  <header id="site-header"></header>
-+
-+  <main class="main-container">
-+    <h1>404 - 페이지를 찾을 수 없습니다.</h1>
-+    <p>요청하신 페이지가 존재하지 않거나 이동되었습니다.</p>
-+    <p><a href="/Index.html">메인 페이지로 돌아가기</a></p>
-+  </main>
-+
-+  <footer id="site-footer"></footer>
-+
-+  <script>
-+    fetch("/components/header.html")
-+      .then(res => res.text())
-+      .then(html => document.getElementById("site-header").innerHTML = html);
-+
-+    fetch("/components/footer.html")
-+      .then(res => res.text())
-+      .then(html => document.getElementById("site-footer").innerHTML = html);
-+  </script>
-+</body>
-+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>페이지를 찾을 수 없습니다 | Sports Monologue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/gh/spoqa/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/style/main.css" />
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="main-container">
+    <h1>404 - 페이지를 찾을 수 없습니다.</h1>
+    <p>요청하신 페이지가 존재하지 않거나 이동되었습니다.</p>
+    <p><a href="/Index.html">메인 페이지로 돌아가기</a></p>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script>
+    fetch("/components/header.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("site-header").innerHTML = html);
+
+      +    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("site-footer").innerHTML = html);
+  </script>
+</body>
+</html>
  
