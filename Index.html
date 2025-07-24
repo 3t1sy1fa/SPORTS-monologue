@@ -3,50 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <title>Sports Monologue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/gh/spoqa/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" />
   <link rel="stylesheet" href="style/main.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Netlify Identity (CMS 로그인용) -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) window.netlifyIdentity.on("login", () => document.location.href = "/admin/");
-    });
-  }
-</script>
 </head>
 <body>
-  <div class="grid-container">
-    <!-- 좌측 상단: SPORTS / Monologue -->
-    <div class="left-top">
-      <div class="sports">SPORTS</div>
-      <div class="monologue">Monologue</div>
-    </div>
+  <!-- 상단 메뉴 -->
+  <header id="site-header"></header>
 
-    <!-- 우측 상단: Since / KBO -->
-    <div class="right-top">
-      <div class="since">Since 2025</div>
-      <div class="lab">KBO 전력분석실</div>
-      <div class="divider-line"></div>
-    </div>
+  <!-- 메인 콘텐츠 -->
+  <main class="main-container">
+    <!-- 슬로건 -->
+    <section class="slogan">
+      <h1>경기 그 이상을 보기 위해</h1>
+      <h2>경영의 언어로 스포츠를 말하다</h2>
+    </section>
 
-    <!-- 좌측 하단: 메뉴 -->
-    <div class="left-bottom">
-      <ul class="menu-list">
-        <li><a href="#">선수 분석</a></li>
-        <li><a href="#">경기 분석</a></li>
-        <li><a href="#">구단 분석</a></li>
-        <li><a href="#">소개</a></li>
-        <li><a href="#">문의</a></li>
-        <li><a href="#">manage</a></li>
-      </ul>
-    </div>
+    <!-- 최신 글 목록 -->
+    <section class="post-list-section">
+      <h3>📄 최신 분석글</h3>
+      <div id="post-list" class="post-list">
+        <!-- scripts/main.js가 이 부분을 채움 -->
+      </div>
+    </section>
+  </main>
 
-    <!-- 우측 하단: 슬로건 -->
-    <div class="right-bottom">
-      <p class="slogan-box left">경기 그 이상을 보기 위해</p>
-      <p class="slogan-box right">경영의 언어로 스포츠를 말하다</p>
-    </div>
-  </div>
+  <!-- 하단 정보 -->
+  <footer id="site-footer"></footer>
+
+  <!-- 공통 헤더/푸터 불러오기 -->
+  <script>
+    fetch("components/header.html")
+      .then(res => res.text())
+      .then(html => (document.getElementById("site-header").innerHTML = html));
+
+    fetch("components/footer.html")
+      .then(res => res.text())
+      .then(html => (document.getElementById("site-footer").innerHTML = html));
+  </script>
+
+  <!-- CMS 로그인 자동 리디렉션 -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+
+  <!-- 최신 글 목록 표시 -->
+  <script src="scripts/main.js"></script>
 </body>
 </html>

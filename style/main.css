@@ -1,149 +1,118 @@
+/* 기본 설정 */
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Spoqa Han Sans Neo', sans-serif;
-  background: white;
+  background-color: white;
+  color: #1a1a1a;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 메인 컨테이너 */
+.main-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* 슬로건 */
+.slogan h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.slogan h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #444;
+  margin: 0;
+}
+
+/* 헤더 */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid black;
+  padding: 20px 24px;
+}
+
+.logo-box .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
   color: black;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: auto auto;
-  border: 1.5px solid black;
-}
-
-.left-top {
-  border-right: 1.5px solid black;
-  border-bottom: 1.5px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 24px;
-}
-
-.sports,
-.monologue {
-  font-size: 2.25rem; /* 36px */
-  line-height: 1.1;
-}
-.sports {
-  font-weight: 600;
-}
-.monologue {
-  font-weight: 400;
-}
-
-.right-top {
-  border-bottom: 1.5px solid black;
-  padding: 20px 24px 12px;
-}
-
-.since {
-  font-size: 0.875rem; /* 14px */
-  font-style: italic;
-  margin-bottom: 6px;
-}
-
-.lab {
-  font-size: 1.5rem; /* 24px */
-  font-weight: 700;
-}
-
-.divider-line {
-  width: 100%;
-  height: 1.5px;
-  background-color: black;
-  margin-top: 8px;
-}
-
-.left-bottom {
-  border-right: 1.5px solid black;
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-}
-
-.menu-list {
-  display: flex;
+.nav-menu {
   list-style: none;
+  display: flex;
+  gap: 1.5rem;
   margin: 0;
   padding: 0;
-  gap: 1.8rem;
-  font-size: 1rem;
-  font-weight: 500;
-}
-.menu-list a {
-  text-decoration: none;
-  color: black;
-}
-.menu-list a:hover {
-  text-decoration: underline;
 }
 
-.right-bottom {
+.nav-menu a {
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.nav-menu a:hover {
+  color: #005bac;
+}
+
+/* 글 목록 섹션 */
+.post-list-section {
+  margin-top: 40px;
+}
+
+.post-list {
   display: flex;
-  align-items: center;
-  padding-left: 24px;
-  gap: 0;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.slogan-box {
-  padding: 0.5rem 1.2rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  background-color: white;
-  border: 1.5px solid black;
-  white-space: nowrap;
+.post-item {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 6px;
+}
+
+.post-item h4 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.post-item p {
   margin: 0;
+  color: #555;
+  font-size: 0.95rem;
 }
 
-.slogan-box.left {
-  border-right: none;
+/* 푸터 */
+.site-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #777;
+  padding: 32px 16px;
+  border-top: 1px solid #ccc;
+  margin-top: 80px;
 }
 
-.slogan-box.right {
-  margin-left: 0;
-}
-
-/* 슬로건에 clip-path 적용: 데스크탑 전용 */
-@media (min-width: 769px) {
-  .slogan-box.left {
-    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
-  }
-
-  .slogan-box.right {
-    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
-  }
-}
-
-/* 📱 반응형 모바일 대응 */
+/* 반응형 */
 @media (max-width: 768px) {
-  .grid-container {
-    display: block;
-  }
-
-  .left-top,
-  .right-top,
-  .left-bottom,
-  .right-bottom {
-    border-right: none;
-    border-bottom: 1.5px solid black;
-    padding: 16px;
-  }
-
-  .menu-list {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .right-bottom {
+  .main-header {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .slogan-box {
-    clip-path: none !important;
-    width: fit-content;
-    margin-top: 8px;
+  .nav-menu {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
   }
 }
