@@ -6,6 +6,12 @@ body {
   background-color: white;
   color: #1a1a1a;
 }
+@font-face {
+  font-family: 'SF함박눈TTF';
+  src: url('../fonts/SF함박눈TTF.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 a {
   text-decoration: none;
@@ -31,6 +37,14 @@ a {
   font-weight: 500;
   color: #444;
   margin: 0;
+}
+.slogan-text {
+  font-family: 'SF함박눈TTF', 'SUIT', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: 36px 0;
+  color: #111;
 }
 
 /* 헤더 */
@@ -167,12 +181,12 @@ a {
   margin-top: 8px;
 }
 .slogan-text {
+  font-family: 'SF함박눈TTF', 'SUIT', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.6;
   text-align: center;
-  margin: 36px 0 24px;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
-  letter-spacing: 0.5px;
-  line-height: 1.5;
+  margin: 36px 0;
   color: #111;
 }
+
 
