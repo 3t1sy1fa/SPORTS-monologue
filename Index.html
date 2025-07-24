@@ -11,27 +11,23 @@
   <link rel="stylesheet" href="/style/main.css" />
 </head>
 <body>
-  <!-- 🔷 상단 헤더 -->
-  <div class="grid-container">
-    <div class="left-top">
-      <div class="sports">SPORTS</div>
-      <div class="monologue">Monologue</div>
-    </div>
-    <div class="right-top">
-      <div class="since">Since 2025</div>
-      <div class="lab">KBO 전력분석실</div>
-      <div class="divider-line"></div>
-    </div>
-  </div>
-<header id="site-header"></header>
+  <!-- 🔷 상단 헤더 (공통 컴포넌트 fetch) -->
+  <header id="site-header"></header>
 
-<script>
-  fetch("/components/header.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("site-header").innerHTML = html;
-    });
-</script>
+  <script>
+    fetch("/components/header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("site-header").innerHTML = html;
+      });
+
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("site-footer").innerHTML = html;
+      });
+  </script>
+
   <!-- 🔻 슬로건 (Bebas Neue 적용) -->
   <div class="slogan-text">
     <p>경기 그 이상을 보기 위해</p>
@@ -43,6 +39,10 @@
     <ul id="post-list" class="post-list"></ul>
   </div>
 
+  <!-- 🔚 하단 푸터 (공통 컴포넌트 fetch) -->
+  <footer id="site-footer"></footer>
+
+  <!-- 🔌 글 목록 스크립트 -->
   <script src="/scripts/main.js"></script>
 </body>
 </html>
