@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: main  # 또는 master
 
 media_folder: "assets/images/uploads"
 public_folder: "/assets/images/uploads"
@@ -13,5 +13,4 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "제목", name: "title", widget: "string" }
-      - { label: "작성일", name: "date", widget: "datetime" }
-      - { label: "내용", name: "body", widget: "markdown" }
+      - { label: "본문", name: "body", widget: "markdown" }
