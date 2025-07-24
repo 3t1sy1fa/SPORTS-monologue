@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: so-yul/SPORTS-monologue  # ← 소율 GitHub 저장소 경로로 바꿔야 함
+  repo: 3t1sy1fa/SPORTS-monologue  # ← 소율 GitHub 저장소 경로로 바꿔야 함
   branch: main
 
 media_folder: "images/uploads"
