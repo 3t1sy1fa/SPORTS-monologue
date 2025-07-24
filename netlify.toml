@@ -1,0 +1,16 @@
+[build]
+  command = ""
+  publish = "."
+
+[dev]
+  publish = "."
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pages/contact"
+  to = "/pages/contact.html"
+  status = 200
