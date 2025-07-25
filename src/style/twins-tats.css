@@ -1,4 +1,10 @@
 /* twinstats.css - LG 트윈스 전용 테마 */
+@font-face {
+    font-family: 'slog2';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2507-2@1.0/YeongwolTTF-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
   background-color: #ffffff;
@@ -20,8 +26,8 @@ body {
 .twinstats-header h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 56px;
-  color: #c70101;
-  border-bottom: 4px solid #c70101;
+  color: #a84141;
+  border-bottom: 4px solid #a84141;
   display: inline-block;
   padding-bottom: 8px;
   letter-spacing: 2px;
@@ -29,6 +35,7 @@ body {
 
 .twinstats-header .subtitle {
   font-size: 18px;
+  font-family: 'slog2',sans-serif;
   color: #555;
   margin-top: 12px;
 }
@@ -36,7 +43,7 @@ body {
 .stat-section h2 {
   font-size: 24px;
   margin-bottom: 16px;
-  border-left: 4px solid #c70101;
+  border-left: 4px solid #a84141;
   padding-left: 12px;
   color: #222;
 }
@@ -49,7 +56,7 @@ body {
 }
 
 .stats-table th {
-  background-color: #c70101;
+  background-color: #a84141;
   color: white;
   font-weight: 600;
   padding: 12px;
