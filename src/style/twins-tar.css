@@ -15,12 +15,12 @@ body {
 .twins-tar-container {
   padding: 48px 24px;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .twins-tar-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: auto;
 }
 
 .twins-tar-header h1 {
@@ -42,7 +42,7 @@ body {
 
 .stat-section h2 {
   font-size: 24px;
-  margin-bottom: auto;
+  margin-bottom: 16px;
   border-left: 4px solid #a84141;
   padding-left: 12px;
   color: #222;
