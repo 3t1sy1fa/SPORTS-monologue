@@ -6,10 +6,17 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Mingijuk';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2412-1@1.0/Ownglyph_corncorn-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
   background-color: #ffffff;
   color: #000000;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: ' Minijuk', sans-serif;
 }
 
 .twins-tar-container {
@@ -54,7 +61,7 @@ body {
   border-collapse: collapse;
   margin-bottom: auto;
   font-size: 16px;
-}
+Noto}
 
 .stats-table th {
   background-color: #a84141;
