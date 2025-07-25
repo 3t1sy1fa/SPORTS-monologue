@@ -220,7 +220,7 @@ a {
 .monologue {
   font-family: '사천항공', 'SUIT', sans-serif;
   font-size: 3.2rem;
-  font-weight: 250;
+  font-weight: 150;
   line-height: 0.5;
   color:#666
 }
@@ -235,6 +235,7 @@ a {
   font-size: 2rem;
   font-family: '제목', 'SUIT', sans-serif;
   font-weight: 1;
+  line-height: 2;
 }
 
 .divider-line {
