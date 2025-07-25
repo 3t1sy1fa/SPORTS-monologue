@@ -123,6 +123,33 @@ a {
   margin-top: 80px;
 }
 
+.post-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  background: #fdfdfd;
+  color: #1a1a1a;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.post-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.post-body {
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
 /* 반응형 */
 @media (max-width: 768px) {
   .main-header {

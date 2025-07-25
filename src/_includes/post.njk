@@ -2,9 +2,10 @@
 
 {% block content %}
 <article class="post-content">
-  <h1>{{ title }}</h1>
-  <p><strong>{{ category }}</strong> · {{ date | date("yyyy-MM-dd") }}</p>
-  <hr>
-  {{ content | safe }}
+  <h1 class="post-title">{{ title }}</h1>
+  <p class="post-meta">{{ category }} · {{ date | date("yyyy-MM-dd") }}</p>
+  <div class="post-body">
+    {{ content | safe }}
+  </div>
 </article>
 {% endblock %}
