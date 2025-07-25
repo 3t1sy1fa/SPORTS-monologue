@@ -30,7 +30,7 @@ a {
 }
 
 .nav-menu {
-  font-family: ' Minijuk', sans-serif;
+  font-family: ' Minijuk';
   list-style: none;
   display: flex;
   gap: 2rem;
@@ -56,6 +56,7 @@ a {
 
 .nav-menu a:hover {
   color: #6e6e6e;
+  font-family: ' Minijuk', sans-serif;
 }
 
 @font-face {
