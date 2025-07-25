@@ -54,6 +54,13 @@ a {
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'spomono2';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/DAEHWA_NANUM_B.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
 /* ---------------------- 헤더 ---------------------- */
 .main-header {
   display: flex;
@@ -225,16 +232,16 @@ a {
 }
 
 .sports {
-  font-family: 'spomono', 'SUIT', sans-serif;
+  font-family: 'spomon2', 'SUIT', sans-serif;
   font-size: 3.2rem;
-  font-weight: 650;
+  font-weight: 400;
   line-height: 1;
 }
 
 .monologue {
-  font-family: 'spomono', 'SUIT', sans-serif;
+  font-family: 'spomono2', 'SUIT', sans-serif;
   font-size: 1.9rem;
-  font-weight: 150;
+  font-weight: 400;
   line-height: 0.5;
   color:#666
 }
