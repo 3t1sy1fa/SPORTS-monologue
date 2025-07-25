@@ -248,8 +248,7 @@ a {
 
 .since {
   font-size: 1rem;
-  font-style: italic;
-  margin-bottom: 1px;
+  color:#666
 }
 
 .lab {
