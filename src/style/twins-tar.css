@@ -37,12 +37,12 @@ body {
   font-size: 40px;
   font-family: 'slog2',sans-serif;
   color: #555;
-  margin-top: 0px;
+  margin-top: auto;
 }
 
 .stat-section h2 {
   font-size: 24px;
-  margin-bottom: 16px;
+  margin-bottom: auto;
   border-left: 4px solid #a84141;
   padding-left: 12px;
   color: #222;
@@ -51,7 +51,7 @@ body {
 .stats-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 48px;
+  margin-bottom: auto;
   font-size: 16px;
 }
 
