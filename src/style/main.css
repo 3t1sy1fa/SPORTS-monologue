@@ -20,6 +20,13 @@ a {
 }
 
 @font-face {
+  font-family: '사천항공';
+  src: url('../fonts/SacheonHangGong-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: '제목';
   src: url('../fonts/KBO-Dia-Gothic_bold.woff') format('truetype');
   font-weight: normal;
