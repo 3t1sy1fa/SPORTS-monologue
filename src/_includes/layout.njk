@@ -14,13 +14,10 @@
 
       {# ✅ 제목, 카테고리 출력 #}
       {% if post-title %}
-        <h1 class="post-title">{{ title }}</h1>
+        <p class="post-meta"><span class="post-titley">[{{ title }}]</span></p>
       {% endif %}
 
-       {% if post-meta %}
-        <h1 class="post-meta">{{ title }}</h1>
-      {% endif %}
-
+      
       {% if category %}
         <p class="post-meta"><span class="post-category">[{{ category }}]</span></p>
       {% endif %}
