@@ -46,7 +46,7 @@ a {
   list-style: none;
   display: flex;
   gap: 2rem;
-  margin: 0;
+  margin: 0.5;
   padding: 0;
   align-items: center;
 }
@@ -72,7 +72,7 @@ a {
 .slogan-text {
   font-family: '슬로건폰트', 'SUIT', sans-serif;
   font-size: 1.6rem;
-  line-height: 1.6;
+  line-height: 0.6;
   text-align: center;
   margin: 36px 0;
   color: #111;
@@ -118,7 +118,7 @@ a {
 }
 
 .post-title {
-  font-size: 2rem;
+  font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 10px;
   color: #000;
