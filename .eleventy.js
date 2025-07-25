@@ -1,23 +1,34 @@
 module.exports = function (eleventyConfig) {
-  // 정적 자산 복사 (스타일, 스크립트, 이미지, 폰트, CMS 등)
+  // 📁 정적 파일 폴더 그대로 복사
   eleventyConfig.addPassthroughCopy("src/style");
   eleventyConfig.addPassthroughCopy("src/scripts");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("admin");
 
-  // posts 컬렉션 등록 (.md 글들을 자동 수집)
+  // 📚 posts 폴더에 있는 md 파일을 posts 컬렉션으로 등록
   eleventyConfig.addCollection("posts", function (collection) {
     return collection.getFilteredByGlob("src/posts/*.md");
   });
 
+  // 📅 날짜 필터 (Luxon 없이 한국식 포맷)
+  eleventyConfig.addFilter("date", function (dateObj) {
+    if (!dateObj) return "";
+    return new Date(dateObj).toLocaleDateString("ko-KR", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit"
+    });
+  });
+
+  // 🔧 Eleventy 설정
   return {
     dir: {
-      input: "src",          // 소스 폴더
-      includes: "_includes", // 템플릿 포함 경로
-      data: "_data",         // 데이터 경로
-      output: "public",      // 최종 결과물 출력 경로
+      input: "src",
+      includes: "_includes",
+      data: "_data",
+      output: "public",
     },
-    markdownTemplateEngine: "njk" // Markdown 내부 템플릿 엔진
+    markdownTemplateEngine: "njk"
   };
 };
