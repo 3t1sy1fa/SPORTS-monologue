@@ -74,7 +74,7 @@ a {
   font-size: 1.6rem;
   line-height: 1.6;
   text-align: center;
-  margin: 36px 0;
+  margin: 26px 0;
   color: #111;
 }
 
@@ -236,6 +236,6 @@ a {
   .nav-menu {
     flex-direction: column;
     gap: 12px;
-    margin-top: 12px;
+    margin-top: 14px;
   }
 }
