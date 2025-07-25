@@ -205,16 +205,17 @@ a {
 
 .sports {
   font-family: '사천항공', 'SUIT', sans-serif;
-  font-size: 4rem;
+  font-size: 4.7rem;
   font-weight: 650;
   line-height: 1.1;
 }
 
 .monologue {
   font-family: '사천항공', 'SUIT', sans-serif;
-  font-size: 3rem;
-  font-weight: 420;
+  font-size: 3.2rem;
+  font-weight: 350;
   line-height: 1.1;
+  color:#666
 }
 
 .since {
