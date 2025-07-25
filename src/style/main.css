@@ -47,6 +47,13 @@ a {
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'spomono';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/NEXEN_TIRE_Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* ---------------------- 헤더 ---------------------- */
 .main-header {
   display: flex;
@@ -218,14 +225,14 @@ a {
 }
 
 .sports {
-  font-family: '사천항공', 'SUIT', sans-serif;
+  font-family: 'spomono', 'SUIT', sans-serif;
   font-size: 4.7rem;
   font-weight: 650;
   line-height: 1;
 }
 
 .monologue {
-  font-family: '사천항공', 'SUIT', sans-serif;
+  font-family: 'spomono', 'SUIT', sans-serif;
   font-size: 3.2rem;
   font-weight: 150;
   line-height: 0.5;
