@@ -88,7 +88,7 @@ a {
   font-size: 1.6rem;
   line-height: 0.6;
   text-align: center;
-  margin: 26px 0;
+  margin: 26px 4ㄴ;
   color: #111;
 }
 
@@ -235,7 +235,7 @@ a {
   font-size: 2rem;
   font-family: '제목', 'SUIT', sans-serif;
   font-weight: 1;
-  line-height: 6;
+  line-height: 2;
 }
 
 .divider-line {
