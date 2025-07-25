@@ -6,25 +6,27 @@
     <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/style/main.css" />
+    <title>{{ title }} | Sports Monologue</title>
   </head>
   <body>
     {% include "header.njk" %}
 
     <main class="main-container">
+      <article class="post-article">
+        
+        {% if category %}
+          <p class="post-meta">
+            <span class="post-category">[{{ category }}]</span>
+          </p>
+        {% endif %}
 
-      {# ✅ 제목, 카테고리 출력 #}
-      {% if post-title %}
-        <p class="post-title"><span class="post-titley">[{{ title }}]</span></p>
-      {% endif %}
+        {% if title %}
+          <h1 class="post-title">{{ title }}</h1>
+        {% endif %}
 
-      
-      {% if category %}
-        <p class="post-meta"><span class="post-category">[{{ category }}]</span></p>
-      {% endif %}
+        {{ content | safe }}
 
-      {# ✅ 본문 삽입 #}
-      {{ content | safe }}
-
+      </article>
     </main>
 
     {% include "footer.njk" %}
