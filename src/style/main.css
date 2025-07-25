@@ -204,12 +204,14 @@ a {
 }
 
 .sports {
+  font-family: '사천항공', 'SUIT', sans-serif;
   font-size: 4rem;
   font-weight: 650;
   line-height: 1.1;
 }
 
 .monologue {
+  font-family: '사천항공', 'SUIT', sans-serif;
   font-size: 3rem;
   font-weight: 420;
   line-height: 1.1;
