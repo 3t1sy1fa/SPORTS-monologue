@@ -21,6 +21,7 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  
   // 🪄 모든 글에 기본 layout 자동 적용
   eleventyConfig.addGlobalData("layout", "post.njk");
   eleventyConfig.addPassthroughCopy("src/style");
