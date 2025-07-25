@@ -242,7 +242,7 @@ a {
   font-size: 2rem;
   font-family: '제목', 'SUIT', sans-serif;
   font-weight: 1;
-  line-height: 2;
+  line-height: 0;
 }
 
 .divider-line {
