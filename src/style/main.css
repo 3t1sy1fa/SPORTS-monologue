@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Spoqa Han Sans Neo', 'SUIT', sans-serif;
+  font-family: 'Mingijuk', 'SUIT', sans-serif;
   background-color: white;
   color: #1a1a1a;
 }
@@ -10,6 +10,13 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+@font-face {
+    font-family: 'Mingijuk';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Mingijuk.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
