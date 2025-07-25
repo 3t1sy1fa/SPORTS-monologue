@@ -13,6 +13,46 @@ a {
   text-decoration: none;
   color: inherit;
 }
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid black;
+  padding: 20px 24px;
+  background: #fff;
+}
+
+.logo-box .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: black;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0.5;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-menu li {
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu a {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #1a1a1a;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+
+.nav-menu a:hover {
+  color: #6e6e6e;
+}
 
 @font-face {
     font-family: 'slog2';
