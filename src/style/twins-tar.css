@@ -29,7 +29,7 @@ body {
   color: #a84141;
   border-bottom: 4px solid #a84141;
   display: inline-block;
-  padding-bottom: 8px;
+  padding-bottom: 2px;
   letter-spacing: 2px;
 }
 
@@ -37,7 +37,7 @@ body {
   font-size: 40px;
   font-family: 'slog2',sans-serif;
   color: #555;
-  margin-top: 500px;
+  margin-top: 0px;
 }
 
 .stat-section h2 {
