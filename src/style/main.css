@@ -28,9 +28,9 @@ a {
 
 @font-face {
   font-family: '제목';
-  src: url('../fonts/KBO-Dia-Gothic_bold.woff') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2505-1@1.0/770Balsa.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
