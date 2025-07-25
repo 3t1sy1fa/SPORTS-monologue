@@ -42,6 +42,7 @@ a {
 .nav-menu li {
   display: flex;
   align-items: center;
+  font-family: ' Minijuk', sans-serif;
 }
 
 .nav-menu a {
@@ -50,6 +51,7 @@ a {
   color: #1a1a1a;
   padding: 4px 0;
   transition: color 0.2s;
+  font-family: ' Minijuk', sans-serif;
 }
 
 .nav-menu a:hover {
