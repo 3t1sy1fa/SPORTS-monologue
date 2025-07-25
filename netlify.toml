@@ -15,3 +15,17 @@
   to = "/pages/contact.html"
   status = 200
 
+[build]
+  publish = "."
+  command = ""
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/#invite_token=:token"
+  to = "/admin/#invite_token=:token"
+  status = 301
+  force = true
