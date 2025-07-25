@@ -15,8 +15,3 @@
   to = "/pages/contact.html"
   status = 200
 
-[[redirects]]
-  from = "/#invite_token=:token"
-  to = "/admin/#invite_token=:token"
-  status = 301
-  force = true
