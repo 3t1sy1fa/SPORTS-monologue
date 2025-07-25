@@ -1,4 +1,4 @@
-/* twinstats.css - LG 트윈스 전용 테마 */
+/* twins-tar.css - LG 트윈스 전용 테마 */
 @font-face {
     font-family: 'slog2';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2507-2@1.0/YeongwolTTF-Regular.woff2') format('woff2');
@@ -12,18 +12,18 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
 }
 
-.twinstats-container {
+.twins-tar-container {
   padding: 48px 24px;
   max-width: 1000px;
   margin: 0 auto;
 }
 
-.twinstats-header {
+.twins-tar-header {
   text-align: center;
   margin-bottom: 40px;
 }
 
-.twinstats-header h1 {
+.twins-tar-header h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 56px;
   color: #a84141;
@@ -33,7 +33,7 @@ body {
   letter-spacing: 2px;
 }
 
-.twinstats-header .subtitle {
+.twins-tar-header .subtitle {
   font-size: 40px;
   font-family: 'slog2',sans-serif;
   color: #555;
@@ -79,7 +79,7 @@ body {
 }
 
 @media (max-width: 768px) {
-  .twinstats-header h1 {
+  .twins-tar-header h1 {
     font-size: 36px;
   }
   .stats-table th, .stats-table td {
