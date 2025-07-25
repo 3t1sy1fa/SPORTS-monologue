@@ -1,23 +1,21 @@
 ---
-layout: layout.njk
 title: Sports Monologue
+layout: layout.njk
 ---
 
-<!-- 🔻 슬로건 -->
+{% block content %}
 <div class="slogan-text">
   <p>경기 그 이상을 보기 위해</p>
   <p>경영의 언어로 스포츠를 말하다</p>
 </div>
 
-<!-- 📝 글 목록 -->
-<section class="post-list-section">
-  <ul class="post-list">
-    {% for post in collections.posts | reverse %}
-      <li class="post-item">
-        <h4><a href="{{ post.url }}">{{ post.data.title }}</a></h4>
-        <p><strong>[{{ post.data.category }}]</strong> · {{ post.date | date("yyyy-MM-dd") }}</p>
-        <p>{{ post.data.excerpt }}</p>
-      </li>
-    {% endfor %}
-  </ul>
+<section class="post-list">
+  {% for post in collections.posts | reverse %}
+    <article class="post-item">
+      <h4><a href="{{ post.url }}">{{ post.data.title }}</a></h4>
+      <p><strong>{{ post.data.category }}</strong> · {{ post.date | date("yyyy-MM-dd") }}</p>
+      <p>{{ post.data.excerpt }}</p>
+    </article>
+  {% endfor %}
 </section>
+{% endblock %}
