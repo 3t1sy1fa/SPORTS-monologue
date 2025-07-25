@@ -65,7 +65,7 @@ a {
 }
 
 .nav-menu a:hover {
-  color: #005bac;
+  color: #6e6e6e;
 }
 
 /* ---------------------- 슬로건 ---------------------- */
@@ -74,7 +74,7 @@ a {
   font-size: 1.6rem;
   line-height: 0.6;
   text-align: center;
-  margin: 36px 0;
+  margin: 26px 0;
   color: #111;
 }
 
@@ -198,7 +198,7 @@ a {
 
 .sports {
   font-size: 4rem;
-  font-weight: 600;
+  font-weight: 650;
   line-height: 1.1;
 }
 
@@ -209,7 +209,7 @@ a {
 }
 
 .since {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-style: italic;
   margin-bottom: 6px;
 }
