@@ -78,6 +78,7 @@ body {
   padding: 48px 12px;
   max-width: 1000px;
   margin: auto;
+  font-family: ' Minijuk', sans-serif;
 }
 
 .twins-tar-header {
@@ -100,13 +101,13 @@ body {
   font-size: 40px;
   font-family: 'slog2',sans-serif;
   color: #555;
-  margin-top: auto;
+  margin-top: 0;
   line-height: 0;
 }
 
 .stat-section h2 {
   font-size: 24px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   border-left: 4px solid #a84141;
   padding-left: 12px;
   color: #222;
@@ -117,6 +118,7 @@ body {
   border-collapse: collapse;
   margin-bottom: auto;
   font-size: 16px;
+  font-family: ' Minijuk', sans-serif;
 }
 
 .stats-table th {
