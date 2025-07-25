@@ -208,6 +208,7 @@ a {
   font-size: 4.7rem;
   font-weight: 650;
   line-height: 1.1;
+  row-gap: 0.4rem;
 }
 
 .monologue {
@@ -221,7 +222,7 @@ a {
 .since {
   font-size: 1rem;
   font-style: italic;
-  margin-bottom: 6px;
+  margin-bottom: 7px;
 }
 
 .lab {
