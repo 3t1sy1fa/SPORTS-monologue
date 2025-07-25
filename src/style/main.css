@@ -236,6 +236,7 @@ a {
   font-family: '제목', 'SUIT', sans-serif;
   font-weight: 1;
   line-height: 2;
+  line-gap-override: 4%;
 }
 
 .divider-line {
