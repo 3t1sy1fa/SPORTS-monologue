@@ -1,31 +1,11 @@
 [build]
-  command = ""
-  publish = "."
-
-[dev]
-  publish = "."
-
-[[redirects]]
-  from = "/admin/*"
-  to = "/admin/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/pages/contact"
-  to = "/pages/contact.html"
-  status = 200
-
-[build]
-  publish = "."
+  publish = "public"
   command = ""
 
-[[redirects]]
-  from = "/admin/*"
-  to = "/admin/index.html"
-  status = 200
+[build.environment]
+  NODE_VERSION = "18"
 
 [[redirects]]
-  from = "/#invite_token=:token"
-  to = "/admin/#invite_token=:token"
-  status = 301
-  force = true
+  from = "/*"
+  to = "/index.html"
+  status = 200
