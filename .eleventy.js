@@ -34,4 +34,20 @@ module.exports = function (eleventyConfig) {
     },
     markdownTemplateEngine: "njk"
   };
+  module.exports = function (eleventyConfig) {
+  // ... 기존 설정들 생략 ...
+
+  // 📌 기본 레이아웃을 post.njk로 설정
+  eleventyConfig.addGlobalData("layout", "post.njk");
+
+  return {
+    dir: {
+      input: "src",
+      includes: "_includes",
+      data: "_data",
+      output: "public"
+    },
+    markdownTemplateEngine: "njk"
+  };
+};
 };
