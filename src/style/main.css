@@ -111,13 +111,21 @@ a {
 }
 
 /* ---------------------- 슬로건 ---------------------- */
-.slogan-text {
-  font-family: 'spomono', 'SUIT', sans-serif;
-  font-size: 1.6rem;
-  line-height: 0.6;
-  text-align: center;
-  margin: 26px 0;
-  color: #111;
+
+.typing-slogan {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'SUIT', sans-serif;
+  white-space: nowrap;
+  border-right: 2px solid black;
+  overflow: hidden;
+  width: fit-content;
+  animation: blink-caret 0.75s step-end infinite;
+  margin: 24px 0;
+}
+
+@keyframes blink-caret {
+  50% { border-color: transparent; }
 }
 
 /* ---------------------- 글 목록 ---------------------- */

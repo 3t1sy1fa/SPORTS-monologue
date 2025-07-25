@@ -2,13 +2,10 @@
 title: Sports Monologue
 layout: layout.njk
 ---
+<p class="typing-slogan"><span id="typing-text"></span></p>
 
 {% block content %}
-<div class="slogan-text">
-  <p>경기 그 이상을 보기 위해</p>
-  <p>경영의 언어로 스포츠를 말하다</p>
-  <p> </p>
-</div>
+
 
 <section class="post-list">
   {% for post in collections.posts | reverse %}
@@ -19,4 +16,42 @@ layout: layout.njk
     </article>
   {% endfor %}
 </section>
+
+<script>
+  const phrases = [
+    "경기 그 이상을 보기 위해",
+    "경영의 언어로 스포츠를 말하다"
+  ];
+  const speed = 80;
+  const pause = 1000;
+  const eraseSpeed = 30;
+  let i = 0, j = 0;
+  let isDeleting = false;
+  const el = document.getElementById("typing-text");
+
+  function type() {
+    const current = phrases[i];
+    if (isDeleting) {
+      el.textContent = current.substring(0, j--);
+      if (j < 0) {
+        isDeleting = false;
+        i = (i + 1) % phrases.length;
+        setTimeout(type, 500);
+      } else {
+        setTimeout(type, eraseSpeed);
+      }
+    } else {
+      el.textContent = current.substring(0, j++);
+      if (j > current.length) {
+        isDeleting = true;
+        setTimeout(type, pause);
+      } else {
+        setTimeout(type, speed);
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", type);
+</script>
+
 {% endblock %}
