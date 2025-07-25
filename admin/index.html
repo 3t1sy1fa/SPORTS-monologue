@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Content Manager</title>
   </head>
   <body>
-<script>
-  if (window.location.hash.startsWith("#invite_token")) {
-    window.localStorage.setItem("netlify-cms-auth", window.location.hash);
-    window.location.href = "/admin/";
-  }
-</script>
+    <!-- ✅ 초대 링크 토큰 처리용 스크립트 -->
+    <script>
+      // URL에 #invite_token=abc123 이런 형식으로 접근 시 localStorage에 저장하고 redirect
+      if (window.location.hash.startsWith("#invite_token")) {
+        window.localStorage.setItem("netlify-cms-auth", window.location.hash);
+        window.location.href = "/admin/";
+      }
+    </script>
+
+    <!-- ✅ Netlify CMS 메인 스크립트 -->
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   </body>
 </html>
