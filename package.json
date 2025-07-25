@@ -1,0 +1,11 @@
+{
+  "name": "sports-monologue",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npx eleventy --serve",
+    "build": "npx eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0"
+  }
+}
