@@ -1,0 +1,82 @@
+/* twinstats.css - LG 트윈스 전용 테마 */
+
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.twinstats-container {
+  padding: 48px 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.twinstats-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.twinstats-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  color: #c70101;
+  border-bottom: 4px solid #c70101;
+  display: inline-block;
+  padding-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+.twinstats-header .subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-top: 12px;
+}
+
+.stat-section h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  border-left: 4px solid #c70101;
+  padding-left: 12px;
+  color: #222;
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 48px;
+  font-size: 16px;
+}
+
+.stats-table th {
+  background-color: #c70101;
+  color: white;
+  font-weight: 600;
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+
+.stats-table td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.stats-table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.stats-table tbody tr:hover {
+  background-color: #f3f3f3;
+  cursor: default;
+}
+
+@media (max-width: 768px) {
+  .twinstats-header h1 {
+    font-size: 36px;
+  }
+  .stats-table th, .stats-table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
