@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
   branch: main
-  repo: 3t1sy1fa/SPORTS-monologue  # ← 정확한 GitHub 저장소 경로
+  repo: 3t1sy1fa/SPORTS-monologue
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
@@ -9,11 +9,12 @@ public_folder: "/images/uploads"
 collections:
   - name: "posts"
     label: "글"
-    folder: "posts"
+    folder: "src/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "제목", name: "title", widget: "string" }
       - { label: "카테고리", name: "category", widget: "select", options: ["선수 분석", "경기 분석", "구단 분석"] }
       - { label: "날짜", name: "date", widget: "datetime" }
+      - { label: "요약", name: "excerpt", widget: "text" }
       - { label: "본문", name: "body", widget: "markdown" }
