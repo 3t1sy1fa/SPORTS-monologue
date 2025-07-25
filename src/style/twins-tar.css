@@ -1,4 +1,19 @@
 /* twins-tar.css - LG 트윈스 전용 테마 */
+
+/* ---------------------- 기본 설정 ---------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Mingijuk', 'SUIT', sans-serif;
+  background-color: white;
+  color: #1a1a1a;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 @font-face {
     font-family: 'slog2';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2507-2@1.0/YeongwolTTF-Regular.woff2') format('woff2');
@@ -31,7 +46,7 @@ body {
 }
 
 .twins-tar-header h1 {
-  font-family: 'Mingijuk', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 56px;
   color: #a84141;
   border-bottom: 4px solid #a84141;
