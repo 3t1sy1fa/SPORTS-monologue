@@ -13,18 +13,23 @@
 
     <main class="main-container">
       <article class="post-article">
-        
-        {% if category %}
-          <p class="post-meta">
-            <span class="post-category">[{{ category }}]</span>
-          </p>
-        {% endif %}
 
-        {% if title %}
-          <h1 class="post-title">{{ title }}</h1>
-        {% endif %}
+        {# ✅ posts/ 경로의 글(post)일 때만 제목 + 카테고리 + 내용 출력 #}
+        {% if page.url contains "/posts/" %}
+          
+          {% if category %}
+            <p class="post-meta">
+              <span class="post-category">[{{ category }}]</span>
+            </p>
+          {% endif %}
 
-        {{ content | safe }}
+          {% if title %}
+            <h1 class="post-title">{{ title }}</h1>
+          {% endif %}
+
+          {{ content | safe }}
+
+        {% endif %}
 
       </article>
     </main>
