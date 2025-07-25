@@ -122,6 +122,13 @@ a {
   width: fit-content;
   animation: blink-caret 0.75s step-end infinite;
   margin: 24px 0;
+
+  /* 추가된 부분 */
+  min-height: 1.5em; /* 줄 높이 확보 */
+}
+
+#typing-text {
+  display: inline-block; /* 글자가 사라져도 공간 유지 */
 }
 
 @keyframes blink-caret {
