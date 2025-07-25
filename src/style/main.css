@@ -1,22 +1,10 @@
-/* 기본 설정 */
+/* ---------------------- 기본 설정 ---------------------- */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Spoqa Han Sans Neo', sans-serif;
+  font-family: 'Spoqa Han Sans Neo', 'SUIT', sans-serif;
   background-color: white;
   color: #1a1a1a;
-}
-@font-face {
-  font-family: '슬로건폰트';
-  src: url('../fonts/KBO-Dia-Gothic_light.woff') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: '제목';
-  src: url('../fonts/KBO-Dia-Gothic_bold.woff') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
 a {
@@ -24,42 +12,28 @@ a {
   color: inherit;
 }
 
-/* 메인 컨테이너 */
-.main-container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 40px 20px;
+@font-face {
+  font-family: '슬로건폰트';
+  src: url('../fonts/KBO-Dia-Gothic_light.woff') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-/* 슬로건 */
-.slogan h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0 0 6px;
+@font-face {
+  font-family: '제목';
+  src: url('../fonts/KBO-Dia-Gothic_bold.woff') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-.slogan h2 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #444;
-  margin: 0;
-}
-.slogan-text {
-  font-family: '슬로건폰트', 'SUIT', sans-serif;
-  font-size: 1.6rem;
-  line-height: 1.6;
-  text-align: center;
-  margin: 36px 0;
-  color: #111;
-}
-
-/* 헤더 */
+/* ---------------------- 헤더 ---------------------- */
 .main-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1.5px solid black;
   padding: 20px 24px;
+  background: #fff;
 }
 
 .logo-box .logo {
@@ -71,21 +45,40 @@ a {
 .nav-menu {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   margin: 0;
   padding: 0;
+  align-items: center;
+}
+
+.nav-menu li {
+  display: flex;
+  align-items: center;
 }
 
 .nav-menu a {
   font-weight: 500;
+  font-size: 1rem;
   color: #1a1a1a;
+  padding: 4px 0;
+  transition: color 0.2s;
 }
 
 .nav-menu a:hover {
   color: #005bac;
 }
 
-/* 글 목록 섹션 */
+/* ---------------------- 슬로건 ---------------------- */
+.slogan-text {
+  font-family: '슬로건폰트', 'SUIT', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: 36px 0;
+  color: #111;
+}
+
+/* ---------------------- 글 목록 ---------------------- */
 .post-list-section {
   margin-top: 40px;
 }
@@ -100,6 +93,7 @@ a {
   border: 1px solid #ddd;
   padding: 16px;
   border-radius: 6px;
+  background-color: #fff;
 }
 
 .post-item h4 {
@@ -113,7 +107,63 @@ a {
   font-size: 0.95rem;
 }
 
-/* 푸터 */
+/* ---------------------- 글 읽기용 페이지 ---------------------- */
+.post-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.post-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.post-category {
+  font-weight: 600;
+  color: #005bac;
+}
+
+.post-body {
+  line-height: 1.75;
+  font-size: 1.05rem;
+}
+
+.post-body p {
+  margin-bottom: 1.5rem;
+}
+
+.post-body h2 {
+  font-size: 24px;
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+.post-body ul,
+.post-body ol {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+/* ---------------------- 메인 컨테이너 ---------------------- */
+.main-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* ---------------------- 푸터 ---------------------- */
 .site-footer {
   text-align: center;
   font-size: 0.85rem;
@@ -123,107 +173,7 @@ a {
   margin-top: 80px;
 }
 
-.post-content {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 32px 20px;
-  background: #fdfdfd;
-  color: #1a1a1a;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.post-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.post-meta {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 24px;
-}
-
-.post-body {
-  line-height: 1.7;
-  font-size: 1rem;
-}
-
-.post-page {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  background-color: white;
-  color: #1a1a1a;
-  line-height: 1.7;
-  font-size: 16px;
-}
-
-.post-title {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #000;
-}
-
-.post-meta {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 30px;
-}
-
-.post-category {
-  font-weight: 600;
-  color: #005bac;
-}
-
-.post-body h2 {
-  font-size: 24px;
-  margin-top: 40px;
-  margin-bottom: 16px;
-}
-
-.post-body p {
-  margin-bottom: 20px;
-}
-
-.post-body ul,
-.post-body ol {
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
-.post-content {
-  max-width: 680px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  line-height: 1.75;
-  font-size: 1.05rem;
-}
-
-.post-meta {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 1rem;
-}
-
-.post-body p {
-  margin-bottom: 1.5rem;
-}
-
-/* 반응형 */
-@media (max-width: 768px) {
-  .main-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-menu {
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 12px;
-  }
-}
+/* ---------------------- 상단 타이틀 박스 ---------------------- */
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -275,14 +225,17 @@ a {
   background-color: black;
   margin-top: 8px;
 }
-.slogan-text {
-  font-family: '슬로건폰트', 'SUIT', sans-serif;
-  font-size: 1.6rem;
-  line-height: 1.6;
-  text-align: center;
-  margin: 36px 0;
-  color: #111;
+
+/* ---------------------- 반응형 ---------------------- */
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+  }
 }
-
-
-
