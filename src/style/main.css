@@ -131,7 +131,7 @@ a {
 }
 
 .post-category {
-  font-size: 2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #5f6b75;
 }
@@ -197,14 +197,14 @@ a {
 }
 
 .sports {
-  font-size: 4.25rem;
+  font-size: 4rem;
   font-weight: 600;
   line-height: 1.1;
 }
 
 .monologue {
-  font-size: 3.25rem;
-  font-weight: 400;
+  font-size: 3rem;
+  font-weight: 420;
   line-height: 1.1;
 }
 
@@ -217,7 +217,7 @@ a {
 .lab {
   font-size: 2rem;
   font-family: '제목', 'SUIT', sans-serif;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .divider-line {
