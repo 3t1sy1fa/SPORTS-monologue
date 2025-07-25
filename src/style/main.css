@@ -40,6 +40,13 @@ a {
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'slog2';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2507-2@1.0/YeongwolTTF-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* ---------------------- 헤더 ---------------------- */
 .main-header {
   display: flex;
@@ -88,7 +95,7 @@ a {
   font-size: 1.6rem;
   line-height: 0.6;
   text-align: center;
-  margin: 26px 4;
+  margin: 26px 0;
   color: #111;
 }
 
