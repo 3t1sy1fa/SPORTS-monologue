@@ -10,10 +10,10 @@
   <body>
     {% include "header.njk" %}
 
-    <main class="post-page">
+    <main class="main-container">
 
       {# ✅ 제목, 카테고리 출력 #}
-      {% if title %}
+      {% if post-title %}
         <h1 class="post-title">{{ title }}</h1>
       {% endif %}
 
