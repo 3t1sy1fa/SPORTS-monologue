@@ -124,7 +124,7 @@ a {
   margin: 24px 0;
 
   /* 추가된 부분 */
-  min-height: 1.5em; /* 줄 높이 확보 */
+  min-height: 2em; /* 줄 높이 확보 */
 }
 
 #typing-text {
