@@ -1,0 +1,46 @@
+.team-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.team-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.team-box {
+  padding: 20px 28px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.2s;
+  flex: 1 1 120px;
+  min-width: 100px;
+  max-width: 160px;
+}
+
+.team-box:hover {
+  transform: scale(1.05);
+}
+
+/* 각 팀 색상 */
+.kiwoom  { background-color: #570514; }
+.doosan  { background-color: #1A1748; }
+.lotte   { background-color: #041E42; }
+.samsung { background-color: #074CA1; }
+.hanwha  { background-color: #FC4E00; }
+.kia     { background-color: #EA0029; }
+.lg      { background-color: #C30452; }
+.ssg     { background-color: #CE0E2D; }
+.nc      { background-color: #315288; }
+.kt      { background-color: #000000; }
+
+
+
