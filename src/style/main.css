@@ -335,7 +335,7 @@ a {
   max-width: 720px;
   margin: 0 auto;
   padding: 48px 24px;
-  font-family: 'SUIT', sans-serif;
+  font-family: inherit;
 }
 
 .contact-container h1 {
