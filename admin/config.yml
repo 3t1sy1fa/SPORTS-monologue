@@ -20,7 +20,7 @@ collections:
       - { label: "본문", name: "body", widget: "markdown" }
 
 
-      collections:
+  collections:
   - name: "lab"
     label: "Lab"
     folder: "src/lab"
