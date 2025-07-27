@@ -1,6 +1,6 @@
 [build]
-  publish = "_site"  # ← 기존 "_site"에서 "_public"으로 변경
-  command = "npx @11ty/eleventy"
+command = "npx @11ty/eleventy"
+publish = "_site"
 
 [build.environment]
   NODE_VERSION = "18"
