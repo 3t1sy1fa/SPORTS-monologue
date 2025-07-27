@@ -1,5 +1,5 @@
 [build]
-  publish = "public"
+  publish = "_site" # ← Eleventy 출력 폴더
   command = "npx @11ty/eleventy"
 
 [build.environment]
