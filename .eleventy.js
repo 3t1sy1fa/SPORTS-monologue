@@ -15,6 +15,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("lab", function (collection) {
     return collection.getFilteredByGlob("src/lab/*.md");
   });
+  
 
   // ✅ 날짜 포맷 필터 (한국식 yyyy.mm.dd)
   eleventyConfig.addFilter("date", function (dateObj) {

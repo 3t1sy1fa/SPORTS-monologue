@@ -30,3 +30,5 @@ collections:
       - { label: "카테고리", name: "category", widget: "select", options: ["사이트 제작", "사이트 운영", "경영", "분석", "기타"] }
       - { label: "설명", name: "description", widget: "text" }
       - { label: "본문", name: "body", widget: "markdown" }
+
+      
