@@ -1,6 +1,5 @@
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addLayoutAlias("team-layout", "layouts/team-layout.njk"); 
-
+  eleventyConfig.addLayoutAlias("team-layout", "layouts/team-layout.njk");
   eleventyConfig.addPassthroughCopy("src/style");
   eleventyConfig.addPassthroughCopy("src/scripts");
   eleventyConfig.addPassthroughCopy("src/images");
