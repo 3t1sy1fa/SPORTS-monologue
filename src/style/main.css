@@ -378,3 +378,90 @@ a {
     margin-top: 12px;
   }
 }
+
+/* 햄버거 버튼 기본 숨김 */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 12px;
+  margin-left: auto;
+}
+
+/* 데스크탑 */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  border: 1.5px solid black;
+}
+
+.left-top {
+  border-right: 1.5px solid black;
+  border-bottom: 1.5px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+}
+
+.right-top {
+  border-bottom: 1.5px solid black;
+  padding: 20px 24px 12px;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.nav-menu li a {
+  font-size: 1rem;
+  color: #1a1a1a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-menu li a:hover {
+  color: #666;
+}
+
+/* ✅ 반응형 대응 */
+@media (max-width: 768px) {
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .left-top, .right-top {
+    border-right: none;
+    border-bottom: 1.5px solid black;
+    padding: 16px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu li a {
+    padding: 6px 0;
+  }
+}
