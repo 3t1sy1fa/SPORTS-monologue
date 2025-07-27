@@ -9,7 +9,7 @@
 
 .team-sidebar {
   flex: 1;
-  background-color: #C30452; /* LG 트윈스 메인 컬러 */
+  background-color: #1A1748; /* 두산 네이비 */
   color: white;
   padding: 20px;
   border-radius: 8px;
@@ -25,7 +25,7 @@
   display: inline-block;
   margin-top: 12px;
   padding: 8px 12px;
-  background-color: #000;
+  background-color: #EB1D25; /* 두산 레드 */
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
