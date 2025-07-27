@@ -366,18 +366,7 @@ a {
 }
 
 /* ---------------------- 반응형 ---------------------- */
-@media (max-width: 768px) {
-  .main-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 
-  .nav-menu {
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 12px;
-  }
-}
 
 /* ---------------------- 햄버거 메뉴 ---------------------- */
 /* 햄버거 버튼 기본 스타일 */
@@ -412,7 +401,6 @@ a {
 }
 .hamburger.active span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
-}
 }
 
 /* ---------------------- 반응형 ---------------------- */
@@ -462,5 +450,4 @@ a {
   .top-nav {
     margin-top: 12px;
   }
-}
-
+ }
