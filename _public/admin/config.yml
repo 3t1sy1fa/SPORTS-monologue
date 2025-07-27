@@ -14,7 +14,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "제목", name: "title", widget: "string" }
-      - { label: "카테고리", name: "category", widget: "select", options: ["선수 분석", "경기 분석", "구단 분석"] }
+      - { label: "카테고리", name: "category", widget: "select", options: ["선수 분석", "경기 분석"] }
       - { label: "날짜", name: "date", widget: "datetime" }
       - { label: "요약", name: "excerpt", widget: "text" }
       - { label: "본문", name: "body", widget: "markdown" }
@@ -31,4 +31,27 @@ collections:
       - { label: "설명", name: "description", widget: "text" }
       - { label: "본문", name: "body", widget: "markdown" }
 
-      
+  - name: "구단 분석"
+    label: "구단 분석"
+    folder: "src/teams-analysis"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "제목", name: "title", widget: "string" }
+      - { label: "작성일", name: "date", widget: "datetime" }
+      - label: "카테고리"
+        name: "category"
+        widget: "select"
+        options:
+        - { label: "LG 트윈스", value: "lg" }
+        - { label: "두산 베어스", value: "doosan" }
+        - { label: "키움 히어로즈", value: "kiwoom" }
+        - { label: "롯데 자이언츠", value: "lotte" }
+        - { label: "한화 이글스", value: "hanwha" }
+        - { label: "삼성 라이온즈", value: "samsung" }
+        - { label: "NC 다이노스", value: "nc" }
+        - { label: "KIA 타이거즈", value: "kia" }
+        - { label: "KT 위즈", value: "kt" }
+        - { label: "SSG 랜더스", value: "ssg" }
+      - { label: "설명", name: "description", widget: "text" }
+      - { label: "본문", name: "body", widget: "markdown" }
