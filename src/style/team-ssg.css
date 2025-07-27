@@ -1,0 +1,51 @@
+.team-analysis-container {
+  display: flex;
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'SUIT', sans-serif;
+}
+
+.team-sidebar {
+  flex: 1;
+  background-color: #CE0E2D; /* SSG 메인 레드 */
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.team-sidebar h3,
+.team-sidebar h4 {
+  margin-top: 0;
+  color: #fff;
+}
+
+.team-link-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 12px;
+  background-color: #FFB81C; /* SSG 보조 옐로우 */
+  color: #000;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.team-main {
+  flex: 2;
+  background-color: #fdfdfd;
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+@media (max-width: 768px) {
+  .team-analysis-container {
+    flex-direction: column;
+  }
+
+  .team-sidebar {
+    order: -1;
+  }
+}   
