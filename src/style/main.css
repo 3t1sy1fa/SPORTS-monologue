@@ -378,3 +378,66 @@ a {
     margin-top: 12px;
   }
 }
+
+/* ---------------------- 햄버거 메뉴 ---------------------- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #000;
+}
+
+/* ---------------------- 반응형 ---------------------- */
+@media (max-width: 768px) {
+  .grid-container {
+    display: block;
+  }
+
+  .left-top, .right-top {
+    border: none;
+    padding: 16px;
+  }
+
+  .sports, .monologue {
+    font-size: 2.5rem;
+  }
+
+  .since {
+    font-size: 0.9rem;
+  }
+
+  .lab {
+    font-size: 1.2rem;
+  }
+
+  .divider-line {
+    margin-top: 4px;
+    height: 1px;
+  }
+
+  .hamburger {
+    display: flex;
+    margin-top: 12px;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .top-nav {
+    margin-top: 12px;
+  }
+}
