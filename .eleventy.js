@@ -37,8 +37,8 @@ module.exports = function (eleventyConfig) {
     dir: {
       input: "src",
       includes: "includes", // 이게 틀리면 layout 경로 못 찾음
-      data: "_data",
-      output: "_public"
+      data: "data",
+      output: "public"
     }
   };
 };
