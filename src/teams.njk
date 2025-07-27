@@ -1,23 +1,35 @@
 ---
-title: 구단 분석
 layout: layout.njk
+title: 구단 분석
 ---
 
-{% block content %}
-<section class="post-page">
-  <h1 class="post-title">구단 분석</h1>
-  <p class="post-meta">KBO 리그 각 구단의 운영 전략, 프런트 움직임, 시즌 기조를 심층적으로 분석합니다.</p>
+<link rel="stylesheet" href="/style/teams.css" />
 
-  <div class="post-list">
-    {% for post in collections.posts | reverse %}
-      {% if post.data.category == "구단 분석" %}
-        <div class="post-item">
-          <h4><a href="{{ post.url }}">{{ post.data.title }}</a></h4>
-          <p><strong>[{{ post.data.category }}]</strong> · {{ post.date | date("yyyy-MM-dd") }}</p>
-          <p>{{ post.data.excerpt }}</p>
-        </div>
-      {% endif %}
-    {% endfor %}
+<div class="main-container">
+  <h1>구단 분석</h1>
+  <p>구단을 선택하면 해당 팀의 분석 페이지로 이동합니다.</p>
+
+  <div class="team-grid">
+    <!-- 첫 번째 줄 (3개) -->
+    <div class="team-row">
+      <a href="/teams/kiwoom" class="team-box kiwoom">키움 히어로즈</a>
+      <a href="/teams/doosan" class="team-box doosan">두산 베어스</a>
+      <a href="/teams/lotte" class="team-box lotte">롯데 자이언츠</a>
+    </div>
+
+    <!-- 두 번째 줄 (4개) -->
+    <div class="team-row">
+      <a href="/teams/samsung" class="team-box samsung">삼성 라이온즈</a>
+      <a href="/teams/hanwha" class="team-box hanwha">한화 이글스</a>
+      <a href="/teams/kia" class="team-box kia">KIA 타이거즈</a>
+      <a href="/teams/lg" class="team-box lg">LG 트윈스</a>
+    </div>
+
+    <!-- 세 번째 줄 (3개) -->
+    <div class="team-row">
+      <a href="/teams/ssg" class="team-box ssg">SSG 랜더스</a>
+      <a href="/teams/nc" class="team-box nc">NC 다이노스</a>
+      <a href="/teams/kt" class="team-box kt">KT 위즈</a>
+    </div>
   </div>
-</section>
-{% endblock %}
+</div>
