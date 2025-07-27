@@ -7,11 +7,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("admin");
 
-  // ✅ JSON 데이터 불러오기 (Netlify 호환)
-  eleventyConfig.addGlobalData("game-results", async () => {
-    const data = await fs.readFile("./src/data/game-results.json", "utf-8");
-    return JSON.parse(data);
-  });
 
   eleventyConfig.addCollection("posts", function (collection) {
     return collection.getFilteredByGlob("src/posts/*.md");
