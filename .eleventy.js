@@ -1,3 +1,5 @@
+const fs = require("fs").promises;
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/style");
   eleventyConfig.addPassthroughCopy("src/scripts");
@@ -5,9 +7,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("admin");
 
-  eleventyConfig.addGlobalData("game-results", () =>
-  require("./src/data/game-results.json")
-);
+  // ✅ JSON 데이터 불러오기 (Netlify 호환)
+  eleventyConfig.addGlobalData("game-results", async () => {
+    const data = await fs.readFile("./src/data/game-results.json", "utf-8");
+    return JSON.parse(data);
+  });
 
   eleventyConfig.addCollection("posts", function (collection) {
     return collection.getFilteredByGlob("src/posts/*.md");
@@ -26,8 +30,8 @@ module.exports = function (eleventyConfig) {
     });
   });
 
-  // ✅ 이 줄 추가!
-  eleventyConfig.addLayoutAlias("includes/team-layout.njk", "layouts/team-layout.njk");
+  // ✅ 레이아웃 별칭 등록
+  eleventyConfig.addLayoutAlias("team-layout", "layouts/team-layout.njk");
 
   return {
     dir: {
