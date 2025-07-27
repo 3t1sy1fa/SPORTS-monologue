@@ -34,17 +34,6 @@
   margin: 12px 0;
 }
 
-.team-link {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 10px 16px;
-  background-color: white;
-  color: #C30452; /* 팀 색상 */
-  border-radius: 4px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.2s;
-}
 
 .team-link:hover {
   background-color: #ddd;
