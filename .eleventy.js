@@ -36,7 +36,8 @@ module.exports = function (eleventyConfig) {
   return {
     dir: {
       input: "src",           // 콘텐츠 소스 폴더
-      includes: "_includes",  // 공통 템플릿 폴더
+      includes: "_includes",  
+      layout: "_includes", // 공통 템플릿 폴더
       data: "_data",          // 글로벌 데이터 폴더
       output: "_site"        // 최종 HTML이 출력될 폴더
     },
