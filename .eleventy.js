@@ -36,7 +36,7 @@ module.exports = function (eleventyConfig) {
   return {
     dir: {
       input: "src",
-      includes: "includes", // 이게 틀리면 layout 경로 못 찾음
+      includes: "_includes", // 이게 틀리면 layout 경로 못 찾음
       data: "_data",
       output: "_public"
     }
