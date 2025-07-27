@@ -1,17 +1,22 @@
 module.exports = function (eleventyConfig) {
-  // 📁 정적 파일 폴더 그대로 복사
+  // ✅ 정적 파일 복사
   eleventyConfig.addPassthroughCopy("src/style");
   eleventyConfig.addPassthroughCopy("src/scripts");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("admin");
 
-  // 📚 posts 폴더에 있는 md 파일을 posts 컬렉션으로 등록
+  // ✅ posts 컬렉션 등록
   eleventyConfig.addCollection("posts", function (collection) {
     return collection.getFilteredByGlob("src/posts/*.md");
   });
 
-  // 📅 날짜 필터 (Luxon 없이 한국식 포맷)
+  // ✅ lab 컬렉션 등록
+  eleventyConfig.addCollection("lab", function (collection) {
+    return collection.getFilteredByGlob("src/lab/*.md");
+  });
+
+  // ✅ 날짜 필터 추가
   eleventyConfig.addFilter("date", function (dateObj) {
     if (!dateObj) return "";
     return new Date(dateObj).toLocaleDateString("ko-KR", {
@@ -21,32 +26,16 @@ module.exports = function (eleventyConfig) {
     });
   });
 
-  module.exports = function(eleventyConfig) {
-  eleventyConfig.addCollection("lab", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("./src/lab/*.md");
-  });
-
-  return {
-    dir: {
-      input: "src",
-      includes: "_includes",
-      output: "public"
-    }
-  };
-};
-
-  
-  // 🪄 모든 글에 기본 layout 자동 적용
+  // ✅ 모든 md 글에 기본 layout 자동 적용
   eleventyConfig.addGlobalData("layout", "post.njk");
-  eleventyConfig.addPassthroughCopy("src/style");
 
-  // 🔧 Eleventy 설정
+  // ✅ Eleventy 최종 설정 반환
   return {
     dir: {
       input: "src",
       includes: "_includes",
       data: "_data",
-      output: "public",
+      output: "public"
     },
     markdownTemplateEngine: "njk"
   };
