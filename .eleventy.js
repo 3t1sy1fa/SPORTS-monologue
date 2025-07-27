@@ -21,6 +21,20 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  module.exports = function(eleventyConfig) {
+  eleventyConfig.addCollection("lab", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("./src/lab/*.md");
+  });
+
+  return {
+    dir: {
+      input: "src",
+      includes: "_includes",
+      output: "public"
+    }
+  };
+};
+
   
   // 🪄 모든 글에 기본 layout 자동 적용
   eleventyConfig.addGlobalData("layout", "post.njk");
