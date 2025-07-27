@@ -157,3 +157,30 @@ a {
     padding: 8px;
   }
 }
+
+@media (max-width: 768px) {
+  .grid-container {
+    display: block;
+  }
+
+  .left-top, .right-top {
+    border: none;
+    padding: 16px;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+    margin-top: 12px;
+  }
+}
