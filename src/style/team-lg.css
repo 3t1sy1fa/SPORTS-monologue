@@ -1,0 +1,65 @@
+.team-analysis-container {
+  display: flex;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  flex-wrap: wrap;
+}
+
+.team-left {
+  flex: 1 1 300px;
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.team-left h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: #C30452;
+}
+
+.game-summary p,
+.game-brief p {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.team-button {
+  display: inline-block;
+  background-color: #C30452;
+  color: #fff;
+  padding: 10px 16px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.team-right {
+  flex: 2 1 600px;
+}
+
+.team-post h2 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+}
+
+.team-post p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* ✅ 반응형 */
+@media (max-width: 768px) {
+  .team-analysis-container {
+    flex-direction: column;
+  }
+
+  .team-left {
+    order: -1;
+    margin-bottom: 24px;
+  }
+}
