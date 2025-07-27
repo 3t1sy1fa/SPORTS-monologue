@@ -6,8 +6,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("admin");
 
   eleventyConfig.addGlobalData("game-results", () =>
-    require("./src/data/game-results.json")
-  );
+  require("./src/data/game-results.json")
+);
 
   eleventyConfig.addCollection("posts", function (collection) {
     return collection.getFilteredByGlob("src/posts/*.md");
