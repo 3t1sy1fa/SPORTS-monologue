@@ -12,11 +12,12 @@ a {
   color: inherit;
 }
 
+/* ---------------------- 폰트 등록 ---------------------- */
 @font-face {
-    font-family: 'Mingijuk';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2412-1@1.0/Ownglyph_corncorn-Rg.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Mingijuk';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2412-1@1.0/Ownglyph_corncorn-Rg.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
@@ -36,36 +37,29 @@ a {
 @font-face {
   font-family: '제목';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2505-1@1.0/770Balsa.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family:'픽셀';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/PFStardustS.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
+  font-family:'픽셀';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/PFStardustS.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'slog2';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2507-2@1.0/YeongwolTTF-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'slog2';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2507-2@1.0/YeongwolTTF-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'spomono';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'spomono2';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'spomono';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* ---------------------- 헤더 ---------------------- */
@@ -111,24 +105,21 @@ a {
 }
 
 /* ---------------------- 슬로건 ---------------------- */
-
 .typing-slogan {
   font-size: 20px;
   font-weight: 500;
-  font-family: 'spomono2', sans-serif;
+  font-family: 'spomono', sans-serif;
   white-space: nowrap;
   border-right: 2px solid black;
   overflow: hidden;
   width: fit-content;
   animation: blink-caret 0.75s step-end infinite;
   margin: 24px 0;
-
-  /* 추가된 부분 */
-  min-height: 2em; /* 줄 높이 확보 */
+  min-height: 2em;
 }
 
 #typing-text {
-  display: inline-block; /* 글자가 사라져도 공간 유지 */
+  display: inline-block;
 }
 
 @keyframes blink-caret {
@@ -254,7 +245,7 @@ a {
 }
 
 .sports {
-  font-family: 'spomono2', 'SUIT', sans-serif;
+  font-family: 'spomono', 'SUIT', sans-serif;
   font-size: 4rem;
   font-weight: 700;
   line-height: 1;
@@ -265,12 +256,12 @@ a {
   font-size: 3rem;
   font-weight: 400;
   line-height: 1;
-  color:#666
+  color: #666;
 }
 
 .since {
   font-size: 1rem;
-  color:#666
+  color: #666;
 }
 
 .lab {
@@ -287,11 +278,11 @@ a {
   margin-top: 8.2px;
 }
 
+/* ---------------------- Lab ---------------------- */
 .lab-container {
   max-width: 720px;
   margin: 0 auto;
   padding: 40px 24px;
-  font-family: 'SUIT', sans-serif;
 }
 
 .lab-title {
@@ -330,12 +321,11 @@ a {
   color: #007acc;
 }
 
-
+/* ---------------------- Contact ---------------------- */
 .contact-container {
   max-width: 720px;
   margin: 0 auto;
   padding: 48px 24px;
-  font-family: inherit;
 }
 
 .contact-container h1 {
@@ -356,6 +346,7 @@ a {
 
 .contact-container input,
 .contact-container textarea {
+  width: 100%;
   padding: 12px;
   font-size: 16px;
   border: 1px solid #ccc;
