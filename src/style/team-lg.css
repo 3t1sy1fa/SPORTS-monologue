@@ -1,51 +1,91 @@
-.team-analysis-container {
-  display: flex;
-  gap: 24px;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 40px 20px;
+.team-page {
+  padding: 40px 24px;
   font-family: 'SUIT', sans-serif;
 }
 
-.team-sidebar {
+.team-split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.team-left {
   flex: 1;
-  background-color: #C30452; /* LG 트윈스 메인 컬러 */
+  min-width: 240px;
+  max-width: 300px;
+  background-color: #C30452; /* 팀 색상 */
   color: white;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.team-sidebar h3,
-.team-sidebar h4 {
-  margin-top: 0;
-  color: #fff;
-}
-
-.team-link-button {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 8px 12px;
-  background-color: #000;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.team-main {
-  flex: 2;
-  background-color: #fdfdfd;
   padding: 24px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+}
+
+.team-left h2 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+.recent-result {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.summary {
+  font-size: 0.95rem;
+  margin: 12px 0;
+}
+
+.team-link {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 16px;
+  background-color: white;
+  color: #C30452; /* 팀 색상 */
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.team-link:hover {
+  background-color: #ddd;
+}
+
+.team-right {
+  flex: 2;
+  min-width: 300px;
+}
+
+.team-analysis h2 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.post-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.post-item h4 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+}
+
+.post-date {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.post-desc {
+  font-size: 0.95rem;
+  color: #444;
 }
 
 @media (max-width: 768px) {
-  .team-analysis-container {
+  .team-split {
     flex-direction: column;
   }
 
-  .team-sidebar {
+  .team-left {
     order: -1;
   }
 }

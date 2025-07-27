@@ -1,0 +1,34 @@
+---
+layout: layout.njk
+title: LG 트윈스
+---
+
+<link rel="stylesheet" href="/style/team-lg.css" />
+
+<div class="team-page">
+  <div class="team-split">
+    <!-- 좌측: 최근 경기 정보 -->
+    <div class="team-left">
+      <h2>최근 경기 결과</h2>
+      <p class="recent-result">7월 26일 vs 두산 - 3:2 승</p>
+      <p class="summary">불펜의 철벽 운영과 김영우의 결승타로 값진 승리.</p>
+      <a class="team-link" href="https://www.lgtwins.com/" target="_blank">공식 홈페이지</a>
+    </div>
+
+    <!-- 우측: 구단 분석 글 -->
+    <div class="team-right">
+      <h2>구단 분석</h2>
+      <div class="team-analysis">
+        {% for post in collections.posts %}
+          {% if post.data.category == "구단 분석" and "lg" in post.template.inputPath %}
+            <div class="post-item">
+              <h4><a href="{{ post.url }}">{{ post.data.title }}</a></h4>
+              <p class="post-date">{{ post.date | date }}</p>
+              <p class="post-desc">{{ post.data.excerpt }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
