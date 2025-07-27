@@ -1,4 +1,6 @@
-module.exports = function (eleventyConfig) {
+module.exports = function(eleventyConfig) {
+  eleventyConfig.addLayoutAlias("team-layout", "includes/team-layout.njk");
+  module.exports = function (eleventyConfig) {
   // ✅ 정적 파일 그대로 복사
 
   eleventyConfig.addPassthroughCopy("src/style");
@@ -42,3 +44,4 @@ module.exports = function (eleventyConfig) {
     }
   }
 };
+}
