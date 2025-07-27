@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }} | 구단 분석</title>
+
+  <link rel="stylesheet" href="/style/main.css" />
+  {% if teamCss %}
+    <link rel="stylesheet" href="/style/{{ teamCss }}" />
+  {% endif %}
+</head>
+
+<body>
+  {% include "header.njk" %}
+
+  <main class="team-layout">
+    <div class="team-left">
+      <div class="game-info">
+        <p class="game-date">{{ recentGame.date }}</p>
+        <p class="game-summary">{{ recentGame.summary }}</p>
+        <a href="{{ recentGame.link }}" class="team-btn" target="_blank">공식 홈페이지</a>
+      </div>
+    </div>
+
+    <div class="team-right">
+      {{ content | safe }}
+    </div>
+  </main>
+
+  {% include "footer.njk" %}
+</body>
+</html>

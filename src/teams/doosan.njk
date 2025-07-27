@@ -1,26 +1,10 @@
 ---
-layout: layout.njk
-title: 두산 베어스 구단 분석
+layout: includes/team-layout.njk
+title: 두산 베어스
+teamCss: team-doosan.css
 ---
 
-<link rel="stylesheet" href="/style/team-doosan.css" />
+{% set recent = gameResults.doosan %}
 
-<div class="team-container">
-  <div class="team-left">
-    {% set teamData = gameResults.doosan %}
-    <div class="team-info">
-      <h2>최근 경기 정보</h2>
-      <p><strong>일자:</strong> {{ teamData.date }}</p>
-      <p><strong>상대:</strong> {{ teamData.opponent }}</p>
-      <p><strong>결과:</strong> {{ teamData.score }}</p>
-      <p class="team-summary">"{{ teamData.summary }}"</p>
-    </div>
-  </div>
-
-  <div class="team-right">
-    <h2>전력 분석 (사견)</h2>
-    <p>
-      여기에 두산 베어스에 대한 분석이나 사견을 자유롭게 작성하세요.
-    </p>
-  </div>
-</div>
+<h2>마운드 안정화, 반격의 신호탄</h2>
+<p>불안하던 불펜이 안정을 되찾으며 분위기 반전에 성공했다.</p>

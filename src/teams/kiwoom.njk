@@ -1,26 +1,10 @@
 ---
-layout: layout.njk
-title: 키움 히어로즈 구단 분석
+layout: includes/team-layout.njk
+title: 키움 히어로즈
+teamCss: team-kiwoom.css
 ---
 
-<link rel="stylesheet" href="/style/team-kiwoom.css" />
+{% set recent = gameResults.kiwoom %}
 
-<div class="team-container">
-  <div class="team-left">
-    {% set teamData = gameResults.kiwoom %}
-    <div class="team-info">
-      <h2>최근 경기 정보</h2>
-      <p><strong>일자:</strong> {{ teamData.date }}</p>
-      <p><strong>상대:</strong> {{ teamData.opponent }}</p>
-      <p><strong>결과:</strong> {{ teamData.score }}</p>
-      <p class="team-summary">"{{ teamData.summary }}"</p>
-    </div>
-  </div>
-
-  <div class="team-right">
-    <h2>전력 분석 (사견)</h2>
-    <p>
-      여기에 키움 히어로즈에 대한 분석이나 사견을 자유롭게 작성하세요.
-    </p>
-  </div>
-</div>
+<h2>이정후 공백, 대체자는 누구인가</h2>
+<p>중심 타자 부재 상황에서 새로운 해결사 찾기에 고심 중이다.</p>

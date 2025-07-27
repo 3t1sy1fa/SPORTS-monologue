@@ -1,26 +1,10 @@
 ---
-layout: layout.njk
-title: SSG 랜더스 구단 분석
+layout: includes/team-layout.njk
+title: SSG 랜더스
+teamCss: team-ssg.css
 ---
 
-<link rel="stylesheet" href="/style/team-ssg.css" />
+{% set recent = gameResults.ssg %}
 
-<div class="team-container">
-  <div class="team-left">
-    {% set teamData = gameResults.ssg %}
-    <div class="team-info">
-      <h2>최근 경기 정보</h2>
-      <p><strong>일자:</strong> {{ teamData.date }}</p>
-      <p><strong>상대:</strong> {{ teamData.opponent }}</p>
-      <p><strong>결과:</strong> {{ teamData.score }}</p>
-      <p class="team-summary">"{{ teamData.summary }}"</p>
-    </div>
-  </div>
-
-  <div class="team-right">
-    <h2>전력 분석 (사견)</h2>
-    <p>
-      여기에 SSG 랜더스에 대한 분석이나 사견을 자유롭게 작성하세요.
-    </p>
-  </div>
-</div>
+<h2>노경은 베테랑의 위엄</h2>
+<p>노경은의 꾸준한 호투가 팀에 안정감을 주며 로테이션의 중심을 잡아주고 있다.</p>

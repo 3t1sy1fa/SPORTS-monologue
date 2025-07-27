@@ -1,26 +1,10 @@
 ---
-layout: layout.njk
-title: 한화 이글스 구단 분석
+layout: includes/team-layout.njk
+title: 한화 이글스
+teamCss: team-hanwha.css
 ---
 
-<link rel="stylesheet" href="/style/team-hanwha.css" />
+{% set recent = gameResults.hanwha %}
 
-<div class="team-container">
-  <div class="team-left">
-    {% set teamData = gameResults.hanwha %}
-    <div class="team-info">
-      <h2>최근 경기 정보</h2>
-      <p><strong>일자:</strong> {{ teamData.date }}</p>
-      <p><strong>상대:</strong> {{ teamData.opponent }}</p>
-      <p><strong>결과:</strong> {{ teamData.score }}</p>
-      <p class="team-summary">"{{ teamData.summary }}"</p>
-    </div>
-  </div>
-
-  <div class="team-right">
-    <h2>전력 분석 (사견)</h2>
-    <p>
-      여기에 한화 이글스에 대한 분석이나 사견을 자유롭게 작성하세요.
-    </p>
-  </div>
-</div>
+<h2>문동주의 복귀가 불러온 변화</h2>
+<p>문동주의 복귀 이후 선발진 재편과 상승 분위기가 이어지고 있다.</p>

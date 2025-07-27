@@ -1,69 +1,52 @@
 {
-  "kiwoom": {
-    "date": "2025-07-27",
-    "opponent": "NC 다이노스",
-    "score": "4 - 2 승",
-    "summary": "불펜의 힘으로 승리 지킴"
-  },
-  "kt": {
-    "date": "2025-07-27",
-    "opponent": "삼성 라이온즈",
-    "score": "1 - 3 패",
-    "summary": "타선 침묵으로 연패"
-  },
   "lg": {
     "date": "2025-07-27",
-    "opponent": "두산 베어스",
-    "score": "5 - 3 승",
-    "summary": "후반 불펜 안정감으로 역전 성공"
-  },
-  "lotte": {
-    "date": "2025-07-27",
-    "opponent": "KIA 타이거즈",
-    "score": "6 - 7 패",
-    "summary": "마무리 난조로 역전패"
- 
+    "summary": "NC전 3:2 승리, 마무리 정우영 호투",
+    "link": "https://www.lgtwins.com"
   },
   "nc": {
     "date": "2025-07-27",
-    "opponent": "키움 히어로즈",
-    "score": "6 - 2 승",
-    "summary": "선발과 중심 타선 활약"
-  
+    "summary": "LG전 2:3 패배, 마무리 흔들림",
+    "link": "https://www.ncdinos.com"
   },
-  "samsung": {
+  "kiwoom": {
     "date": "2025-07-27",
-    "opponent": "KT 위즈",
-    "score": "2 - 4 패",
-    "summary": "타선 지원 부족"
-
+    "summary": "한화전 5:3 승리, 신예 활약",
+    "link": "https://www.heroesbaseball.co.kr"
   },
-  "ssg": {
+  "kt": {
     "date": "2025-07-27",
-    "opponent": "한화 이글스",
-    "score": "3 - 5 패",
-    "summary": "불펜 난조로 아쉬운 패배"
-
-  },
-  "doosan": {
-    "date": "2025-07-27",
-    "opponent": "LG 트윈스",
-    "score": "3 - 1 승",
-    "summary": "선발 호투와 클러치 타격"
-
-  },
-  "hanwha": {
-    "date": "2025-07-27",
-    "opponent": "SSG 랜더스",
-    "score": "7 - 6 승",
-    "summary": "역전 드라마로 홈 팬 열광"
-  
+    "summary": "두산전 4:6 패배, 불펜 난조",
+    "link": "https://www.ktwiz.co.kr"
   },
   "kia": {
     "date": "2025-07-27",
-    "opponent": "롯데 자이언츠",
-    "score": "2 - 6 패",
-    "summary": "선발 붕괴로 무기력한 경기"
-
+    "summary": "SSG전 7:2 승리, 홈런 3방 폭발",
+    "link": "https://tigers.co.kr"
+  },
+  "hanwha": {
+    "date": "2025-07-27",
+    "summary": "키움전 3:5 패배, 집중력 부족",
+    "link": "https://www.hanwhaeagles.co.kr"
+  },
+  "ssg": {
+    "date": "2025-07-27",
+    "summary": "KIA전 2:7 패배, 선발 붕괴",
+    "link": "https://www.ssglanders.com"
+  },
+  "samsung": {
+    "date": "2025-07-27",
+    "summary": "롯데전 5:1 승리, 뷰캐넌 완투",
+    "link": "https://www.samsunglions.com"
+  },
+  "lotte": {
+    "date": "2025-07-27",
+    "summary": "삼성전 1:5 패배, 타선 침묵",
+    "link": "https://www.giantsclub.com"
+  },
+  "doosan": {
+    "date": "2025-07-27",
+    "summary": "KT전 6:4 승리, 중심 타선 활약",
+    "link": "https://www.doosanbears.com"
   }
 }
