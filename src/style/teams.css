@@ -32,12 +32,12 @@
 
 /* 각 팀 색상 */
 .kiwoom  { background-color: #570514; }
-.doosan  { background: linear-gradient(135deg, #1A1748, #EB1D25); }
-.lotte   { background: linear-gradient(135deg, #041E42, #D00F31); }
-.samsung { background: linear-gradient(135deg, #074CA1, #C0C0C0); }
-.hanwha  { background: linear-gradient(135deg, #FC4E00, #07111F); }
-.kia     { background: linear-gradient(135deg, #EA0029, #06141F); }
-.lg      { background: linear-gradient(135deg, #C30452, #000000); }
-.ssg     { background: linear-gradient(135deg, #CE0E2D, #FFB81C); }
-.nc      { background: linear-gradient(135deg, #315288, #00275A); }
-.kt      { background: linear-gradient(135deg, #000000, #EB1C24); }
+.doosan  { background-color: #1A1748; }
+.lotte   { background-color: #041E42; }
+.samsung { background-color: #074CA1; }
+.hanwha  { background-color: #FC4E00; }
+.kia     { background-color: #EA0029; }
+.lg      { background-color: #C30452; }
+.ssg     { background-color: #CE0E2D; }
+.nc      { background-color: #315288; }
+.kt      { background-color: #000000; }
