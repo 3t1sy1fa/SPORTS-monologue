@@ -1,5 +1,4 @@
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addLayoutAlias("team-layout", "layouts/team-layout.njk");
   eleventyConfig.addPassthroughCopy("src/style");
   eleventyConfig.addPassthroughCopy("src/scripts");
   eleventyConfig.addPassthroughCopy("src/images");
@@ -24,6 +23,10 @@ module.exports = function(eleventyConfig) {
       day: "2-digit"
     });
   });
+
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addLayoutAlias("team-layout", "includes/team-layout.njk");
+};
 
   return {
     dir: {
