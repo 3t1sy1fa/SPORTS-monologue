@@ -1,7 +1,7 @@
 {
   "name": "sports-monologue",
   "version": "1.0.0",
-  "description": "KBO 기반 스포츠 경영 블로그",
+  "description": "KBO 전력분석실 기반 스포츠 경영 블로그",
   "scripts": {
     "start": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy"
