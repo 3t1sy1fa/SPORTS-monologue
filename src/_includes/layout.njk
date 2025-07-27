@@ -34,17 +34,15 @@
 
     {% include "footer.njk" %}
 
-    {# 추가 스크립트 삽입용 블록 (선택) #}
-    {% block scripts %}
     <script>
     document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.getElementById("hamburger");
-    const navMenu = document.getElementById("navMenu");
+      const hamburger = document.getElementById("hamburger");
+      const navMenu = document.querySelector(".nav-menu");
 
-    hamburger.addEventListener("click", function () {
-    navMenu.classList.toggle("active");
+      hamburger.addEventListener("click", function () {
+        navMenu.classList.toggle("active");
+      });
     });
-  });
-    </script>{% endblock %}
+  </script>
   </body>
 </html>
