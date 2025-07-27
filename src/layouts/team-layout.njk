@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -27,9 +26,7 @@
 {% if gameResults[category] %}
   {% set recentGame = gameResults[category] %}
   <div class="game-date">{{ recentGame.date }}</div>
-{% else %}
-  <div class="error">❗ gameResults[category]가 존재하지 않습니다. → category: {{ category }}</div>
-{% endif %}
+
   <main class="team-layout">
     <div class="team-left">
       <div class="game-results">
