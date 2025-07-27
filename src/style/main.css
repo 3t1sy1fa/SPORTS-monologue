@@ -439,11 +439,7 @@ a {
     font-size: 1.2rem;
   }
 
-  .divider-line {
-    margin-top: 4px;
-    height: 1px;
-  }
-
+  
   .hamburger {
     display: flex;
     margin-top: 12px;
