@@ -3,20 +3,22 @@ layout: layout.njk
 title: 문의하기
 ---
 
-<h1>문의하기</h1>
-<p>사이트 관련 의견, 문의, 제안 사항은 아래 양식을 통해 보내주세요.</p>
+<div class="contact-container">
+  <h1>문의하기</h1>
+  <p>사이트 관련 의견, 문의, 제안 사항은 아래 양식을 통해 보내주세요.</p>
 
-<form name="contact" method="POST" data-netlify="true">
-  <input type="hidden" name="form-name" value="contact" />
+  <form name="contact" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="contact" />
 
-  <label for="name">이름</label><br />
-  <input type="text" id="name" name="name" required /><br /><br />
+    <label for="name">이름</label><br />
+    <input type="text" id="name" name="name" required /><br /><br />
 
-  <label for="email">이메일</label><br />
-  <input type="email" id="email" name="email" required /><br /><br />
+    <label for="email">이메일</label><br />
+    <input type="email" id="email" name="email" required /><br /><br />
 
-  <label for="message">내용</label><br />
-  <textarea id="message" name="message" rows="6" required></textarea><br /><br />
+    <label for="message">내용</label><br />
+    <textarea id="message" name="message" rows="6" required></textarea><br /><br />
 
-  <button type="submit">보내기</button>
-</form>
+    <button type="submit">보내기</button>
+  </form>
+</div>
