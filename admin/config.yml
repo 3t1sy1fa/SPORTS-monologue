@@ -19,13 +19,11 @@ collections:
       - { label: "요약", name: "excerpt", widget: "text" }
       - { label: "본문", name: "body", widget: "markdown" }
 
-
-collections:
   - name: "lab"
     label: "Lab"
     folder: "src/lab"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" 
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "제목", name: "title", widget: "string" }
       - { label: "작성일", name: "date", widget: "datetime" }
