@@ -31,6 +31,7 @@ module.exports = function(eleventyConfig) {
 
   // ✅ 모든 마크다운 문서에 기본 layout 지정 (post.njk)
   eleventyConfig.addGlobalData("layout", "post.njk");
+  eleventyConfig.addLayoutAlias("team-layout", "includes/team-layout.njk");
 
   // ✅ Eleventy 설정 반환
     return {
