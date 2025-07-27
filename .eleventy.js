@@ -5,6 +5,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("admin");
+  eleventyConfig.addGlobalData("game-results", () => require("./src/data/game-results.json"));
 
   // ✅ posts 컬렉션 등록 (src/posts/*.md)
   eleventyConfig.addCollection("posts", function (collection) {
@@ -40,4 +41,5 @@ module.exports = function (eleventyConfig) {
     },
     markdownTemplateEngine: "njk"
   };
+  
 };
