@@ -1,13 +1,13 @@
 ---
 layout: layout.njk
-title: SSG 랜더스 구단 분석
+title: 한화 이글스 구단 분석
 ---
 
-<link rel="stylesheet" href="/style/team-ssg.css" />
+<link rel="stylesheet" href="/style/team-hanwha.css" />
 
 <div class="team-container">
   <div class="team-left">
-    {% set teamData = gameResults.lg %}
+    {% set teamData = gameResults.hanwha %}
     <div class="team-info">
       <h2>최근 경기 정보</h2>
       <p><strong>일자:</strong> {{ teamData.date }}</p>
@@ -20,7 +20,7 @@ title: SSG 랜더스 구단 분석
   <div class="team-right">
     <h2>전력 분석 (사견)</h2>
     <p>
-      여기에 SSG 랜더스에 대한 분석이나 사견을 자유롭게 작성하세요.
+      여기에 한화 이글스에 대한 분석이나 사견을 자유롭게 작성하세요.
     </p>
   </div>
 </div>
