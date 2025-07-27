@@ -33,11 +33,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("layout", "post.njk");
 
   // ✅ Eleventy 설정 반환
-  return {
+    return {
     dir: {
       input: "src",
-      includes: "includes", 
-      output: "public"
+      includes: "includes",  // src/includes
+      layouts: "includes",   // src/includes를 layout 경로로 지정
+      output: "_site"
     }
-  };
+  }
 };
