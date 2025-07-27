@@ -25,11 +25,7 @@ collections:
     label: "Lab"
     folder: "src/lab"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    preview_path: "lab/{{slug}}"
-    path: "{{slug}}/index"
-    format: "frontmatter"
-    extension: "md"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" 
     fields:
       - { label: "제목", name: "title", widget: "string" }
       - { label: "작성일", name: "date", widget: "datetime" }
