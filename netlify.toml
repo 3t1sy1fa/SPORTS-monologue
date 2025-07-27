@@ -1,5 +1,5 @@
 [build]
-  publish = "_public"  # ← 기존 "_site"에서 "_public"으로 변경
+  publish = "_site"  # ← 기존 "_site"에서 "_public"으로 변경
   command = "npx @11ty/eleventy"
 
 [build.environment]
