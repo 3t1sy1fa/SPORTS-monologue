@@ -28,10 +28,10 @@ module.exports = function(eleventyConfig) {
 
   return {
     dir: {
-      input: "src",
-      includes: "includes",      // 공통 헤더, 푸터 등
-      layouts: "layouts",        // 레이아웃 전용 폴더
-      output: "_site"
-    }
+     input: "src",
+     includes: "includes",
+     layouts: "layouts",
+     output: "_site"
+   }
   };
 };
