@@ -25,8 +25,8 @@ module.exports = function(eleventyConfig) {
   });
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addLayoutAlias("team-layout", "includes/team-layout.njk");
-};
+  // layout alias 설정
+  eleventyConfig.addLayoutAlias("team-layout", "layouts/team-layout.njk");
 
   return {
     dir: {
