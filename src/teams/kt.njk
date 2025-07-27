@@ -19,7 +19,7 @@ title: KT 위즈
       <h2>구단 분석</h2>
       <div class="team-analysis">
         {% for post in collections.posts %}
-          {% if post.data.category == "구단 분석" and "lg" in post.template.inputPath %}
+          {% if post.data.category == "구단 분석" and "kt" in post.template.inputPath %}
             <div class="post-item">
               <h4><a href="{{ post.url }}">{{ post.data.title }}</a></h4>
               <p class="post-date">{{ post.date | date }}</p>
