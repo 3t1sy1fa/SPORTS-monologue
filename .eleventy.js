@@ -35,13 +35,10 @@ module.exports = function (eleventyConfig) {
   // ✅ Eleventy 설정 반환
   return {
     dir: {
-      input: "src",           // 콘텐츠 소스 폴더
-      includes: "includes",  
-      layout: "includes", // 공통 템플릿 폴더
-      data: "_data",          // 글로벌 데이터 폴더
-      output: "_site"        // 최종 HTML이 출력될 폴더
-    },
-    markdownTemplateEngine: "njk"
+      input: "src",
+      includes: "includes", // 이게 틀리면 layout 경로 못 찾음
+      data: "data",
+      output: "public"
+    }
   };
-  
 };
