@@ -402,7 +402,20 @@ a {
 .hamburger.active span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
-
+.hamburger {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  display: none; /* 모바일에서만 보이게 */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1001;
+}
 /* ---------------------- 반응형 ---------------------- */
 @media (max-width: 768px) {
   .grid-container {
