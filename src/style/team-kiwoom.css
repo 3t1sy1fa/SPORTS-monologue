@@ -2,6 +2,8 @@
   --team-maincolor: #fff;
   --team-subcolor: #570514;
   --team-setting--: black;
+  --team-btextcolor--: #fff;
+  --team-btncolor--: #570514ea;
 }
 
 @import url("./team-base.css");
