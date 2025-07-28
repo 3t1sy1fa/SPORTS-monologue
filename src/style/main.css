@@ -15,7 +15,7 @@ a {
 /* ---------------------- 폰트 등록 ---------------------- */
 @font-face {
   font-family: 'Mingijuk';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2412-1@1.0/Ownglyph_corncorn-Rg.woff2') format('woff2');
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -43,7 +43,7 @@ a {
 
 @font-face {
     font-family: '크보';
-   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff') format('woff');
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
