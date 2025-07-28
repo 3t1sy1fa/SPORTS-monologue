@@ -20,7 +20,7 @@ title: 구단 분석
   } %}
 
   {% for teamName, code in teamMap %}
-    {% if title and title contains teamName %}
+    {% if teamName in title %}
       <link rel="stylesheet" href="/style/team-{{ code }}.css" />
     {% endif %}
   {% endfor %}
