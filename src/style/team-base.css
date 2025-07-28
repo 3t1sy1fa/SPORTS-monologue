@@ -121,11 +121,11 @@
 .team-box {
   padding: 15px 20px;
   border-radius: 8px;
-  background-color: var(--team-btn-color);
+  background-color: var(--background-color);
   text-align: center;
   font-weight: 500;
   text-decoration: none;
-  color: var(--team-textcolor);
+  color: var(--color);
 }
 
 /* 🔹 반응형 대응 */
