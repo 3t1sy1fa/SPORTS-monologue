@@ -1,6 +1,7 @@
 :root {
   --team-maincolor: #FC4E00;
   --team-subcolor: #07111F;
+  --team-setting--: white;
 }
 
 @import url("./team-base.css");
