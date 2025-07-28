@@ -30,17 +30,53 @@
   font-weight: 200;
 }
 
-.game-date{
+.game-date {
   font-weight: 300;
   margin-bottom: 0.6rem;
 }
-
 
 .game-summary {
   margin-bottom: 0.5rem;
 }
 
+/* 🔹 글 목록 공통 wrapper */
+.team-post-list-wrapper {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f7f7f7;
+  border: 1px solid #afafafad;
+  border-radius: 6px;
+}
 
+.team-post-list-wrapper h3 {
+  color: #494949;
+  margin-bottom: 1rem;
+}
+
+.team-post-list-wrapper ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.team-post-list-wrapper li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.team-post-list-wrapper a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.team-post-list-wrapper .date {
+  font-size: 0.8rem;
+  color: #888;
+  margin-left: 0.5rem;
+}
+
+/* 🔹 팀 글 목록 (공통 스타일로 분리) */
 .team-post-list {
   margin-top: 16px;
   padding-left: 0;
@@ -63,53 +99,7 @@
   margin-left: 8px;
 }
 
-.team-post-list-wrapper {
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: #f7f7f7;
-  border: 1px solid #afafafad;
-  border-radius: 6px;
-}
-
-.team-post-list-wrapper h3 {
-  list-style: none;
-  color:#494949;
-  padding: 0;
-  margin-bottom: 1;
-}
-
-.team-post-list-wrapper ul {
-  list-style: none;
-  color:#888;
-  padding: 0;
-  margin: 0;
-}
-
-.team-post-list-wrapper p {
-  list-style: none;
-  color:#666666;
-  padding: 0;
-  margin: 0;
-}
-
-.team-post-list-wrapper li {
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-}
-
-.team-post-list-wrapper a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-}
-
-.team-post-list-wrapper .date {
-  font-size: 0.8rem;
-  color: #888;
-  margin-left: 0.5rem;
-}
-
-
+/* 🔹 팀 박스 그리드 (메인 페이지용) */
 .main-container {
   max-width: 960px;
   margin: 0 auto;
@@ -131,9 +121,31 @@
 .team-box {
   padding: 15px 20px;
   border-radius: 8px;
-  background-color: var(--team-btn-color); 
-  text-align: center;         
-  font-weight: 500; 
+  background-color: var(--team-btn-color);
+  text-align: center;
+  font-weight: 500;
   text-decoration: none;
   color: var(--team-textcolor);
+}
+
+/* 🔹 반응형 대응 */
+@media (max-width: 768px) {
+  .team-layout {
+    flex-direction: column;
+  }
+
+  .team-left,
+  .team-right {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .team-row {
+    flex-wrap: wrap;
+  }
+
+  .team-box {
+    flex: 1 1 40%;
+    min-width: 120px;
+  }
 }
