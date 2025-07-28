@@ -15,7 +15,7 @@ a {
 /* ---------------------- 폰트 등록 ---------------------- */
 @font-face {
   font-family: 'Mingijuk';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/Dovemayo_wild.woff2') format('woff2');
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2412-1@1.0/Ownglyph_corncorn-Rg.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -42,16 +42,9 @@ a {
 }
 
 @font-face {
-    font-family: 'nonused';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-  font-family:'크보';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/Dovemayo_wild.woff2') format('woff2');
-  font-weight: normal;
+  font-family:'픽셀';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/PFStardustS.woff2') format('woff2');
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -273,9 +266,9 @@ a {
 
 .lab {
   font-size: 2rem;
-  font-family: '크보', 'SUIT', sans-serif;
+  font-family: 'spomono', 'SUIT', sans-serif;
+  font-weight: 1;
   line-height: 1;
-  margin-top: auto;
 }
 
 .divider-line {
