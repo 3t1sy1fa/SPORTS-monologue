@@ -1,74 +1,63 @@
-<!DOCTYPE html>
-<html lang="ko">
+  <!DOCTYPE html>
+  <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="naver-site-verification" content="2b5866b9f8fde114c370fca27185fb6a7a1ea7d5" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-    {% if title %}
-      <title>{{ title }} | Sports Monologue</title>
-    {% else %}
-      <title>Sports Monologue</title>
-    {% endif %}
+    <!-- 페이지 제목 -->
+    <title>{{ title or "KBO 전력분석실" }} | Sports Monologue</title>
 
-    <!-- ✅ 공통 스타일 -->
+    <!-- 페이지 설명 -->
+    <meta name="description" content="{{ description or 'KBO 전력분석 및 스포츠 경영 블로그 - 경기 분석, 선수 분석, 구단 경영 인사이트 제공' }}">
+
+   <!-- 오픈 그래프 -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ title or 'Sports Monologue' }}">
+    <meta property="og:description" content="{{ description or '경기 그 이상을 보기 위해, 경영의 언어로 스포츠를 말하다' }}">
+    <meta property="og:image" content="{{ image or 'https://3t1sy1fa.com/images/og-image.jpg' }}">
+    <meta property="og:url" content="https://3t1sy1fa.com{{ page.url }}">
+
+   <!-- 트위터 카드 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title or 'Sports Monologue' }}">
+    <meta name="twitter:description" content="{{ description or '경기 그 이상을 보기 위해, 경영의 언어로 스포츠를 말하다' }}">
+    <meta name="twitter:image" content="{{ image or 'https://3t1sy1fa.com/images/og-image.jpg' }}">
+    <meta name="twitter:domain" content="Sports Monologue">
+
     <link rel="stylesheet" href="/style/main.css" />
-
-    <!-- ✅ 트윈스타 전용 -->
+  
+    <!-- 트윈스타 전용 -->
     {% if title == "트윈스타" %}
       <link rel="stylesheet" href="/style/twins-tar.css" />
     {% endif %}
 
-    <!-- ✅ 구단별 전용 스타일 자동 연결 -->
-    {% if title == "LG 트윈스" %}
-      <link rel="stylesheet" href="/style/team-lg.css" />
-    {% elif title == "두산 베어스" %}
-      <link rel="stylesheet" href="/style/team-doosan.css" />
-    {% elif title == "SSG 랜더스" %}
-      <link rel="stylesheet" href="/style/team-ssg.css" />
-    {% elif title == "롯데 자이언츠" %}
-      <link rel="stylesheet" href="/style/team-lotte.css" />
-    {% elif title == "삼성 라이온즈" %}
-      <link rel="stylesheet" href="/style/team-samsung.css" />
-    {% elif title == "한화 이글스" %}
-      <link rel="stylesheet" href="/style/team-hanwha.css" />
-    {% elif title == "KIA 타이거즈" %}
-      <link rel="stylesheet" href="/style/team-kia.css" />
-    {% elif title == "키움 히어로즈" %}
-      <link rel="stylesheet" href="/style/team-kiwoom.css" />
-    {% elif title == "NC 다이노스" %}
-      <link rel="stylesheet" href="/style/team-nc.css" />
-    {% elif title == "KT 위즈" %}
-      <link rel="stylesheet" href="/style/team-kt.css" />
-    {% endif %}
-
-    <!-- ✅ 추가 스타일 삽입 블록 -->
     {% block styles %}{% endblock %}
   </head>
 
-  <body>
-    {% include "header.njk" %}
+    <body>
+      {% include "header.njk" %}
 
-    <main class="main-container">
-      {% block content %}
-        {{ content | safe }}
-      {% endblock %}
-    </main>
+      <main class="main-container">
+        {% block content %}
+          {{ content | safe }}
+        {% endblock %}
+      </main>
 
-    {% include "footer.njk" %}
+      {% include "footer.njk" %}
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const hamburger = document.getElementById("hamburger");
-        const navMenu = document.querySelector(".nav-menu");
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const hamburger = document.getElementById("hamburger");
+          const navMenu = document.querySelector(".nav-menu");
 
-        if (hamburger && navMenu) {
-          hamburger.addEventListener("click", function () {
-            navMenu.classList.toggle("active");
-          });
-        }
-      });
-    </script>
-  </body>
-</html>
+          if (hamburger && navMenu) {
+            hamburger.addEventListener("click", function () {
+              navMenu.classList.toggle("active");
+            });
+          }
+        });
+      </script>
+    </body>
+  </html>
