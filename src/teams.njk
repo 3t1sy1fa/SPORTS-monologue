@@ -8,24 +8,21 @@ title: 구단 분석
 {% endblock %}
 
 {% block content %}
-  <h1>구단 분석</h1>
+  <h1 class="page-title">구단 분석</h1>
 
   <div class="team-grid">
-    <div class="team-row">
-      <a href="/teams/kiwoom" class="team-box kiwoom">키움 히어로즈</a>
-      <a href="/teams/doosan" class="team-box doosan">두산 베어스</a>
-      <a href="/teams/lotte" class="team-box lotte">롯데 자이언츠</a>
-    </div>
-    <div class="team-row">
-      <a href="/teams/samsung" class="team-box samsung">삼성 라이온즈</a>
-      <a href="/teams/hanwha" class="team-box hanwha">한화 이글스</a>
-      <a href="/teams/kia" class="team-box kia">KIA 타이거즈</a>
-      <a href="/teams/lg" class="team-box lg">LG 트윈스</a>
-    </div>
-    <div class="team-row">
-      <a href="/teams/ssg" class="team-box ssg">SSG 랜더스</a>
-      <a href="/teams/nc" class="team-box nc">NC 다이노스</a>
-      <a href="/teams/kt" class="team-box kt">KT 위즈</a>
-    </div>
+    {% for team in teams %}
+      {% if loop.index0 % 4 == 0 %}
+        <div class="team-row">
+      {% endif %}
+
+      <a href="/teams/{{ team.code }}" class="team-box {{ team.code }}" title="{{ team.name }} 구단 분석">
+        {{ team.name }}
+      </a>
+
+      {% if loop.index0 % 4 == 3 or loop.last %}
+        </div>
+      {% endif %}
+    {% endfor %}
   </div>
 {% endblock %}
