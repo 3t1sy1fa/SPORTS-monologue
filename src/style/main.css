@@ -94,7 +94,7 @@ a {
 
 .nav-menu a {
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 1.4rem;
   color: #1a1a1a;
   padding: 4px 0;
   transition: color 0.2s;
@@ -107,7 +107,7 @@ a {
 
 /* ---------------------- 슬로건 ---------------------- */
 .typing-slogan {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 500;
   font-family: 'spomono', sans-serif;
   white-space: nowrap;
@@ -155,7 +155,7 @@ a {
 .post-item p {
   margin: 0;
   color: #555;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 /* ---------------------- 글 읽기용 페이지 ---------------------- */
@@ -252,6 +252,7 @@ a {
   font-size: 4rem;
   font-weight: 700;
   line-height: 1;
+  letter-spacing: -2px;
 }
 
 .monologue {
