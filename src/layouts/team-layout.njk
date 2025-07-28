@@ -29,8 +29,13 @@
     } %}
   {% endif %}
 
-  {# ✅ 이 팀의 글만 필터링 (category 필드 기준) #}
-  {% set filteredPosts = collections.teamPosts | filter(post => post.data.category == category) %}
+  {# ✅ 이 팀의 글만 수동으로 필터링 #}
+  {% set filteredPosts = [] %}
+  {% for post in collections.teamPosts %}
+    {% if post.data.category == category %}
+      {% set filteredPosts = filteredPosts.concat([post]) %}
+    {% endif %}
+  {% endfor %}
 
   <main class="team-layout">
     <div class="team-left">
