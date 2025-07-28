@@ -254,14 +254,14 @@ a {
 .sports {
   font-family: 'spomono', 'SUIT', sans-serif;
   font-size: 4rem;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1;
 }
 
 .monologue {
   font-family: 'spomono', 'SUIT', sans-serif;
   font-size: 3rem;
-  font-weight: 400;
+  font-weight: 200;
   line-height: 1;
   color: #666;
 }
