@@ -5,8 +5,26 @@ teamCss: team-kt.css
 category: kt
 ---
 
+{% set filteredPosts = [] %}
+{% for post in collections.teamPosts %}
+  {% if post.data.category == category %}
+    {% set filteredPosts = filteredPosts.concat([post]) %}
+  {% endif %}
+{% endfor %}
+
+{% set leftContent %}
+  <h3>상세 분석 목록</h3>
+  <ul class="team-post-list">
+    {% for post in filteredPosts %}
+      <li>
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+        <span class="date">{{ post.date | date }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% endset %}
+
 <div class="team-analysis">
-  <h2>7월 27일 분석: 두산전 4:6 패</h2>
-  <p>불펜이 흔들리며 리드를 잃었다. 특히 8회 연속 볼넷이 흐름을 무너뜨렸다.</p>
-  <p>타선은 중반까지 잘 따라갔지만, 결정적인 순간에서 한 방이 부족했다.</p>
+  <h2>구단에 대한 분석</h2>
+  <p>우측은 사견, 좌측은 분석글 목록!</p>
 </div>

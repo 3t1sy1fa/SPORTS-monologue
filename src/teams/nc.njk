@@ -5,8 +5,26 @@ teamCss: team-nc.css
 category: nc
 ---
 
+{% set filteredPosts = [] %}
+{% for post in collections.teamPosts %}
+  {% if post.data.category == category %}
+    {% set filteredPosts = filteredPosts.concat([post]) %}
+  {% endif %}
+{% endfor %}
+
+{% set leftContent %}
+  <h3>상세 분석 목록</h3>
+  <ul class="team-post-list">
+    {% for post in filteredPosts %}
+      <li>
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+        <span class="date">{{ post.date | date }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% endset %}
+
 <div class="team-analysis">
-  <h2>7월 27일 분석: LG전 2:3 패</h2>
-  <p>후반 불펜이 흔들리며 리드를 지키지 못했다. 마무리 상황에서의 제구 불안이 실점으로 이어졌다.</p>
-  <p>3회까지는 안정적인 운영을 보여줬지만, 타선의 집중력 부족이 아쉬웠다.</p>
+  <h2>구단에 대한 분석</h2>
+  <p>우측은 사견, 좌측은 분석글 목록!</p>
 </div>

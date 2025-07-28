@@ -5,7 +5,26 @@ teamCss: team-lotte.css
 category: lotte
 ---
 
+{% set filteredPosts = [] %}
+{% for post in collections.teamPosts %}
+  {% if post.data.category == category %}
+    {% set filteredPosts = filteredPosts.concat([post]) %}
+  {% endif %}
+{% endfor %}
+
+{% set leftContent %}
+  <h3>상세 분석 목록</h3>
+  <ul class="team-post-list">
+    {% for post in filteredPosts %}
+      <li>
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+        <span class="date">{{ post.date | date }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% endset %}
+
 <div class="team-analysis">
-  <h2>7월 27일 분석: 삼성전 1:5 패</h2>
-  <p>타선이 침묵하며 뚜렷한 반격 없이 무너졌다. 득점권에서의 집중력 결여가 결정적이었다.</p>
+  <h2>구단에 대한 분석</h2>
+  <p>우측은 사견, 좌측은 분석글 목록!</p>
 </div>
