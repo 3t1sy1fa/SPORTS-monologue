@@ -42,14 +42,14 @@ a {
 }
 
 @font-face {
-    font-family: '크보';
+    font-family: 'nonused';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-  font-family:'픽셀';
+  font-family:'크보';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/PFStardustS.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
