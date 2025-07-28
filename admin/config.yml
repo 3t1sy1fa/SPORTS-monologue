@@ -31,18 +31,20 @@ collections:
       - { label: "설명", name: "description", widget: "text" }
       - { label: "본문", name: "body", widget: "markdown" }
 
-  - name: "구단 분석"
+  - name: "teamAnalysis"
     label: "구단 분석"
     folder: "src/teams-analysis"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "제목", name: "title", widget: "string" }
-      - { label: "작성일", name: "date", widget: "datetime" }
-      - label: "카테고리"
-        name: "category"
-        widget: "select"
-        options:
+    - { label: "제목", name: "title", widget: "string" }
+    - { label: "작성일", name: "date", widget: "datetime" }
+    - { label: "레이아웃", name: "layout", widget: "hidden", default: "includes/team-layout.njk" }
+    - { label: "설명", name: "description", widget: "text" }
+    - label: "카테고리"
+      name: "category"
+      widget: "select"
+      options:
         - { label: "LG 트윈스", value: "lg" }
         - { label: "두산 베어스", value: "doosan" }
         - { label: "키움 히어로즈", value: "kiwoom" }
@@ -53,5 +55,14 @@ collections:
         - { label: "KIA 타이거즈", value: "kia" }
         - { label: "KT 위즈", value: "kt" }
         - { label: "SSG 랜더스", value: "ssg" }
-      - { label: "설명", name: "description", widget: "text" }
-      - { label: "본문", name: "body", widget: "markdown" }
+    - {
+        label: "팀 CSS",
+        name: "teamCss",
+        widget: "select",
+        options: [
+          "team-lg.css", "team-doosan.css", "team-kiwoom.css", "team-lotte.css",
+          "team-hanwha.css", "team-samsung.css", "team-nc.css", "team-kia.css",
+          "team-kt.css", "team-ssg.css"
+        ]
+      }
+    - { label: "본문", name: "body", widget: "markdown" }
