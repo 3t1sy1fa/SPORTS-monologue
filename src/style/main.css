@@ -341,7 +341,7 @@ a {
 .contact-container form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
 
 .contact-container input,
