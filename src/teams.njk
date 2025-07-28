@@ -5,6 +5,25 @@ title: 구단 분석
 
 {% block styles %}
   <link rel="stylesheet" href="/style/team-base.css" />
+
+  {% set teamMap = {
+    "LG 트윈스": "lg",
+    "두산 베어스": "doosan",
+    "SSG 랜더스": "ssg",
+    "롯데 자이언츠": "lotte",
+    "삼성 라이온즈": "samsung",
+    "한화 이글스": "hanwha",
+    "KIA 타이거즈": "kia",
+    "키움 히어로즈": "kiwoom",
+    "NC 다이노스": "nc",
+    "KT 위즈": "kt"
+  } %}
+
+  {% for teamName, code in teamMap %}
+    {% if title and title contains teamName %}
+      <link rel="stylesheet" href="/style/team-{{ code }}.css" />
+    {% endif %}
+  {% endfor %}
 {% endblock %}
 
 {% block content %}
