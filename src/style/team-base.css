@@ -62,12 +62,20 @@
   margin-top: 1rem;
   padding: 1rem;
   background-color: #f7f7f7;
-  border: 1px solid #bbcfd8ad;
+  border: 1px solid #afafafad;
   border-radius: 6px;
 }
 
 .team-post-list-wrapper ul {
   list-style: none;
+  color:#888;
+  padding: 0;
+  margin: 0;
+}
+
+.team-post-list-wrapper p {
+  list-style: none;
+  color:#666666;
   padding: 0;
   margin: 0;
 }
