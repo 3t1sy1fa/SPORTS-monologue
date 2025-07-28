@@ -39,7 +39,7 @@ collections:
     fields:
     - { label: "제목", name: "title", widget: "string" }
     - { label: "작성일", name: "date", widget: "datetime" }
-    - { label: "레이아웃", name: "layout", widget: "hidden", default: "includes/team-layout.njk" }
+    - { label: "레이아웃", name: "layout", widget: "hidden", default: "team-layout.njk" }
     - { label: "설명", name: "description", widget: "text" }
     - label: "카테고리"
       name: "category"
