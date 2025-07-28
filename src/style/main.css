@@ -50,8 +50,8 @@ a {
 
 @font-face {
   font-family:'크보';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/PFStardustS.woff2') format('woff2');
-  font-weight: 700;
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/PFStardustExtraBold.woff2') format('woff2');
+  font-weight: 800;
   font-style: normal;
 }
 
