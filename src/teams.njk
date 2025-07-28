@@ -20,11 +20,9 @@ title: 구단 분석
     "KT 위즈": "kt"
   } %}
 
-  {% for teamName, code in teamMap %}
-    {% if teamName in title %}
-      <link rel="stylesheet" href="/style/team-{{ code }}.css" />
-    {% endif %}
-  {% endfor %}
+  {% if teamMap[title] %}
+    <link rel="stylesheet" href="/style/team-{{ teamMap[title] }}.css" />
+  {% endif %}
 {% endblock %}
 
 {% block content %}
