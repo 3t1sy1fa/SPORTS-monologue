@@ -15,8 +15,8 @@ a {
 /* ---------------------- 폰트 등록 ---------------------- */
 @font-face {
   font-family: 'Mingijuk';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
-  font-weight: 400;
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+  font-weight: normal;
   font-style: normal;
 }
 
