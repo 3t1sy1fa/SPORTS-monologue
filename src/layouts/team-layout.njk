@@ -9,9 +9,23 @@
   <link rel="stylesheet" href="/style/main.css" />
   <link rel="stylesheet" href="/style/team-base.css" />
 
-  <!-- ✅ 팀별 색상 스타일 -->
-  {% if teamCss %}
-    <link rel="stylesheet" href="/style/{{ teamCss }}" />
+  <!-- ✅ 팀별 CSS 자동 연결 (title → 코드 매핑) -->
+  {% set teamMap = {
+    "LG 트윈스": "team-lg.css",
+    "두산 베어스": "team-doosan.css",
+    "SSG 랜더스": "team-ssg.css",
+    "롯데 자이언츠": "team-lotte.css",
+    "삼성 라이온즈": "team-samsung.css",
+    "한화 이글스": "team-hanwha.css",
+    "KIA 타이거즈": "team-kia.css",
+    "키움 히어로즈": "team-kiwoom.css",
+    "NC 다이노스": "team-nc.css",
+    "KT 위즈": "team-kt.css"
+  } %}
+
+  {% set resolvedCss = teamCss or teamMap[title] %}
+  {% if resolvedCss %}
+    <link rel="stylesheet" href="/style/{{ resolvedCss }}" />
   {% endif %}
 </head>
 
@@ -47,7 +61,6 @@
         </a>
       </div>
 
-      {# ✅ 분석글 목록 출력 #}
       {% if filteredPosts.length > 0 %}
         <div class="team-post-list-wrapper">
           <h3>상세 분석 목록</h3>
