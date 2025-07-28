@@ -5,13 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="naver-site-verification" content="2b5866b9f8fde114c370fca27185fb6a7a1ea7d5" />
   
-  <title>{{ title or "구단 분석" }} | 구단 분석</title>
+  <!-- ✅ 페이지 제목 -->
+  <title>{{ title or "teams" }} | 구단 분석</title>
+
+  <!-- ✅ 페이지 설명 (frontmatter에서 받아오도록 설정) -->
+  <meta name="description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
+
+  <!-- ✅ 오픈 그래프 -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title or '구단 분석' }}">
+  <meta property="og:description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
+  <meta property="og:image" content="{{ image or 'https://3t1sy1fa.com/images/og-image.jpg' }}">
+  <meta property="og:url" content="https://3t1sy1fa.com{{ page.url }}">
+
+  <!-- ✅ 트위터 카드 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title or '구단 분석' }}">
+  <meta name="twitter:description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
+  <meta name="twitter:image" content="{{ image or 'https://3t1sy1fa.com/images/og-image.jpg' }}">
+  <meta name="twitter:domain" content="Sports Monologue">
 
   <!-- ✅ 공통 스타일 -->
   <link rel="stylesheet" href="/style/main.css" />
   <link rel="stylesheet" href="/style/team-base.css" />
 
-  <!-- ✅ 팀별 CSS 자동 연결 (title → 코드 매핑) -->
+  <!-- ✅ 팀별 CSS 자동 연결 -->
   {% set teamMap = {
     "LG 트윈스": "team-lg.css",
     "두산 베어스": "team-doosan.css",
@@ -34,7 +52,7 @@
 <body>
   {% include "header.njk" %}
 
-  {# ✅ 최근 경기 정보 세팅 #}
+  <!-- ✅ 최근 경기 정보 -->
   {% if category and gameResults and gameResults[category] %}
     {% set recentGame = gameResults[category] %}
   {% else %}
@@ -45,7 +63,7 @@
     } %}
   {% endif %}
 
-  {# ✅ 이 팀의 글만 수동으로 필터링 #}
+  <!-- ✅ 글 필터링 -->
   {% set filteredPosts = [] %}
   {% for post in collections.teamPosts %}
     {% if post.data.category == category %}

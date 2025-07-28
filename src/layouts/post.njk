@@ -1,5 +1,23 @@
 {% extends "layout.njk" %}
 
+{% block head %}
+  <!-- ✅ SEO 메타태그 -->
+  <meta name="description" content="{{ description or title ~ ' | ' ~ category ~ ' 분석 및 리뷰' }}">
+  
+  <!-- ✅ 오픈 그래프 -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description or title ~ ' | ' ~ category ~ ' 분석 및 리뷰' }}">
+  <meta property="og:image" content="{{ image or '/images/og-image.jpg' }}">
+  <meta property="og:url" content="https://3t1sy1fa.com{{ page.url }}">
+  
+  <!-- ✅ 트위터 카드 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ description or title ~ ' | ' ~ category ~ ' 분석 및 리뷰' }}">
+  <meta name="twitter:image" content="{{ image or '/images/og-image.jpg' }}">
+{% endblock %}
+
 {% block content %}
 <article class="post-page">
   <h1 class="post-title">{{ title }}</h1>
