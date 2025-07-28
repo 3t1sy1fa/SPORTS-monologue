@@ -5,7 +5,12 @@ teamCss: team-lg.css
 category: lg
 ---
 
-{% set filteredPosts = collections.teamPosts | filter(post => post.data.category == category) %}
+{% set filteredPosts = [] %}
+{% for post in collections.teamPosts %}
+  {% if post.data.category == category %}
+    {% set filteredPosts = filteredPosts.concat([post]) %}
+  {% endif %}
+{% endfor %}
 
 {% set leftContent %}
   <h3>상세 분석 목록</h3>
