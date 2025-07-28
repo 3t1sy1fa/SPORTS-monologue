@@ -98,6 +98,7 @@ a {
   color: #1a1a1a;
   padding: 4px 0;
   transition: color 0.2s;
+  margin-top: auto;
 }
 
 .nav-menu a:hover {
@@ -277,7 +278,7 @@ a {
   width: 100%;
   height: 1.4px;
   background-color: black;
-  margin-top: 8.2px;
+  margin-top: 9px;
 }
 
 /* ---------------------- Lab ---------------------- */
