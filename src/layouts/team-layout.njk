@@ -6,9 +6,10 @@
   <title>{{ title or "구단 분석" }} | 구단 분석</title>
 
   <link rel="stylesheet" href="/style/team-base.css" />
-
+  {% if teamCss %}
+    <link rel="stylesheet" href="/style/{{ teamCss }}" />
+  {% endif %}
 </head>
-
 <body>
   {% include "header.njk" %}
 
