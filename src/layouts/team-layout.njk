@@ -28,28 +28,27 @@
     } %}
   {% endif %}
 
-  <main class="team-layout">
-    <div class="team-left">
-      <div class="game-results">
-        <p class="game-date">{{ recentGame.date }}</p>
-        <p class="game-summary">{{ recentGame.summary }}</p>
-        <a href="{{ recentGame.link }}" class="team-btn" target="_blank" rel="noopener noreferrer">
-          구단 공식 홈페이지
-        </a>
-      </div>
-
-      <!-- ✅ 왼쪽에 분석글 목록 있으면 출력 -->
-      {% if leftContent %}
-        <div class="team-post-list-wrapper">
-          {{ leftContent | safe }}
-        </div>
-      {% endif %}
-    </div>
-
-    <div class="team-right">
-      {{ content | safe }}
-    </div>
-  </main>
+ <main class="team-layout">
+   <div class="team-left">
+     <div class="game-results">
+      <p class="game-date">{{ recentGame.date }}</p>
+       <p class="game-summary">{{ recentGame.summary }}</p>
+       <a href="{{ recentGame.link }}" class="team-btn" target="_blank" rel="noopener noreferrer">
+         구단 공식 홈페이지
+       </a>
+     </div>
+ 
+     {% if leftContent %}
+       <div class="team-post-list-wrapper">
+         {{ leftContent | safe }}
+       </div>
+     {% endif %}
+   </div>
+ 
+   <div class="team-right">
+     {{ content | safe }}
+   </div>
+ </main>
 
   {% include "footer.njk" %}
 </body>
