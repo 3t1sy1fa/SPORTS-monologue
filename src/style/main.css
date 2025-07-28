@@ -43,7 +43,7 @@ a {
 
 @font-face {
     font-family: '크보';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/Dovemayo_wild.woff2') format('woff2');
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/SSFaithfulnessOTF.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -254,14 +254,14 @@ a {
 .sports {
   font-family: 'spomono', 'SUIT', sans-serif;
   font-size: 4rem;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1;
 }
 
 .monologue {
   font-family: 'spomono', 'SUIT', sans-serif;
   font-size: 3rem;
-  font-weight: 200;
+  font-weight: 400;
   line-height: 1;
   color: #666;
 }
