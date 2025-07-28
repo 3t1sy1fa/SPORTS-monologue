@@ -1,17 +1,24 @@
 ---
 title: Sports Monologue
 layout: layout.njk
+description: "경기 그 이상을 보기 위해, 경영의 언어로 스포츠를 말하다."
 ---
-<p class="typing-slogan"><span id="typing-text"></span></p>
 
 {% block content %}
-
+<p class="typing-slogan"><span id="typing-text" aria-live="polite"></span></p>
 
 <section class="post-list">
   {% for post in collections.posts | reverse %}
     <article class="post-item">
-      <h4><a href="{{ post.url }}">{{ post.data.title }}</a></h4>
-      <p><strong>{{ post.data.category }}</strong> · {{ post.date | date("yyyy-MM-dd") }}</p>
+      <h4>
+        <a href="{{ post.url }}" title="{{ post.data.title }}">
+          {{ post.data.title }}
+        </a>
+      </h4>
+      <p>
+        <strong>[{{ post.data.category }}]</strong> · 
+        <time datetime="{{ post.date | date('yyyy-MM-dd') }}">{{ post.date | date }}</time>
+      </p>
       <p>{{ post.data.excerpt }}</p>
     </article>
   {% endfor %}
@@ -53,5 +60,4 @@ layout: layout.njk
 
   document.addEventListener("DOMContentLoaded", type);
 </script>
-
 {% endblock %}
