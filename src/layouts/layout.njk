@@ -11,15 +11,38 @@
       <title>Sports Monologue</title>
     {% endif %}
 
-    <!-- ✅ 공통 메인 스타일 -->
+    <!-- ✅ 공통 스타일 -->
     <link rel="stylesheet" href="/style/main.css" />
 
-    <!-- ✅ 트윈스타 페이지에만 전용 스타일 적용 -->
+    <!-- ✅ 트윈스타 전용 -->
     {% if title == "트윈스타" %}
       <link rel="stylesheet" href="/style/twins-tar.css" />
     {% endif %}
 
-    <!-- ✅ 페이지 전용 스타일 삽입용 블록 -->
+    <!-- ✅ 구단별 전용 스타일 자동 연결 -->
+    {% if title == "LG 트윈스" %}
+      <link rel="stylesheet" href="/style/team-lg.css" />
+    {% elif title == "두산 베어스" %}
+      <link rel="stylesheet" href="/style/team-doosan.css" />
+    {% elif title == "SSG 랜더스" %}
+      <link rel="stylesheet" href="/style/team-ssg.css" />
+    {% elif title == "롯데 자이언츠" %}
+      <link rel="stylesheet" href="/style/team-lotte.css" />
+    {% elif title == "삼성 라이온즈" %}
+      <link rel="stylesheet" href="/style/team-samsung.css" />
+    {% elif title == "한화 이글스" %}
+      <link rel="stylesheet" href="/style/team-hanwha.css" />
+    {% elif title == "KIA 타이거즈" %}
+      <link rel="stylesheet" href="/style/team-kia.css" />
+    {% elif title == "키움 히어로즈" %}
+      <link rel="stylesheet" href="/style/team-kiwoom.css" />
+    {% elif title == "NC 다이노스" %}
+      <link rel="stylesheet" href="/style/team-nc.css" />
+    {% elif title == "KT 위즈" %}
+      <link rel="stylesheet" href="/style/team-kt.css" />
+    {% endif %}
+
+    <!-- ✅ 추가 스타일 삽입 블록 -->
     {% block styles %}{% endblock %}
   </head>
 
@@ -34,7 +57,6 @@
 
     {% include "footer.njk" %}
 
-    <!-- ✅ 햄버거 메뉴 스크립트 -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const hamburger = document.getElementById("hamburger");
