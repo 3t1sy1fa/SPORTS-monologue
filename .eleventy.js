@@ -7,10 +7,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("admin");
 
-  eleventyConfig.addCollection("teamAnalysis", function (collection) {
-  return collection.getFilteredByGlob("src/teams-analysis/*.md");
-});
 
+  eleventyConfig.addCollection("teamPosts", function (collection) {
+    return collection.getFilteredByGlob("src/teams-analysis/*.md");
+  });
 
   eleventyConfig.addCollection("posts", function (collection) {
     return collection.getFilteredByGlob("src/posts/*.md");

@@ -1,5 +1,5 @@
 ---
-layout: team-layout.njk
+layout: includes/team-layout.njk
 title: LG 트윈스
 teamCss: team-lg.css
 category: lg
@@ -10,18 +10,13 @@ category: lg
   <p>우측은 사견, 좌측은 분석글 목록!</p>
 </div>
 
-{% set filteredPosts = [] %}
-{% for post in collections.teamPosts %}
-  {% if post.data.category == category %}
-    {% set filteredPosts = filteredPosts.concat([post]) %}
-  {% endif %}
-{% endfor %}
-
 <ul class="team-post-list">
-  {% for post in filteredPosts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.data.title }}</a>
-      <span class="date">{{ post.date | date }}</span>
-    </li>
+  {% for post in collections.teamPosts %}
+    {% if post.data.category == category %}
+      <li>
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+        <span class="date">{{ post.date | date }}</span>
+      </li>
+    {% endif %}
   {% endfor %}
 </ul>
