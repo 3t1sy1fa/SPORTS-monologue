@@ -42,6 +42,13 @@ a {
 }
 
 @font-face {
+    font-family: '크보';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/SSRONETHandwritten.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
   font-family:'픽셀';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/PFStardustS.woff2') format('woff2');
   font-weight: 400;
@@ -266,8 +273,7 @@ a {
 
 .lab {
   font-size: 2rem;
-  font-family: 'spomono', 'SUIT', sans-serif;
-  font-weight: 1;
+  font-family: '크보', 'SUIT', sans-serif;
   line-height: 1;
 }
 
