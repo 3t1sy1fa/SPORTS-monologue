@@ -6,7 +6,16 @@ category: lg
 ---
 
 <div class="team-analysis">
-  <h2>7월 27일 분석: NC전 3:2 승</h2>
-  <p>LG는 불펜의 힘으로 승리를 지켜냈다. 정우영은 9회 위기 상황에서도 침착하게 마무리하며 팀의 승리를 지켰다.</p>
-  <p>타선에서는 오스틴이 멀티히트를 기록하며 득점 기회를 만들었고, 류지현 감독의 교체 타이밍도 돋보였다.</p>
+ <h2>LG 트윈스에 대한 분석</h2>
+<p>우측은 사견, 좌측은 분석글 목록!</p>
 </div>
+
+{% set filteredPosts = collections.teamPosts | filter(attr => attr.data.category == category) %}
+<ul class="team-post-list">
+  {% for post in filteredPosts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+      <span class="date">{{ post.date | date }}</span>
+    </li>
+  {% endfor %}
+</ul>
