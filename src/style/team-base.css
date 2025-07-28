@@ -30,9 +30,14 @@
   font-weight: 200;
 }
 
-.game-date,
+.game-date{
+  font-weight: 400;
+  margin-bottom: 0.3;
+}
+
+
 .game-summary {
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem;
 }
 
 
@@ -64,6 +69,13 @@
   background-color: #f7f7f7;
   border: 1px solid #afafafad;
   border-radius: 6px;
+}
+
+.team-post-list-wrapper h3 {
+  list-style: none;
+  color:#888;
+  padding: 0;
+  margin: 0;
 }
 
 .team-post-list-wrapper ul {
