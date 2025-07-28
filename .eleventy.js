@@ -1,26 +1,23 @@
-const fs = require("fs").promises;
-
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src/style");
-  eleventyConfig.addPassthroughCopy("src/scripts");
-  eleventyConfig.addPassthroughCopy("src/images");
-  eleventyConfig.addPassthroughCopy("src/fonts");
-  eleventyConfig.addPassthroughCopy("admin");
+  // ✅ 정적 리소스 패스스루
+  ["src/style", "src/scripts", "src/images", "src/fonts", "admin"]
+    .forEach(path => eleventyConfig.addPassthroughCopy(path));
 
+  // ✅ 컬렉션 등록
+  eleventyConfig.addCollection("teamPosts", (collection) =>
+    collection.getFilteredByGlob("src/teams-analysis/*.md")
+  );
 
-  eleventyConfig.addCollection("teamPosts", function (collection) {
-    return collection.getFilteredByGlob("src/teams-analysis/*.md");
-  });
+  eleventyConfig.addCollection("posts", (collection) =>
+    collection.getFilteredByGlob("src/posts/*.md")
+  );
 
-  eleventyConfig.addCollection("posts", function (collection) {
-    return collection.getFilteredByGlob("src/posts/*.md");
-  });
+  eleventyConfig.addCollection("lab", (collection) =>
+    collection.getFilteredByGlob("src/lab/*.md")
+  );
 
-  eleventyConfig.addCollection("lab", function (collection) {
-    return collection.getFilteredByGlob("src/lab/*.md");
-  });
-
-  eleventyConfig.addFilter("date", function (dateObj) {
+  // ✅ 날짜 필터 (한국식)
+  eleventyConfig.addFilter("date", (dateObj) => {
     if (!dateObj) return "";
     return new Date(dateObj).toLocaleDateString("ko-KR", {
       year: "numeric",
