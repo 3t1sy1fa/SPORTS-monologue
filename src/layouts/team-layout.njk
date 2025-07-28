@@ -5,17 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ title or "구단 분석" }} | 구단 분석</title>
 
-  <!-- ✅ 공통 스타일 적용 -->
+  <!-- ✅ 공통 스타일 -->
   <link rel="stylesheet" href="/style/main.css" />
-
-  <!-- ✅ 구단 공통 베이스 스타일 -->
   <link rel="stylesheet" href="/style/team-base.css" />
 
-  <!-- ✅ 팀별 색상 스타일 (선택적으로 적용됨) -->
+  <!-- ✅ 팀별 색상 스타일 -->
   {% if teamCss %}
     <link rel="stylesheet" href="/style/{{ teamCss }}" />
   {% endif %}
 </head>
+
 <body>
   {% include "header.njk" %}
 
@@ -35,9 +34,16 @@
         <p class="game-date">{{ recentGame.date }}</p>
         <p class="game-summary">{{ recentGame.summary }}</p>
         <a href="{{ recentGame.link }}" class="team-btn" target="_blank" rel="noopener noreferrer">
-         구단 공식 홈페이지
+          구단 공식 홈페이지
         </a>
       </div>
+
+      <!-- ✅ 왼쪽에 분석글 목록 있으면 출력 -->
+      {% if leftContent %}
+        <div class="team-post-list-wrapper">
+          {{ leftContent | safe }}
+        </div>
+      {% endif %}
     </div>
 
     <div class="team-right">

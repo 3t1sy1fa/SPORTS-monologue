@@ -5,18 +5,21 @@ teamCss: team-lg.css
 category: lg
 ---
 
-<div class="team-analysis">
-  <h2>LG 트윈스에 대한 분석</h2>
-  <p>우측은 사견, 좌측은 분석글 목록!</p>
-</div>
+{% set filteredPosts = collections.teamPosts | filter(post => post.data.category == category) %}
 
-<ul class="team-post-list">
-  {% for post in collections.teamPosts %}
-    {% if post.data.category == category %}
+{% set leftContent %}
+  <h3>상세 분석 목록</h3>
+  <ul class="team-post-list">
+    {% for post in filteredPosts %}
       <li>
         <a href="{{ post.url }}">{{ post.data.title }}</a>
         <span class="date">{{ post.date | date }}</span>
       </li>
-    {% endif %}
-  {% endfor %}
-</ul>
+    {% endfor %}
+  </ul>
+{% endset %}
+
+<div class="team-analysis">
+  <h2>LG 트윈스에 대한 분석</h2>
+  <p>우측은 사견, 좌측은 분석글 목록!</p>
+</div>
