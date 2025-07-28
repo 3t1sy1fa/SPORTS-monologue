@@ -1,12 +1,18 @@
 [
-  { "name": "키움 히어로즈", "code": "kiwoom" },
-  { "name": "두산 베어스", "code": "doosan" },
-  { "name": "롯데 자이언츠", "code": "lotte" },
-  { "name": "삼성 라이온즈", "code": "samsung" },
-  { "name": "한화 이글스", "code": "hanwha" },
-  { "name": "KIA 타이거즈", "code": "kia" },
-  { "name": "LG 트윈스", "code": "lg" },
-  { "name": "SSG 랜더스", "code": "ssg" },
-  { "name": "NC 다이노스", "code": "nc" },
-  { "name": "KT 위즈", "code": "kt" }
+  [
+    { "name": "키움 히어로즈", "code": "kiwoom" },
+    { "name": "두산 베어스", "code": "doosan" },
+    { "name": "롯데 자이언츠", "code": "lotte" }
+  ],
+  [
+    { "name": "삼성 라이온즈", "code": "samsung" },
+    { "name": "한화 이글스", "code": "hanwha" },
+    { "name": "KIA 타이거즈", "code": "kia" },
+    { "name": "LG 트윈스", "code": "lg" }
+  ],
+  [
+    { "name": "SSG 랜더스", "code": "ssg" },
+    { "name": "NC 다이노스", "code": "nc" },
+    { "name": "KT 위즈", "code": "kt" }
+  ]
 ]

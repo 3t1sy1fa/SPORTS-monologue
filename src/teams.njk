@@ -11,18 +11,14 @@ title: 구단 분석
   <h1 class="page-title">구단 분석</h1>
 
   <div class="team-grid">
-    {% for team in teams %}
-      {% if loop.index0 % 4 == 0 %}
-        <div class="team-row">
-      {% endif %}
-
-      <a href="/teams/{{ team.code }}" class="team-box {{ team.code }}" title="{{ team.name }} 구단 분석">
-        {{ team.name }}
-      </a>
-
-      {% if loop.index0 % 4 == 3 or loop.last %}
-        </div>
-      {% endif %}
+    {% for row in teams %}
+      <div class="team-row">
+        {% for team in row %}
+          <a href="/teams/{{ team.code }}" class="team-box {{ team.code }}" title="{{ team.name }} 구단 분석">
+            {{ team.name }}
+          </a>
+        {% endfor %}
+      </div>
     {% endfor %}
   </div>
 {% endblock %}
