@@ -42,7 +42,7 @@ a {
 }
 
 @font-face {
-  font-family:'픽셀';
+  font-family: '픽셀';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/PFStardustS.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
@@ -82,7 +82,7 @@ a {
   list-style: none;
   display: flex;
   gap: 2rem;
-  margin: 0.5;
+  margin: 0.5rem;
   padding: 0;
   align-items: center;
 }
@@ -123,7 +123,9 @@ a {
 }
 
 @keyframes blink-caret {
-  50% { border-color: transparent; }
+  50% {
+    border-color: transparent;
+  }
 }
 
 /* ---------------------- 글 목록 ---------------------- */
@@ -365,13 +367,12 @@ a {
   align-self: flex-start;
 }
 
-/* ---------------------- 반응형 ---------------------- */
-
-
 /* ---------------------- 햄버거 메뉴 ---------------------- */
-/* 햄버거 버튼 기본 스타일 */
 .hamburger {
-  display: none; /* 모바일만 표시되도록 설정함 */
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 24px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -382,7 +383,6 @@ a {
   z-index: 1001;
 }
 
-/* 햄버거 라인 */
 .hamburger span {
   display: block;
   width: 100%;
@@ -392,42 +392,32 @@ a {
   transition: all 0.3s ease;
 }
 
-/* 햄버거 active 시 애니메이션 효과 (선택) */
 .hamburger.active span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
+
 .hamburger.active span:nth-child(2) {
   opacity: 0;
 }
+
 .hamburger.active span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
-.hamburger {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  display: none; /* 모바일에서만 보이게 */
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  gap: 5px;
-  z-index: 1001;
-}
+
 /* ---------------------- 반응형 ---------------------- */
 @media (max-width: 768px) {
   .grid-container {
     display: block;
   }
 
-  .left-top, .right-top {
+  .left-top,
+  .right-top {
     border: none;
     padding: 16px;
   }
 
-  .sports, .monologue {
+  .sports,
+  .monologue {
     font-size: 2.5rem;
   }
 
@@ -439,7 +429,6 @@ a {
     font-size: 2rem;
   }
 
-  
   .hamburger {
     display: flex;
     margin-top: 12px;
@@ -459,4 +448,4 @@ a {
   .top-nav {
     margin-top: 12px;
   }
- }
+}
