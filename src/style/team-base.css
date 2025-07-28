@@ -111,29 +111,29 @@
 
 
 .main-container {
-   max-width: 960px;
-   margin: 0 auto;
-   padding: 40px 24px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px;
 }
 
 .team-grid {
-   display: flex;
-   flex-direction: column;
-   gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .team-row {
-   display: flex;
-   justify-content: center;
-   gap: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
 }
 
 .team-box {
-   padding: 15px 20px;
-   border-radius: 8px;
-   background-color: var(--team-btn-color); 
-   text-align: center;         
-   font-weight: 500; 
-   text-decoration: none;
-   color: var(--team-textcolor);
+  padding: 15px 20px;
+  border-radius: 8px;
+  background-color: var(--team-btn-color); 
+  text-align: center;         
+  font-weight: 500; 
+  text-decoration: none;
+  color: var(--team-textcolor);
 }
