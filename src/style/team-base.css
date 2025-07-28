@@ -1,0 +1,36 @@
+.team-layout {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.team-left {
+  flex: 1;
+  background-color: var(--team-subcolor);
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: #fff;
+}
+
+.team-right {
+  flex: 2;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.team-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--team-maincolor);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.game-date,
+.game-summary {
+  margin-bottom: 0.8rem;
+}
