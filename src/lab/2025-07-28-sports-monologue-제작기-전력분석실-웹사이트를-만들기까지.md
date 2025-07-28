@@ -2,6 +2,7 @@
 title: "Sports Monologue 제작기: 전력분석실 웹사이트를 만들기까지"
 date: 2025-07-28T13:17:59.218Z
 category: 사이트 제작
+layout: layout.njk
 description: 간단한 웹사이트 제작기
 ---
 스포츠 경영을 꿈꾸면서, 단순히 기록만 보는 분석이 아니라
