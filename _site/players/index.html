@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+
+   <link rel="icon" href="/favicon.ico" type="image/x-icon">
+   
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+      <title>선수 분석 | Sports Monologue</title>
+    
+
+    <link rel="stylesheet" href="/style/main.css" />
+
+    
+    
+    
+  </head>
+
+  <body>
+    <div class="grid-container">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- 좌측 상단: SPORTS / Monologue -->
+  <div class="left-top">
+    <a href="/" class="sports">SPORTS</a>
+    <a href="/" class="monologue">Monologue</a>
+  </div>
+
+  <!-- 우측 상단: Since / KBO / 메뉴 -->
+   <div class="right-top">
+    <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+   <span></span>
+   </div>
+
+    <div class="since">Since 2025</div>
+    <div class="lab">KBO 전력분석실</div>
+    <div class="divider-line"></div>
+
+    <!-- 메뉴 -->
+    <nav class="top-nav">
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="/players">선수분석</a></li>
+        <li><a href="/games">경기분석</a></li>
+        <li><a href="/teams">구단분석</a></li>
+        <li><a href="/about">소개</a></li>
+        <li><a href="/contact">문의</a></li>
+        <li><a href="/twins-tar">twins-tar</a></li>
+        <li><a href="/lab">lab</a></li>
+        <li><a href="/admin">Manage Mode</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+    <main class="main-container">
+      
+        
+
+<section class="post-page">
+  <h1 class="post-title">선수 분석</h1>
+  <p class="post-meta">선수의 전력과 가능성 및 잠재력을 분석합니다.</p>
+
+  <div class="post-list">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</section>
+
+      
+    </main>
+
+    <footer class="site-footer">
+  <p>&copy; 2025 Sports Monologue. All rights reserved.</p>
+  <p>Made by 3t1sy1fa | Powered by Netlify CMS</p>
+</footer>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.getElementById("hamburger");
+      const navMenu = document.querySelector(".nav-menu");
+
+      hamburger.addEventListener("click", function () {
+        navMenu.classList.toggle("active");
+      });
+    });
+  </script>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+/* twins-tar.css - LG 트윈스 전용 테마 */
+
+/* ---------------------- 기본 설정 ---------------------- */
+@font-face {
+  font-family: 'slog2';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2507-2@1.0/YeongwolTTF-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mingijuk';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2412-1@1.0/Ownglyph_corncorn-Rg.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-family: 'Mingijuk', 'SUIT', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------------------- 헤더 ---------------------- */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid black;
+  padding: 20px 24px;
+  background: #fff;
+}
+
+.logo-box .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: black;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0.5;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-menu li {
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu a {
+  font-family: 'Mingijuk', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #1a1a1a;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+
+.nav-menu a:hover {
+  color: #6e6e6e;
+}
+
+/* ---------------------- 메인 콘텐츠 ---------------------- */
+.twins-tar-container {
+  padding: 48px 12px;
+  max-width: 1000px;
+  margin: auto;
+  font-family: 'Mingijuk', sans-serif;
+}
+
+.twins-tar-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.twins-tar-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  color: #a84141;
+  border-bottom: 4px solid #a84141;
+  display: inline-block;
+  padding-bottom: 2px;
+  letter-spacing: 2px;
+}
+
+.twins-tar-header .subtitle {
+  font-size: 40px;
+  font-family: 'slog2', sans-serif;
+  color: #555;
+  margin-top: 0;
+  line-height: 0;
+}
+
+/* ---------------------- 스탯 테이블 ---------------------- */
+.stat-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  border-left: 4px solid #a84141;
+  padding-left: 12px;
+  color: #222;
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 48px;
+  font-size: 16px;
+}
+
+.stats-table th {
+  background-color: #a84141;
+  color: white;
+  font-weight: 600;
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+
+.stats-table td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.stats-table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.stats-table tbody tr:hover {
+  background-color: #f3f3f3;
+  cursor: default;
+}
+
+/* ---------------------- 반응형 ---------------------- */
+@media (max-width: 768px) {
+  .twins-tar-header h1 {
+    font-size: 36px;
+  }
+
+  .twins-tar-header .subtitle {
+    font-size: 28px;
+  }
+
+  .stats-table th,
+  .stats-table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    display: block;
+  }
+
+  .left-top, .right-top {
+    border: none;
+    padding: 16px;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+    margin-top: 12px;
+  }
+}
