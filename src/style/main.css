@@ -15,8 +15,8 @@ a {
 /* ---------------------- 폰트 등록 ---------------------- */
 @font-face {
   font-family: 'Mingijuk';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/PFStardustS.woff2') format('woff2');
-  font-weight: 400;
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+  font-weight: 600;
   font-style: normal;
 }
 
@@ -50,8 +50,8 @@ a {
 
 @font-face {
   font-family:'크보';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/PFStardustS.woff2') format('woff2');
-  font-weight: 400;
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+  font-weight: 900;
   font-style: normal;
 }
 
