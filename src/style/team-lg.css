@@ -1,9 +1,9 @@
 :root {
   --team-maincolor: #C30452;
   --team-subcolor: #000000;
-  --team-setting--: white;
-  --team-textcolor--: #d40059;
-  --team-btncolor--: #000000d5;
+  --team-setting: white;
+  --team-textcolor: #d40059;
+  --team-btn-color: #000000d5;
 }
 
 @import url("./team-base.css");
