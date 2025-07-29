@@ -1,75 +1,82 @@
 [
-  [
-    "키움 히어로즈",
-    "kiwoom",
-    "10",
-    "28",
-    "67",
-    "패"
-  ],
-  [
-    "두산 베어스",
-    "doosan",
-    "9",
-    "40",
-    "52",
-    "승"
-  ],
-  [
-    "롯데 자이언츠",
-    "lotte",
-    "3",
-    "53",
-    "42",
-    "휴식"
-  ],
-  [
-    "LG 트윈스",
-    "lg",
-    "2",
-    "55",
-    "40"
-  ],
-  [
-    "KIA 타이거즈",
-    "kia",
-    "5",
-    "46",
-    "46"
-  ],
-  [
-    "NC 다이노스",
-    "nc",
-    "8",
-    "43",
-    "44"
-  ],
-  [
-    "KT 위즈",
-    "kt",
-    "4",
-    "50",
-    "45"
-  ],
-  [
-    "한화 이글스",
-    "hanwha",
-    "1",
-    "57",
-    "36"
-  ],
-  [
-    "삼성 라이온즈",
-    "samsung",
-    "6",
-    "47",
-    "47"
-  ],
-  [
-    "SSG 랜더스",
-    "ssg",
-    "7",
-    "46",
-    "46"
-  ]
+  {
+    "name": "한화 이글스",
+    "slug": "hanwha",
+    "rank": 1,
+    "wins": 57,
+    "losses": 37,
+    "lastGame": "패"
+  },
+  {
+    "name": "LG 트윈스",
+    "slug": "lg",
+    "rank": 2,
+    "wins": 56,
+    "losses": 40,
+    "lastGame": "승"
+  },
+  {
+    "name": "롯데 자이언츠",
+    "slug": "lotte",
+    "rank": 3,
+    "wins": 54,
+    "losses": 42,
+    "lastGame": "승"
+  },
+  {
+    "name": "KT 위즈",
+    "slug": "kt",
+    "rank": 4,
+    "wins": 50,
+    "losses": 46,
+    "lastGame": "패"
+  },
+  {
+    "name": "SSG 랜더스",
+    "slug": "ssg",
+    "rank": 5,
+    "wins": 47,
+    "losses": 46,
+    "lastGame": "승"
+  },
+  {
+    "name": "삼성 라이온즈",
+    "slug": "samsung",
+    "rank": 6,
+    "wins": 48,
+    "losses": 47,
+    "lastGame": "승"
+  },
+  {
+    "name": "KIA 타이거즈",
+    "slug": "kia",
+    "rank": 7,
+    "wins": 46,
+    "losses": 47,
+    "lastGame": "패"
+  },
+  {
+    "name": "NC 다이노스",
+    "slug": "nc",
+    "rank": 8,
+    "wins": 43,
+    "losses": 45,
+    "lastGame": "패"
+  },
+  {
+    "name": "두산 베어스",
+    "slug": "doosan",
+    "rank": 9,
+    "wins": 41,
+    "losses": 52,
+    "lastGame": "승"
+  },
+  {
+    "name": "키움 히어로즈",
+    "slug": "kiwoom",
+    "rank": 10,
+    "wins": 28,
+    "losses": 68,
+    "lastGame": "패"
+  }
 ]
