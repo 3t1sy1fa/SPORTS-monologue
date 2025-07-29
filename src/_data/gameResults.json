@@ -1,52 +1,52 @@
 {
   "lg": {
-    "date": "2025-07-27",
-    "summary": "두산전 6:9 패",
+    "date": "2025-07-29",
+    "summary": "KT전 8:2 승",
     "link": "https://www.lgtwins.com"
   },
   "nc": {
-    "date": "2025-07-27",
-    "summary": "키움전 4:12 승",
+    "date": "2025-07-29",
+    "summary": "롯데전 4:6 패",
     "link": "https://www.ncdinos.com"
   },
   "kiwoom": {
-    "date": "2025-07-27",
-    "summary": "NC전 4:12 패",
+    "date": "2025-07-29",
+    "summary": "SSG전 3:9 패",
     "link": "https://www.heroesbaseball.co.kr"
   },
   "kt": {
-    "date": "2025-07-27",
-    "summary": "삼성전 3:4 패",
+    "date": "2025-07-29",
+    "summary": "LG전 8:2 패",
     "link": "https://www.ktwiz.co.kr"
   },
   "kia": {
-    "date": "2025-07-27",
-    "summary": "롯데전 3:5 패배",
+    "date": "2025-07-29",
+    "summary": "두산전 9:6 패",
     "link": "https://tigers.co.kr"
   },
   "hanwha": {
-    "date": "2025-07-27",
-    "summary": "SSG전 3:2 패",
+    "date": "2025-07-29",
+    "summary": "삼성전 9:2 패",
     "link": "https://www.hanwhaeagles.co.kr"
   },
   "ssg": {
-    "date": "2025-07-27",
-    "summary": "한화전 3:2 승",
+    "date": "2025-07-29",
+    "summary": "키움전 3:9 승",
     "link": "https://www.ssglanders.com"
   },
   "samsung": {
-    "date": "2025-07-27",
-    "summary": "KT전 3:4 패",
+    "date": "2025-07-29",
+    "summary": "한화전 9:2 승",
     "link": "https://www.samsunglions.com"
   },
   "lotte": {
-    "date": "2025-07-27",
-    "summary": "KIA전 3:5 승",
+    "date": "2025-07-29",
+    "summary": "NC전 4:6 승",
     "link": "https://www.giantsclub.com"
   },
   "doosan": {
-    "date": "2025-07-27",
-    "summary": "LG전 6:9 승",
+    "date": "2025-07-29",
+    "summary": "KIA전 9:6 승",
     "link": "https://www.doosanbears.com"
   }
 }
