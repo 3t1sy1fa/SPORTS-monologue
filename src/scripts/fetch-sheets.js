@@ -1,30 +1,44 @@
-const { GoogleSpreadsheet } = require('google-spreadsheet');
-const fs = require('fs');
-require('dotenv').config();
+const fs = require("fs");
+const { GoogleSpreadsheet } = require("google-spreadsheet");
+require("dotenv").config();
 
-(async () => {
-  try {
-    const SHEET_ID = process.env.SHEET_ID;
-    const CREDS = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+const SHEET_ID = process.env.SHEET_ID;
+const CREDS = require(process.env.GOOGLE_CREDENTIALS);
 
-    const doc = new GoogleSpreadsheet(SHEET_ID);
-    await doc.useServiceAccountAuth(CREDS);
-    await doc.loadInfo();
+async function fetchData() {
+  const doc = new GoogleSpreadsheet(SHEET_ID);
+  await doc.useServiceAccountAuth(CREDS);
+  await doc.loadInfo();
 
-    const sheet = doc.sheetsByIndex[0];
-    const rows = await sheet.getRows();
+  // 시트1 → teams-board.json
+  const teamsSheet = doc.sheetsByTitle["TeamsBoard"];
+  const teamsRows = await teamsSheet.getRows();
+  const teamsData = teamsRows.map(row => ({
+    name: row.Name,
+    slug: row.Slug,
+    rank: parseInt(row.Rank),
+    wins: parseInt(row.Wins),
+    losses: parseInt(row.Losses),
+    lastGame: row.LastGame
+  }));
 
-    const data = rows.map(row => ({
-      name: row['팀'],
-      rank: row['순위'],
-      wins: row['승'],
-      losses: row['패'],
-      lastGame: row['최근경기']
-    }));
+  fs.writeFileSync("./src/data/teams-board.json", JSON.stringify(teamsData, null, 2));
 
-    fs.writeFileSync('./src/data/gameResults.json', JSON.stringify(data, null, 2));
-    console.log('✅ gameResults.json 업데이트 완료');
-  } catch (error) {
-    console.error('❌ 스크립트 실행 오류:', error);
-  }
-})();
+  // 시트2 → gameResults.json
+  const resultsSheet = doc.sheetsByTitle["GameResults"];
+  const resultsRows = await resultsSheet.getRows();
+  const resultsData = {};
+  resultsRows.forEach(row => {
+    resultsData[row.Slug] = {
+      date: row.Date,
+      summary: row.Summary,
+      link: row.Link
+    };
+  });
+
+  fs.writeFileSync("./src/data/gameResults.json", JSON.stringify(resultsData, null, 2));
+
+  console.log("✅ 데이터 동기화 완료");
+}
+
+fetchData();
