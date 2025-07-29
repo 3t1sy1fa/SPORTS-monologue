@@ -3,6 +3,8 @@ module.exports = function (eleventyConfig) {
   ["src/style", "src/scripts", "src/images", "src/fonts", "admin"]
     .forEach(path => eleventyConfig.addPassthroughCopy(path));
 
+
+    
   // ✅ 팀 분석 컬렉션
   eleventyConfig.addCollection("teamPosts", (collection) =>
     collection.getFilteredByGlob("src/teams-analysis/*.md")
