@@ -1,0 +1,32 @@
+---
+title: "스포츠 경영"
+layout: layout.njk
+description: "스포츠 경영 공부 기록을 담은 페이지입니다."
+---
+
+{% block content %}
+<main class="v-container">
+  <h1>Vision</h1>
+
+  <div class="post-list">
+    {% for post in collections.posts | reverse %}
+      {% if post.data.category == "스포츠 경영" %}
+        <article class="post-item">
+          <h4>
+            <a href="{{ post.url }}" title="{{ post.data.title }}">
+              {{ post.data.title }}
+            </a>
+          </h4>
+          <p>
+            <strong>[{{ post.data.category }}]</strong> · 
+            <time datetime="{{ post.date | date('yyyy-MM-dd') }}">
+              {{ post.date | date }}
+            </time>
+          </p>
+          <p>{{ post.data.excerpt }}</p>
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}

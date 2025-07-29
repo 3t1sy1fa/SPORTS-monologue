@@ -14,7 +14,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "제목", name: "title", widget: "string" }
-      - { label: "카테고리", name: "category", widget: "select", options: ["선수 분석", "경기 분석"] }
+      - { label: "카테고리", name: "category", widget: "select", options: ["선수 분석", "경기 분석","스포츠 경영"] }
       - { label: "날짜", name: "date", widget: "datetime" }
       - { label: "요약", name: "excerpt", widget: "text" }
       - { label: "본문", name: "body", widget: "markdown" }

@@ -1,13 +1,13 @@
 ---
 title: "log"
 layout: layout.njk
-description: "Sports Monologue 사이트 제작 과정과 스포츠 경영 공부 기록을 담은 페이지입니다."
+description: "Sports Monologue 사이트 제작 과정을 담은 페이지입니다."
 ---
 
 {% block content %}
 <main class="log-container">
   <h1>log</h1>
-  <p>사이트 운영과 스포츠 경영 공부에 대한 기록을 남깁니다!</p>
+  <p>사이트 운영에 대한 기록을 남깁니다!</p>
 
   <!-- log 포스트 목록 -->
   {% for post in collections.log | reverse %}
@@ -19,7 +19,7 @@ description: "Sports Monologue 사이트 제작 과정과 스포츠 경영 공�
         {{ post.date | date("yyyy.MM.dd") }}
       </time>
       <p class="log-post-desc">
-        {{ post.data.description or "이 포스트는 사이트 운영과 스포츠 경영 관련 기록을 다룹니다." }}
+        {{ post.data.description or "이 포스트는 사이트 운영 관련 기록을 다룹니다." }}
       </p>
     </article>
   {% endfor %}
