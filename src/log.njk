@@ -1,24 +1,24 @@
 ---
-title: "Lab"
+title: "log"
 layout: layout.njk
 description: "Sports Monologue 사이트 제작 과정과 스포츠 경영 공부 기록을 담은 페이지입니다."
 ---
 
 {% block content %}
-<main class="lab-container">
-  <h1>Lab</h1>
+<main class="log-container">
+  <h1>log</h1>
   <p>사이트 운영과 스포츠 경영 공부에 대한 기록을 남깁니다!</p>
 
-  <!-- Lab 포스트 목록 -->
-  {% for post in collections.lab | reverse %}
-    <article class="lab-post">
+  <!-- log 포스트 목록 -->
+  {% for post in collections.log | reverse %}
+    <article class="log-post">
       <a href="{{ post.url }}" title="{{ post.data.title }}">
-        <h2 class="lab-post-title">{{ post.data.title }}</h2>
+        <h2 class="log-post-title">{{ post.data.title }}</h2>
       </a>
-      <time class="lab-post-date" datetime="{{ post.date | date('yyyy-MM-dd') }}">
+      <time class="log-post-date" datetime="{{ post.date | date('yyyy-MM-dd') }}">
         {{ post.date | date("yyyy.MM.dd") }}
       </time>
-      <p class="lab-post-desc">
+      <p class="log-post-desc">
         {{ post.data.description or "이 포스트는 사이트 운영과 스포츠 경영 관련 기록을 다룹니다." }}
       </p>
     </article>

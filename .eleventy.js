@@ -12,8 +12,8 @@ module.exports = function (eleventyConfig) {
     collection.getFilteredByGlob("src/posts/*.md")
   );
 
-  eleventyConfig.addCollection("lab", (collection) =>
-    collection.getFilteredByGlob("src/lab/*.md")
+  eleventyConfig.addCollection("log", (collection) =>
+    collection.getFilteredByGlob("src/log/*.md")
   );
 
   // ✅ 날짜 필터 (한국식)
