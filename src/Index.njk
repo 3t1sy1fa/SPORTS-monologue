@@ -7,6 +7,7 @@ description: "경기 그 이상을 보기 위해, 경영의 언어로 스포츠�
 {% block content %}
 <p class="typing-slogan"><span id="typing-text" aria-live="polite"></span></p>
 
+<!-- ✅ 글 목록 -->
 <section class="post-list">
   {% for post in collections.posts | reverse %}
     <article class="post-item">
@@ -22,6 +23,25 @@ description: "경기 그 이상을 보기 위해, 경영의 언어로 스포츠�
       <p>{{ post.data.excerpt }}</p>
     </article>
   {% endfor %}
+</section>
+
+<!-- ✅ 전체 구단 (3행 중첩 배열) -->
+<section class="teams-overview">
+  <h2>전체 구단</h2>
+  <div class="teams-board">
+    {% set teams = collections.all | getGlobalData('teams') %}
+    {% for row in teams %}
+      <div class="team-row">
+        {% for team in row %}
+          <div class="team-card">
+            <img src="/images/logos/{{ team.code }}.png" alt="{{ team.name }}">
+            <h3>{{ team.name }}</h3>
+            <a href="/teams/{{ team.code }}">상세보기</a>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
 </section>
 
 <script>

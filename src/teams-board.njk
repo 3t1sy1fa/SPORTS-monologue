@@ -1,0 +1,18 @@
+---
+pagination:
+  data: collections.teams
+  size: 1
+  alias: team
+permalink: "teams/{{ team.slug }}/index.html"
+layout: includes/team-layout.njk
+title: "{{ team.name }} 분석"
+---
+
+<section class="team-page">
+  <h1>{{ team.name }}</h1>
+  <p>순위: {{ team.rank }}위</p>
+  <p>성적: {{ team.wins }}승 {{ team.losses }}패</p>
+  <p>최근 경기 결과: 
+    <span class="last-game {{ team.lastGame }}">{{ team.lastGame }}</span>
+  </p>
+</section>

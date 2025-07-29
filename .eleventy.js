@@ -1,22 +1,28 @@
 module.exports = function (eleventyConfig) {
-  // ✅ 정적 리소스 패스스루
+  // ✅ 정적 리소스 그대로 복사
   ["src/style", "src/scripts", "src/images", "src/fonts", "admin"]
     .forEach(path => eleventyConfig.addPassthroughCopy(path));
 
-  // ✅ 컬렉션 등록
+  // ✅ 팀 분석 컬렉션
   eleventyConfig.addCollection("teamPosts", (collection) =>
     collection.getFilteredByGlob("src/teams-analysis/*.md")
   );
 
+  // ✅ 일반 글 컬렉션
   eleventyConfig.addCollection("posts", (collection) =>
     collection.getFilteredByGlob("src/posts/*.md")
   );
 
+  // ✅ 로그 컬렉션
   eleventyConfig.addCollection("log", (collection) =>
     collection.getFilteredByGlob("src/log/*.md")
   );
 
-  // ✅ 날짜 필터 (한국식)
+  // ✅ teams-board.json 기반 컬렉션
+  const teamsBoard = require("./src/data/teams-board.json");
+  eleventyConfig.addCollection("teams", () => teamsBoard);
+
+  // ✅ 날짜 필터 (한국식 yyyy.mm.dd)
   eleventyConfig.addFilter("date", (dateObj) => {
     if (!dateObj) return "";
     return new Date(dateObj).toLocaleDateString("ko-KR", {
@@ -26,7 +32,7 @@ module.exports = function (eleventyConfig) {
     });
   });
 
-  // ✅ 레이아웃 별칭 등록
+  // ✅ 레이아웃 별칭
   eleventyConfig.addLayoutAlias("team-layout", "layouts/team-layout.njk");
 
   return {
