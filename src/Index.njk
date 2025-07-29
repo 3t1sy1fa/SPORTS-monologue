@@ -29,7 +29,6 @@ description: "경기 그 이상을 보기 위해, 경영의 언어로 스포츠�
 <section class="teams-overview">
   <h2>전체 구단</h2>
   <div class="teams-board">
-    {% set teams = collections.all | getGlobalData('teams') %}
     {% for row in teams %}
       <div class="team-row">
         {% for team in row %}
