@@ -51,7 +51,7 @@
          {% for team in teamsBoard | sort(attribute="rank") %}
            <div class="team-card">
              <a href="/teams/{{ team.slug }}/">
-               <img src="/images/logos/{{ team.slug }}.png" alt="{{ team.name }}">
+               <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
                <div class="team-info">
                  <span class="team-name">{{ team.name }}</span>
                  <span class="team-rank">{{ team.rank }}위</span>
