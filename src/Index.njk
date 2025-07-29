@@ -7,41 +7,45 @@ description: "경기 그 이상을 보기 위해, 경영의 언어로 스포츠�
 {% block content %}
 <p class="typing-slogan"><span id="typing-text" aria-live="polite"></span></p>
 
-<!-- ✅ 글 목록 -->
-<section class="post-list">
-  {% for post in collections.posts | reverse %}
-    <article class="post-item">
-      <h4>
-        <a href="{{ post.url }}" title="{{ post.data.title }}">
-          {{ post.data.title }}
-        </a>
-      </h4>
-      <p>
-        <strong>[{{ post.data.category }}]</strong> · 
-        <time datetime="{{ post.date | date('yyyy-MM-dd') }}">{{ post.date | date }}</time>
-      </p>
-      <p>{{ post.data.excerpt }}</p>
-    </article>
-  {% endfor %}
-</section>
+<main class="main-container with-sidebar">
+  <!-- 왼쪽 팀 보드 -->
+  <aside class="sidebar">
+    <h2>전체 구단</h2>
+    <div class="teams-board">
+      {% for row in teams %}
+        <div class="team-row">
+          {% for team in row %}
+            <div class="team-card">
+              <a href="/teams/{{ team.code }}">
+                <img src="/images/logos/{{ team.code }}.png" alt="{{ team.name }}">
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </aside>
 
-<!-- ✅ 전체 구단 (3행 중첩 배열) -->
-<section class="teams-overview">
-  <h2>전체 구단</h2>
-  <div class="teams-board">
-    {% for row in teams %}
-      <div class="team-row">
-        {% for team in row %}
-          <div class="team-card">
-            <img src="/images/logos/{{ team.code }}.png" alt="{{ team.name }}">
-            <h3>{{ team.name }}</h3>
-            <a href="/team/{{ team.code }}">상세보기</a>
-          </div>
-        {% endfor %}
-      </div>
-    {% endfor %}
-  </div>
-</section>
+  <!-- 오른쪽 글 목록 -->
+  <section class="content-area">
+    <section class="post-list">
+      {% for post in collections.posts | reverse %}
+        <article class="post-item">
+          <h4>
+            <a href="{{ post.url }}" title="{{ post.data.title }}">
+              {{ post.data.title }}
+            </a>
+          </h4>
+          <p>
+            <strong>[{{ post.data.category }}]</strong> · 
+            <time datetime="{{ post.date | date('yyyy-MM-dd') }}">{{ post.date | date }}</time>
+          </p>
+          <p>{{ post.data.excerpt }}</p>
+        </article>
+      {% endfor %}
+    </section>
+  </section>
+</main>
 
 <script>
   const phrases = [
