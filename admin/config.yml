@@ -16,6 +16,7 @@ collections:
       - { label: "제목", name: "title", widget: "string" }
       - { label: "카테고리", name: "category", widget: "select", options: ["선수 분석", "경기 분석","스포츠 경영"] }
       - { label: "날짜", name: "date", widget: "datetime" }
+      - { label: "레이아웃", name: "layout", widget: "hidden", default: "post.njk" }
       - { label: "요약", name: "excerpt", widget: "text" }
       - { label: "본문", name: "body", widget: "markdown" }
 
@@ -29,6 +30,7 @@ collections:
       - { label: "작성일", name: "date", widget: "datetime" }
       - { label: "카테고리", name: "category", widget: "select", options: ["사이트 제작", "사이트 운영", "경영", "분석", "기타"] }
       - { label: "설명", name: "description", widget: "text" }
+      - { label: "레이아웃", name: "layout", widget: "hidden", default: "layout.njk" }
       - { label: "본문", name: "body", widget: "markdown" }
 
   - name: "teamAnalysis"
