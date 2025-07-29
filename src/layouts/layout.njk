@@ -6,9 +6,9 @@
   <meta name="naver-site-verification" content="2b5866b9f8fde114c370fca27185fb6a7a1ea7d5" />
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-  <!-- ✅ 페이지 제목 (글이면 글 제목, 아니면 기본값) -->
+  <!-- ✅ 페이지 제목 -->
   <title>
-    {% if page.filePathStem contains '/posts/' and title %}
+    {% if page.filePathStem and ("/posts/" in page.filePathStem) and title %}
       {{ title }} | Sports Monologue
     {% else %}
       KBO 전력분석실 | Sports Monologue
@@ -16,24 +16,54 @@
   </title>
 
   <!-- ✅ 페이지 설명 -->
-  <meta name="description" content="{% if page.filePathStem contains '/posts/' and description %}{{ description }}{% else %}KBO 전력분석 및 스포츠 경영 블로그 - 경기 분석, 선수 분석, 구단 경영 인사이트 제공{% endif %}">
+  <meta name="description" content="
+    {% if page.filePathStem and ("/posts/" in page.filePathStem) and description %}
+      {{ description }}
+    {% else %}
+      KBO 전력분석 및 스포츠 경영 블로그 - 경기 분석, 선수 분석, 구단 경영 인사이트 제공
+    {% endif %}
+  ">
 
   <!-- ✅ 오픈 그래프 -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{% if page.filePathStem contains '/posts/' and title %}{{ title }}{% else %}Sports Monologue{% endif %}">
-  <meta property="og:description" content="{% if page.filePathStem contains '/posts/' and description %}{{ description }}{% else %}경기 그 이상을 보기 위해, 경영의 언어로 스포츠를 말하다{% endif %}">
+  <meta property="og:title" content="
+    {% if page.filePathStem and ("/posts/" in page.filePathStem) and title %}
+      {{ title }}
+    {% else %}
+      Sports Monologue
+    {% endif %}
+  ">
+  <meta property="og:description" content="
+    {% if page.filePathStem and ("/posts/" in page.filePathStem) and description %}
+      {{ description }}
+    {% else %}
+      경기 그 이상을 보기 위해, 경영의 언어로 스포츠를 말하다
+    {% endif %}
+  ">
   <meta property="og:image" content="{{ image or 'https://3t1sy1fa.com/images/og-image.jpg' }}">
   <meta property="og:url" content="https://3t1sy1fa.com{{ page.url }}">
 
   <!-- ✅ 트위터 카드 -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% if page.filePathStem contains '/posts/' and title %}{{ title }}{% else %}Sports Monologue{% endif %}">
-  <meta name="twitter:description" content="{% if page.filePathStem contains '/posts/' and description %}{{ description }}{% else %}경기 그 이상을 보기 위해, 경영의 언어로 스포츠를 말하다{% endif %}">
+  <meta name="twitter:title" content="
+    {% if page.filePathStem and ("/posts/" in page.filePathStem) and title %}
+      {{ title }}
+    {% else %}
+      Sports Monologue
+    {% endif %}
+  ">
+  <meta name="twitter:description" content="
+    {% if page.filePathStem and ("/posts/" in page.filePathStem) and description %}
+      {{ description }}
+    {% else %}
+      경기 그 이상을 보기 위해, 경영의 언어로 스포츠를 말하다
+    {% endif %}
+  ">
   <meta name="twitter:image" content="{{ image or 'https://3t1sy1fa.com/images/og-image.jpg' }}">
   <meta name="twitter:domain" content="Sports Monologue">
 
   <link rel="stylesheet" href="/style/main.css" />
-  
+
   <!-- ✅ 트윈스타 전용 -->
   {% if title == "트윈스타" %}
     <link rel="stylesheet" href="/style/twins-tar.css" />
