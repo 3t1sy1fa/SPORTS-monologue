@@ -1,0 +1,15 @@
+# Node modules
+node_modules/
+
+# Build output
+_site/
+dist/
+
+# 환경 변수 파일
+.env
+
+# Google credentials (보안)
+credentials.json
+
+# 기타 캐시 파일
+.DS_Store
