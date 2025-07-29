@@ -18,9 +18,9 @@ module.exports = function (eleventyConfig) {
     collection.getFilteredByGlob("src/log/*.md")
   );
 
-  // ✅ teams-board.json 기반 컬렉션
+  // ✅ teams-board.json을 전역 데이터로 등록
   const teamsBoard = require("./src/data/teams-board.json");
-  eleventyConfig.addCollection("teams", () => teamsBoard);
+  eleventyConfig.addGlobalData("teamsBoard", teamsBoard);
 
   // ✅ 날짜 필터 (한국식 yyyy.mm.dd)
   eleventyConfig.addFilter("date", (dateObj) => {
