@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "KBO 전력분석실 기반 스포츠 경영 블로그",
   "scripts": {
-    "start": "npx @11ty/eleventy --serve",
-    "prebuild": "node scripts/fetch-sheets.js",
-    "build": "npx @11ty/eleventy"
-  },
+  "prebuild": "node scripts/fetch-sheets.js",
+  "build": "npx @11ty/eleventy",
+  "start": "npx @11ty/eleventy --serve"
+},
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "sass": "^1.89.2",
