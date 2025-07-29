@@ -1,4 +1,3 @@
-// scripts/fetch-sheets.js
 require('dotenv').config();
 const { google } = require('googleapis');
 const fs = require('fs');
@@ -21,9 +20,18 @@ const sheets = google.sheets({ version: 'v4', auth: client });
       range: 'TeamsBoard!A2:F20', // (이름, slug, rank, wins, losses, lastGame)
     });
 
+    const teamsBoardData = (teamsBoardRes.data.values || []).map(row => ({
+      name: row[0],
+      slug: row[1],
+      rank: Number(row[2]),
+      wins: Number(row[3]),
+      losses: Number(row[4]),
+      lastGame: row[5]
+    }));
+
     fs.writeFileSync(
       './src/data/teams-board.json',
-      JSON.stringify(teamsBoardRes.data.values, null, 2)
+      JSON.stringify(teamsBoardData, null, 2)
     );
     console.log('✅ teams-board.json updated!');
 
@@ -33,9 +41,19 @@ const sheets = google.sheets({ version: 'v4', auth: client });
       range: 'GameResults!A2:D20', // (teamSlug, date, summary, link)
     });
 
+    const gameResultsData = {};
+    (gameResultsRes.data.values || []).forEach(row => {
+      const teamSlug = row[0];
+      gameResultsData[teamSlug] = {
+        date: row[1],
+        summary: row[2],
+        link: row[3]
+      };
+    });
+
     fs.writeFileSync(
       './src/_data/gameResults.json',
-      JSON.stringify(gameResultsRes.data.values, null, 2)
+      JSON.stringify(gameResultsData, null, 2)
     );
     console.log('✅ gameResults.json updated!');
   } catch (err) {
