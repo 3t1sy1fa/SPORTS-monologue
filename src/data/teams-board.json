@@ -1,12 +1,26 @@
 [
-  { "name": "키움 히어로즈", "slug": "kiwoom", "rank": 10, "wins": 40, "losses": 55, "lastGame": "패" },
-  { "name": "두산 베어스", "slug": "doosan", "rank": 5, "wins": 50, "losses": 45, "lastGame": "승" },
-  { "name": "롯데 자이언츠", "slug": "lotte", "rank": 9, "wins": 44, "losses": 51, "lastGame": "휴식" },
-  { "name": "삼성 라이온즈", "slug": "samsung", "rank": 6, "wins": 48, "losses": 46, "lastGame": "패" },
-  { "name": "한화 이글스", "slug": "hanwha", "rank": 1, "wins": 60, "losses": 38, "lastGame": "승" },
-  { "name": "KIA 타이거즈", "slug": "kia", "rank": 3, "wins": 55, "losses": 42, "lastGame": "승" },
-  { "name": "LG 트윈스", "slug": "lg", "rank": 2, "wins": 56, "losses": 40, "lastGame": "승" },
-  { "name": "SSG 랜더스", "slug": "ssg", "rank": 4, "wins": 52, "losses": 44, "lastGame": "패" },
-  { "name": "NC 다이노스", "slug": "nc", "rank": 8, "wins": 45, "losses": 50, "lastGame": "패" },
-  { "name": "KT 위즈", "slug": "kt", "rank": 7, "wins": 47, "losses": 48, "lastGame": "휴식" }
+  [
+    "키움 히어로즈",
+    "kiwoom",
+    "10",
+    "40",
+    "55",
+    "패"
+  ],
+  [
+    "두산 베어스",
+    "doosan",
+    "5",
+    "50",
+    "45",
+    "승"
+  ],
+  [
+    "롯데 자이언츠",
+    "lotte",
+    "9",
+    "44",
+    "51",
+    "휴식"
+  ]
 ]
