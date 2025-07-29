@@ -34,7 +34,7 @@ const sheets = google.sheets({ version: 'v4', auth: client });
     });
 
     fs.writeFileSync(
-      './src/data/gameResults.json',
+      './src/_data/gameResults.json',
       JSON.stringify(gameResultsRes.data.values, null, 2)
     );
     console.log('✅ gameResults.json updated!');
