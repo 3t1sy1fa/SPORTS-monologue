@@ -46,19 +46,18 @@
 
   <main class="main-container {% if isHome %}with-sidebar{% endif %}">
     {% if isHome %}
-      <!-- ✅ 홈 화면에만 보드 표시 -->
       <aside class="sidebar">
         <div class="teams-board">
-          {% for team in teamsBoard | sort(attribute="rank") %}
-            <div class="team-card">
-              <a href="/teams/{{ team.slug }}/">
-                <img src="/images/logos/{{ team.slug }}.png" alt="{{ team.name }}">
-                <div class="team-info">
-                  <span class="team-name">{{ team.name }}</span>
-                  <span class="team-rank">{{ team.rank }}위</span>
-                  <span class="team-record">{{ team.wins }}승 {{ team.losses }}패</span>
-                  <span class="team-lastgame">최근: {{ team.lastGame }}</span>
-                </div>
+         {% for team in teamsBoard | sort(attribute="rank") %}
+           <div class="team-card">
+             <a href="/teams/{{ team.slug }}/">
+               <img src="/images/logos/{{ team.slug }}.png" alt="{{ team.name }}">
+               <div class="team-info">
+                 <span class="team-name">{{ team.name }}</span>
+                 <span class="team-rank">{{ team.rank }}위</span>
+                 <span class="team-record">{{ team.wins }}승 {{ team.losses }}패</span>
+                 <span class="team-lastgame">최근: {{ team.lastGame }}</span>
+               </div>
               </a>
             </div>
           {% endfor %}
