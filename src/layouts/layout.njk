@@ -77,6 +77,9 @@
 
   <main class="main-container">
     {% block content %}
+     {% if page.filePathStem and ("/posts/" in page.filePathStem) and title %}
+       <h1 class="post-title">{{ title }}</h1>
+     {% endif %}
       {{ content | safe }}
     {% endblock %}
   </main>
