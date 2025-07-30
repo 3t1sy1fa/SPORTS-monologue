@@ -137,8 +137,8 @@ a { text-decoration: none; color: inherit; }
 }
 .left-top { border-right: 1.5px solid black; border-bottom: 1.5px solid black; display: flex; flex-direction: column; justify-content: center; padding: 24px; }
 .right-top { border-bottom: 1.5px solid black; padding: 20px 24px 12px; }
-.sports { font-family: 'spomono', sans-serif; font-size: 3.5rem; font-weight: 700; line-height: auto; letter-spacing: -4px; }
-.monologue { font-family: 'spomono', sans-serif; font-size: 3rem; color: #666; margin-bottom: auto;}
+.sports { font-family: 'spomono', sans-serif; font-size: 3.5rem; font-weight: 700; line-height: 0%; letter-spacing: -4px; }
+.monologue { font-family: 'spomono', sans-serif; font-size: 3rem; color: #666; margin-bottom: 0%;}
 .since { font-size: 1rem; color: #666; }
 .log { font-size: 2rem; font-family: 'spomono', sans-serif; line-height: 1; }
 .divider-line { width: 100%; height: 1.4px; background-color: black; margin-top: 11px; }
@@ -157,7 +157,7 @@ a { text-decoration: none; color: inherit; }
 }
 .content-area { flex: 1; padding: 20px; }
 .teams-board { display: flex; flex-direction: column; gap: 8px; }
-.team-card img { width: auto; height: auto; transition: transform 0.2s ease; }
+.team-card img { width: 50px; height: auto; transition: transform 0.2s ease; }
 .team-card img:hover { transform: scale(1.1); }
 .with-sidebar .last-game.승 { color: green; font-weight: bold; }
 .with-sidebar .last-game.패 { color: red; font-weight: bold; }
