@@ -450,18 +450,18 @@ a {
   transform: scale(1.1);
 }
 
-.last-game.승 { 
+/* 홈화면 구단 보드에서만 최근 경기 결과 색상 */
+.with-sidebar .last-game.승 { 
   color: green; 
-  font-weight: bold; 
+  font-weight: bold;
 }
-.last-game.패 { 
+.with-sidebar .last-game.패 { 
   color: red; 
-  font-weight: bold; 
+  font-weight: bold;
 }
-.last-game.휴식 { 
-  color: gray; 
+.with-sidebar .last-game.휴식 { 
+  color: gray;
 }
-
 .sidebar-toggle {
   display: none;
   background: black;
