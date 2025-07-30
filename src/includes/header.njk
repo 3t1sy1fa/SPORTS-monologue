@@ -1,4 +1,3 @@
-<!-- ✅ head 영역 -->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,42 +6,68 @@
   <link rel="stylesheet" href="/style/main.css" />
 </head>
 
-<!-- ✅ body 영역 -->
 <body>
-  <div class="grid-container">
-    <!-- 좌측 상단: SPORTS / Monologue -->
-    <div class="left-top">
-      <a href="/" class="sports">SPORTS</a>
-      <a href="/" class="monologue">Monologue</a>
-    </div>
-
-
-    <!-- 우측 상단: Since / KBO / 메뉴 -->
-    <div class="right-top">
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+  <!-- ✅ 데스크탑 헤더 -->
+  <header class="main-header desktop-header">
+    <div class="grid-container">
+      <div class="left-top">
+        <a href="/" class="sports">SPORTS</a>
+        <a href="/" class="monologue">Monologue</a>
       </div>
-
-
-      <div class="since">Since 2025</div>
-      <div class="log">KBO 전력분석실</div>
-      <div class="divider-line"></div>
-
-      <!-- 메뉴 -->
-      <nav class="top-nav">
-        <ul class="nav-menu" id="navMenu">
-          <li><a href="/about">소개</a></li>
-          <li><a href="/contact">문의</a></li>
-          <li><a href="/players">선수 분석</a></li>
-          <li><a href="/games">경기 분석</a></li>
-          <li><a href="/teams">구단 분석</a></li>
-          <li><a href="/vision">스포츠 경영</a></li>
-          <li><a href="/log">log</a></li>
-          <li><a href="/twins-tar">twins-tar</a></li>
-        </ul>
-      </nav>
+      <div class="right-top">
+        <div class="since">Since 2025</div>
+        <div class="log">KBO 전력분석실</div>
+        <div class="divider-line"></div>
+        <nav class="top-nav">
+          <ul class="nav-menu">
+            <li><a href="/about">소개</a></li>
+            <li><a href="/contact">문의</a></li>
+            <li><a href="/players">선수 분석</a></li>
+            <li><a href="/games">경기 분석</a></li>
+            <li><a href="/teams">구단 분석</a></li>
+            <li><a href="/vision">스포츠 경영</a></li>
+            <li><a href="/log">log</a></li>
+            <li><a href="/twins-tar">twins-tar</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
-  </div>
+  </header>
+
+  <!-- ✅ 모바일 헤더 -->
+  <header class="mobile-header">
+    <div class="mobile-top">
+      <a href="/" class="logo">SPORTS / M</a>
+      <button id="mobile-menu-btn" class="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu">
+      <ul>
+        <li><a href="/about">소개</a></li>
+        <li><a href="/contact">문의</a></li>
+        <li><a href="/players">선수 분석</a></li>
+        <li><a href="/games">경기 분석</a></li>
+        <li><a href="/teams">구단 분석</a></li>
+        <li><a href="/vision">스포츠 경영</a></li>
+        <li><a href="/log">log</a></li>
+        <li><a href="/twins-tar">twins-tar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-container {% if isHome %}with-sidebar{% endif %}">
+    {{ content | safe }}
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("active");
+      });
+    });
+  </script>
 </body>
