@@ -157,7 +157,7 @@ a { text-decoration: none; color: inherit; }
 }
 .content-area { flex: 1; padding: 20px; }
 .teams-board { display: flex; flex-direction: column; gap: 8px; }
-.team-card img { width: auto; height: 48px; transition: transform 0.2s ease; }
+.team-card img { width: auto; height: auto; transition: transform 0.2s ease; }
 .team-card img:hover { transform: scale(1.1); }
 .with-sidebar .last-game.승 { color: green; font-weight: bold; }
 .with-sidebar .last-game.패 { color: red; font-weight: bold; }
