@@ -270,7 +270,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .contact-container h1 {
-  font-size: 28px;
+  font-size: 48px;
   margin-bottom: 10px;
 }
 
@@ -282,7 +282,7 @@ a { text-decoration: none; color: inherit; }
 .contact-container form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 .contact-container input,
