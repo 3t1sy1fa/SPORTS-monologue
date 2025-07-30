@@ -450,6 +450,17 @@ a {
   transform: scale(1.1);
 }
 
+.last-game.승 { 
+  color: green; 
+  font-weight: bold; 
+}
+.last-game.패 { 
+  color: red; 
+  font-weight: bold; 
+}
+.last-game.휴식 { 
+  color: gray; 
+}
 
 .sidebar-toggle {
   display: none;
