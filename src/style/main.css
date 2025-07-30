@@ -451,57 +451,28 @@ a {
 }
 
 /* ---------------------- 반응형 ---------------------- */
-@media (max-width: 768px) {
-  .with-sidebar {
+
+/* 📱 모바일 (최대 480px) */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .main-header {
     flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
   }
 
-  .sidebar {
-    width: 100%;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .team-row {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .grid-container {
-    display: block;
-  }
-
-  .left-top,
-  .right-top {
-    border: none;
-    padding: 16px;
-  }
-
-  .sports,
-  .monologue {
-    font-size: 2.5rem;
-  }
-
-  .since {
-    font-size: 1rem;
-  }
-
-  .log {
-    font-size: 2rem;
-  }
-
-  .hamburger {
-    display: flex;
-    margin-top: 12px;
+  .logo-box .logo {
+    font-size: 1.3rem;
   }
 
   .nav-menu {
     display: none;
+    width: 100%;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     padding: 12px 0;
   }
 
@@ -509,7 +480,119 @@ a {
     display: flex;
   }
 
-  .top-nav {
-    margin-top: 12px;
+  .with-sidebar {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 12px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .content-area {
+    padding: 16px;
+  }
+
+  .sports,
+  .monologue {
+    font-size: 2rem;
+    letter-spacing: -1px;
+  }
+
+  .post-page {
+    padding: 20px;
+  }
+
+  .post-title {
+    font-size: 1.8rem;
+  }
+
+  .post-body {
+    font-size: 1rem;
+  }
+}
+
+/* 📱 태블릿 (481px ~ 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  .main-header {
+    padding: 16px;
+  }
+
+  .logo-box .logo {
+    font-size: 1.4rem;
+  }
+
+  .nav-menu {
+    gap: 1rem;
+  }
+
+  .with-sidebar {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 16px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .content-area {
+    padding: 20px;
+  }
+
+  .sports {
+    font-size: 2.5rem;
+  }
+
+  .monologue {
+    font-size: 2.2rem;
+  }
+
+  .post-page {
+    padding: 30px;
+  }
+
+  .post-title {
+    font-size: 2rem;
+  }
+
+  .post-body {
+    font-size: 1.2rem;
+  }
+}
+
+/* 💻 데스크탑 (768px 이상) */
+@media (min-width: 769px) {
+  .with-sidebar {
+    flex-direction: row;
+  }
+
+  .sidebar {
+    width: 220px;
+    height: 100vh;
+    border-right: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+  }
+
+  .content-area {
+    padding: 24px;
+  }
+
+  .sports {
+    font-size: 4rem;
+  }
+
+  .monologue {
+    font-size: 3rem;
   }
 }
