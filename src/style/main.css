@@ -216,3 +216,92 @@ a { text-decoration: none; color: inherit; }
     display: block;
   }
 }
+
+
+
+/* ---------------------- log ---------------------- */
+.log-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.log-title {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.log-desc {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 32px;
+}
+
+.log-post {
+  border-bottom: 1px solid #ddd;
+  padding: 16px 0;
+}
+
+.log-post-title {
+  font-size: 20px;
+  margin: 0;
+}
+
+.log-post-date {
+  font-size: 14px;
+  color: #999;
+}
+
+.log-post-desc {
+  margin-top: 6px;
+  color: #444;
+}
+
+.log-post-category {
+  font-size: 13px;
+  color: #007acc;
+}
+
+/* ---------------------- Contact ---------------------- */
+.contact-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.contact-container h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.contact-container p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.contact-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-container input,
+.contact-container textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.contact-container button {
+  width: 120px;
+  padding: 12px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start;
+}
