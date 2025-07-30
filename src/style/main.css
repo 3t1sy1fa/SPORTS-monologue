@@ -134,6 +134,7 @@ a { text-decoration: none; color: inherit; }
   display: grid;
   grid-template-columns: 1fr 2fr;
   border: 1.5px solid black;
+  grid-auto-flow: column;
 }
 
 .left-top { border-right: 1.5px solid black; border-bottom: 1.5px solid black; display: flex; flex-direction: column; justify-content: center; padding: 24px, 10%; }
