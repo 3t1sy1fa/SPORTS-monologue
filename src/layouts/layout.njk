@@ -1,6 +1,11 @@
 <body>
   {% include "header.njk" %}
 
+  {% if title == "트윈스타" %}
+  <link rel="stylesheet" href="/style/twins-tar.css" />
+  {% endif %}
+    
+
   <main class="main-container {% if isHome %}with-sidebar{% endif %}">
     {% if isHome %}
       <!-- 버튼을 사이드바 밖으로 이동 -->
