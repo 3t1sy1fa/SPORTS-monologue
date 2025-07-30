@@ -11,8 +11,8 @@ title: "{{ team.name }} 분석"
 <section class="team-page">
   <h1>{{ team.name }}</h1>
   <p>순위: {{ team.rank }}위</p>
-  <p>성적: <span style="color: red;">{{ team.wins }}승</span> <span style="color: green;">{{ team.losses }}패</span></p>
+  <p>성적: {{ team.wins }}승 {{ team.losses }}</p>
   <p>최근 경기 결과: 
-    <span class="last-game {{ team.lastGame }}">{{ team.lastGame }}</span>
+    <span style="color: red;"><span class="last-game {{ team.lastGame }}">{{ team.lastGame }}</span></span>
   </p>
 </section>
