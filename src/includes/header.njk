@@ -1,3 +1,4 @@
+<!-- ✅ head 영역 -->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,8 +8,8 @@
 </head>
 
 <body>
-  <!-- ✅ 데스크탑 헤더 -->
-  <header class="main-header desktop-header">
+  <!-- ✅ 데스크탑 전용 헤더 -->
+  <header class="desktop-header">
     <div class="grid-container">
       <div class="left-top">
         <a href="/" class="sports">SPORTS</a>
@@ -18,7 +19,7 @@
         <div class="since">Since 2025</div>
         <div class="log">KBO 전력분석실</div>
         <div class="divider-line"></div>
-        <nav class="top-nav">
+        <nav>
           <ul class="nav-menu">
             <li><a href="/about">소개</a></li>
             <li><a href="/contact">문의</a></li>
@@ -34,7 +35,7 @@
     </div>
   </header>
 
-  <!-- ✅ 모바일 헤더 -->
+  <!-- ✅ 모바일 전용 헤더 -->
   <header class="mobile-header">
     <div class="mobile-top">
       <a href="/" class="logo">SPORTS / M</a>
@@ -56,18 +57,11 @@
     </nav>
   </header>
 
-  <main class="main-container {% if isHome %}with-sidebar{% endif %}">
-    {{ content | safe }}
-  </main>
-
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const btn = document.getElementById("mobile-menu-btn");
       const menu = document.getElementById("mobile-menu");
-
-      btn.addEventListener("click", () => {
-        menu.classList.toggle("active");
-      });
+      btn.addEventListener("click", () => menu.classList.toggle("active"));
     });
   </script>
 </body>
