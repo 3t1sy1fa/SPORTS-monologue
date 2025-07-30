@@ -450,6 +450,24 @@ a {
   transform: scale(1.1);
 }
 
+
+.sidebar-toggle {
+  display: none;
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: inline-block;
+  }
+}
+
 /* ---------------------- 반응형 ---------------------- */
 
 /* 📱 모바일 (최대 480px) */
@@ -485,11 +503,16 @@ a {
   }
 
   .sidebar {
+    display: none; /* 기본적으로 숨김 */
     width: 100%;
     height: auto;
-    padding: 12px;
     border: none;
-    border-bottom: 1px solid #ddd;
+    background-color: #f8f8f8;
+    padding: 12px;
+  }
+
+  .sidebar.active {
+    display: block; /* 버튼 클릭 시 보이기 */
   }
 
   .content-area {
