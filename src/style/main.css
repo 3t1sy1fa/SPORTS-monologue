@@ -131,11 +131,12 @@ a { text-decoration: none; color: inherit; }
 
 /* ---------------------- 상단 타이틀 ---------------------- */
 .grid-container {
-  display: inline-grid;
+  display: grid;
   grid-template-columns: 1fr 2fr;
   border: 1.5px solid black;
 }
-.left-top { border-right: 1.5px solid black; border-bottom: 1.5px solid black; display: flex; flex-direction: column; justify-content: center; padding: 24px, ; }
+
+.left-top { border-right: 1.5px solid black; border-bottom: 1.5px solid black; display: flex; flex-direction: column; justify-content: center; padding: 24px, 10%; }
 .right-top { border-bottom: 1.5px solid black; padding: 20px 24px 12px; }
 .sports { font-family: 'spomono', sans-serif; font-size: 3.5rem; font-weight: 700; margin: -22px; letter-spacing: -4px; }
 .monologue { font-family: 'spomono', sans-serif; font-size: 3rem; color: #666; margin: -13px;}
