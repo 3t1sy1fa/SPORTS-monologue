@@ -192,3 +192,27 @@ a { text-decoration: none; color: inherit; }
   .sports { font-size: 4rem; }
   .monologue { font-size: 3rem; }
 }
+
+.sidebar-toggle {
+  display: none;
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .sidebar-toggle { display: block; }
+  .sidebar {
+    display: none;
+    width: 100%;
+    height: auto;
+  }
+  .sidebar.active {
+    display: block;
+  }
+}
