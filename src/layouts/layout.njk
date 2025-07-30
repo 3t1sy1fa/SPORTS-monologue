@@ -11,8 +11,7 @@
       <!-- 버튼을 사이드바 밖으로 이동 -->
       <button id="sidebar-toggle" class="sidebar-toggle">구단 보드</button>
 
-      <aside class="sidebar">
-       <button id="sidebar-toggle" class="sidebar-toggle">구단 보드</button>
+      <aside class="sidebar">       
         <div class="teams-board">
           {% for team in teamsBoard | sort(attribute="rank") %}
             <div class="team-card">
