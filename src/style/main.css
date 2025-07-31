@@ -50,7 +50,7 @@ a { text-decoration: none; color: inherit; }
 .nav-menu a:hover { color: #6e6e6e; }
 
 
-.desktop-header { max-width: 100%; display: flex; }
+.desktop-header { width: 100%; display: flex; }
 .mobile-header { display: none; }
 
 @media (max-width: 768px) {
