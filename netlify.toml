@@ -10,3 +10,9 @@
   to = "/index.html"
   status = 200
   
+[functions]
+  directory = "netlify/functions"
+
+[[scheduled.functions]]
+  name = "scheduler"
+  schedule = "@daily"
