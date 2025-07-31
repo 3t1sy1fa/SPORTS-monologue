@@ -29,6 +29,7 @@ a { text-decoration: none; color: inherit; }
 .logo-box .logo { font-size: 1.5rem; font-weight: 700; color: black; }
 
 .nav-menu {
+  width: 100%;
   list-style: none;
   display: flex;
   gap: 2rem;
