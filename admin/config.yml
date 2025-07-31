@@ -14,10 +14,18 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "제목", name: "title", widget: "string" }
-      - { label: "카테고리", name: "category", widget: "select", options: ["선수 분석", "경기 분석","스포츠 경영"] }
+      - { label: "카테고리", name: "category", widget: "select", options: ["선수 분석", "경기 분석", "스포츠 경영"] }
       - { label: "날짜", name: "date", widget: "datetime" }
       - { label: "레이아웃", name: "layout", widget: "select", options: ["layout.njk", "post.njk"] }
       - { label: "요약", name: "excerpt", widget: "text" }
+      - label: "주제"
+        name: "topic"
+        widget: "select"
+        required: false
+        options: ["리그 경영 전략", "브랜드/팬덤", "굿즈,상품화 전략", "리스크,안정성 전략", "기타"]
+        conditional:
+        field: "category"
+        value: "스포츠 경영"
       - { label: "본문", name: "body", widget: "markdown" }
 
   - name: "log"
@@ -30,7 +38,6 @@ collections:
       - { label: "작성일", name: "date", widget: "datetime" }
       - { label: "카테고리", name: "category", widget: "select", options: ["사이트 제작", "사이트 운영", "경영", "분석", "기타"] }
       - { label: "설명", name: "description", widget: "text" }
-      - { label: "주제", name: "topic", widget: "select", required: false, options: ["리그 경영 전략", "브랜드/팬덤", "굿즈,상품화 전략", "리스크,안정성 전략","기타"] }
       - { label: "레이아웃", name: "layout", widget: "hidden", default: "layout.njk" }
       - { label: "본문", name: "body", widget: "markdown" }
 
