@@ -11,9 +11,33 @@
       <!-- 버튼을 사이드바 밖으로 이동 -->
       <button id="sidebar-toggle" class="sidebar-toggle">구단 보드</button>
 
-      <aside class="sidebar">       
-        <div class="teams-board">
-          {% for team in teamsBoard | sort(attribute="rank") %}
+      <aside class="sidebar">     
+        <!-- 최신 경기 결과 -->
+        <div class="latest-games-section">
+         <h3>최신 경기 결과</h3>
+         <ul class="latest-games">
+           {% for game in latestGames %}
+             <li>
+               <span class="match">
+                 <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
+                 {{ game.home }} vs 
+                 <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
+                 {{ game.away }}
+               </span>
+               <span class="score {% if game.result == '승' %}win{% elseif game.result == '패' %}lose{% endif %}">
+                 {{ game.score }}
+               </span>
+               <span class="date">{{ game.date | date("MM.dd") }}</span>
+             </li>
+           {% endfor %}
+         </ul>
+       </div>  
+
+  <!-- 구단 보드 -->
+       <div class="teams-board-section">
+         <h3>구단 보드</h3>
+         <div class="teams-board">
+         {% for team in teamsBoard | sort(attribute="rank") %}
             <div class="team-card">
               <a href="/teams/{{ team.slug }}/">
                 <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
@@ -26,6 +50,7 @@
               </a>
             </div>
           {% endfor %}
+          </div>
         </div>
       </aside>
     {% endif %}
