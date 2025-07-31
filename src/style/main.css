@@ -234,6 +234,11 @@ a { text-decoration: none; color: inherit; }
   flex: 2;
 }
 
+.latest-games .match img {
+  width: auto;
+  height: 40px;
+}
+
 .latest-games .score {
   flex: 1;
   text-align: center;
@@ -268,7 +273,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .team-card img {
-  width: 40px;
+  width: auto;
   height: 40px;
   margin-right: 10px;
   transition: transform 0.2s ease;
