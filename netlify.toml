@@ -15,4 +15,4 @@
 
 [[scheduled.functions]]
   name = "scheduler"
-  schedule = "@daily"
+  schedule = "0 18 * * *"  
