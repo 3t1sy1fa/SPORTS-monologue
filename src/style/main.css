@@ -235,8 +235,8 @@ a { text-decoration: none; color: inherit; }
 }
 
 .latest-games .match img {
-  width: 4px;
-  height: 4px;
+  width: 15px;
+  height: 15px;
   object-fit: contain;
 }
 
