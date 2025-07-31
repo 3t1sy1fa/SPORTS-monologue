@@ -3,7 +3,6 @@ module.exports = function (eleventyConfig) {
   ["src/style", "src/scripts", "src/images", "src/fonts", "admin"]
     .forEach(path => eleventyConfig.addPassthroughCopy(path));
 
-    
   // ✅ 팀 분석 컬렉션
   eleventyConfig.addCollection("teamPosts", (collection) =>
     collection.getFilteredByGlob("src/teams-analysis/*.md")
@@ -18,6 +17,20 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("log", (collection) =>
     collection.getFilteredByGlob("src/log/*.md")
   );
+
+  // ✅ 로그 주제별 컬렉션 (중복 제거)
+  eleventyConfig.addCollection("logByTopic", function (collection) {
+    const logs = collection.getFilteredByGlob("src/log/*.md");
+    const topics = {};
+
+    logs.forEach(item => {
+      const topic = item.data.topic || "기타"; // topic 없으면 기본값
+      if (!topics[topic]) topics[topic] = [];
+      topics[topic].push(item);
+    });
+
+    return topics;
+  });
 
   // ✅ teams-board.json을 전역 데이터로 등록
   const teamsBoard = require("./src/data/teams-board.json");
@@ -36,6 +49,7 @@ module.exports = function (eleventyConfig) {
   // ✅ 레이아웃 별칭
   eleventyConfig.addLayoutAlias("team-layout", "layouts/team-layout.njk");
 
+  // ✅ 디렉토리 구조
   return {
     dir: {
       input: "src",

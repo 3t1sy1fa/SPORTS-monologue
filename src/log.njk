@@ -7,21 +7,44 @@ description: "Sports Monologue 사이트 제작 과정을 담은 페이지입니
 {% block content %}
 <main class="log-container">
   <h1>log</h1>
-  <p>사이트 운영에 대한 기록을 남깁니다!</p>
+  <p>사이트 운영 및 경영 기록 전체를 확인할 수 있습니다.</p>
 
-  <!-- log 포스트 목록 -->
-  {% for post in collections.log | reverse %}
-    <article class="log-post">
-      <a href="{{ post.url }}" title="{{ post.data.title }}">
-        <h2 class="log-post-title">{{ post.data.title }}</h2>
-      </a>
-      <time class="log-post-date" datetime="{{ post.date | date('yyyy-MM-dd') }}">
-        {{ post.date | date("yyyy.MM.dd") }}
-      </time>
-      <p class="log-post-desc">
-        {{ post.data.description or "이 포스트는 사이트 운영 관련 기록을 다룹니다." }}
-      </p>
-    </article>
-  {% endfor %}
+  <!-- ✅ 전체 글 목록 기본 표시 -->
+  <section class="log-all">
+    <h2>전체 글 목록</h2>
+    {% for post in collections.log | reverse %}
+      <article class="log-post">
+        <a href="{{ post.url }}" title="{{ post.data.title }}">
+          <h3 class="log-post-title">{{ post.data.title }}</h3>
+        </a>
+        <time class="log-post-date" datetime="{{ post.date | date('yyyy-MM-dd') }}">
+          {{ post.date | date("yyyy.MM.dd") }}
+        </time>
+        <p class="log-post-desc">
+          {{ post.data.description or "이 포스트는 사이트 운영 관련 기록을 다룹니다." }}
+        </p>
+      </article>
+    {% endfor %}
+  </section>
+
+  <!-- ✅ 주제별 분류도 아래에 선택적으로 보여줌 -->
+  <section class="log-by-topic">
+    <h2>주제별 분류</h2>
+    {% for topic, posts in collections.logByTopic %}
+      <details class="log-topic">
+        <summary>{{ topic }}</summary>
+        {% for post in posts | reverse %}
+          <article class="log-post">
+            <a href="{{ post.url }}" title="{{ post.data.title }}">
+              <h3 class="log-post-title">{{ post.data.title }}</h3>
+            </a>
+            <time class="log-post-date" datetime="{{ post.date | date('yyyy-MM-dd') }}">
+              {{ post.date | date("yyyy.MM.dd") }}
+            </time>
+          </article>
+        {% endfor %}
+      </details>
+    {% endfor %}
+  </section>
 </main>
 {% endblock %}
