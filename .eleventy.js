@@ -18,19 +18,9 @@ module.exports = function (eleventyConfig) {
     collection.getFilteredByGlob("src/log/*.md")
   );
 
-  // ✅ 로그 주제별 컬렉션 (중복 제거)
-  eleventyConfig.addCollection("logByTopic", function (collection) {
-    const logs = collection.getFilteredByGlob("src/log/*.md");
-    const topics = {};
-
-    logs.forEach(item => {
-      const topic = item.data.topic || "기타"; // topic 없으면 기본값
-      if (!topics[topic]) topics[topic] = [];
-      topics[topic].push(item);
-    });
-
-    return topics;
-  });
+  eleventyConfig.addCollection("log", (collection) =>
+    collection.getFilteredByGlob("src/log/*.md")
+  );
 
   // ✅ teams-board.json을 전역 데이터로 등록
   const teamsBoard = require("./src/data/teams-board.json");
