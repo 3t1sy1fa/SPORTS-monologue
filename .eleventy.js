@@ -18,10 +18,6 @@ module.exports = function (eleventyConfig) {
     collection.getFilteredByGlob("src/log/*.md")
   );
 
-  eleventyConfig.addCollection("log", (collection) =>
-    collection.getFilteredByGlob("src/log/*.md")
-  );
-
   // ✅ teams-board.json을 전역 데이터로 등록
   const teamsBoard = require("./src/data/teams-board.json");
   eleventyConfig.addGlobalData("teamsBoard", teamsBoard);
