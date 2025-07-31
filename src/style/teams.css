@@ -1,6 +1,6 @@
 .team-box.lg {
   background-color: #000000d5;
-  color: #a84141;
+  color: #9b0000;
 }
 .team-box.doosan {
   background-color: #1a1748f1;
@@ -15,8 +15,8 @@
   color: #d00f32ee;
 }
 .team-box.samsung {
-  background-color: #c0c0c0af;
-  color: #074ca1dc;
+  background-color: #074ca1dc;
+  color: #c0c0c0af;
 }
 .team-box.hanwha {
   background-color: #fc5000ce;
@@ -28,7 +28,7 @@
 }
 .team-box.kiwoom {
   background-color: #570514f3;
-  color: #e7e7e7;
+  color: #d6d6d6;
 }
 .team-box.nc {
   background-color: #af917bec;
