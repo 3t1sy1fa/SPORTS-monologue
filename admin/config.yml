@@ -24,8 +24,8 @@ collections:
         required: false
         options: ["리그 경영 전략", "브랜드/팬덤", "굿즈,상품화 전략", "리스크,안정성 전략", "기타"]
         conditional:
-        field: "topic"
-        value: "스포츠 경영"
+          field: "category"
+          value: "스포츠 경영"
       - { label: "본문", name: "body", widget: "markdown" }
 
   - name: "log"
