@@ -171,7 +171,7 @@ a { text-decoration: none; color: inherit; }
 
 .sports { font-family: 'spomono', sans-serif; font-size: 3rem; font-weight: 700; margin: -22px; letter-spacing: -4px; }
 .monologue { font-family: 'spomono', sans-serif; font-size: 2rem; color: #666; margin: -13px;}
-.since { font-size: 1rem; color: #666; align-items: left auto; }
+.since { font-size: 0.9rem; color: #666; align-items: left auto; }
 .log { font-size: 2rem; font-family: 'spomono', sans-serif; line-height: 1; align-items: left auto; }
 
 .divider-line {
@@ -293,15 +293,15 @@ a { text-decoration: none; color: inherit; }
 
 /* ✅ 승/패 색상 */
 .with-sidebar .last-game.승 { 
-  color: green; 
+  color: #008000; 
   font-weight: bold; 
 }
 .with-sidebar .last-game.패 { 
-  color: red; 
+  color: #ff0000; 
   font-weight: bold; 
 }
 .with-sidebar .last-game.휴식 { 
-  color: gray; 
+  color: #919191; 
 }
 /* ---------------------- 반응형 ---------------------- */
 @media (max-width: 480px) {
@@ -363,7 +363,7 @@ a { text-decoration: none; color: inherit; }
 .log-container {
   max-width: 720px;
   margin: 0;
-  padding: 40px 24px;
+  padding: 40px 10px;
 }
 
 .log-container h1 {
@@ -417,7 +417,7 @@ a { text-decoration: none; color: inherit; }
 .contact-container {
   max-width: 720px;
   margin: 0 auto;
-  padding: 48px 24px;
+  padding: 48px 15px;
 }
 
 .contact-container h1 {
