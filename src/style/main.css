@@ -150,6 +150,7 @@ a { text-decoration: none; color: inherit; }
     "a c";
   max-width: 1200px;
   margin: 0 auto;
+  align-self: stretch;
 }
 
 
@@ -177,6 +178,7 @@ a { text-decoration: none; color: inherit; }
   height: 1.4px;
   background-color: black;
   margin-top: 14px;
+  align-self: stretch;
 }
 
 .sports { font-family: 'spomono', sans-serif; font-size: 3.5rem; font-weight: 700; margin: -22px; letter-spacing: -4px; }
