@@ -14,10 +14,10 @@ const sheets = google.sheets({ version: 'v4', auth: client });
 
 (async () => {
   try {
-    // 1️⃣ TeamsBoard 시트 → teams-board.json
+    // 1️⃣ TeamsBoard → teams-board.json
     const teamsBoardRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: 'TeamsBoard!A2:F20', // (이름, slug, rank, wins, losses, lastGame)
+      range: 'TeamsBoard!A2:F20',
     });
 
     const teamsBoardData = (teamsBoardRes.data.values || []).map(row => ({
@@ -26,7 +26,7 @@ const sheets = google.sheets({ version: 'v4', auth: client });
       rank: Number(row[2]),
       wins: Number(row[3]),
       losses: Number(row[4]),
-      lastGame: row[5]
+      lastGame: row[5],
     }));
 
     fs.writeFileSync(
@@ -35,10 +35,10 @@ const sheets = google.sheets({ version: 'v4', auth: client });
     );
     console.log('✅ teams-board.json updated!');
 
-    // 2️⃣ GameResults 시트 → gameResults.json
+    // 2️⃣ GameResults → gameResults.json
     const gameResultsRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: 'GameResults!A2:D20', // (teamSlug, date, summary, link)
+      range: 'GameResults!A2:D20',
     });
 
     const gameResultsData = {};
@@ -47,7 +47,7 @@ const sheets = google.sheets({ version: 'v4', auth: client });
       gameResultsData[teamSlug] = {
         date: row[1],
         summary: row[2],
-        link: row[3]
+        link: row[3],
       };
     });
 
@@ -56,6 +56,28 @@ const sheets = google.sheets({ version: 'v4', auth: client });
       JSON.stringify(gameResultsData, null, 2)
     );
     console.log('✅ gameResults.json updated!');
+
+    // 3️⃣ LatestGames → latest-games.json
+    const latestGamesRes = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.SHEET_ID,
+      range: 'LatestGames!A2:F10',
+    });
+
+    const latestGamesData = (latestGamesRes.data.values || []).map(row => ({
+      home: row[0],
+      homeSlug: row[1],
+      away: row[2],
+      awaySlug: row[3],
+      score: row[4],
+      date: row[5],
+    }));
+
+    fs.writeFileSync(
+      './src/data/latest-games.json',
+      JSON.stringify(latestGamesData, null, 2)
+    );
+    console.log('✅ latest-games.json updated!');
+
   } catch (err) {
     console.error('❌ Failed to fetch data from Google Sheets:', err);
     process.exit(1);

@@ -19,6 +19,9 @@ module.exports = function (eleventyConfig) {
       .filter((post) => post.data.category === "스포츠 경영")
   );
 
+  const latestGames = require("./src/data/latest-games.json");
+  eleventyConfig.addGlobalData("latestGames", latestGames);
+
   // ✅ 스포츠 경영 주제 목록
   eleventyConfig.addCollection("sportsTopics", (collection) => {
     const posts = collection.getFilteredByGlob("src/posts/*.md")

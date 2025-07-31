@@ -1,0 +1,7 @@
+[
+  { "home": "LG", "homeSlug": "lg", "away": "두산", "awaySlug": "doosan", "score": "5 - 3", "date": "2025-07-31" },
+  { "home": "KT", "homeSlug": "kt", "away": "NC", "awaySlug": "nc", "score": "2 - 4", "date": "2025-07-31" },
+  { "home": "SSG", "homeSlug": "ssg", "away": "삼성", "awaySlug": "samsung", "score": "1 - 0", "date": "2025-07-31" },
+  { "home": "키움", "homeSlug": "kiwoom", "away": "롯데", "awaySlug": "lotte", "score": "7 - 6", "date": "2025-07-31" },
+  { "home": "한화", "homeSlug": "hanwha", "away": "KIA", "awaySlug": "kia", "score": "3 - 8", "date": "2025-07-31" }
+]
