@@ -17,7 +17,7 @@ a { text-decoration: none; color: inherit; }
 @font-face { font-family: 'spomono'; src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2'); }
 
 .main-header {
-  width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,7 +29,7 @@ a { text-decoration: none; color: inherit; }
 .logo-box .logo { font-size: 1.5rem; font-weight: 700; color: black; }
 
 .nav-menu {
-  width: 100%;
+  max-width: 100%;
   list-style: none;
   display: flex;
   gap: 2rem;
