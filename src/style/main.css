@@ -236,7 +236,8 @@ a { text-decoration: none; color: inherit; }
 
 .latest-games .match img {
   width: auto;
-  height: 40px;
+  height: 4px;
+  object-fit: contain;
 }
 
 .latest-games .score {
