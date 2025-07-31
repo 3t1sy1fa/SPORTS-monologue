@@ -120,6 +120,19 @@ a { text-decoration: none; color: inherit; }
 .post-body p { margin-bottom: 1.5rem; }
 .post-body h2 { font-size: 24px; margin-top: 40px; margin-bottom: 16px; }
 
+
+.sports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.topic-filter select {
+  padding: 5px;
+  font-size: 1rem;
+}
+
 /* ---------------------- 메인 컨테이너 ---------------------- */
 .main-container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
 

@@ -13,6 +13,25 @@ module.exports = function (eleventyConfig) {
     collection.getFilteredByGlob("src/posts/*.md")
   );
 
+  // ✅ 스포츠 경영 글만 가져오기
+  eleventyConfig.addCollection("sportsPosts", (collection) =>
+    collection.getFilteredByGlob("src/posts/*.md")
+      .filter((post) => post.data.category === "스포츠 경영")
+  );
+
+  // ✅ 스포츠 경영 주제 목록
+  eleventyConfig.addCollection("sportsTopics", (collection) => {
+    const posts = collection.getFilteredByGlob("src/posts/*.md")
+      .filter((post) => post.data.category === "스포츠 경영");
+
+    const uniqueTopics = new Set();
+    posts.forEach(post => {
+      if (post.data.topic) uniqueTopics.add(post.data.topic);
+    });
+
+    return Array.from(uniqueTopics);
+  });
+
   // ✅ 로그 컬렉션
   eleventyConfig.addCollection("log", (collection) =>
     collection.getFilteredByGlob("src/log/*.md")

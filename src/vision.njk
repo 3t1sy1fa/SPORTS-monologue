@@ -6,12 +6,23 @@ description: "스포츠 경영 공부 기록을 담은 페이지입니다."
 
 {% block content %}
 <main class="main-container">
-  <h1>Vision</h1>
+  <div class="sports-header">
+    <h1>Vision</h1>
+    <div class="topic-filter">
+      <label for="topicSelect">주제별 보기</label>
+      <select id="topicSelect">
+        <option value="all">전체</option>
+        {% for topic in collections.sportsTopics %}
+          <option value="{{ topic }}">{{ topic }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
 
-  <div class="post-list">
+  <div class="post-list" id="postList">
     {% for post in collections.posts | reverse %}
       {% if post.data.category == "스포츠 경영" %}
-        <article class="post-item">
+        <article class="post-item" data-topic="{{ post.data.topic or '기타' }}">
           <h4>
             <a href="{{ post.url }}" title="{{ post.data.title }}">
               {{ post.data.title }}
