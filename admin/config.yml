@@ -12,6 +12,8 @@ collections:
     folder: "src/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
     fields:
       - { label: "제목", name: "title", widget: "string" }
       - { label: "카테고리", name: "category", widget: "select", options: ["선수 분석", "경기 분석", "스포츠 경영"] }
@@ -33,6 +35,8 @@ collections:
     folder: "src/log"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
     fields:
       - { label: "제목", name: "title", widget: "string" }
       - { label: "작성일", name: "date", widget: "datetime" }
@@ -46,6 +50,8 @@ collections:
     folder: "src/teams-analysis"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
     fields:
     - { label: "제목", name: "title", widget: "string" }
     - { label: "작성일", name: "date", widget: "datetime" }

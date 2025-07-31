@@ -1,18 +1,14 @@
 import CMS from "netlify-cms-app";
-import "../src/style/main.css"; // 사이트 CSS 적용
+import PostTemplate from "../src/includes/post.njk"; // 실제 글 레이아웃 파일
 
-const PostPreview = ({ entry, widgetFor }) => {
-  const data = entry.getIn(["data"]).toJS();
-
-  return `
-    <div class="main-container post-page">
-      <h1 class="post-title">${data.title || "제목 없음"}</h1>
-      <p class="post-meta">${data.date || ""}</p>
-      <div class="post-body">
-        ${widgetFor("body")}
-      </div>
+const PostPreview = ({ entry }) => {
+  return (
+    <div class="post-page">
+      <h1>{entry.getIn(["data", "title"])}</h1>
+      <p>{entry.getIn(["data", "date"])}</p>
+      <div>{entry.getIn(["data", "body"])}</div>
     </div>
-  `;
+  );
 };
 
 CMS.registerPreviewTemplate("posts", PostPreview);
