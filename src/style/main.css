@@ -274,10 +274,11 @@ a { text-decoration: none; color: inherit; }
 }
 
 .team-card img {
-  width: auto;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin-right: 10px;
   transition: transform 0.2s ease;
+  object-fit: contain;
 }
 
 .team-card img:hover { 
