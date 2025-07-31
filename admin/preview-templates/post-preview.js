@@ -1,5 +1,5 @@
 import CMS from "netlify-cms-app";
-import "../../style/main.css"; // 사이트 스타일 적용
+import "../../style/main.css";
 
 const PostPreview = ({ entry }) => {
   const title = entry.getIn(["data", "title"]);
@@ -7,42 +7,33 @@ const PostPreview = ({ entry }) => {
   const body = entry.getIn(["data", "body"]);
 
   return `
-    <main class="post-page">
-      <h1 class="post-title">${title}</h1>
-      <p class="post-category">[${category}]</p>
-      <div class="post-body">${body}</div>
-    </main>
-  `;
-};
+    <body>
+      <header class="main-header">
+        <div class="logo-box">
+          <a href="/" class="logo">SPORTS / Monologue</a>
+        </div>
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="/players">선수분석</a></li>
+            <li><a href="/teams">구단분석</a></li>
+            <li><a href="/games">경기분석</a></li>
+            <li><a href="/about">소개</a></li>
+            <li><a href="/contact">문의</a></li>
+          </ul>
+        </nav>
+      </header>
 
-const LogPreview = ({ entry }) => {
-  const title = entry.getIn(["data", "title"]);
-  const category = entry.getIn(["data", "category"]);
-  const body = entry.getIn(["data", "body"]);
+      <main class="post-page">
+        <h1 class="post-title">${title}</h1>
+        <p class="post-category">[${category}]</p>
+        <div class="post-body">${body}</div>
+      </main>
 
-  return `
-    <main class="log-container">
-      <h2>${title}</h2>
-      <p class="log-post-category">[${category}]</p>
-      <div class="log-post-desc">${body}</div>
-    </main>
-  `;
-};
-
-const TeamAnalysisPreview = ({ entry }) => {
-  const title = entry.getIn(["data", "title"]);
-  const category = entry.getIn(["data", "category"]);
-  const body = entry.getIn(["data", "body"]);
-
-  return `
-    <main class="team-analysis">
-      <h1>${title}</h1>
-      <p>팀: ${category}</p>
-      <div class="team-body">${body}</div>
-    </main>
+      <footer class="site-footer">
+        © 2025 Sports Monologue. All rights reserved.
+      </footer>
+    </body>
   `;
 };
 
 CMS.registerPreviewTemplate("posts", PostPreview);
-CMS.registerPreviewTemplate("log", LogPreview);
-CMS.registerPreviewTemplate("teamAnalysis", TeamAnalysisPreview);
