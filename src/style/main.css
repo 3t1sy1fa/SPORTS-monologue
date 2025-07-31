@@ -149,7 +149,6 @@ a { text-decoration: none; color: inherit; }
   grid-template-areas: "a b";
   max-width: 1200px;
   margin: 0 auto;
-  align-items: stretch;
 }
 
 .left-top {
