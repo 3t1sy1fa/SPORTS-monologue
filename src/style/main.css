@@ -160,6 +160,7 @@ a { text-decoration: none; color: inherit; }
 
 .right-top {
   grid-area: b;
+  align-items: center;
 }
 
 .left-top, .right-top {
@@ -172,8 +173,8 @@ a { text-decoration: none; color: inherit; }
 
 .sports { font-family: 'spomono', sans-serif; font-size: 3rem; font-weight: 700; margin: -22px; letter-spacing: -4px; }
 .monologue { font-family: 'spomono', sans-serif; font-size: 2rem; color: #666; margin: -13px;}
-.since { font-size: 0.9rem; color: #666; align-items: left auto; }
-.log { font-size: 2rem; font-family: 'spomono', sans-serif; line-height: 1; align-items: left auto; }
+.since { font-size: 0.9rem; color: #666; align-items: left ; }
+.log { font-size: 2rem; font-family: 'spomono', sans-serif; line-height: 1; align-items: left; }
 
 .divider-line {
   width: 100%;
