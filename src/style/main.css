@@ -133,6 +133,8 @@ a { text-decoration: none; color: inherit; }
 .topic-filter select {
   padding: 5px;
   font-size: 1rem;
+  background-color: #e3e9ee;
+  color: #535977;
 }
 
 .back-button {
