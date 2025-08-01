@@ -1,67 +1,70 @@
-module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy({ "static/favicon.png": "favicon.png" });
+const moment = require("moment");
 
-  // ✅ 정적 리소스 그대로 복사
+module.exports = function(eleventyConfig) {
+  // ✅ 파비콘 및 정적 리소스
+  eleventyConfig.addPassthroughCopy({ "static/favicon.png": "favicon.png" });
   ["src/style", "src/scripts", "src/images", "src/fonts", "admin"]
     .forEach(path => eleventyConfig.addPassthroughCopy(path));
 
-  // ✅ 팀 분석 컬렉션
-  eleventyConfig.addCollection("teamPosts", (collection) =>
-    collection.getFilteredByGlob("src/teams-analysis/*.md")
+  // ✅ 컬렉션
+  eleventyConfig.addCollection("teamPosts", c => c.getFilteredByGlob("src/teams-analysis/*.md"));
+  eleventyConfig.addCollection("posts", c => c.getFilteredByGlob("src/posts/*.md"));
+  eleventyConfig.addCollection("sportsPosts", c =>
+    c.getFilteredByGlob("src/posts/*.md").filter(p => p.data.category === "스포츠 경영")
   );
-
-  // ✅ 일반 글 컬렉션
-  eleventyConfig.addCollection("posts", (collection) =>
-    collection.getFilteredByGlob("src/posts/*.md")
-  );
-
-  // ✅ 스포츠 경영 글만 가져오기
-  eleventyConfig.addCollection("sportsPosts", (collection) =>
-    collection.getFilteredByGlob("src/posts/*.md")
-      .filter((post) => post.data.category === "스포츠 경영")
-  );
-
-  const latestGames = require("./src/data/latest-games.json");
-  eleventyConfig.addGlobalData("latestGames", latestGames);
-
-  // ✅ 스포츠 경영 주제 목록
-  eleventyConfig.addCollection("sportsTopics", (collection) => {
-    const posts = collection.getFilteredByGlob("src/posts/*.md")
-      .filter((post) => post.data.category === "스포츠 경영");
-
+  eleventyConfig.addCollection("sportsTopics", c => {
+    const posts = c.getFilteredByGlob("src/posts/*.md")
+      .filter(p => p.data.category === "스포츠 경영");
     const uniqueTopics = new Set();
-    posts.forEach(post => {
-      if (post.data.topic) uniqueTopics.add(post.data.topic);
-    });
-
+    posts.forEach(p => p.data.topic && uniqueTopics.add(p.data.topic));
     return Array.from(uniqueTopics);
   });
+  eleventyConfig.addCollection("log", c => c.getFilteredByGlob("src/log/*.md"));
 
-  // ✅ 로그 컬렉션
-  eleventyConfig.addCollection("log", (collection) =>
-    collection.getFilteredByGlob("src/log/*.md")
+  // ✅ 글로벌 데이터
+  eleventyConfig.addGlobalData("latestGames", require("./src/data/latest-games.json"));
+  eleventyConfig.addGlobalData("teamsBoard", require("./src/data/teams-board.json"));
+  eleventyConfig.addGlobalData("twinsPlayers", () => require("./src/data/twins-players.json"));
+  eleventyConfig.addGlobalData("twinsNews", () => require("./src/data/twins-news.json"));
+  eleventyConfig.addGlobalData("twinsSchedule", () => require("./src/data/twins-schedule.json"));
+  eleventyConfig.addGlobalData("playerStats", () => require("./src/data/player-stats.json"));
+
+  // ✅ 날짜 필터
+  eleventyConfig.addFilter("date", dateObj =>
+    dateObj ? new Date(dateObj).toLocaleDateString("ko-KR", {
+      year: "numeric", month: "2-digit", day: "2-digit",
+    }) : ""
   );
 
-  // ✅ teams-board.json을 전역 데이터로 등록
-  const teamsBoard = require("./src/data/teams-board.json");
-  eleventyConfig.addGlobalData("teamsBoard", teamsBoard);
+  // ✅ 캘린더 필터
+  eleventyConfig.addFilter("monthCalendar", (schedule, month) => {
+    const start = moment(month).startOf("month").startOf("week");
+    const end = moment(month).endOf("month").endOf("week");
+    const days = [];
+    let current = start.clone();
 
-  eleventyConfig.addGlobalData("playerStats", () => require("./src/data/player-stats.json"));
-  
-  // ✅ 날짜 필터 (한국식 yyyy.mm.dd)
-  eleventyConfig.addFilter("date", (dateObj) => {
-    if (!dateObj) return "";
-    return new Date(dateObj).toLocaleDateString("ko-KR", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    });
+    while (current.isBefore(end)) {
+      const week = [];
+      for (let i = 0; i < 7; i++) {
+        const dateStr = current.format("YYYY-MM-DD");
+        const game = schedule.find(s => s.date === dateStr);
+        week.push({
+          day: current.date(),
+          result: game ? game.result : "",
+          logo: game ? game.opponentSlug : null,
+          opponent: game ? game.opponent : null,
+          link: game ? game.link : null,
+        });
+        current.add(1, "day");
+      }
+      days.push(week);
+    }
+    return days;
   });
 
   // ✅ 레이아웃 별칭
   eleventyConfig.addLayoutAlias("team-layout", "layouts/team-layout.njk");
 
-  // ✅ 디렉토리 구조
   return {
     dir: {
       input: "src",

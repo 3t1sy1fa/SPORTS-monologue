@@ -98,6 +98,62 @@ const sheets = google.sheets({ version: 'v4', auth: client });
     );
     console.log('✅ player-stats.json updated!');
 
+    // 5️⃣ TwinsPlayers → twins-players.json
+    const playersRes = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.SHEET_ID,
+      range: 'TwinsPlayers!A2:D50',
+    });
+
+    const playersData = (playersRes.data.values || []).map(row => ({
+      name: row[0],
+      slug: row[1],
+      position: row[2],
+      note: row[3],
+    }));
+
+    fs.writeFileSync(
+      './src/data/twins-players.json',
+      JSON.stringify(playersData, null, 2)
+    );
+    console.log('✅ twins-players.json updated!');
+
+    // 6️⃣ TwinsNews → twins-news.json
+    const newsRes = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.SHEET_ID,
+      range: 'TwinsNews!A2:B30',
+    });
+
+    const newsData = (newsRes.data.values || []).map(row => ({
+      title: row[0],
+      link: row[1],
+    }));
+
+    fs.writeFileSync(
+      './src/data/twins-news.json',
+      JSON.stringify(newsData, null, 2)
+    );
+    console.log('✅ twins-news.json updated!');
+
+    // 7️⃣ TwinsSchedule → twins-schedule.json
+    const scheduleRes = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.SHEET_ID,
+      range: 'TwinsSchedule!A2:E100',
+    });
+
+    const scheduleData = (scheduleRes.data.values || []).map(row => ({
+      date: row[0],
+      opponent: row[1],
+      opponentSlug: row[2],
+      result: row[3],
+      link: row[4],
+    }));
+
+    fs.writeFileSync(
+      './src/data/twins-schedule.json',
+      JSON.stringify(scheduleData, null, 2)
+    );
+    console.log('✅ twins-schedule.json updated!');
+
   } catch (err) {
     console.error('❌ Failed to fetch data from Google Sheets:', err);
     process.exit(1);
