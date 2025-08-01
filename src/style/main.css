@@ -370,7 +370,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ---------------------- log ---------------------- */
-.log-container { max-width: 720px; margin: 0; padding: 10px 50px; align-self: flex-start; }
+.log-container { max-width: 720px; margin: 0; padding: 10px 20%; align-self: flex-start; }
 .log-container h1 { font-size: 48px; margin-bottom: 12px; }
 .log-desc { font-size: 16px; color: #666; margin-bottom: 20px; }
 .log-post { border-bottom: 1px solid #ddd; padding: 16px 20px 10px; }
@@ -404,4 +404,9 @@ a { text-decoration: none; color: inherit; }
   border-radius: 4px;
   cursor: pointer;
   align-self: flex-start;
+}
+
+
+@media (max-width: 480px) {
+.log-container { max-width: 480px; margin: 0; padding: 10px 10px; align-self: flex-start; }
 }
