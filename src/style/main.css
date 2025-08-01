@@ -286,6 +286,7 @@ a { text-decoration: none; color: inherit; }
   .sports, .monologue { font-size: 2rem; }
   .post-title { font-size: 1.8rem; }
   .post-body { font-size: 1rem; }
+  .post-page { margin: 0; }
 }
 
 @media (max-width: 480px) {
