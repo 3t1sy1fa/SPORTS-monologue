@@ -177,7 +177,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ---------------------- 메인 컨테이너 ---------------------- */
-.main-container { max-width: 100%; margin: 0 auto; padding: 20px 20%; }
+.main-container { max-width: 100%; margin: 0 auto; padding: 20px 20px; }
 
 @media (max-width: 480px) {
   .main-container { max-width: 100%; margin: 0 auto; padding: 20px 4px; }
