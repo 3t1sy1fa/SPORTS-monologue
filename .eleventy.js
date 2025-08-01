@@ -1,5 +1,5 @@
-module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("static/favicon.png");
+module.exports = function(eleventyConfig) {
+  eleventyConfig.addPassthroughCopy("static");
   // ✅ 정적 리소스 그대로 복사
   ["src/style", "src/scripts", "src/images", "src/fonts", "admin"]
     .forEach(path => eleventyConfig.addPassthroughCopy(path));
