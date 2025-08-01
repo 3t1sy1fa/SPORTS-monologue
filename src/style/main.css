@@ -133,7 +133,7 @@ a { text-decoration: none; color: inherit; }
 .topic-filter select {
   font-family: "mingijuk";
   padding: 5px;
-  font-size: 0.8rem;
+  font-size: 1rem;
   background-color: #e3e9ee;
   color: #535977;
 }
@@ -142,7 +142,7 @@ a { text-decoration: none; color: inherit; }
   .topic-filter select {
     font-family: "mingijuk";
     padding: 5px;
-    font-size: 0.4rem;
+    font-size: 0.8rem;
     background-color: #e3e9ee;
     color: #535977;
   }
@@ -347,12 +347,46 @@ a { text-decoration: none; color: inherit; }
 .with-sidebar .last-game.휴식 { 
   color: #919191; 
 }
+
 /* ---------------------- 반응형 ---------------------- */
 @media (max-width: 480px) {
-  body { font-size: 14px; }
-  .with-sidebar { flex-direction: column; }
-  .sidebar { width: 100%; height: auto; border: none; padding: 12px; }
-  .content-area { padding: 16px; }
+  body { 
+    font-size: 14px; 
+    overflow-x: hidden;
+  }
+
+  .with-sidebar { 
+    flex-direction: row; /* column → row 유지 (사이드바가 옆에서 나옴) */
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;          /* 화면 70% 차지 */
+    height: 100%;
+    background: #fff;
+    border: none;
+    padding: 12px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;     /* 내부 스크롤 */
+    z-index: 1000;
+  }
+
+  body.menu-open .sidebar {
+    transform: translateX(0);
+  }
+
+  .content-area { 
+    padding: 16px; 
+    transition: transform 0.3s ease;
+  }
+
+  body.menu-open .content-area {
+    transform: translateX(70%);  /* 본문 밀림 */
+  }
+
   .sports, .monologue { font-size: 2rem; }
   .post-title { font-size: 1.8rem; }
   .post-body { font-size: 1rem; }
