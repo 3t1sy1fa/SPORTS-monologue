@@ -124,7 +124,8 @@ a { text-decoration: none; color: inherit; }
 .post-item p { margin: 0; color: #555; font-size: 1rem; }
 
 @media (max-width: 480px) {
-  .post-container { max-width: 100%; margin: 0; padding: 10px 10px; align-items: center; }
+  .post-container { max-width: 100%; margin: 0; padding: 10px 4px; align-items: center; }
+  .post-body { line-height: 1.4; font-size: 1rem; font-weight: 100; }
 }
 
 
