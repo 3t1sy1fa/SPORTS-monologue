@@ -137,7 +137,7 @@ a { text-decoration: none; color: inherit; }
 
 .back-button {
   position: absolute;
-  top: 200px; /* 헤더 높이만큼 아래 */
+  top: 180px; /* 헤더 높이만큼 아래 */
   left: 40px;
   background: none;
   border: none;
