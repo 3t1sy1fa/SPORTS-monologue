@@ -347,49 +347,27 @@ a { text-decoration: none; color: inherit; }
 .with-sidebar .last-game.휴식 { 
   color: #919191; 
 }
-
-/* ---------------------- 반응형 ---------------------- */
-@media (max-width: 480px) {
-  body { 
-    font-size: 14px; 
-    overflow-x: hidden;
-  }
-
-  .with-sidebar { 
-    position: fixed;
-    flex-direction: row; /* column → row 유지 (사이드바가 옆에서 나옴) */
-  }
-
+@media (max-width: 768px) {
   .sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 70%;          /* 화면 70% 차지 */
+    width: 70%;
     height: 100%;
-    background: #fff;
-    border: none;
-    padding: 12px;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    overflow-y: auto;     /* 내부 스크롤 */
+    background-color: #fff;
     z-index: 1000;
+
+    overflow-y: auto;  /* 사이드바 내부 스크롤 */
+    -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
   }
+}
 
-  body.menu-open .sidebar {
-    transform: translateX(0);
-
-  }
-
-  .content-area { 
-    position: static;
-    padding: 16px; 
-    transition: transform 0.3s ease;
-  }
-
-  body.menu-open .content-area {
-    transform: translateX(70%);  /* 본문 밀림 */
-  }
-
+/* ---------------------- 반응형 ---------------------- */
+@media (max-width: 480px) {
+  body { font-size: 14px; }
+  .with-sidebar { flex-direction: column; }
+  .sidebar { width: 100%; height: auto; border: none; padding: 12px; }
+  .content-area { padding: 16px; }
   .sports, .monologue { font-size: 2rem; }
   .post-title { font-size: 1.8rem; }
   .post-body { font-size: 1rem; }
@@ -399,7 +377,7 @@ a { text-decoration: none; color: inherit; }
   body { font-size: 15px; }
   .with-sidebar { flex-direction: column; }
   .sidebar { width: 100%; height: auto; border: none; padding: 16px; }
-  .content-area { position: fixed; padding: 20px; }
+  .content-area { padding: 20px; }
   .sports { font-size: 2.5rem; }
   .monologue { font-size: 2.2rem; }
   .post-title { font-size: 2rem; }
@@ -415,7 +393,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .sidebar-toggle {
-  position: fixed;
+  display: none;
   width: 100%;
   background: #000;
   color: #fff;
