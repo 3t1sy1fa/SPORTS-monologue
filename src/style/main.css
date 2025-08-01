@@ -93,7 +93,6 @@ a { text-decoration: none; color: inherit; }
 
 
 .typing-slogan {
-  position: fixed;
   font-size: 25px;
   font-weight: 500;
   font-family: 'spomono', sans-serif;
@@ -357,6 +356,7 @@ a { text-decoration: none; color: inherit; }
   }
 
   .with-sidebar { 
+    position: fixed;
     flex-direction: row; /* column → row 유지 (사이드바가 옆에서 나옴) */
   }
 
@@ -377,9 +377,12 @@ a { text-decoration: none; color: inherit; }
 
   body.menu-open .sidebar {
     transform: translateX(0);
+    position: fixed;
+
   }
 
   .content-area { 
+    position: fixed;
     padding: 16px; 
     transition: transform 0.3s ease;
   }
