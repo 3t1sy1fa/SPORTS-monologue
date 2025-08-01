@@ -113,7 +113,7 @@ a { text-decoration: none; color: inherit; }
 
 /* ---------------------- 글 읽기 ---------------------- */
 .post-page { max-width: 720px; margin: 0 auto; padding: 10px 30px; background: #fdfdfd; border: 1px solid #ddd; border-radius: 8px; }
-.post-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+.post-title { font-size: 2.1rem; font-weight: 700; margin-bottom: 10px; }
 .post-meta { font-size: 0.9rem; color: #666; margin-bottom: 24px; }
 .post-body { line-height: 1.4; font-size: 1.2rem; }
 .post-body p { margin-bottom: 0.9rem; }
