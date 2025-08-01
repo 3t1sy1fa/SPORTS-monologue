@@ -177,7 +177,11 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ---------------------- 메인 컨테이너 ---------------------- */
-.main-container { max-width: 100%; margin: 0 auto; padding: 20px 20px; }
+.main-container { max-width: 100%; margin: 0 auto; padding: 20px 20%; }
+
+@media (max-width: 480px) {
+  .main-container { max-width: 100%; margin: 0 auto; padding: 20px 4px; }
+}
 
 /* ---------------------- 푸터 ---------------------- */
 .site-footer { text-align: center; font-size: 0.85rem; color: #777; padding: 32px 16px; border-top: 1px solid #ccc; margin-top: 80px; }
@@ -392,7 +396,7 @@ a { text-decoration: none; color: inherit; }
 .log-nav button.active { font-weight: bold; border-bottom: 2px solid #000; }
 
 /* ---------------------- Contact ---------------------- */
-.contact-container { max-width: 100%; margin: 0 auto; padding: 10px 15px; }
+.contact-container { max-width: 100%; margin: 0 auto; padding: 10px 20%; }
 .contact-container h1 { font-size: 48px; margin-bottom: 10px; }
 .contact-container p { margin-bottom: 20px; color: #555; }
 .contact-container form { display: flex; flex-direction: column; gap: 5px; }
@@ -418,5 +422,5 @@ a { text-decoration: none; color: inherit; }
 
 
 @media (max-width: 480px) {
-.log-container { max-width: 480px; margin: 0; padding: 10px 10px; align-self: flex-start; }
+.log-container { max-width: 480px; margin: 0; padding: 10px 4px; align-self: flex-start; }
 }
