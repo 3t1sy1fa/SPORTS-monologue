@@ -34,7 +34,7 @@ a { text-decoration: none; color: inherit; }
   gap: 2rem;
   margin: 0;
   padding: 0;
-  align-items: center;
+  align-self: center;
 }
 
 .nav-menu li { display: flex; align-items: center; }
@@ -192,7 +192,6 @@ a { text-decoration: none; color: inherit; }
 
 .right-top {
   grid-area: right;
-  align-items: flex-start;
 }
 
 .left-top, .right-top {
@@ -205,9 +204,9 @@ a { text-decoration: none; color: inherit; }
 
 
 .sports { font-family: 'spomono', sans-serif; font-size: 3rem; font-weight: 700; margin: -22px; letter-spacing: -6px; }
-.monologue { font-family: 'spomono', sans-serif; font-size: 2rem; color: #666; margin: -13px;}
-.since { font-size: 0.9rem; color: #666; }
-.log { font-size: 2rem; font-family: 'spomono', sans-serif; line-height: 1; }
+.monologue { font-family: 'spomono', sans-serif; font-size: 2rem; color: #666; margin: -13px; }
+.since { font-size: 0.9rem; color: #666; align-self: flex-start; }
+.log { font-size: 2rem; font-family: 'spomono', sans-serif; line-height: 1; align-self: flex-start;}
 
 .divider-line { width: 100%; height: 1.4px; background-color: black; margin-top: 14px; }
 
@@ -371,7 +370,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ---------------------- log ---------------------- */
-.log-container { max-width: 720px; margin: 0; padding: 10px 20%; align-items: flex-start; }
+.log-container { max-width: 720px; margin: 0; padding: 10px 20%; align-self: flex-start; }
 .log-container h1 { font-size: 48px; margin-bottom: 12px; }
 .log-desc { font-size: 16px; color: #666; margin-bottom: 20px; }
 .log-post { border-bottom: 1px solid #ddd; padding: 16px 20px 10px; }
