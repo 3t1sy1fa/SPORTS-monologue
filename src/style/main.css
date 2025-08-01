@@ -45,7 +45,7 @@ a { text-decoration: none; color: inherit; }
   padding: 4px 0;
   transition: color 0.2s;
   margin-top: 9px;
-  align-items: center;
+  align-self: center;
 }
 .nav-menu a:hover { color: #6e6e6e; }
 
