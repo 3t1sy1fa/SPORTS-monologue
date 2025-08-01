@@ -18,6 +18,7 @@
         <!-- 최신 경기 결과 -->
         <div class="latest-games-section">
          <h3>최신 경기 결과</h3>
+         <span class="date">{{ game.date | date("MM.dd") }}</span>
          <ul class="latest-games">
            {% for game in latestGames %}
              <li>
@@ -30,7 +31,6 @@
                <span class="score {% if game.result == '승' %}win{% elseif game.result == '패' %}lose{% endif %}">
                  {{ game.score }}
                </span>
-               <span class="date">{{ game.date | date("MM.dd") }}</span>
              </li>
            {% endfor %}
          </ul>
