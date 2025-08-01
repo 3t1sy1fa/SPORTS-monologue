@@ -92,13 +92,13 @@ a {
   display: inline-block;
   padding-bottom: 2px;
   letter-spacing: 2px;
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .twins-tar-header .subtitle {
-  font-size: 80px;
+  font-size: 35px;
   font-family: 'slog2', sans-serif;
-  color: #756400;
+  color: #585858;
   margin-top: 20px;
   line-height: 0;
 }
