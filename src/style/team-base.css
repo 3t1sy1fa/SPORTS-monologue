@@ -100,10 +100,24 @@
 }
 
 /* 🔹 팀 박스 그리드 (메인 페이지용) */
+
+@media (max-width: 480px) {
+ .main-container {
+   max-width: 100%;
+   margin: 0 auto;
+   padding: 20px 4px;
+ }
+  
+}
+
+
+
+
+
 .main-container {
-  max-width: 960px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 40px 20%;
 }
 
 .team-grid {
