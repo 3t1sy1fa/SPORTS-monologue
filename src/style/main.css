@@ -280,7 +280,7 @@ a { text-decoration: none; color: inherit; }
 /* ---------------------- 반응형 ---------------------- */
 @media (max-width: 480px) {
   post-page { margin: 0; }
-  .container { max-width: 100%; margin: 0 ; padding: 20px 20px; }
+  .container { max-width: 100%; margin: 0 ; }
   body { font-size: 14px; }
   .with-sidebar { flex-direction: column; }
   .sidebar { width: 100%; height: auto; border: none; padding: 12px; }
@@ -290,6 +290,7 @@ a { text-decoration: none; color: inherit; }
   .post-body { font-size: 1rem; }
   .content-area { margin: 0; }
   .post-list-section { margin: 0;}
+  post-section { margin: 0; }
 }
 
 @media (max-width: 480px) {
