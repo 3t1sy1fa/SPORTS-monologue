@@ -371,10 +371,10 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ---------------------- log ---------------------- */
-.log-container { max-width: 720px; margin: 0; padding: 10px 10%; align-items: flex-start; }
+.log-container { max-width: 720px; margin: 0; padding: 10px 20%; align-items: flex-start; }
 .log-container h1 { font-size: 48px; margin-bottom: 12px; }
 .log-desc { font-size: 16px; color: #666; margin-bottom: 20px; }
-.log-post { border-bottom: 1px solid #ddd; padding: 16px 20px 20px; }
+.log-post { border-bottom: 1px solid #ddd; padding: 16px 20px 10px; }
 .log-post-title { font-size: 20px; margin: 0; }
 .log-post-date { font-size: 14px; color: #999; }
 .log-post-desc { margin-top: 6px; color: #444; }
