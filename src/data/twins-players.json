@@ -1,1 +1,32 @@
-
+[
+  {
+    "name": "김현수",
+    "slug": "kim-hs",
+    "position": "외야수",
+    "note": "16시즌 연속 100안타"
+  },
+  {
+    "name": "박해민",
+    "slug": "park-hm",
+    "position": "외야수",
+    "note": "449도루 (450도루 -1)"
+  },
+  {
+    "name": "구본혁",
+    "slug": "koo-bh",
+    "position": "내야수",
+    "note": "슈퍼캐치"
+  },
+  {
+    "name": "임찬규",
+    "slug": "lim-ck",
+    "position": "투수",
+    "note": "시즌 첫 완봉승"
+  },
+  {
+    "name": "김영우",
+    "slug": "kim-yw",
+    "position": "투수",
+    "note": "10승 달성"
+  }
+]
