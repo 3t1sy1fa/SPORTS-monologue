@@ -60,6 +60,9 @@
 
     <section class="content-area">
       {% block content %}
+       {% if title %}
+          <h1 class="post-title">{{ title }}</h1>
+       {% endif %}
         {{ content | safe }}
       {% endblock %}
     </section>
