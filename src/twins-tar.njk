@@ -1,16 +1,22 @@
+---
+title: 트윈스타
+layout: layout.njk
+description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주요 경기 기록과 선수 활약 평점을 제공합니다."
+---
+
+{% block content %}
 <section class="twins-tar-container">
   <header class="twins-tar-header">
     <p class="subtitle">무적 LG! 끝까지 Twins!</p>
     <h1>TWINS</h1>
   </header>
 
+  {# ✅ CSS 로드 (HEAD 영역이 아님) → layout.njk에서 불러오는 게 더 안전함 #}
   <link rel="stylesheet" href="/style/twins-tar.css" />
-
 
   <div class="twins-tar-layout">
     <!-- 왼쪽 사이드 -->
     <aside class="twins-sidebar">
-      <!-- 이번 달 경기 일정 (캘린더) -->
       <div class="calendar-section">
         <h3>이번 달 경기 일정</h3>
         <table class="calendar-table">
@@ -39,7 +45,6 @@
         </table>
       </div>
 
-      <!-- 트윈스 뉴스 -->
       <div class="news-section">
         <h3>트윈스 뉴스</h3>
         <ul class="news-list">
@@ -73,7 +78,6 @@
     </div>
   </div>
 
-  <!-- 아래쪽 경기 기록 테이블 -->
   <div class="stat-section">
     <h2>twinS-TAR</h2>
     
@@ -102,3 +106,4 @@
     </table>
   </div>
 </section>
+{% endblock %}
