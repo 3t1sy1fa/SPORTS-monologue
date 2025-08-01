@@ -78,6 +78,26 @@ const sheets = google.sheets({ version: 'v4', auth: client });
     );
     console.log('✅ latest-games.json updated!');
 
+    // 4️⃣ PlayerStats → player-stats.json
+    const playerStatsRes = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.SHEET_ID,
+      range: 'PlayerStats!A2:E50',
+    });
+
+    const playerStatsData = (playerStatsRes.data.values || []).map(row => ({
+      player: row[0],
+      date: row[1],
+      game: row[2],
+      record: row[3],
+      rating: row[4],
+    }));
+
+    fs.writeFileSync(
+      './src/data/player-stats.json',
+      JSON.stringify(playerStatsData, null, 2)
+    );
+    console.log('✅ player-stats.json updated!');
+
   } catch (err) {
     console.error('❌ Failed to fetch data from Google Sheets:', err);
     process.exit(1);
