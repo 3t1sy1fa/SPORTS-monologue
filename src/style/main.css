@@ -371,7 +371,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ---------------------- log ---------------------- */
-.log-container { max-width: 720px; margin: 0; padding: 10px 10px; }
+.log-container { max-width: 720px; margin: 0; padding: 10px 30px; align-items: flex-start; }
 .log-container h1 { font-size: 48px; margin-bottom: 12px; }
 .log-desc { font-size: 16px; color: #666; margin-bottom: 32px; }
 .log-post { border-bottom: 1px solid #ddd; padding: 16px 0; }
