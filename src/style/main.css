@@ -279,7 +279,6 @@ a { text-decoration: none; color: inherit; }
 
 /* ---------------------- 반응형 ---------------------- */
 @media (max-width: 480px) {
-  post-page { margin: 0; }
   .container { max-width: 100%; margin: 0 ; padding: 20px 20px; }
   body { font-size: 14px; }
   .with-sidebar { flex-direction: column; }
@@ -288,6 +287,7 @@ a { text-decoration: none; color: inherit; }
   .sports, .monologue { font-size: 2rem; }
   .post-title { font-size: 1.8rem; }
   .post-body { font-size: 1rem; }
+  .post-item { border: 1px solid #ddd; padding: 16px; background-color: #fff; margin: 0;}
 }
 
 @media (max-width: 480px) {
