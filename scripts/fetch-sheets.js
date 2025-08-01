@@ -7,7 +7,7 @@ const client = new google.auth.JWT(
   process.env.GOOGLE_CLIENT_EMAIL,
   null,
   process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-  ['https://www.googleapis.acom/auth/spreadsheets.readonly']
+  ['https://www.googleapis.com/auth/spreadsheets.readonly']
 );
 
 const sheets = google.sheets({ version: 'v4', auth: client });
