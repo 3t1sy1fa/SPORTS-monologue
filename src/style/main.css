@@ -286,6 +286,24 @@ a { text-decoration: none; color: inherit; }
   .post-body { font-size: 1rem; }
 }
 
+@media (max-width: 480px) {
+  .typing-slogan {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'spomono', sans-serif;
+  white-space: nowrap;
+  border-right: 2px solid black;
+  overflow: hidden;
+  width: fit-content;
+  animation: blink-caret 0.75s step-end infinite;
+  margin: 24px 0;
+  min-height: 2em;
+  max-width: 468px;
+}
+#typing-text { display: inline-block; }
+@keyframes blink-caret { 50% { border-color: transparent; } }
+}
+
 @media (min-width: 481px) and (max-width: 768px) {
   body { font-size: 15px; }
   .with-sidebar { flex-direction: column; }
