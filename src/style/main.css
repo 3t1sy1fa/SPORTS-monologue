@@ -131,11 +131,23 @@ a { text-decoration: none; color: inherit; }
 }
 
 .topic-filter select {
+  font-family: "mingijuk";
   padding: 5px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   background-color: #e3e9ee;
   color: #535977;
 }
+
+@media (max-width: 768px) {
+  .topic-filter select {
+    font-family: "mingijuk";
+    padding: 5px;
+    font-size: 0.4rem;
+    background-color: #e3e9ee;
+    color: #535977;
+  }
+}
+
 
 .back-button {
   position: absolute;
