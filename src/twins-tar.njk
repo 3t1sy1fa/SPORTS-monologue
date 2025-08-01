@@ -23,48 +23,17 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
         </tr>
       </thead>
       <tbody>
+        {% for stat in playerStats %}
         <tr>
-          <td>김현수</td>
-          <td><time datetime="2025-07-24">7.24</time> KIA 시즌 11차전</td>
-          <td>쓰리런 홈런</td>
-          <td>4/5</td>
+          <td>{{ stat.player }}</td>
+          <td>
+            <time datetime="{{ stat.date }}">{{ stat.date | date("MM.dd") }}</time>
+            {{ stat.game }}
+          </td>
+          <td>{{ stat.record }}</td>
+          <td>{{ stat.rating }}</td>
         </tr>
-        <tr>
-          <td>문성주</td>
-          <td><time datetime="2025-07-25">7.25</time> 두산 시즌 9차전</td>
-          <td>9회 초 2타점 적시 결승타</td>
-          <td>3.8/5</td>
-        </tr>
-        <tr>
-          <td>구본혁</td>
-          <td><time datetime="2025-07-25">7.25</time> 두산 시즌 9차전</td>
-          <td>9회 말 슈퍼캐치</td>
-          <td>4.2/5</td>
-        </tr>
-        <tr>
-          <td>구본혁</td>
-          <td><time datetime="2025-07-29">7.29</time> KT 주중 3연전-1차전</td>
-          <td>3회 말 2타점 적시 2루타</td>
-          <td>4.5/5</td>
-        </tr>
-        <tr>
-          <td>박해민</td>
-          <td><time datetime="2025-07-29">7.29</time> KT 주중 3연전-1차전</td>
-          <td>2,3회 도루</td>
-          <td>3.5/5</td>
-        </tr>
-        <tr>
-          <td>김현수</td>
-          <td><time datetime="2025-07-31">7.31</time> KT 주중 3연전-3차전</td>
-          <td>16시즌 연속 100안타</td>
-          <td>4/5</td>
-        </tr>
-        <tr>
-          <td>김현수</td>
-          <td><time datetime="2025-07-31">7.31</time> KT 주중 3연전-3차전</td>
-          <td>KBO 통산 3번째 개인 통산 1500타점</td>
-          <td>4.5/5</td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>

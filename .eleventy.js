@@ -46,6 +46,8 @@ module.exports = function(eleventyConfig) {
   const teamsBoard = require("./src/data/teams-board.json");
   eleventyConfig.addGlobalData("teamsBoard", teamsBoard);
 
+  eleventyConfig.addGlobalData("playerStats", () => require("./src/data/player-stats.json"));
+  
   // ✅ 날짜 필터 (한국식 yyyy.mm.dd)
   eleventyConfig.addFilter("date", (dateObj) => {
     if (!dateObj) return "";
