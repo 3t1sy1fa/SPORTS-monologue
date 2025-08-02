@@ -12,7 +12,8 @@
       <button id="sidebar-toggle" class="sidebar-toggle">보드</button>
       <aside class="sidebar">
         <!-- ✅ 최신 경기 결과 -->
-        <div class="latest-games-section">
+        {% if leagueSchedule and leagueSchedule | length > 0 %}
+          <div class="latest-games-section">
   <h3>최신 경기 결과</h3>
   <ul class="latest-games">
     {% for game in leagueSchedule | reverse | slice(0, 5) %}
