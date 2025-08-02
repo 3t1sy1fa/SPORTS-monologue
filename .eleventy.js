@@ -54,6 +54,14 @@ module.exports = function(eleventyConfig) {
     return days;
   });
 
+  // ✅ teamGames 필터 (팀별 경기만 가져오기)
+  eleventyConfig.addFilter("teamGames", (schedule, slug) => {
+    if (!Array.isArray(schedule)) return [];
+    return schedule.filter(
+      game => game.homeSlug === slug || game.awaySlug === slug
+    );
+  });
+
   // ✅ 레이아웃 별칭
   eleventyConfig.addLayoutAlias("team-layout", "layouts/team-layout.njk");
 
@@ -66,5 +74,4 @@ module.exports = function(eleventyConfig) {
       data: "_data" // 🔑 Eleventy가 자동으로 JSON 로드
     },
   };
-  
 };

@@ -30,9 +30,8 @@
 <body>
   {% include "header.njk" %}
 
-{% set teamGames = combinedGames(slug) %}
-{% set sortedGames = teamGames | sort(false, true, "date") %}
-{% set recentGame = sortedGames | first %}
+{% set games = leagueSchedule | teamGames(slug) %}
+{% set recentGame = games | first %}
 
   {# ✅ 팀 홈페이지 URL #}
   {% set homepageItem = teamsBoard | selectattr("slug", "equalto", slug) | first %}
