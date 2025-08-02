@@ -1,4 +1,4 @@
-/* ===== 🏆 Podium Section ===== */
+/* 🏆 Podium Section */
 .podium-section {
   display: flex;
   justify-content: center;
@@ -18,13 +18,13 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   font-weight: 600;
   transition: transform 0.2s ease;
-  background: #fff;
 }
 
 .podium:hover { transform: translateY(-5px); }
 
 .podium img { width: 50px; height: 50px; margin-bottom: 8px; }
-.podium span { font-size: 0.9rem; text-align: center; }
+.podium span { font-size: 0.9rem; }
+.vote-count { font-size: 0.8rem; color: #333; margin-top: 4px; }
 
 .podium-1 { 
   height: 150px; 
@@ -42,7 +42,7 @@
   border: 2px solid #cd7f32;
 }
 
-/* ===== 📊 팀 카드 리스트 ===== */
+/* 📊 구단 카드 리스트 */
 .teams-card-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -67,7 +67,7 @@
 .team-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  border-color: var(--team-maincolor, #ccc);
+  border-color: var(--team-maincolor);
 }
 
 .team-card img { width: 50px; height: 50px; margin-bottom: 10px; }
@@ -75,71 +75,84 @@
 .team-card .team-info p { margin: 5px 0; font-size: 0.9rem; color: #555; }
 .team-card .last-game { font-size: 0.8rem; color: #999; }
 
-/* ===== 🗳️ 투표 버튼 ===== */
+/* ✅ 투표 버튼 */
+/* ✅ 투표 버튼 (hover 시 색상만 변경, 움직임 제거) */
 .vote-btn {
-  background: var(--team-maincolor, #c30452);
   color: #fff;
   font-weight: 600;
-  padding: 8px 16px;       /* 🔑 버튼 크기 조금 여유 있게 */
+  padding: 8px 16px;
   border: none;
-  border-radius: 20px;      /* ✅ 둥근 버튼 */
+  border-radius: 20px;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background 0.2s ease;
   font-size: 0.9rem;
   display: inline-block;
   margin-top: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* ✅ 버튼 그림자 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.vote-btn:hover {
-  background: #a50342;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
+/* 팀별 색상 */
+.team-lg .vote-btn { background: #C30452; }
+.team-lg .vote-btn:hover { background: #a50342; }
 
-.vote-btn:active {
-  transform: scale(0.97);
-  background: #8c0336;
-}
+.team-doosan .vote-btn { background: #1A1748; }
+.team-doosan .vote-btn:hover { background: #120f36; }
 
-.vote-form {
-  text-align: center;  /* ✅ 중앙 배치 */
-}
+.team-ssg .vote-btn { background: #CE0E2D; }
+.team-ssg .vote-btn:hover { background: #a20b23; }
 
-/* ===== 📅 이번 주 경기 일정 & 📰 뉴스 ===== */
+.team-kia .vote-btn { background: #EA0029; }
+.team-kia .vote-btn:hover { background: #b80020; }
+
+.team-hanwha .vote-btn { background: #FC4E00; }
+.team-hanwha .vote-btn:hover { background: #d63f00; }
+
+.team-samsung .vote-btn { background: #074CA1; }
+.team-samsung .vote-btn:hover { background: #053d83; }
+
+.team-lotte .vote-btn { background: #041E42; }
+.team-lotte .vote-btn:hover { background: #031532; }
+
+.team-kiwoom .vote-btn { background: #570514; }
+.team-kiwoom .vote-btn:hover { background: #3d030e; }
+
+.team-kt .vote-btn { background: #000000; }
+.team-kt .vote-btn:hover { background: #333333; }
+
+.team-nc .vote-btn { background: #315288; }
+.team-nc .vote-btn:hover { background: #243c63; }
+
+/* 📅 이번 주 경기 일정 */
 .extra-info {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: 1fr;
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-.weekly-schedule, .news-section {
+.weekly-schedule {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
 }
 
-.weekly-schedule ul, .news-section ul {
+.weekly-schedule ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.weekly-schedule li, .news-section li {
+.weekly-schedule li {
   padding: 8px 0;
   border-bottom: 1px solid #eee;
   font-size: 0.95rem;
 }
 
-.weekly-schedule li:last-child, .news-section li:last-child { border-bottom: none; }
-.news-section a { text-decoration: none; color: #333; }
-.news-section a:hover { color: #000; font-weight: bold; }
+.weekly-schedule li:last-child { border-bottom: none; }
 
-/* ===== 반응형 ===== */
+/* 반응형 */
 @media (max-width: 768px) {
   .teams-card-section { grid-template-columns: 1fr 1fr; }
   .extra-info { grid-template-columns: 1fr; }
@@ -149,16 +162,9 @@
     align-items: center;
     gap: 10px;
   }
-  .podium { 
-    width: 80%; 
-    height: auto; 
-    flex-direction: row; 
-    justify-content: space-between; 
-    padding: 12px;
-  }
+  .podium { width: 80%; height: auto; flex-direction: row; justify-content: space-between; }
   .podium img { margin: 0 10px 0 0; }
 }
-
 @media (max-width: 480px) {
   .teams-card-section { grid-template-columns: 1fr; }
 }

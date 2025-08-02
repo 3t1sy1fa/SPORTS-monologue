@@ -18,17 +18,17 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
   %}
   <section class="podium-section">
     {% if topTeams | length >= 3 %}
-      <div class="podium podium-2">
+      <div class="podium podium-2 team-{{ topTeams[1].teamSlug }}">
         <img src="/images/{{ topTeams[1].teamSlug }}.png" alt="{{ topTeams[1].teamName }}">
         <span>{{ topTeams[1].teamName }}</span>
         <span class="vote-count">{{ topTeams[1].teamTotalVotes }}표</span>
       </div>
-      <div class="podium podium-1">
+      <div class="podium podium-1 team-{{ topTeams[0].teamSlug }}">
         <img src="/images/{{ topTeams[0].teamSlug }}.png" alt="{{ topTeams[0].teamName }}">
         <span>{{ topTeams[0].teamName }}</span>
         <span class="vote-count">{{ topTeams[0].teamTotalVotes }}표</span>
       </div>
-      <div class="podium podium-3">
+      <div class="podium podium-3 team-{{ topTeams[2].teamSlug }}">
         <img src="/images/{{ topTeams[2].teamSlug }}.png" alt="{{ topTeams[2].teamName }}">
         <span>{{ topTeams[2].teamName }}</span>
         <span class="vote-count">{{ topTeams[2].teamTotalVotes }}표</span>
@@ -43,7 +43,7 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
     {% for team in teamsBoard | sort(attribute="rank") %}
       {% set teamVote = (votes | selectattr("teamSlug", "equalto", team.slug) | first) %}
       {% set voteCount = teamVote.teamTotalVotes if teamVote else 0 %}
-      <div class="team-card">
+      <div class="team-card team-{{ team.slug }}">
         <a href="/teams/{{ team.slug }}/">
           <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
           <div class="team-info">
