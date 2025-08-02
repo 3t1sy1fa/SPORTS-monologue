@@ -5,5 +5,9 @@
     "lotte": 1,
     "nc": 5
   },
-  "players": {}
+  "players": {
+    "park-hm": 45,
+    "kim-hs": 4,
+    "gu-bh": 57
+  }
 }
