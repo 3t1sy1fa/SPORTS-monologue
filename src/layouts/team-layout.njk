@@ -32,24 +32,16 @@
 
 <body>
 
-<pre>{{ leagueSchedule | dump }}</pre>
 
   {% include "header.njk" %}
 
-{% set teamGames = 
-  (leagueSchedule 
-    | selectattr("homeSlug", "equalto", slug) 
-    | list) 
-  + 
-  (leagueSchedule 
-    | selectattr("awaySlug", "equalto", slug) 
-    | list) 
-%}
+  {% set homeGames = leagueSchedule | selectattr("homeSlug", "equalto", category) | list %}
+  {% set awayGames = leagueSchedule | selectattr("awaySlug", "equalto", category) | list %}
+  {% set teamGames = homeGames.concat(awayGames) %}
+  {% set sortedGames = teamGames | sort(false, true, "date") %}
+  {% set recentGame = sortedGames | first %}
 
-{% set sortedGames = (teamGames | sort(false, true, "date")) | reverse %}
-{% set recentGame = sortedGames[0] %}
-
-<main class="team-layout">
+ <main class="team-layout">
   <div class="team-left">
     <div class="game-results">
       <p class="game-date">
