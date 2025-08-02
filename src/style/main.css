@@ -372,7 +372,7 @@ a { text-decoration: none; color: inherit; }
 .log-container h1 { font-size: 2.1rem; margin-bottom: 12px; }
 .log-desc { font-size: 16px; color: #666; margin-bottom: 20px; }
 .log-post { border-bottom: 1px solid #ddd; border-width: auto; padding: 16px 0 10px; }
-.log-post-title { font-size: 1.5rem; margin: 0; }
+.log-post-title { font-size: 1.1rem; margin: auto; }
 .log-post-date { font-size: 14px; color: #999; }
 .log-post-desc { margin-top: 6px; color: #444; }
 .log-post-category { font-size: 13px; color: #007acc; }
