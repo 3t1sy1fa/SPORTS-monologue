@@ -9,8 +9,9 @@
     "awaySlug": "lg",
     "homeScore": "2",
     "awayScore": "4",
-    "status": "패",
-    "winner": "lg"
+    "status": "종료",
+    "winner": "lg",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -22,8 +23,9 @@
     "awaySlug": "kt",
     "homeScore": "5",
     "awayScore": "3",
-    "status": "승",
-    "winner": "nc"
+    "status": "종료",
+    "winner": "kt",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -35,8 +37,9 @@
     "awaySlug": "ssg",
     "homeScore": "2",
     "awayScore": "7",
-    "status": "패",
-    "winner": "ssg"
+    "status": "종료",
+    "winner": "ssg",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -48,8 +51,9 @@
     "awaySlug": "hanwha",
     "homeScore": "3",
     "awayScore": "2",
-    "status": "승",
-    "winner": "kia"
+    "status": "종료",
+    "winner": "hanwha",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -61,8 +65,9 @@
     "awaySlug": "lotte",
     "homeScore": "2",
     "awayScore": "0",
-    "status": "승",
-    "winner": "kiwoom"
+    "status": "종료",
+    "winner": "lotte",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -74,8 +79,9 @@
     "awaySlug": "lg",
     "homeScore": "2",
     "awayScore": "3",
-    "status": "패",
-    "winner": "lg"
+    "status": "종료",
+    "winner": "lg",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -88,7 +94,8 @@
     "homeScore": "",
     "awayScore": "",
     "status": "예정",
-    "winner": "kt"
+    "winner": "kt",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -101,7 +108,8 @@
     "homeScore": "",
     "awayScore": "",
     "status": "예정",
-    "winner": "ssg"
+    "winner": "ssg",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -114,7 +122,8 @@
     "homeScore": "",
     "awayScore": "",
     "status": "예정",
-    "winner": "hanwha"
+    "winner": "hanwha",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -127,7 +136,8 @@
     "homeScore": "",
     "awayScore": "",
     "status": "예정",
-    "winner": "lotte"
+    "winner": "lotte",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -140,7 +150,8 @@
     "homeScore": "",
     "awayScore": "",
     "status": "예정",
-    "winner": "lg"
+    "winner": "lg",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -153,7 +164,8 @@
     "homeScore": "",
     "awayScore": "",
     "status": "예정",
-    "winner": "kt"
+    "winner": "kt",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -166,7 +178,8 @@
     "homeScore": "",
     "awayScore": "",
     "status": "예정",
-    "winner": "ssg"
+    "winner": "ssg",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -179,7 +192,8 @@
     "homeScore": "",
     "awayScore": "",
     "status": "예정",
-    "winner": "hanwha"
+    "winner": "hanwha",
+    "doubleHeader": "N"
   },
   {
     "season": "2025",
@@ -192,6 +206,7 @@
     "homeScore": "",
     "awayScore": "",
     "status": "예정",
-    "winner": "lotte"
+    "winner": "lotte",
+    "doubleHeader": "N"
   }
 ]

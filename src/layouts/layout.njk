@@ -26,9 +26,6 @@
                 <span class="score">
                   {% if game.status == "종료" %}
                     {{ game.homeScore }} - {{ game.awayScore }}
-                  {% else %}
-                    예정
-                  {% endif %}
                 </span>
               </li>
             {% endfor %}
@@ -50,8 +47,8 @@
                       {{ team.wins }}승 {{ team.losses }}패 {{ team.draws }}무
                       ({{ (team.winRate * 100) | round(1) }}%)
                     </span>
-                    <span class="last-game {% if team.lastgame == '승' %}win{% else %}lose{% endif %}">
-                      최근: {{ team.lastgame }}
+                    <span class="last-game {% if team.lastGame == '승' %}win{% else %}lose{% endif %}">
+                      최근: {{ team.lastGame }}
                     </span>
                   </div>
                 </a>
