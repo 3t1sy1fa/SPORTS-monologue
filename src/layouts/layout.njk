@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="/style/twins-tar.css" />
   {% endif %}
 
+
+  {% set recentGame = leagueSchedule | getRecentGame %}
+{% if recentGame %}
+  {{ recentGame.home }} vs {{ recentGame.away }}
+  ({{ recentGame.homeScore }} - {{ recentGame.awayScore }})
+{% endif %}
+
   <main class="main-container {% if isHome %}with-sidebar{% endif %}">
     {% if isHome %}
       <button id="sidebar-toggle" class="sidebar-toggle">보드</button>
