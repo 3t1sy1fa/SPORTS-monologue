@@ -55,3 +55,7 @@ exports.handler = async (event) => {
     return { statusCode: 500, body: "Internal Server Error" };
   }
 };
+
+const fetch = require("node-fetch");
+
+await fetch(process.env.NETLIFY_BUILD_HOOK, { method: "POST" });
