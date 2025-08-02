@@ -96,24 +96,37 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
   </div>
 
   <!-- 🗳 인기 선수 TOP 3 -->
-  <div class="vote-section">
-    <h2>인기 선수 TOP 3</h2>
-    <div class="top-votes">
-      {% set lgVotes = voteSummary.players | dictsort(false, "value") %}
-      {% for item in lgVotes | slice(0, 3) %}
-        {% set slug = item[0] %}
-        {% set count = item[1] %}
-        <div class="vote-card">
-          <img src="/images/players/{{ slug }}.png" 
-               alt="{{ slug }}" 
-               class="vote-player-photo">
-          <div class="vote-info">
-            <span class="vote-player-name">{{ slug }}</span>
-            <span class="vote-count">{{ count }}표</span>
-          </div>
+<!-- 🗳 인기 선수 TOP 3 -->
+<div class="vote-section">
+  <h2>트윈스 인기 선수 TOP 3</h2>
+  <div class="vote-cards">
+    {% set lgVotes = [] %}
+    {% for slug, count in voteSummary.players %}
+      {% set player = players | selectattr("slug", "equalto", slug) | first %}
+      {% if player and player.teamSlug == "lg" %}
+        {% set obj = {
+          "playerSlug": slug,
+          "playerName": player.name,
+          "playerTeamSlug": player.teamSlug,
+          "playerTotalVotes": count
+        } %}
+        {% set lgVotes = lgVotes.concat([obj]) %}
+      {% endif %}
+    {% endfor %}
+
+    {% set lgVotes = lgVotes | sort(attribute="playerTotalVotes", order="desc") | slice(0, 3) %}
+
+    {% for vote in lgVotes %}
+      <div class="vote-card">
+        <img src="/images/players/{{ vote.playerSlug }}.png" 
+             alt="{{ vote.playerName }}" 
+             class="vote-player-photo">
+        <div class="vote-info">
+          <span class="vote-player-name">{{ vote.playerName }}</span>
+          <span class="vote-count">{{ vote.playerTotalVotes }}표</span>
         </div>
-      {% endfor %}
-    </div>
+      </div>
+    {% endfor %}
   </div>
-</section>
+</div>
 {% endblock %}

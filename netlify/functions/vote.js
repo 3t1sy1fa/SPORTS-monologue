@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-const fetch = require("node-fetch");
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -10,7 +9,9 @@ exports.handler = async (event) => {
   try {
     const { targetType, teamSlug, playerSlug } = JSON.parse(event.body);
 
-    if (!targetType || (targetType === "player" && !playerSlug) || (targetType === "team" && !teamSlug)) {
+    if (!targetType || 
+        (targetType === "player" && !playerSlug) || 
+        (targetType === "team" && !teamSlug)) {
       return { statusCode: 400, body: "Invalid vote payload" };
     }
 
@@ -19,16 +20,15 @@ exports.handler = async (event) => {
       ? JSON.parse(fs.readFileSync(votesPath, "utf8"))
       : [];
 
-    const voterId =
-      event.headers["x-nf-client-connection-ip"] ||
-      event.headers["client-ip"] ||
-      `anon-${Date.now()}`;
-
+    // ✅ 중복 투표 방지
+    const voterId = event.headers["client-ip"] || `anon-${Date.now()}`;
     const isDuplicate = votes.some(
       (vote) =>
         vote.voterId === voterId &&
         vote.targetType === targetType &&
-        (targetType === "player" ? vote.playerSlug === playerSlug : vote.teamSlug === teamSlug)
+        (targetType === "player" 
+          ? vote.playerSlug === playerSlug 
+          : vote.teamSlug === teamSlug)
     );
 
     if (isDuplicate) {
@@ -45,9 +45,6 @@ exports.handler = async (event) => {
 
     votes.push(newVote);
     fs.writeFileSync(votesPath, JSON.stringify(votes, null, 2));
-
-    // ✅ Netlify Build Hook 호출
-    await fetch(process.env.NETLIFY_BUILD_HOOK, { method: "POST" });
 
     return {
       statusCode: 200,

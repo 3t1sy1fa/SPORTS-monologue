@@ -1,3 +1,4 @@
+// ✅ 통합 투표 핸들러
 export async function handleVote(type, slug) {
   try {
     const body = {
@@ -20,7 +21,8 @@ export async function handleVote(type, slug) {
     }
 
     alert("✅ 투표가 완료되었습니다!");
-    // ✅ Netlify 빌드 트리거 → 최신 votes.json 반영
+
+    // 🔥 최신 votes.json 반영을 위해 Netlify 빌드 자동 트리거
     await fetch("/.netlify/functions/buildHook", { method: "POST" });
   } catch (error) {
     console.error("투표 처리 오류:", error);
