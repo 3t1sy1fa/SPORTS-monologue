@@ -71,6 +71,17 @@ module.exports = function (eleventyConfig) {
       .slice(0, 5);
   });
 
+    eleventyConfig.addFilter("teamGames", (games, teamSlug) => {
+    if (!Array.isArray(games)) return [];
+    return games
+      .filter(game => 
+        game.homeSlug === teamSlug || game.awaySlug === teamSlug
+      )
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+  });
+
+ 
+
  
 
 
