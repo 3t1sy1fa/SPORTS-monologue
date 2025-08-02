@@ -53,7 +53,6 @@ layout: layout.njk
     </table>
   </section>
 
-  <!-- 🗳 인기 투표 -->
   {% set voteCount = voteSummary.players[player.slug] or 0 %}
   <section class="player-votes">
     <h2>인기 투표</h2>
@@ -67,7 +66,6 @@ layout: layout.njk
   </section>
 </section>
 
-<!-- JS -->
 <script type="module">
   import { handleVote } from "/scripts/voteHandler.js";
   document.querySelector(".vote-btn").addEventListener("click", () => {

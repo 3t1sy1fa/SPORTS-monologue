@@ -15,7 +15,7 @@ exports.handler = async (event) => {
       return { statusCode: 400, body: "Invalid vote payload" };
     }
 
-    const votesPath = path.resolve("./src/_data/votes.json"); // ✅ 경로 보정
+    const votesPath = path.resolve("./src/_data/votes.json"); // 경로 보정
     const votes = fs.existsSync(votesPath)
       ? JSON.parse(fs.readFileSync(votesPath, "utf8"))
       : [];
@@ -44,7 +44,7 @@ exports.handler = async (event) => {
     votes.push(newVote);
     fs.writeFileSync(votesPath, JSON.stringify(votes, null, 2));
 
-    // ✅ Netlify 재빌드 트리거
+    // Netlify 재빌드
     if (process.env.NETLIFY_BUILD_HOOK) {
       await fetch(process.env.NETLIFY_BUILD_HOOK, { method: "POST" });
     }

@@ -5,7 +5,7 @@ module.exports = () => {
   const teams = {};
   const players = {};
 
-  votes.forEach(vote => {
+  votes.forEach((vote) => {
     if (vote.targetType === "team" && vote.teamSlug) {
       teams[vote.teamSlug] = (teams[vote.teamSlug] || 0) + 1;
     }
