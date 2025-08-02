@@ -36,8 +36,17 @@
   {% set homepageItem = teamsBoard | selectattr("slug", "equalto", category) | first %}
   {% set homepage = homepageItem.homepage if homepageItem else "https://www.koreabaseball.com" %}
 
-  {% set recentGame = (leagueSchedule | selectattr("homeSlug", "equalto", category) | first)
-    or (leagueSchedule | selectattr("awaySlug", "equalto", category) | first) %}
+  {% set teamGames = (leagueSchedule 
+  | selectattr("homeSlug", "equalto", category) 
+  | list) 
+  + 
+  (leagueSchedule 
+  | selectattr("awaySlug", "equalto", category) 
+  | list) 
+%}
+
+{% set sortedGames = teamGames | sort(false, true, "date") %}
+{% set recentGame = sortedGames[0] %}
 
   {% set filteredPosts = collections.teamPosts | selectattr("data.category", "equalto", category) %}
 
