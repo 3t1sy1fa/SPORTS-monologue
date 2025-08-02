@@ -14,8 +14,19 @@ module.exports = () => {
     }
   });
 
+  // 객체 → 배열 변환
+  const teamArray = Object.entries(teamVotes).map(([teamSlug, totalVotes]) => ({
+    teamSlug,
+    teamTotalVotes: totalVotes,
+  }));
+
+  const playerArray = Object.entries(playerVotes).map(([playerSlug, totalVotes]) => ({
+    playerSlug,
+    playerTotalVotes: totalVotes,
+  }));
+
   return {
-    teams: teamVotes,
-    players: playerVotes,
+    teams: teamArray,
+    players: playerArray,
   };
 };
