@@ -13,22 +13,23 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 
   <!-- 🏆 인기 구단 Podium -->
   <section class="podium-section">
-    {% set sortedVotes = voteSummary 
-      | sort(attribute="teamTotalVotes", order="desc") 
-      | slice(0, 3) 
-    %}
-    <div class="podium podium-2">
-      <img src="/images/{{ sortedVotes[1].teamSlug }}.png" alt="{{ sortedVotes[1].teamName }}">
-      <span>{{ sortedVotes[1].teamName }}</span>
-    </div>
-    <div class="podium podium-1">
-      <img src="/images/{{ sortedVotes[0].teamSlug }}.png" alt="{{ sortedVotes[0].teamName }}">
-      <span>{{ sortedVotes[0].teamName }}</span>
-    </div>
-    <div class="podium podium-3">
-      <img src="/images/{{ sortedVotes[2].teamSlug }}.png" alt="{{ sortedVotes[2].teamName }}">
-      <span>{{ sortedVotes[2].teamName }}</span>
-    </div>
+    {% set topVotes = (voteSummary | sort(attribute="teamTotalVotes", order="desc")) %}
+    {% if topVotes | length >= 3 %}
+      <div class="podium podium-2">
+        <img src="/images/{{ topVotes[1].teamSlug }}.png" alt="{{ topVotes[1].teamName }}">
+        <span>{{ topVotes[1].teamName }}</span>
+      </div>
+      <div class="podium podium-1">
+        <img src="/images/{{ topVotes[0].teamSlug }}.png" alt="{{ topVotes[0].teamName }}">
+        <span>{{ topVotes[0].teamName }}</span>
+      </div>
+      <div class="podium podium-3">
+        <img src="/images/{{ topVotes[2].teamSlug }}.png" alt="{{ topVotes[2].teamName }}">
+        <span>{{ topVotes[2].teamName }}</span>
+      </div>
+    {% else %}
+      <p class="no-data">인기 구단 데이터가 부족합니다.</p>
+    {% endif %}
   </section>
 
   <!-- 📊 구단 카드 리스트 -->
@@ -38,8 +39,8 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
         <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
         <div class="team-info">
           <h3>{{ team.name }}</h3>
-          <p>순위: {{ team.rank }}위 | 승률: {{ team.승률 }}</p>
-          <span class="last-game">최근 경기: {{ team.lastgame }}</span>
+          <p>순위: {{ team.rank }}위 | 승률: {{ team.winRate }}</p>
+          <span class="last-game">최근 경기: {{ team.lastGame }}</span>
         </div>
       </a>
     {% endfor %}
@@ -49,18 +50,23 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
   <section class="extra-info">
     <div class="weekly-schedule">
       <h3>이번 주 경기 일정</h3>
-      <ul>
-        {% set startDate = ("" | date("yyyy-MM-dd")) %}
-        {% for game in leagueSchedule 
-          | selectattr("date", "ge", startDate) 
-          | slice(0, 7) 
-        %}
-          <li>
-            <time datetime="{{ game.date }}">{{ game.date | date("MM.dd") }}</time> 
-            {{ game.home }} vs {{ game.away }}
-          </li>
-        {% endfor %}
-      </ul>
+      {% set today = "" | date("yyyy-MM-dd") %}
+      {% set upcomingGames = leagueSchedule 
+        | selectattr("date", "ge", today) 
+        | slice(0, 7) 
+      %}
+      {% if upcomingGames | length > 0 %}
+        <ul>
+          {% for game in upcomingGames %}
+            <li>
+              <time datetime="{{ game.date }}">{{ game.date | date("MM.dd") }}</time> 
+              {{ game.home }} vs {{ game.away }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="no-data">이번 주 경기 일정이 없습니다.</p>
+      {% endif %}
     </div>
   </section>
 {% endblock %}
