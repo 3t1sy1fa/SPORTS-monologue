@@ -48,7 +48,7 @@
                     <span class="team-rank">{{ team.rank }}위</span>
                     <span class="team-record">
                       {{ team.wins }}승 {{ team.losses }}패 {{ team.draws }}무
-                      ({{ (team.승률 * 100) | round(1) }}%)
+                      ({{ (team.winRate * 100) | round(1) }}%)
                     </span>
                     <span class="last-game {% if team.lastgame == '승' %}win{% else %}lose{% endif %}">
                       최근: {{ team.lastgame }}
