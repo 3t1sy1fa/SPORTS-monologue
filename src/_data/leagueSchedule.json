@@ -77,9 +77,9 @@
     "homeSlug": "samsung",
     "away": "LG",
     "awaySlug": "lg",
-    "homeScore": "2",
-    "awayScore": "3",
-    "status": "종료",
+    "homeScore": "",
+    "awayScore": "",
+    "status": "예정",
     "winner": "lg",
     "doubleHeader": "N"
   },
