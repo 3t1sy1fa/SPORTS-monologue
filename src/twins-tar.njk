@@ -4,15 +4,16 @@ layout: layout.njk
 description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주요 경기 기록과 선수 활약 평점을 제공합니다."
 ---
 
+{% block styles %}
+<link rel="stylesheet" href="/style/twins-tar.css" />
+{% endblock %}
+
 {% block content %}
 <section class="twins-tar-container">
   <header class="twins-tar-header">
     <p class="subtitle">무적 LG! 끝까지 Twins!</p>
     <h1>TWINS</h1>
   </header>
-
-  {# ✅ CSS 로드 (HEAD 영역이 아님) → layout.njk에서 불러오는 게 더 안전함 #}
-  <link rel="stylesheet" href="/style/twins-tar.css" />
 
   <div class="twins-tar-layout">
     <!-- 왼쪽 사이드 -->
@@ -44,24 +45,13 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
           </tbody>
         </table>
       </div>
-
-      <div class="news-section">
-        <h3>트윈스 뉴스</h3>
-        <ul class="news-list">
-          {% for news in twinsNews %}
-          <li>
-            <a href="{{ news.link }}" target="_blank">{{ news.title }}</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
     </aside>
 
     <!-- 오른쪽 선수 보드 -->
     <div class="players-board">
       <h3>트윈스 선수단</h3>
       <div class="players-list">
-        {% for player in twinsPlayers %}
+        {% for player in players if player.teamSlug == "lg" %}
         <a href="/players/{{ player.slug }}/" class="player-card">
           <img src="/images/players/{{ player.slug }}.png" 
                alt="{{ player.name }}" 
@@ -80,7 +70,6 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
 
   <div class="stat-section">
     <h2>twinS-TAR</h2>
-    
     <table class="stats-table">
       <thead>
         <tr>
@@ -91,9 +80,9 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
         </tr>
       </thead>
       <tbody>
-        {% for stat in playerStats %}
+        {% for stat in playerStats if stat.teamSlug == "lg" %}
         <tr>
-          <td>{{ stat.player }}</td>
+          <td>{{ stat.playerName }}</td>
           <td>
             <time datetime="{{ stat.date }}">{{ stat.date | date("MM.dd") }}</time>
             {{ stat.game }}
@@ -104,6 +93,25 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
         {% endfor %}
       </tbody>
     </table>
+  </div>
+
+  <!-- 🗳 인기 선수 TOP 3 -->
+  <div class="vote-section">
+    <h2>인기 선수 TOP 3</h2>
+    <div class="top-votes">
+      {% set lgVotes = voteSummary | selectattr("playerTeamSlug", "equalto", "lg") %}
+      {% for vote in lgVotes | sort(attribute="playerTotalVotes") | reverse | slice(0, 3) %}
+        <div class="vote-card">
+          <img src="/images/players/{{ vote.playerSlug }}.png" 
+               alt="{{ vote.playerName }}" 
+               class="vote-player-photo">
+          <div class="vote-info">
+            <span class="vote-player-name">{{ vote.playerName }}</span>
+            <span class="vote-count">{{ vote.playerTotalVotes }}표</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </section>
 {% endblock %}

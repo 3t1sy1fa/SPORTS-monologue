@@ -1,0 +1,61 @@
+---
+pagination:
+  data: players           # players.json 데이터를 사용
+  size: 1                 # 한 페이지당 1명씩
+  alias: player           # 데이터 접근 시 이름
+permalink: "players/{{ player.slug }}/index.html"
+layout: layout.njk
+---
+
+{% block content %}
+<section class="player-detail-container">
+  <header class="player-header">
+    <img src="/images/players/{{ player.slug }}.png" 
+         alt="{{ player.name }}" 
+         class="player-photo">
+    <div class="player-info">
+      <h1>{{ player.name }}</h1>
+      <p class="player-position">{{ player.position }}</p>
+      <p class="player-number">등번호: {{ player.Number }}</p>
+      {% if player.note %}
+        <p class="player-note">"{{ player.note }}"</p>
+      {% endif %}
+    </div>
+  </header>
+
+  <section class="player-stats">
+    <h2>최근 경기 기록</h2>
+    <table class="stats-table">
+      <thead>
+        <tr>
+          <th>날짜</th>
+          <th>경기</th>
+          <th>기록</th>
+          <th>평점</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stat in playerStats %}
+          {% if stat.playerSlug == player.slug %}
+          <tr>
+            <td><time datetime="{{ stat.date }}">{{ stat.date | date("MM.dd") }}</time></td>
+            <td>{{ stat.game }}</td>
+            <td>{{ stat.record }}</td>
+            <td>{{ stat.rating }}</td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="player-votes">
+    <h2>인기 투표</h2>
+    <p>현재 투표 수: {{ player.Popularity or 0 }}</p>
+    <form action="#" method="POST" class="vote-form">
+      <input type="hidden" name="playerSlug" value="{{ player.slug }}">
+      <button type="submit">이 선수에게 투표하기</button>
+    </form>
+  </section>
+</section>
+{% endblock %}

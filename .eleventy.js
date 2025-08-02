@@ -21,13 +21,18 @@ module.exports = function(eleventyConfig) {
   });
   eleventyConfig.addCollection("log", c => c.getFilteredByGlob("src/log/*.md"));
 
-  // ✅ 글로벌 데이터
-  eleventyConfig.addGlobalData("latestGames", require("./src/data/latest-games.json"));
-  eleventyConfig.addGlobalData("teamsBoard", require("./src/data/teams-board.json"));
-  eleventyConfig.addGlobalData("twinsPlayers", () => require("./src/data/twins-players.json"));
-  eleventyConfig.addGlobalData("twinsNews", () => require("./src/data/twins-news.json"));
-  eleventyConfig.addGlobalData("twinsSchedule", () => require("./src/data/twins-schedule.json"));
+  // ✅ 글로벌 데이터 (최종 JSON 구조)
+  eleventyConfig.addGlobalData("teamsBoard", () => require("./src/data/teams-board.json"));
+  eleventyConfig.addGlobalData("players", () => require("./src/data/players.json"));
+  eleventyConfig.addGlobalData("twinsPlayers", () => {
+    const players = require("./src/data/players.json");
+    return players.filter(p => p.teamSlug === "lg");
+  });
   eleventyConfig.addGlobalData("playerStats", () => require("./src/data/player-stats.json"));
+  eleventyConfig.addGlobalData("twinsSchedule", () => require("./src/data/twins-schedule.json"));
+  eleventyConfig.addGlobalData("leagueSchedule", () => require("./src/data/league-schedule.json"));
+  eleventyConfig.addGlobalData("votes", () => require("./src/data/votes.json"));
+  eleventyConfig.addGlobalData("voteSummary", () => require("./src/data/vote-summary.json"));
 
   // ✅ 날짜 필터
   eleventyConfig.addFilter("date", dateObj =>

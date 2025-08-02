@@ -2,58 +2,67 @@
   {% include "header.njk" %}
 
   {% if title == "트윈스타" %}
-  <link rel="stylesheet" href="/style/twins-tar.css" />
+    <link rel="stylesheet" href="/style/twins-tar.css" />
   {% endif %}
     
   <main class="main-container {% if isHome %}with-sidebar{% endif %}">
     {% if isHome %}
-      <!-- 버튼을 사이드바 밖으로 이동 -->
+      <!-- 사이드바 토글 버튼 -->
       <button id="sidebar-toggle" class="sidebar-toggle">보드</button>
 
       <aside class="sidebar">     
-        <!-- 최신 경기 결과 -->
+        <!-- ✅ 최신 경기 결과 -->
         <div class="latest-games-section">
-         <h3>최신 경기 결과</h3>
-         <span class="date">{{ game.date | date("MM.dd") }}</span>
-         <ul class="latest-games">
-           {% for game in latestGames %}
-             <li>
-               <span class="match">
-                 <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
-                 {{ game.home }} vs 
-                 <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
-                 {{ game.away }}
-               </span>
-               <span class="score {% if game.result == '승' %}win{% elseif game.result == '패' %}lose{% endif %}">
-                 {{ game.score }}
-               </span>
-             </li>
-           {% endfor %}
-         </ul>
-       </div>  
+          <h3>최신 경기 결과</h3>
+          <ul class="latest-games">
+            {% for game in leagueSchedule | reverse | slice(0, 5) %}
+              <li>
+                <span class="match">
+                  <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
+                  {{ game.home }} vs 
+                  <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
+                  {{ game.away }}
+                </span>
+                <span class="score">
+                  {% if game.status == "종료" %}
+                    {{ game.homeScore }} - {{ game.awayScore }}
+                  {% else %}
+                    예정
+                  {% endif %}
+                </span>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>  
 
-  <!-- 구단 보드 -->
-       <div class="teams-board-section">
-         <h3>구단 보드</h3>
-         <div class="teams-board">
-         {% for team in teamsBoard | sort(attribute="rank") %}
-            <div class="team-card">
-              <a href="/teams/{{ team.slug }}/">
-                <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
-                <div class="team-info">
-                  <span class="team-name">{{ team.name }}</span>
-                  <span class="team-rank">{{ team.rank }}위</span>
-                  <span class="team-record">{{ team.wins }}승 {{ team.losses }}패</span>
-                  <span class="last-game {{ team.lastGame }}">최근: {{ team.lastGame }}</span>
-                </div>
-              </a>
-            </div>
-          {% endfor %}
+        <!-- ✅ 구단 보드 -->
+        <div class="teams-board-section">
+          <h3>구단 보드</h3>
+          <div class="teams-board">
+            {% for team in teamsBoard | sort(attribute="rank") %}
+              <div class="team-card">
+                <a href="/teams/{{ team.slug }}/">
+                  <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
+                  <div class="team-info">
+                    <span class="team-name">{{ team.name }}</span>
+                    <span class="team-rank">{{ team.rank }}위</span>
+                    <span class="team-record">
+                      {{ team.wins }}승 {{ team.losses }}패 {{ team.draws }}무
+                      ({{ (team.승률 * 100) | round(1) }}%)
+                    </span>
+                    <span class="last-game {{ team.lastgame == '승' ? 'win' : 'lose' }}">
+                      최근: {{ team.lastgame }}
+                    </span>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
           </div>
         </div>
       </aside>
     {% endif %}
 
+    <!-- ✅ 본문 영역 -->
     <section class="content-area">
       {% block content %}
         {{ content | safe }}
@@ -63,7 +72,7 @@
 
   {% include "footer.njk" %}
 
-  <!-- ✅ 토글 스크립트 추가 -->
+  <!-- ✅ 토글 스크립트 -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const toggleBtn = document.getElementById("sidebar-toggle");

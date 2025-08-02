@@ -13,54 +13,51 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 
   <!-- 🏆 인기 구단 Podium -->
   <section class="podium-section">
+    {% set sortedVotes = voteSummary 
+      | sort(attribute="teamTotalVotes", order="desc") 
+      | slice(0, 3) 
+    %}
     <div class="podium podium-2">
-      <img src="/images/{{ topTeams[1].slug }}.png" alt="{{ topTeams[1].name }}">
-      <span>{{ topTeams[1].name }}</span>
+      <img src="/images/{{ sortedVotes[1].teamSlug }}.png" alt="{{ sortedVotes[1].teamName }}">
+      <span>{{ sortedVotes[1].teamName }}</span>
     </div>
     <div class="podium podium-1">
-      <img src="/images/{{ topTeams[0].slug }}.png" alt="{{ topTeams[0].name }}">
-      <span>{{ topTeams[0].name }}</span>
+      <img src="/images/{{ sortedVotes[0].teamSlug }}.png" alt="{{ sortedVotes[0].teamName }}">
+      <span>{{ sortedVotes[0].teamName }}</span>
     </div>
     <div class="podium podium-3">
-      <img src="/images/{{ topTeams[2].slug }}.png" alt="{{ topTeams[2].name }}">
-      <span>{{ topTeams[2].name }}</span>
+      <img src="/images/{{ sortedVotes[2].teamSlug }}.png" alt="{{ sortedVotes[2].teamName }}">
+      <span>{{ sortedVotes[2].teamName }}</span>
     </div>
   </section>
 
   <!-- 📊 구단 카드 리스트 -->
   <section class="teams-card-section">
-    {% for team in allTeams %}
+    {% for team in teamsBoard | sort(attribute="rank") %}
       <a href="/teams/{{ team.slug }}/" class="team-card">
         <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
         <div class="team-info">
           <h3>{{ team.name }}</h3>
-          <p>순위: {{ team.rank }}위 | 승률: {{ team.winRate }}%</p>
-          <span class="last-game">최근 경기: {{ team.lastGame }}</span>
+          <p>순위: {{ team.rank }}위 | 승률: {{ team.승률 }}</p>
+          <span class="last-game">최근 경기: {{ team.lastgame }}</span>
         </div>
       </a>
     {% endfor %}
   </section>
 
-  <!-- 📅 이번 주 경기 + 📰 트렌드 뉴스 -->
+  <!-- 📅 이번 주 경기 일정 -->
   <section class="extra-info">
     <div class="weekly-schedule">
       <h3>이번 주 경기 일정</h3>
       <ul>
-        {% for game in weeklyGames %}
+        {% set startDate = ("" | date("yyyy-MM-dd")) %}
+        {% for game in leagueSchedule 
+          | selectattr("date", "ge", startDate) 
+          | slice(0, 7) 
+        %}
           <li>
             <time datetime="{{ game.date }}">{{ game.date | date("MM.dd") }}</time> 
             {{ game.home }} vs {{ game.away }}
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-
-    <div class="news-section">
-      <h3>구단 뉴스</h3>
-      <ul>
-        {% for news in teamNews %}
-          <li>
-            <a href="{{ news.link }}" target="_blank">{{ news.title }}</a>
           </li>
         {% endfor %}
       </ul>

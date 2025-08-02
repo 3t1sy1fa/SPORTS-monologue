@@ -5,28 +5,28 @@ description: "KBO 선수들의 전력과 가능성, 잠재력을 분석합니다
 ---
 
 {% block content %}
-<section class="post-container">
-  <h1 class="post-title">선수 분석</h1>
-  <p class="post-meta">KBO 리그 선수들의 전력과 가능성, 잠재력을 분석합니다.</p>
+<section class="players-container">
+  <h1 class="page-title">선수 분석</h1>
+  <p class="page-meta">KBO 리그 선수들의 전력과 가능성, 잠재력을 분석합니다.</p>
 
-  <div class="post-list">
-    {% for post in collections.posts | reverse %}
-      {% if post.data.category == "선수 분석" %}
-        <article class="post-item">
-          <h4>
-            <a href="{{ post.url }}" title="{{ post.data.title }}">
-              {{ post.data.title }}
-            </a>
-          </h4>
-          <p>
-            <strong>[{{ post.data.category }}]</strong> · 
-            <time datetime="{{ post.date | date('yyyy-MM-dd') }}">
-              {{ post.date | date }}
-            </time>
+  <div class="players-grid">
+    {% for player in players %}
+      <a href="/players/{{ player.slug }}/" class="player-card">
+        <img src="/images/players/{{ player.slug }}.png" 
+             alt="{{ player.name }}" 
+             class="player-photo">
+
+        <div class="player-info">
+          <h3 class="player-name">{{ player.name }}</h3>
+          <p class="player-team">
+            <img src="/images/{{ player.teamSlug }}.png" alt="{{ player.teamSlug }}" class="team-logo">
           </p>
-          <p>{{ post.data.excerpt }}</p>
-        </article>
-      {% endif %}
+          <p class="player-position">{{ player.position }}</p>
+          <p class="player-note">{{ player.note }}</p>
+          <p class="player-number">#{{ player.Number }}</p>
+          <div class="player-popularity">인기 점수: {{ player.Popularity or 0 }}</div>
+        </div>
+      </a>
     {% endfor %}
   </div>
 </section>

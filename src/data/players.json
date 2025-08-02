@@ -1,0 +1,185 @@
+[
+  {
+    "name": "김현수",
+    "slug": "kim-hs",
+    "teamSlug": "lg",
+    "position": "외야수",
+    "note": "16시즌 연속 100안타",
+    "number": "22",
+    "popularity": 0
+  },
+  {
+    "name": "박해민",
+    "slug": "park-hm",
+    "teamSlug": "lg",
+    "position": "외야수",
+    "note": "450 도루",
+    "number": "17",
+    "popularity": 0
+  },
+  {
+    "name": "구본혁",
+    "slug": "gu-bh",
+    "teamSlug": "lg",
+    "position": "내야수",
+    "note": "요즘 폼이 ㅁㅊ",
+    "number": "6",
+    "popularity": 0
+  },
+  {
+    "name": "임찬규",
+    "slug": "lim-ck",
+    "teamSlug": "lg",
+    "position": "투수",
+    "note": "9승 달성",
+    "number": "1",
+    "popularity": 0
+  },
+  {
+    "name": "김영우",
+    "slug": "kim-yw",
+    "teamSlug": "lg",
+    "position": "투수",
+    "note": "",
+    "number": "67",
+    "popularity": 0
+  },
+  {
+    "name": "박동원",
+    "slug": "park-dw",
+    "teamSlug": "lg",
+    "position": "포수",
+    "note": "2025 미스터 올스타",
+    "popularity": 0
+  },
+  {
+    "name": "이주헌",
+    "slug": "lee-jh",
+    "teamSlug": "lg",
+    "position": "포수",
+    "note": "트윈스의주허니",
+    "popularity": 0
+  },
+  {
+    "name": "오스틴 딘",
+    "slug": "ad",
+    "teamSlug": "lg",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "백승현",
+    "slug": "baek-sh",
+    "teamSlug": "lg",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "최원영",
+    "slug": "choi-wy",
+    "teamSlug": "lg",
+    "popularity": 0
+  },
+  {
+    "name": "함덕주",
+    "slug": "ham-dj",
+    "teamSlug": "lg",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "홍창기",
+    "slug": "hong-ck",
+    "teamSlug": "lg",
+    "position": "외야수",
+    "note": "",
+    "number": "51",
+    "popularity": 0
+  },
+  {
+    "name": "김진성",
+    "slug": "kim-js",
+    "teamSlug": "lg",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "이지강",
+    "slug": "lee-jk",
+    "teamSlug": "lg",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "이영빈",
+    "slug": "lee-yb",
+    "teamSlug": "lg",
+    "popularity": 0
+  },
+  {
+    "name": "문보경",
+    "slug": "moon-bg",
+    "teamSlug": "lg",
+    "position": "내야수",
+    "note": "트윈스의 보물이 반짝입니다",
+    "number": "2",
+    "popularity": 0
+  },
+  {
+    "name": "문성주",
+    "slug": "moon-sj",
+    "teamSlug": "lg",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "박명근",
+    "slug": "park-mg",
+    "teamSlug": "lg",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "신민재",
+    "slug": "shin-mj",
+    "teamSlug": "lg",
+    "position": "내야수",
+    "note": "",
+    "number": "4",
+    "popularity": 0
+  },
+  {
+    "name": "손주영",
+    "slug": "son-jy",
+    "teamSlug": "lg",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "손용준",
+    "slug": "son-yj",
+    "teamSlug": "lg",
+    "popularity": 0
+  },
+  {
+    "name": "송승기",
+    "slug": "song-sg",
+    "teamSlug": "lg",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "이정용",
+    "slug": "yi-jy",
+    "teamSlug": "lg",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "유영찬",
+    "slug": "you-yc",
+    "teamSlug": "lg",
+    "position": "투수",
+    "popularity": 0
+  }
+]

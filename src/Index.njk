@@ -8,34 +8,74 @@ isHome: true
 {% block content %}
 <p class="typing-slogan"><span id="typing-text" aria-live="polite"></span></p>
 
-<!-- 오른쪽 글 목록만 표시 -->
-<section class="post-list">
-  {% for post in collections.posts | reverse %}
-    <article class="post-item">
-      <h4>
-        <a href="{{ post.url }}" title="{{ post.data.title }}">
-          {{ post.data.title }}
-        </a>
-      </h4>
-      <p>
-        <strong>[{{ post.data.category }}]</strong> · 
-        <time datetime="{{ post.date | date('yyyy-MM-dd') }}">{{ post.date | date }}</time>
-      </p>
-      <p>{{ post.data.excerpt }}</p>
-    </article>
-  {% endfor %}
-</section>
+<main class="home-layout">
+  <!-- ✅ 사이드바 -->
+  <aside class="sidebar">
+    <div class="latest-games-section">
+      <h3>최신 경기 결과</h3>
+      <ul class="latest-games">
+        {% for game in leagueSchedule | slice(-5) | reverse %}
+          <li>
+            <span class="match">
+              <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
+              {{ game.home }} vs 
+              <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
+              {{ game.away }}
+            </span>
+            <span class="score {% if game.winner == game.homeSlug %}win{% else %}lose{% endif %}">
+              {{ game.homeScore }} - {{ game.awayScore }}
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="teams-board-section">
+      <h3>구단 보드</h3>
+      <div class="teams-board">
+        {% for team in teamsBoard | sort(attribute="rank") %}
+          <div class="team-card">
+            <a href="/teams/{{ team.slug }}/">
+              <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
+              <div class="team-info">
+                <span class="team-name">{{ team.name }}</span>
+                <span class="team-rank">{{ team.rank }}위</span>
+                <span class="team-record">{{ team.wins }}승 {{ team.losses }}패 {{ team.draws }}무</span>
+                <span class="last-game {{ team.lastgame }}">최근: {{ team.lastgame }}</span>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </aside>
+
+  <!-- ✅ 글 목록 -->
+  <section class="post-list">
+    {% for post in collections.posts | reverse %}
+      <article class="post-item">
+        <h4>
+          <a href="{{ post.url }}" title="{{ post.data.title }}">
+            {{ post.data.title }}
+          </a>
+        </h4>
+        <p>
+          <strong>[{{ post.data.category }}]</strong> · 
+          <time datetime="{{ post.date | date('yyyy-MM-dd') }}">{{ post.date | date }}</time>
+        </p>
+        <p>{{ post.data.excerpt }}</p>
+      </article>
+    {% endfor %}
+  </section>
+</main>
 
 <script>
   const phrases = [
     "경기 그 이상을 보기 위해",
     "경영의 언어로 스포츠를 말하다"
   ];
-  const speed = 60;
-  const pause = 1500;
-  const eraseSpeed = 40;
-  let i = 0, j = 0;
-  let isDeleting = false;
+  const speed = 60, pause = 1500, eraseSpeed = 40;
+  let i = 0, j = 0, isDeleting = false;
   const el = document.getElementById("typing-text");
 
   function type() {
@@ -46,20 +86,15 @@ isHome: true
         isDeleting = false;
         i = (i + 1) % phrases.length;
         setTimeout(type, 500);
-      } else {
-        setTimeout(type, eraseSpeed);
-      }
+      } else setTimeout(type, eraseSpeed);
     } else {
       el.textContent = current.substring(0, j++);
       if (j > current.length) {
         isDeleting = true;
         setTimeout(type, pause);
-      } else {
-        setTimeout(type, speed);
-      }
+      } else setTimeout(type, speed);
     }
   }
-
   document.addEventListener("DOMContentLoaded", type);
 </script>
 {% endblock %}

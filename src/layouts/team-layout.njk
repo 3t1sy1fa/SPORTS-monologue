@@ -7,10 +7,7 @@
   <link rel="icon" href="/favicon.png" type="image/png">
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
   
-  <!-- ✅ 페이지 제목 -->
   <title>{{ title or "teams" }} | 구단 분석</title>
-
-  <!-- ✅ 페이지 설명 (frontmatter에서 받아오도록 설정) -->
   <meta name="description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
 
   <!-- ✅ 오픈 그래프 -->
@@ -27,11 +24,10 @@
   <meta name="twitter:image" content="{{ image or 'https://3t1sy1fa.com/images/og-image.jpg' }}">
   <meta name="twitter:domain" content="Sports Monologue">
 
-  <!-- ✅ 공통 스타일 -->
+  <!-- ✅ 스타일 -->
   <link rel="stylesheet" href="/style/main.css" />
   <link rel="stylesheet" href="/style/team-base.css" />
 
-  <!-- ✅ 팀별 CSS 자동 연결 -->
   {% set teamMap = {
     "LG 트윈스": "team-lg.css",
     "두산 베어스": "team-doosan.css",
@@ -54,18 +50,16 @@
 <body>
   {% include "header.njk" %}
 
-  <!-- ✅ 최근 경기 정보 -->
-  {% if category and gameResults and gameResults[category] %}
-    {% set recentGame = gameResults[category] %}
-  {% else %}
-    {% set recentGame = {
-      date: "날짜 정보 없음",
-      summary: "요약 정보 없음",
-      link: "#"
-    } %}
-  {% endif %}
+  {# ✅ 최근 경기 데이터 (leagueSchedule에서 해당 팀만) #}
+  {% set recentGame = (leagueSchedule | reverse).find(game => 
+    game.homeSlug == category or game.awaySlug == category
+  ) or {
+    date: "날짜 정보 없음",
+    summary: "요약 정보 없음",
+    link: teamsBoard.find(t => t.slug == category).homepage
+  } %}
 
-  <!-- ✅ 글 필터링 -->
+  {# ✅ 글 목록 필터링 #}
   {% set filteredPosts = [] %}
   {% for post in collections.teamPosts %}
     {% if post.data.category == category %}
@@ -76,9 +70,16 @@
   <main class="team-layout">
     <div class="team-left">
       <div class="game-results">
-        <p class="game-date">{{ recentGame.date }}</p>
-        <p class="game-summary">{{ recentGame.summary }}</p>
-        <a href="{{ recentGame.link }}" class="team-btn" target="_blank" rel="noopener noreferrer">
+        <p class="game-date">{{ recentGame.date | date }}</p>
+        <p class="game-summary">
+          {% if recentGame.home %}
+            {{ recentGame.home }} vs {{ recentGame.away }} ({{ recentGame.homeScore }} - {{ recentGame.awayScore }})
+          {% else %}
+            {{ recentGame.summary }}
+          {% endif %}
+        </p>
+        <a href="{{ teamsBoard.find(t => t.slug == category).homepage }}" 
+           class="team-btn" target="_blank" rel="noopener noreferrer">
           구단 공식 홈페이지
         </a>
       </div>
