@@ -66,21 +66,18 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("latestGames", (games) => {
     if (!Array.isArray(games)) return [];
     return games
-      .filter(game => String(game.status).trim() === "종료") // 종료 경기만
-      .sort((a, b) => new Date(b.date) - new Date(a.date)) // 최신순 정렬
-      .slice(0, 5); // 상위 5개
+      .filter(game => String(game.status).trim() === "종료")
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 5);
   });
+
   // ✅ 최근 경기 필터
   eleventyConfig.addFilter("getRecentGame", (games) => {
-  if (!Array.isArray(games)) return null;
-
-  return games
-    .filter(g => String(g.status).trim() === "종료") // 종료된 경기만
-    .sort((a, b) => new Date(b.date) - new Date(a.date)) // 최신순 정렬
-    [0] || null; // 가장 최근 1경기
-});
-
-
+    if (!Array.isArray(games)) return null;
+    return games
+      .filter(g => String(g.status).trim() === "종료")
+      .sort((a, b) => new Date(b.date) - new Date(a.date))[0] || null;
+  });
 
   // ✅ 팀 홈페이지 필터
   eleventyConfig.addFilter("getHomepage", (teamsBoard, slug) => {
