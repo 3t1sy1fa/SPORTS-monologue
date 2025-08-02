@@ -408,3 +408,16 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 480px) {
 .log-container { max-width: 480px; margin: 0; padding: 10px 4px; align-self: flex-start; }
 }
+
+
+.latest-games-section {
+  background: white !important;
+  color: black !important;
+  z-index: 2000;
+  position: relative;
+}
+
+.latest-games li {
+  background: yellow !important;
+  color: black !important;
+}
