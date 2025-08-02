@@ -1,4 +1,3 @@
-// netlify/functions/vote.js
 const { google } = require("googleapis");
 const fetch = require("node-fetch");
 
@@ -10,7 +9,10 @@ exports.handler = async (event) => {
   try {
     const { targetType, teamSlug, playerSlug } = JSON.parse(event.body);
 
-    if (!targetType || (targetType === "player" && !playerSlug) || (targetType === "team" && !teamSlug)) {
+    // ✅ 유효성 검사
+    if (!targetType || 
+       (targetType === "player" && !playerSlug) || 
+       (targetType === "team" && !teamSlug)) {
       return { statusCode: 400, body: "Invalid vote payload" };
     }
 
@@ -23,25 +25,25 @@ exports.handler = async (event) => {
     );
     const sheets = google.sheets({ version: "v4", auth: client });
 
-    // ✅ 시트에 한 줄 추가
+    // ✅ 시트에 새로운 투표 추가
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.SHEET_ID,
-      range: "votes!A:E",
+      range: "Votes!A:E",
       valueInputOption: "RAW",
       requestBody: {
         values: [
           [
-            Date.now().toString(),       // voterId
-            targetType,
-            teamSlug || "",
-            playerSlug || "",
-            new Date().toISOString()     // timestamp
+            Date.now().toString(),        // voterId
+            targetType,                   // targetType
+            teamSlug || "",                // teamSlug
+            playerSlug || "",              // playerSlug
+            new Date().toISOString()       // timestamp
           ],
         ],
       },
     });
 
-    // ✅ Netlify Build Hook 호출 → 사이트 리빌드
+    // ✅ Build Hook 호출 → 사이트 리빌드
     if (process.env.NETLIFY_BUILD_HOOK) {
       await fetch(process.env.NETLIFY_BUILD_HOOK, { method: "POST" });
     }
@@ -51,7 +53,7 @@ exports.handler = async (event) => {
       body: JSON.stringify({ message: "투표가 완료되었습니다." }),
     };
   } catch (error) {
-    console.error("Vote error:", error);
+    console.error("❌ Vote error:", error);
     return { statusCode: 500, body: "Internal Server Error" };
   }
 };
