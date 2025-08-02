@@ -1,5 +1,5 @@
 /* ==============================
-   선수 분석 페이지
+   선수 분석 페이지 (목록)
    ============================== */
 .players-container {
   max-width: 100%;
@@ -11,7 +11,7 @@
   color: #1a1a1a;
 }
 
-/* ===== 페이지 타이틀 ===== */
+/* 페이지 타이틀 */
 .page-title {
   font-size: 2rem;
   font-weight: 700;
@@ -26,7 +26,7 @@
   margin-bottom: 2rem;
 }
 
-/* ===== 팀 필터 ===== */
+/* 팀 필터 */
 .filter-container {
   margin: 1rem 0;
   text-align: right;
@@ -45,16 +45,15 @@
   background-color: #f9f9f9;
 }
 
-/* ===== 선수 카드 그리드 (고정 3열) ===== */
+/* 선수 카드 그리드 */
 .players-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  justify-items: center;
+  justify-items: stretch;
 }
 
-/* ===== 개별 카드 ===== */
-/* 기본 카드 스타일 */
+/* 카드 스타일 */
 .player-card {
   display: flex;
   flex-direction: column;
@@ -72,74 +71,24 @@
   overflow: hidden;
 }
 
-/* ===== 팀별 마우스 오버 보더/그라데이션 ===== */
-
-/* LG */
-.player-card.lg:hover {
-  border-color: #C30452;
-  background: linear-gradient(145deg, #fff, rgba(195, 4, 82, 0.08));
-}
-
-/* 두산 */
-.player-card.doosan:hover {
-  border-color: #1A1748;
-  background: linear-gradient(145deg, #fff, rgba(26, 23, 72, 0.08));
-}
-
-/* SSG */
-.player-card.ssg:hover {
-  border-color: #CE0E2D;
-  background: linear-gradient(145deg, #fff, rgba(206, 14, 45, 0.08));
-}
-
-/* 롯데 */
-.player-card.lotte:hover {
-  border-color: #D00F31;
-  background: linear-gradient(145deg, #fff, rgba(208, 15, 49, 0.08));
-}
-
-/* 삼성 */
-.player-card.samsung:hover {
-  border-color: #074CA1;
-  background: linear-gradient(145deg, #fff, rgba(7, 76, 161, 0.08));
-}
-
-/* 한화 */
-.player-card.hanwha:hover {
-  border-color: #FC4E00;
-  background: linear-gradient(145deg, #fff, rgba(252, 78, 0, 0.08));
-}
-
-/* KIA */
-.player-card.kia:hover {
-  border-color: #EA0029;
-  background: linear-gradient(145deg, #fff, rgba(234, 0, 41, 0.08));
-}
-
-/* 키움 */
-.player-card.kiwoom:hover {
-  border-color: #570514;
-  background: linear-gradient(145deg, #fff, rgba(87, 5, 20, 0.08));
-}
-
-/* NC */
-.player-card.nc:hover {
-  border-color: #315288;
-  background: linear-gradient(145deg, #fff, rgba(49, 82, 136, 0.08));
-}
-
-/* KT */
-.player-card.kt:hover {
-  border-color: #EB1C24;
-  background: linear-gradient(145deg, #fff, rgba(235, 28, 36, 0.08));
-}
-
 .player-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* 선수 이미지 */
+/* 팀별 마우스 오버 */
+.player-card.lg:hover { border-color: #C30452; background: linear-gradient(145deg, #fff, rgba(195, 4, 82, 0.08)); }
+.player-card.doosan:hover { border-color: #1A1748; background: linear-gradient(145deg, #fff, rgba(26, 23, 72, 0.08)); }
+.player-card.ssg:hover { border-color: #CE0E2D; background: linear-gradient(145deg, #fff, rgba(206, 14, 45, 0.08)); }
+.player-card.lotte:hover { border-color: #D00F31; background: linear-gradient(145deg, #fff, rgba(208, 15, 49, 0.08)); }
+.player-card.samsung:hover { border-color: #074CA1; background: linear-gradient(145deg, #fff, rgba(7, 76, 161, 0.08)); }
+.player-card.hanwha:hover { border-color: #FC4E00; background: linear-gradient(145deg, #fff, rgba(252, 78, 0, 0.08)); }
+.player-card.kia:hover { border-color: #EA0029; background: linear-gradient(145deg, #fff, rgba(234, 0, 41, 0.08)); }
+.player-card.kiwoom:hover { border-color: #570514; background: linear-gradient(145deg, #fff, rgba(87, 5, 20, 0.08)); }
+.player-card.nc:hover { border-color: #315288; background: linear-gradient(145deg, #fff, rgba(49, 82, 136, 0.08)); }
+.player-card.kt:hover { border-color: #EB1C24; background: linear-gradient(145deg, #fff, rgba(235, 28, 36, 0.08)); }
+
+/* 이미지 */
 .player-photo {
   width: 100px;
   height: 100px;
@@ -149,44 +98,15 @@
   border: 1.5px solid #e3e3e3;
 }
 
-/* 카드 내부 정보 */
-.player-info {
-  text-align: center;
-  width: 100%;
-}
+/* 카드 내부 */
+.player-info { text-align: center; width: 100%; }
+.player-name { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.3rem; color: #333; }
+.player-team .team-logo { width: 28px; height: 28px; margin: 0.3rem 0; }
+.player-position { font-size: 0.95rem; color: #555; }
+.player-note { font-size: 0.9rem; color: #777; margin: 0.4rem 0; min-height: 32px; }
+.player-number { font-size: 0.85rem; color: #999; margin-bottom: 0.5rem; }
 
-.player-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.3rem;
-  color: #333;
-}
-
-.player-team .team-logo {
-  width: 28px;
-  height: 28px;
-  margin: 0.3rem 0;
-}
-
-.player-position {
-  font-size: 0.95rem;
-  color: #555;
-}
-
-.player-note {
-  font-size: 0.9rem;
-  color: #777;
-  margin: 0.4rem 0;
-  min-height: 32px;
-}
-
-.player-number {
-  font-size: 0.85rem;
-  color: #999;
-  margin-bottom: 0.5rem;
-}
-
-/* 인기 점수 배지 */
+/* 인기 점수 */
 .player-popularity {
   display: inline-block;
   background: #ffeb3b;
@@ -197,191 +117,18 @@
   font-weight: bold;
 }
 
-/* ===== 팀별 포인트 색상 ===== */
+/* 팀별 텍스트 색상 */
 .player-card.lg .player-name { color: #C30452; }
-.player-card.lg .player-popularity { background: #C30452; color: #fff; }
-
 .player-card.doosan .player-name { color: #1A1748; }
-.player-card.doosan .player-popularity { background: #1A1748; color: #fff; }
-
 .player-card.ssg .player-name { color: #CE0E2D; }
-.player-card.ssg .player-popularity { background: #FFB81C; color: #333; }
-
 .player-card.lotte .player-name { color: #041E42; }
-.player-card.lotte .player-popularity { background: #D00F31; color: #fff; }
-
 .player-card.samsung .player-name { color: #074CA1; }
-.player-card.samsung .player-popularity { background: #074CA1; color: #fff; }
-
 .player-card.hanwha .player-name { color: #FC4E00; }
-.player-card.hanwha .player-popularity { background: #07111F; color: #fff; }
-
 .player-card.kia .player-name { color: #EA0029; }
-.player-card.kia .player-popularity { background: #06141F; color: #fff; }
-
 .player-card.kiwoom .player-name { color: #570514; }
-.player-card.kiwoom .player-popularity { background: #570514; color: #fff; }
-
 .player-card.nc .player-name { color: #315288; }
-.player-card.nc .player-popularity { background: #AF917B; color: #fff; }
-
 .player-card.kt .player-name { color: #EB1C24; }
-.player-card.kt .player-popularity { background: #000; color: #fff; }
 
-/* ===== 반응형 ===== */
-@media (max-width: 1024px) {
-  .players-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-  .players-grid { grid-template-columns: 1fr; }
-}
-
-
-
-/* ==============================
-   선수 개별 페이지
-   ============================== */
-.player-detail-container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 20px 20%;
-  background: #fff;
-  color: #1a1a1a;
-  font-family: 'Mingijuk', 'SUIT', sans-serif;
-}
-
-/* ===== 선수 정보 헤더 ===== */
-.player-header {
-  display: flex;
-  align-items: center;
-  border-bottom: 1.5px solid #ddd;
-  padding-bottom: 20px;
-  margin-bottom: 30px;
-  gap: 24px;
-}
-
-.player-header .player-photo {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1.5px solid #ccc;
-}
-
-.player-info h1 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.player-position {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 4px;
-}
-
-.player-number {
-  font-size: 1rem;
-  color: #777;
-  margin-bottom: 8px;
-}
-
-.player-note {
-  font-size: 0.95rem;
-  color: #555;
-  font-style: italic;
-  border-left: 3px solid #ddd;
-  padding-left: 12px;
-  margin-top: 10px;
-}
-
-/* ===== 최근 경기 기록 ===== */
-.player-stats {
-  border-top: 1.5px solid #ddd;
-  padding-top: 20px;
-  margin-top: 30px;
-}
-
-.player-stats h2 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-/* 표 */
-.stats-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-
-.stats-table th,
-.stats-table td {
-  text-align: center;
-  padding: 12px;
-  border-bottom: 1px solid #eee;
-}
-
-.stats-table th {
-  background: #f9f9f9;
-  font-weight: 600;
-}
-
-.stats-table tbody tr:hover {
-  background: #fafafa;
-}
-
-/* ===== 인기 투표 ===== */
-.player-votes {
-  border-top: 1.5px solid #ddd;
-  padding-top: 20px;
-  margin-top: 30px;
-}
-
-.player-votes h2 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.vote-form {
-  margin-top: 16px;
-}
-
-.vote-form button {
-  background: #C30452; /* LG 트윈스 포인트 */
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.vote-form button:hover {
-  background: #a00240;
-}
-
-/* ===== 반응형 ===== */
-@media (max-width: 768px) {
-  .player-detail-container {
-    padding: 16px 5%;
-  }
-
-  .player-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .player-header .player-photo {
-    width: 120px;
-    height: 120px;
-  }
-
-  .player-info h1 {
-    font-size: 1.8rem;
-  }
-}
+/* 반응형 */
+@media (max-width: 1024px) { .players-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .players-grid { grid-template-columns: 1fr; } }
