@@ -11,7 +11,37 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 {% block content %}
 <h1 class="page-title">구단 분석</h1>
 
-<!-- 인기 구단 카드 -->
+<!-- 🏆 인기 구단 카드 (포디움 → 카드형식) -->
+<section class="top-teams-section">
+  <h2>인기 구단 TOP 3</h2>
+  <div class="top-teams-card-wrapper">
+    {% set topTeams = [] %}
+    {% for slug, count in voteSummary.teams %}
+      {% set team = teamsBoard | selectattr("slug", "equalto", slug) | first %}
+      {% if team %}
+        {% set obj = { "teamSlug": slug, "teamName": team.name, "teamTotalVotes": count } %}
+        {% set topTeams = topTeams.concat([obj]) %}
+      {% endif %}
+    {% endfor %}
+    {% set topTeams = topTeams | sort(attribute="teamTotalVotes", order="desc") | slice(0, 3) %}
+
+    {% if topTeams | length > 0 %}
+      {% for team in topTeams %}
+        <div class="top-team-card team-{{ team.teamSlug }}">
+          <img src="/images/{{ team.teamSlug }}.png" alt="{{ team.teamName }}">
+          <div>
+            <h3>{{ team.teamName }}</h3>
+            <p>{{ team.teamTotalVotes }}표</p>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>아직 인기 구단 데이터가 없습니다.</p>
+    {% endif %}
+  </div>
+</section>
+
+<!-- 📊 구단 카드 리스트 -->
 <section class="teams-card-section">
   {% for team in teamsBoard | sort(attribute="rank") %}
     {% set count = voteSummary.teams[team.slug] or 0 %}
@@ -35,6 +65,7 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
   {% endfor %}
 </section>
 
+<!-- 📅 이번 주 경기 일정 -->
 <section class="extra-info">
   <div class="weekly-schedule">
     <h3>이번 주 경기 일정</h3>
@@ -58,6 +89,7 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
   </div>
 </section>
 
+<!-- JS -->
 <script type="module">
   import { handleVote } from "/scripts/voteHandler.js";
   document.querySelectorAll(".vote-btn").forEach((btn) => {

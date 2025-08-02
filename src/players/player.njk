@@ -14,9 +14,7 @@ layout: layout.njk
 {% block content %}
 <section class="player-detail-container">
   <header class="player-header">
-    <img src="/images/players/{{ player.slug }}.png" 
-         alt="{{ player.name }}" 
-         class="player-photo">
+    <img src="/images/players/{{ player.slug }}.png" alt="{{ player.name }}" class="player-photo">
     <div class="player-info">
       <h1>{{ player.name }}</h1>
       <p class="player-position">{{ player.position }}</p>
@@ -27,6 +25,7 @@ layout: layout.njk
     </div>
   </header>
 
+  <!-- 🏟 최근 경기 기록 -->
   <section class="player-stats">
     <h2>최근 경기 기록</h2>
     <table class="stats-table">
@@ -53,6 +52,7 @@ layout: layout.njk
     </table>
   </section>
 
+  <!-- 🗳 인기 투표 -->
   {% set voteCount = voteSummary.players[player.slug] or 0 %}
   <section class="player-votes">
     <h2>인기 투표</h2>

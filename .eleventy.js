@@ -1,31 +1,22 @@
 const moment = require("moment");
 
-module.exports = function(eleventyConfig) {
-  // ✅ 정적 리소스
+module.exports = function (eleventyConfig) {
+  // ✅ 정적 파일 복사
+  ["src/style", "src/scripts", "src/images", "src/fonts", "admin"].forEach((path) =>
+    eleventyConfig.addPassthroughCopy(path)
+  );
   eleventyConfig.addPassthroughCopy({ "static/favicon.png": "favicon.png" });
-  ["src/style", "src/scripts", "src/images", "src/fonts", "admin"]
-    .forEach(path => eleventyConfig.addPassthroughCopy(path));
 
   // ✅ 컬렉션
-  eleventyConfig.addCollection("teamPosts", c => c.getFilteredByGlob("src/teams-analysis/*.md"));
-  eleventyConfig.addCollection("posts", c => c.getFilteredByGlob("src/posts/*.md"));
-  eleventyConfig.addCollection("sportsPosts", c =>
-    c.getFilteredByGlob("src/posts/*.md").filter(p => p.data.category === "스포츠 경영")
-  );
-  eleventyConfig.addCollection("sportsTopics", c => {
-    const posts = c.getFilteredByGlob("src/posts/*.md")
-      .filter(p => p.data.category === "스포츠 경영");
-    const uniqueTopics = new Set();
-    posts.forEach(p => p.data.topic && uniqueTopics.add(p.data.topic));
-    return Array.from(uniqueTopics);
-  });
-  eleventyConfig.addCollection("log", c => c.getFilteredByGlob("src/log/*.md"));
+  eleventyConfig.addCollection("teamPosts", (c) => c.getFilteredByGlob("src/teams-analysis/*.md"));
+  eleventyConfig.addCollection("posts", (c) => c.getFilteredByGlob("src/posts/*.md"));
+  eleventyConfig.addCollection("log", (c) => c.getFilteredByGlob("src/log/*.md"));
 
   // ✅ 날짜 필터
-  eleventyConfig.addFilter("date", dateObj =>
-    dateObj ? new Date(dateObj).toLocaleDateString("ko-KR", {
-      year: "numeric", month: "2-digit", day: "2-digit",
-    }) : ""
+  eleventyConfig.addFilter("date", (dateObj) =>
+    dateObj
+      ? new Date(dateObj).toLocaleDateString("ko-KR", { year: "numeric", month: "2-digit", day: "2-digit" })
+      : ""
   );
 
   // ✅ 캘린더 필터
@@ -39,7 +30,7 @@ module.exports = function(eleventyConfig) {
       const week = [];
       for (let i = 0; i < 7; i++) {
         const dateStr = current.format("YYYY-MM-DD");
-        const game = schedule.find(s => s.date === dateStr);
+        const game = schedule.find((s) => s.date === dateStr);
         week.push({
           day: current.date(),
           result: game ? game.result : "",
@@ -54,54 +45,22 @@ module.exports = function(eleventyConfig) {
     return days;
   });
 
-  // ✅ 팀별 경기 필터
-  eleventyConfig.addFilter("teamGames", (schedule, slug) => {
-    if (!Array.isArray(schedule)) return [];
-    return schedule.filter(
-      game => game.homeSlug === slug || game.awaySlug === slug
-    );
-  });
-
-  // 🔥 종료된 경기 중 최신 5개만 추출
-  eleventyConfig.addFilter("latestGames", (games) => {
-    if (!Array.isArray(games)) return [];
-    return games
-      .filter(game => String(game.status).trim() === "종료")
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .slice(0, 5);
-  });
-
   // ✅ 최근 경기 필터
   eleventyConfig.addFilter("getRecentGame", (games) => {
     if (!Array.isArray(games)) return null;
-    return games
-      .filter(g => String(g.status).trim() === "종료")
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      [0] || null;
+    return games.filter((g) => String(g.status).trim() === "종료").sort((a, b) => new Date(b.date) - new Date(a.date))[0] || null;
   });
 
-  // ✅ safeArray 필터 (객체 → 배열 변환)
-  eleventyConfig.addFilter("safeArray", value => {
-    if (Array.isArray(value)) return value;
-    if (typeof value === "object" && value !== null) return Object.values(value);
-    return [];
-  });
-
-  // ✅ 팀 홈페이지 필터
+  // ✅ 홈페이지 필터
   eleventyConfig.addFilter("getHomepage", (teamsBoard, slug) => {
-    if (!Array.isArray(teamsBoard)) return "https://www.koreabaseball.com";
-    const team = teamsBoard.find(t => t.slug === slug);
+    const team = teamsBoard.find((t) => t.slug === slug);
     return team?.homepage || "https://www.koreabaseball.com";
   });
 
   // ✅ 구단별 분석글 필터
   eleventyConfig.addFilter("getTeamPosts", (teamPosts, slug) => {
-    if (!Array.isArray(teamPosts)) return [];
-    return teamPosts.filter(post => post.data?.slug === slug);
+    return teamPosts.filter((post) => post.data?.slug === slug);
   });
-
-  // ✅ 레이아웃 별칭
-  eleventyConfig.addLayoutAlias("team-layout", "layouts/team-layout.njk");
 
   return {
     dir: {
@@ -109,7 +68,7 @@ module.exports = function(eleventyConfig) {
       includes: "includes",
       layouts: "layouts",
       output: "_site",
-      data: "_data"
+      data: "_data",
     },
   };
 };
