@@ -76,7 +76,15 @@ module.exports = function(eleventyConfig) {
     if (!Array.isArray(games)) return null;
     return games
       .filter(g => String(g.status).trim() === "종료")
-      .sort((a, b) => new Date(b.date) - new Date(a.date))[0] || null;
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      [0] || null;
+  });
+
+  // ✅ safeArray 필터 (객체 → 배열 변환)
+  eleventyConfig.addFilter("safeArray", value => {
+    if (Array.isArray(value)) return value;
+    if (typeof value === "object" && value !== null) return Object.values(value);
+    return [];
   });
 
   // ✅ 팀 홈페이지 필터
