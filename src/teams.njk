@@ -11,32 +11,30 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 {% block content %}
   <h1 class="page-title">구단 분석</h1>
 
-  <!-- 🏆 인기 구단 Podium -->
-  {% set topTeams = votes
-    | selectattr("teamSlug")
-    | sort(attribute="teamTotalVotes", order="desc")
-  %}
-  <section class="podium-section">
-    {% if topTeams | length >= 3 %}
-      <div class="podium podium-2 team-{{ topTeams[1].teamSlug }}">
-        <img src="/images/{{ topTeams[1].teamSlug }}.png" alt="{{ topTeams[1].teamName }}">
-        <span>{{ topTeams[1].teamName }}</span>
-        <span class="vote-count">{{ topTeams[1].teamTotalVotes }}표</span>
-      </div>
-      <div class="podium podium-1 team-{{ topTeams[0].teamSlug }}">
-        <img src="/images/{{ topTeams[0].teamSlug }}.png" alt="{{ topTeams[0].teamName }}">
-        <span>{{ topTeams[0].teamName }}</span>
-        <span class="vote-count">{{ topTeams[0].teamTotalVotes }}표</span>
-      </div>
-      <div class="podium podium-3 team-{{ topTeams[2].teamSlug }}">
-        <img src="/images/{{ topTeams[2].teamSlug }}.png" alt="{{ topTeams[2].teamName }}">
-        <span>{{ topTeams[2].teamName }}</span>
-        <span class="vote-count">{{ topTeams[2].teamTotalVotes }}표</span>
-      </div>
-    {% else %}
-      <p class="no-data">인기 구단 데이터가 부족합니다.</p>
-    {% endif %}
-  </section>
+<!-- 🏆 인기 구단 Podium -->
+{% set topTeams = voteSummary.teams 
+  | sort(attribute="teamTotalVotes", order="desc") %}
+<section class="podium-section">
+  {% if topTeams | length >= 3 %}
+    <div class="podium podium-2 team-{{ topTeams[1].teamSlug }}">
+      <img src="/images/{{ topTeams[1].teamSlug }}.png" alt="{{ topTeams[1].teamName }}">
+      <span>{{ topTeams[1].teamName }}</span>
+      <span class="vote-count">{{ topTeams[1].teamTotalVotes }}표</span>
+    </div>
+    <div class="podium podium-1 team-{{ topTeams[0].teamSlug }}">
+      <img src="/images/{{ topTeams[0].teamSlug }}.png" alt="{{ topTeams[0].teamName }}">
+      <span>{{ topTeams[0].teamName }}</span>
+      <span class="vote-count">{{ topTeams[0].teamTotalVotes }}표</span>
+    </div>
+    <div class="podium podium-3 team-{{ topTeams[2].teamSlug }}">
+      <img src="/images/{{ topTeams[2].teamSlug }}.png" alt="{{ topTeams[2].teamName }}">
+      <span>{{ topTeams[2].teamName }}</span>
+      <span class="vote-count">{{ topTeams[2].teamTotalVotes }}표</span>
+    </div>
+  {% else %}
+    <p class="no-data">인기 구단 데이터가 부족합니다.</p>
+  {% endif %}
+</section>
 
   <!-- 📊 구단 카드 리스트 -->
   <section class="teams-card-section">

@@ -95,23 +95,24 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
     </table>
   </div>
 
-  <!-- 🗳 인기 선수 TOP 3 -->
-  <div class="vote-section">
-    <h2>인기 선수 TOP 3</h2>
-    <div class="top-votes">
-      {% set lgVotes = voteSummary | selectattr("playerTeamSlug", "equalto", "lg") %}
-      {% for vote in lgVotes | sort(attribute="playerTotalVotes") | reverse | slice(0, 3) %}
-        <div class="vote-card">
-          <img src="/images/players/{{ vote.playerSlug }}.png" 
-               alt="{{ vote.playerName }}" 
-               class="vote-player-photo">
-          <div class="vote-info">
-            <span class="vote-player-name">{{ vote.playerName }}</span>
-            <span class="vote-count">{{ vote.playerTotalVotes }}표</span>
-          </div>
+<!-- 🗳 인기 선수 TOP 3 -->
+<div class="vote-section">
+  <h2>인기 선수 TOP 3</h2>
+  <div class="top-votes">
+    {% set lgVotes = voteSummary.players
+      | selectattr("playerTeamSlug", "equalto", "lg") %}
+    {% for vote in lgVotes | sort(attribute="playerTotalVotes") | reverse | slice(0, 3) %}
+      <div class="vote-card">
+        <img src="/images/players/{{ vote.playerSlug }}.png" 
+             alt="{{ vote.playerName }}" 
+             class="vote-player-photo">
+        <div class="vote-info">
+          <span class="vote-player-name">{{ vote.playerName }}</span>
+          <span class="vote-count">{{ vote.playerTotalVotes }}표</span>
         </div>
-      {% endfor %}
-    </div>
+      </div>
+    {% endfor %}
   </div>
+</div>
 </section>
 {% endblock %}
