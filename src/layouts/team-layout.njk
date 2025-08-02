@@ -30,15 +30,7 @@
 <body>
   {% include "header.njk" %}
 
-  {# ✅ 최근 경기 데이터 #}
-{% set homeGames = leagueSchedule | selectattr("homeSlug", "equalto", slug) | list %}
-{% set awayGames = leagueSchedule | selectattr("awaySlug", "equalto", slug) | list %}
-
-{% set teamGames = (homeGames | list) %}
-{% for game in awayGames %}
-  {% set _ = teamGames.push(game) %}
-{% endfor %}
-
+{% set teamGames = combinedGames(slug) %}
 {% set sortedGames = teamGames | sort(false, true, "date") %}
 {% set recentGame = sortedGames | first %}
 
