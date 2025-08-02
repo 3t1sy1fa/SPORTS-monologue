@@ -1,7 +1,9 @@
 {
   "teams": {
-    "lg": 3,
-    "hanwha": 4
+    "lg": 33,
+    "hanwha": 4,
+    "lotte": 1,
+    "nc": 5
   },
   "players": {}
 }
