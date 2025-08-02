@@ -1,42 +1,42 @@
 [
   {
-    "home": "LG",
-    "homeSlug": "lg",
+    "home": "삼성",
+    "homeSlug": "samsung",
+    "away": "LG",
+    "awaySlug": "lg",
+    "score": "2 - 4",
+    "date": "2025-08-01"
+  },
+  {
+    "home": "NC",
+    "homeSlug": "nc",
     "away": "KT",
     "awaySlug": "kt",
-    "score": "18 - 0",
-    "date": "2025-07-31"
+    "score": "5 - 3",
+    "date": "2025-08-01"
   },
   {
-    "home": "롯데",
-    "homeSlug": "lotte",
-    "away": "NC",
-    "awaySlug": "nc",
-    "score": "11 - 5",
-    "date": "2025-07-31"
-  },
-  {
-    "home": "SSG",
-    "homeSlug": "ssg",
-    "away": "키움",
-    "awaySlug": "kiwoom",
-    "score": "4 - 2",
-    "date": "2025-07-31"
+    "home": "두산",
+    "homeSlug": "doosan",
+    "away": "SSG",
+    "awaySlug": "ssg",
+    "score": "2 - 7",
+    "date": "2025-08-01"
   },
   {
     "home": "KIA",
     "homeSlug": "kia",
-    "away": "두산",
-    "awaySlug": "doosan",
+    "away": "한화",
+    "awaySlug": "hanwha",
     "score": "3 - 2",
-    "date": "2025-07-31"
+    "date": "2025-08-01"
   },
   {
-    "home": "한화",
-    "homeSlug": "hanwha",
-    "away": "삼성",
-    "awaySlug": "samsung",
-    "score": "7 - 1",
-    "date": "2025-07-31"
+    "home": "키움",
+    "homeSlug": "kiwoom",
+    "away": "롯데",
+    "awaySlug": "lotte",
+    "score": "2 - 0",
+    "date": "2025-08-01"
   }
 ]
