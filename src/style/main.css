@@ -135,6 +135,10 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 1rem;
 }
 
+
+
+.sports-container { max-width: 100%; margin: 0; padding: 10px 20%; align-items: center; }
+
 .topic-filter select {
   font-family: "mingijuk";
   padding: 5px;
