@@ -154,7 +154,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .back-button {
-  position: absolute;
+  position: sticky;
   top: 185px;
   left: 20px;
   background: none;
