@@ -7,6 +7,10 @@ permalink: "players/{{ player.slug }}/index.html"
 layout: layout.njk
 ---
 
+{% block styles %}
+  <link rel="stylesheet" href="/style/players.css">
+{% endblock %}
+
 {% block content %}
 <section class="player-detail-container">
   <header class="player-header">
