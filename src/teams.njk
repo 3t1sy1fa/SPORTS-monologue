@@ -9,91 +9,101 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 {% endblock %}
 
 {% block content %}
-  <h1 class="page-title">구단 분석</h1>
+<h1 class="page-title">구단 분석</h1>
 
-  <!-- 🏆 인기 구단 Podium -->
-  {% set topTeams = voteSummary.teams | dictsort(false, "value") %}
-  <section class="podium-section">
-    {% if topTeams | length >= 3 %}
-      {% set team1 = topTeams[0] %}
-      {% set team2 = topTeams[1] %}
-      {% set team3 = topTeams[2] %}
+<!-- 🏆 인기 구단 Podium -->
+{% set topTeams = [] %}
+{% for slug, count in voteSummary.teams %}
+  {% set team = teamsBoard | selectattr("slug", "equalto", slug) | first %}
+  {% if team %}
+    {% set obj = { 
+      "teamSlug": slug, 
+      "teamName": team.name, 
+      "teamTotalVotes": count 
+    } %}
+    {% set topTeams = topTeams.concat([obj]) %}
+  {% endif %}
+{% endfor %}
 
-      <div class="podium podium-2 team-{{ team2[0] }}">
-        <img src="/images/{{ team2[0] }}.png" alt="{{ team2[0] }}">
-        <span>{{ team2[0] | upper }}</span>
-        <span class="vote-count">{{ team2[1] }}표</span>
-      </div>
-      <div class="podium podium-1 team-{{ team1[0] }}">
-        <img src="/images/{{ team1[0] }}.png" alt="{{ team1[0] }}">
-        <span>{{ team1[0] | upper }}</span>
-        <span class="vote-count">{{ team1[1] }}표</span>
-      </div>
-      <div class="podium podium-3 team-{{ team3[0] }}">
-        <img src="/images/{{ team3[0] }}.png" alt="{{ team3[0] }}">
-        <span>{{ team3[0] | upper }}</span>
-        <span class="vote-count">{{ team3[1] }}표</span>
-      </div>
-    {% else %}
-      <p class="no-data">인기 구단 데이터가 부족합니다.</p>
-    {% endif %}
-  </section>
+{% set topTeams = topTeams | sort(attribute="teamTotalVotes", order="desc") %}
 
-  <!-- 📊 구단 카드 리스트 -->
-  <section class="teams-card-section">
-    {% for team in teamsBoard | sort(attribute="rank") %}
-      {% set voteCount = voteSummary.teams[team.slug] or 0 %}
-      <div class="team-card team-{{ team.slug }}">
-        <a href="/teams/{{ team.slug }}/">
-          <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
-          <div class="team-info">
-            <h3>{{ team.name }}</h3>
-            <p>순위: {{ team.rank }}위 | 승률: {{ team.winRate }}</p>
-            <span class="last-game">최근 경기: {{ team.lastGame }}</span>
-            <span class="vote-count">투표 수: {{ voteCount }}표</span>
-          </div>
-        </a>
-        <button 
-          class="vote-btn" 
-          data-type="team" 
-          data-slug="{{ team.slug }}">
-          이 구단에 투표하기
-        </button>
-      </div>
-    {% endfor %}
-  </section>
-
-  <!-- 📅 이번 주 경기 일정 -->
-  <section class="extra-info">
-    <div class="weekly-schedule">
-      <h3>이번 주 경기 일정</h3>
-      {% set today = "" | date("yyyy-MM-dd") %}
-      {% set upcomingGames = leagueSchedule 
-        | selectattr("date", "ge", today) 
-        | slice(0, 7) 
-      %}
-      {% if upcomingGames | length > 0 %}
-        <ul>
-          {% for game in upcomingGames %}
-            <li>
-              <time datetime="{{ game.date }}">{{ game.date | date("MM.dd") }}</time>
-              {{ game.home }} vs {{ game.away }}
-            </li>
-          {% endfor %}
-        </ul>
-      {% else %}
-        <p class="no-data">이번 주 경기 일정이 없습니다.</p>
-      {% endif %}
+<section class="podium-section">
+  {% if topTeams | length >= 3 %}
+    <div class="podium podium-2 team-{{ topTeams[1].teamSlug }}">
+      <img src="/images/{{ topTeams[1].teamSlug }}.png" alt="{{ topTeams[1].teamName }}">
+      <span>{{ topTeams[1].teamName }}</span>
+      <span class="vote-count">{{ topTeams[1].teamTotalVotes }}표</span>
     </div>
-  </section>
+    <div class="podium podium-1 team-{{ topTeams[0].teamSlug }}">
+      <img src="/images/{{ topTeams[0].teamSlug }}.png" alt="{{ topTeams[0].teamName }}">
+      <span>{{ topTeams[0].teamName }}</span>
+      <span class="vote-count">{{ topTeams[0].teamTotalVotes }}표</span>
+    </div>
+    <div class="podium podium-3 team-{{ topTeams[2].teamSlug }}">
+      <img src="/images/{{ topTeams[2].teamSlug }}.png" alt="{{ topTeams[2].teamName }}">
+      <span>{{ topTeams[2].teamName }}</span>
+      <span class="vote-count">{{ topTeams[2].teamTotalVotes }}표</span>
+    </div>
+  {% else %}
+    <p class="no-data">인기 구단 데이터가 부족합니다.</p>
+  {% endif %}
+</section>
 
-  <!-- JS -->
-  <script type="module">
-    import { handleVote } from "/scripts/voteHandler.js";
-    document.querySelectorAll(".vote-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        handleVote(btn.dataset.type, btn.dataset.slug);
-      });
+<!-- 📊 구단 카드 리스트 -->
+<section class="teams-card-section">
+  {% for team in teamsBoard | sort(attribute="rank") %}
+    {% set count = voteSummary.teams[team.slug] or 0 %}
+    <div class="team-card team-{{ team.slug }}">
+      <a href="/teams/{{ team.slug }}/">
+        <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
+        <div class="team-info">
+          <h3>{{ team.name }}</h3>
+          <p>순위: {{ team.rank }}위 | 승률: {{ team.winRate }}</p>
+          <span class="last-game">최근 경기: {{ team.lastGame }}</span>
+          <span class="vote-count">투표 수: {{ count }}표</span>
+        </div>
+      </a>
+      <button 
+        class="vote-btn" 
+        data-type="team" 
+        data-slug="{{ team.slug }}">
+        이 구단에 투표하기
+      </button>
+    </div>
+  {% endfor %}
+</section>
+
+<!-- 📅 이번 주 경기 일정 -->
+<section class="extra-info">
+  <div class="weekly-schedule">
+    <h3>이번 주 경기 일정</h3>
+    {% set today = "" | date("yyyy-MM-dd") %}
+    {% set upcomingGames = leagueSchedule 
+      | selectattr("date", "ge", today) 
+      | slice(0, 7)
+    %}
+    {% if upcomingGames | length > 0 %}
+      <ul>
+        {% for game in upcomingGames %}
+          <li>
+            <time datetime="{{ game.date }}">{{ game.date | date("MM.dd") }}</time>
+            {{ game.home }} vs {{ game.away }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="no-data">이번 주 경기 일정이 없습니다.</p>
+    {% endif %}
+  </div>
+</section>
+
+<!-- JS -->
+<script type="module">
+  import { handleVote } from "/scripts/voteHandler.js";
+  document.querySelectorAll(".vote-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      handleVote(btn.dataset.type, btn.dataset.slug);
     });
-  </script>
+  });
+</script>
 {% endblock %}

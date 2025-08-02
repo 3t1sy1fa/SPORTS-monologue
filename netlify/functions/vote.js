@@ -19,7 +19,11 @@ exports.handler = async (event) => {
       ? JSON.parse(fs.readFileSync(votesPath, "utf8"))
       : [];
 
-    const voterId = event.headers["client-ip"] || `anon-${Date.now()}`;
+    const voterId =
+      event.headers["x-nf-client-connection-ip"] ||
+      event.headers["client-ip"] ||
+      `anon-${Date.now()}`;
+
     const isDuplicate = votes.some(
       (vote) =>
         vote.voterId === voterId &&
@@ -42,12 +46,12 @@ exports.handler = async (event) => {
     votes.push(newVote);
     fs.writeFileSync(votesPath, JSON.stringify(votes, null, 2));
 
-    // ✅ Netlify 빌드 트리거
+    // ✅ Netlify Build Hook 호출
     await fetch(process.env.NETLIFY_BUILD_HOOK, { method: "POST" });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "투표가 완료되었습니다. 사이트가 곧 업데이트됩니다.", vote: newVote }),
+      body: JSON.stringify({ message: "투표가 완료되었습니다.", vote: newVote }),
     };
   } catch (error) {
     console.error("Vote save error:", error);
