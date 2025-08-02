@@ -62,6 +62,18 @@ module.exports = function (eleventyConfig) {
     return teamPosts.filter((post) => post.data?.slug === slug);
   });
 
+    // ✅ latestGames 필터 추가
+  eleventyConfig.addFilter("latestGames", (games) => {
+    if (!Array.isArray(games)) return [];
+    return games
+      .filter(game => String(game.status).trim() === "종료")
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 5);
+  });
+
+ 
+
+
   return {
     dir: {
       input: "src",
