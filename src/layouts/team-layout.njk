@@ -14,35 +14,32 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ title or '구단 분석' }}">
   <meta property="og:description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
-  <meta property="og:image" content="/images/og/{{ category }}.jpg">
+  <meta property="og:image" content="/images/og/{{ slug }}.jpg">
   <meta property="og:url" content="https://3t1sy1fa.com{{ page.url }}">
 
   <!-- ✅ 트위터 카드 -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title or '구단 분석' }}">
   <meta name="twitter:description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
-  <meta name="twitter:image" content="/images/og/{{ category }}.jpg">
+  <meta name="twitter:image" content="/images/og/{{ slug }}.jpg">
   <meta name="twitter:domain" content="Sports Monologue">
 
   <!-- ✅ 스타일 -->
   <link rel="stylesheet" href="/style/main.css" />
   <link rel="stylesheet" href="/style/team-base.css" />
-  <link rel="stylesheet" href="/style/team-{{ category }}.css" />
+  <link rel="stylesheet" href="/style/team-{{ slug }}.css" />
 </head>
 
 <body>
-
-<pre>{{ teamsBoard | dump }}</pre>
-<pre>{{ leagueSchedule | dump }}</pre>
   {% include "header.njk" %}
 
 {% set teamGames = 
   (leagueSchedule 
-    | selectattr("homeSlug", "equalto", category) 
+    | selectattr("homeSlug", "equalto", slug) 
     | list) 
   + 
   (leagueSchedule 
-    | selectattr("awaySlug", "equalto", category) 
+    | selectattr("awaySlug", "equalto", slug) 
     | list) 
 %}
 
