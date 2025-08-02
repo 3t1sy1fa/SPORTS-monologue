@@ -19,7 +19,7 @@ description: "스포츠 경영 공부 기록을 담은 페이지입니다."
     </div>
   </div>
 
-  <div class="sports-container" id="postList">
+  <div class="post-list" id="postList">
     {% for post in collections.posts | reverse %}
       {% if post.data.category == "스포츠 경영" %}
         <article class="post-item" data-topic="{{ post.data.topic or '기타' }}">
@@ -41,6 +41,8 @@ description: "스포츠 경영 공부 기록을 담은 페이지입니다."
   </div>
 
   <script src="/scripts/sports-filter.js"></script>
+  
+</main>
 
 </main>
 {% endblock %}
