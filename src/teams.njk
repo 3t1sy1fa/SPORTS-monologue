@@ -1,42 +1,69 @@
 ---
 layout: layout.njk
 title: 구단 분석
+description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와 인기 구단 순위를 한눈에 확인하세요."
 ---
 
 {% block styles %}
   <link rel="stylesheet" href="/style/team-base.css" />
-  <link rel="stylesheet" href="/style/teams.css" />
-  
-  {% set teamMap = {
-    "LG 트윈스": "lg",
-    "두산 베어스": "doosan",
-    "SSG 랜더스": "ssg",
-    "롯데 자이언츠": "lotte",
-    "삼성 라이온즈": "samsung",
-    "한화 이글스": "hanwha",
-    "KIA 타이거즈": "kia",
-    "키움 히어로즈": "kiwoom",
-    "NC 다이노스": "nc",
-    "KT 위즈": "kt"
-  } %}
-
-  {% if teamMap[title] %}
-    <link rel="stylesheet" href="/style/team-{{ teamMap[title] }}.css" />
-  {% endif %}
 {% endblock %}
 
 {% block content %}
   <h1 class="page-title">구단 분석</h1>
 
-  <div class="team-grid">
-    {% for row in teams %}
-      <div class="team-row">
-        {% for team in row %}
-          <a href="/teams/{{ team.code }}" class="team-box {{ team.code }}" title="{{ team.name }} 구단 분석">
-            {{ team.name }}
-          </a>
-        {% endfor %}
-      </div>
+  <!-- 🏆 인기 구단 Podium -->
+  <section class="podium-section">
+    <div class="podium podium-2">
+      <img src="/images/{{ topTeams[1].slug }}.png" alt="{{ topTeams[1].name }}">
+      <span>{{ topTeams[1].name }}</span>
+    </div>
+    <div class="podium podium-1">
+      <img src="/images/{{ topTeams[0].slug }}.png" alt="{{ topTeams[0].name }}">
+      <span>{{ topTeams[0].name }}</span>
+    </div>
+    <div class="podium podium-3">
+      <img src="/images/{{ topTeams[2].slug }}.png" alt="{{ topTeams[2].name }}">
+      <span>{{ topTeams[2].name }}</span>
+    </div>
+  </section>
+
+  <!-- 📊 구단 카드 리스트 -->
+  <section class="teams-card-section">
+    {% for team in allTeams %}
+      <a href="/teams/{{ team.slug }}/" class="team-card">
+        <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
+        <div class="team-info">
+          <h3>{{ team.name }}</h3>
+          <p>순위: {{ team.rank }}위 | 승률: {{ team.winRate }}%</p>
+          <span class="last-game">최근 경기: {{ team.lastGame }}</span>
+        </div>
+      </a>
     {% endfor %}
-  </div>
+  </section>
+
+  <!-- 📅 이번 주 경기 + 📰 트렌드 뉴스 -->
+  <section class="extra-info">
+    <div class="weekly-schedule">
+      <h3>이번 주 경기 일정</h3>
+      <ul>
+        {% for game in weeklyGames %}
+          <li>
+            <time datetime="{{ game.date }}">{{ game.date | date("MM.dd") }}</time> 
+            {{ game.home }} vs {{ game.away }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="news-section">
+      <h3>구단 뉴스</h3>
+      <ul>
+        {% for news in teamNews %}
+          <li>
+            <a href="{{ news.link }}" target="_blank">{{ news.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
 {% endblock %}

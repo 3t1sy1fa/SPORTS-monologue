@@ -1,40 +1,50 @@
-.team-box.lg {
-  background-color: #000000d5;
-  color: #C30452;
+.team-layout {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
 }
-.team-box.doosan {
-  background-color: #1a1748f1;
-  color: #eb1d24a2;
+
+.team-left {
+  flex: 1;
+  background-color: var(--team-subcolor);
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: #fff;
 }
-.team-box.ssg {
-  background-color: #ce0e2e;
-  color: #FFB81C;
+
+.team-right {
+  flex: 2;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
 }
-.team-box.lotte {
-  background-color: #041e42e5;
-  color: #d00f32ee;
+
+.team-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--team-maincolor);
+  color: var(--team-setting);
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 200;
 }
-.team-box.samsung {
-  background-color: #074ca1dc;
-  color: #c0c0c0af;
+
+.team-post-list-wrapper {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f7f7f7;
+  border: 1px solid #afafafad;
+  border-radius: 6px;
 }
-.team-box.hanwha {
-  background-color: #fc5000ce;
-  color: #07111f9a;
-}
-.team-box.kia {
-  background-color: #ea002b;
-  color: #06141f;
-}
-.team-box.kiwoom {
-  background-color: #570514f3;
-  color: #d6d6d6;
-}
-.team-box.nc {
-  background-color: #af917bec;
-  color: #315288d2;
-}
-.team-box.kt {
-  background-color: #000000f1;
-  color: #eb1c23ef;
+
+.team-post-list-wrapper h3 { margin-bottom: 1rem; color: #494949; }
+.team-post-list-wrapper ul { list-style: none; padding: 0; margin: 0; }
+.team-post-list-wrapper li { margin-bottom: 0.5rem; font-size: 0.95rem; }
+.team-post-list-wrapper a { text-decoration: none; color: #333; font-weight: 500; }
+.team-post-list-wrapper .date { font-size: 0.8rem; color: #888; margin-left: 0.5rem; }
+
+@media (max-width: 768px) {
+  .team-layout { flex-direction: column; }
+  .team-left, .team-right { width: 100%; padding: 1rem; }
 }
