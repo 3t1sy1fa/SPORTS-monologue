@@ -33,21 +33,28 @@
 <body>
   {% include "header.njk" %}
 
+  {# ✅ 구단 공식 홈페이지 링크 #}
   {% set homepageItem = teamsBoard | selectattr("slug", "equalto", category) | first %}
   {% set homepage = homepageItem.homepage if homepageItem else "https://www.koreabaseball.com" %}
 
-  {% set teamGames = (leagueSchedule 
-  | selectattr("homeSlug", "equalto", category) 
-  | list) 
-  + 
-  (leagueSchedule 
-  | selectattr("awaySlug", "equalto", category) 
-  | list) 
-%}
+  {# ✅ 팀별 경기 데이터 필터링 #}
+  {% set teamGames = (leagueSchedule
+    | selectattr("homeSlug", "equalto", category)
+    | list)
+    +
+    (leagueSchedule
+    | selectattr("awaySlug", "equalto", category)
+    | list)
+  %}
 
-{% set sortedGames = teamGames | sort(false, true, "date") %}
-{% set recentGame = sortedGames[0] %}
+  {% if teamGames | length > 0 %}
+    {% set sortedGames = teamGames | sort(false, true, "date") %}
+    {% set recentGame = sortedGames[0] %}
+  {% else %}
+    {% set recentGame = null %}
+  {% endif %}
 
+  {# ✅ 구단 분석글 필터링 #}
   {% set filteredPosts = collections.teamPosts | selectattr("data.category", "equalto", category) %}
 
   <main class="team-layout">
@@ -55,7 +62,11 @@
       <!-- ✅ 최근 경기 -->
       <div class="game-results">
         <p class="game-date">
-          {{ recentGame.date | date if recentGame else "날짜 정보 없음" }}
+          {% if recentGame %}
+            {{ recentGame.date | date }}
+          {% else %}
+            날짜 정보 없음
+          {% endif %}
         </p>
         <p class="game-summary">
           {% if recentGame %}
