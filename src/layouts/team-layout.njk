@@ -10,14 +10,12 @@
   <title>{{ title or "구단 분석" }} | Sports Monologue</title>
   <meta name="description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
 
-  <!-- ✅ 오픈 그래프 -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ title or '구단 분석' }}">
   <meta property="og:description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
   <meta property="og:image" content="/images/og/{{ slug }}.jpg">
   <meta property="og:url" content="https://3t1sy1fa.com{{ page.url }}">
 
-  <!-- ✅ 트위터 카드 -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title or '구단 분석' }}">
   <meta name="twitter:description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
@@ -27,32 +25,26 @@
   <link rel="stylesheet" href="/style/main.css" />
   <link rel="stylesheet" href="/style/teams.css" />
   <link rel="stylesheet" href="/style/team-{{ slug }}.css" />
-
 </head>
 
 <body>
-
-
-
   {% include "header.njk" %}
 
-{% set homeGames = leagueSchedule | selectattr("homeSlug", "equalto", slug) | list %}
-{% set awayGames = leagueSchedule | selectattr("awaySlug", "equalto", slug) | list %}
+  {# ✅ 최근 경기 데이터 #}
+  {% set homeGames = leagueSchedule | selectattr("homeSlug", "equalto", slug) | list %}
+  {% set awayGames = leagueSchedule | selectattr("awaySlug", "equalto", slug) | list %}
+  {% set teamGames = homeGames | concat(awayGames) %}
+  {% set sortedGames = teamGames | sort(false, true, "date") %}
+  {% set recentGame = sortedGames | first %}
 
-{# 안전하게 배열 병합 #}
-{% set teamGames = [] %}
-{% for g in homeGames %}
-  {% set teamGames = teamGames.append(g) %}
-{% endfor %}
-{% for g in awayGames %}
-  {% set teamGames = teamGames.append(g) %}
-{% endfor %}
+  {# ✅ 팀 홈페이지 URL #}
+  {% set homepageItem = teamsBoard | selectattr("slug", "equalto", slug) | first %}
+  {% set homepage = homepageItem.homepage if homepageItem else "https://www.koreabaseball.com" %}
 
-{% set sortedGames = teamGames | sort(false, true, "date") %}
-{% set recentGame = sortedGames | first %}
+  {# ✅ 구단별 분석글 #}
+  {% set filteredPosts = collections.teamPosts | selectattr("data.slug", "equalto", slug) %}
 
   <main class="team-layout">
-    <!-- ✅ 좌측 패널 -->
     <div class="team-left">
       <div class="game-results">
         <p class="game-date">
@@ -88,7 +80,6 @@
       </div>
     </div>
 
-    <!-- ✅ 우측 패널 -->
     <div class="team-right">
       {{ content | safe }}
     </div>
