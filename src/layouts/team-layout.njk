@@ -33,7 +33,10 @@
 <body>
   {% include "header.njk" %}
 
-  {# ✅ 최근 경기 데이터 단축 로직 #}
+  {# ✅ 홈페이지 주소 가져오기 #}
+  {% set homepage = (teamsBoard | selectattr("slug", "equalto", category) | map(attribute="homepage") | first) %}
+
+  {# ✅ 최근 경기 데이터 가져오기 #}
   {% set recentGame = (leagueSchedule 
     | selectattr("homeSlug", "equalto", category) 
     | list 
@@ -44,8 +47,10 @@
     | list 
     | first) %}
 
-  {% if not recentGame %}
-    {% set homepage = (teamsBoard | selectattr("slug", "equalto", category) | map(attribute="homepage") | first) %}
+  {# ✅ 홈페이지 링크 병합 (없으면 기본값 사용) #}
+  {% if recentGame %}
+    {% set recentGame = recentGame | merge({"link": homepage}) %}
+  {% else %}
     {% set recentGame = {
       "date": "날짜 정보 없음",
       "summary": "요약 정보 없음",
@@ -53,7 +58,7 @@
     } %}
   {% endif %}
 
-  {# ✅ 글 목록 필터링 간소화 #}
+  {# ✅ 글 목록 필터링 #}
   {% set filteredPosts = (collections.teamPosts | selectattr("data.category", "equalto", category)) %}
 
   <main class="team-layout">
