@@ -34,7 +34,7 @@
   {% include "header.njk" %}
 
   {# ✅ 최근 경기 데이터 #}
-  {% set recentGame = (leagueSchedule 
+  {% set recentGameData = (leagueSchedule 
     | selectattr("homeSlug", "equalto", category) 
     | list 
     | first) 
@@ -44,13 +44,21 @@
     | list 
     | first) %}
 
-  {# ✅ 구단 홈페이지 URL 가져오기 (map 제거) #}
+  {# ✅ 구단 홈페이지 URL #}
   {% set homepageData = (teamsBoard | selectattr("slug", "equalto", category) | first) %}
   {% set homepage = homepageData.homepage if homepageData else '' %}
 
-  {# ✅ 최근 경기 데이터가 없을 경우 #}
-  {% if recentGame %}
-    {% set recentGame = recentGame | merge({"link": homepage}) %}
+  {# ✅ 객체 재구성 (merge 제거) #}
+  {% if recentGameData %}
+    {% set recentGame = {
+      "date": recentGameData.date,
+      "summary": recentGameData.summary or '',
+      "home": recentGameData.home or '',
+      "away": recentGameData.away or '',
+      "homeScore": recentGameData.homeScore or '',
+      "awayScore": recentGameData.awayScore or '',
+      "link": homepage
+    } %}
   {% else %}
     {% set recentGame = {
       "date": "날짜 정보 없음",
