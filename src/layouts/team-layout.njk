@@ -7,7 +7,7 @@
   <link rel="icon" href="/favicon.png" type="image/png">
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
 
-  <title>{{ title or "teams" }} | 구단 분석</title>
+  <title>{{ title or "구단 분석" }} | Sports Monologue</title>
   <meta name="description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
 
   <!-- ✅ 오픈 그래프 -->
@@ -31,61 +31,64 @@
 </head>
 
 <body>
-
-
   {% include "header.njk" %}
 
-  {% set homeGames = leagueSchedule | selectattr("homeSlug", "equalto", category) | list %}
-  {% set awayGames = leagueSchedule | selectattr("awaySlug", "equalto", category) | list %}
+  {# ✅ 팀 경기 데이터 필터링 #}
+  {% set homeGames = leagueSchedule | selectattr("homeSlug", "equalto", slug) | list %}
+  {% set awayGames = leagueSchedule | selectattr("awaySlug", "equalto", slug) | list %}
   {% set teamGames = homeGames.concat(awayGames) %}
   {% set sortedGames = teamGames | sort(false, true, "date") %}
   {% set recentGame = sortedGames | first %}
 
- <main class="team-layout">
-  <div class="team-left">
-    <div class="game-results">
-      <p class="game-date">
-        {{ recentGame.date | date if recentGame else "날짜 정보 없음" }}
-      </p>
-      <p class="game-summary">
-        {% if recentGame %}
-          {{ recentGame.home }} vs {{ recentGame.away }}
-          ({{ recentGame.homeScore }} - {{ recentGame.awayScore }})
+  {# ✅ 공식 홈페이지 링크 가져오기 #}
+  {% set homepageItem = teamsBoard | selectattr("slug", "equalto", slug) | first %}
+  {% set homepage = homepageItem.homepage if homepageItem else "https://www.koreabaseball.com" %}
+
+  {# ✅ 팀별 분석글 필터링 #}
+  {% set filteredPosts = collections.teamPosts | selectattr("data.slug", "equalto", slug) %}
+
+  <main class="team-layout">
+    <!-- ✅ 좌측 패널 -->
+    <div class="team-left">
+      <div class="game-results">
+        <p class="game-date">
+          {{ recentGame.date | date if recentGame else "날짜 정보 없음" }}
+        </p>
+        <p class="game-summary">
+          {% if recentGame %}
+            {{ recentGame.home }} vs {{ recentGame.away }}
+            ({{ recentGame.homeScore }} - {{ recentGame.awayScore }})
+          {% else %}
+            최근 경기 정보가 없습니다.
+          {% endif %}
+        </p>
+        <a href="{{ homepage }}" class="team-btn" target="_blank" rel="noopener noreferrer">
+          구단 공식 홈페이지
+        </a>
+      </div>
+
+      <div class="team-post-list-wrapper">
+        {% if filteredPosts | length > 0 %}
+          <h3>상세 분석 목록</h3>
+          <ul class="team-post-list">
+            {% for post in filteredPosts %}
+              <li>
+                <a href="{{ post.url }}">{{ post.data.title }}</a>
+                <span class="date">{{ post.date | date }}</span>
+              </li>
+            {% endfor %}
+          </ul>
         {% else %}
-          최근 경기 정보가 없습니다.
+          <p>등록된 구단 분석글이 없습니다.</p>
         {% endif %}
-      </p>
-
-      {% set homepageItem = teamsBoard | selectattr("slug", "equalto", slug) | first %}
-      {% set homepage = homepageItem.homepage if homepageItem else "https://www.koreabaseball.com" %}
-
-      <a href="{{ homepage }}" class="team-btn" target="_blank" rel="noopener noreferrer">
-        구단 공식 홈페이지
-      </a>
+      </div>
     </div>
 
-    <div class="team-post-list-wrapper">
-      {% set filteredPosts = collections.teamPosts | selectattr("data.slug", "equalto", slug) %}
-      {% if filteredPosts | length > 0 %}
-        <h3>상세 분석 목록</h3>
-        <ul class="team-post-list">
-          {% for post in filteredPosts %}
-            <li>
-              <a href="{{ post.url }}">{{ post.data.title }}</a>
-              <span class="date">{{ post.date | date }}</span>
-            </li>
-          {% endfor %}
-        </ul>
-      {% else %}
-        <p>등록된 구단 분석글이 없습니다.</p>
-      {% endif %}
+    <!-- ✅ 우측 패널 -->
+    <div class="team-right">
+      {{ content | safe }}
     </div>
-  </div>
-
-  <div class="team-right">
-    {{ content | safe }}
-  </div>
-</main>
+  </main>
 
   {% include "footer.njk" %}
 </body>
