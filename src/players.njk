@@ -57,7 +57,7 @@ description: "KBO 선수들의 전력과 가능성, 잠재력을 분석합니다
       const selected = filter.value;
       cards.forEach(card => {
         card.style.display = (selected === "all" || card.dataset.team === selected) 
-          ? "block" 
+          ? "flex" 
           : "none";
       });
     });

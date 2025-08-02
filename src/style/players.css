@@ -4,20 +4,19 @@
 .players-container {
   max-width: 100%;
   margin: 0 auto;
-  padding: 20px 20%;
+  padding: 20px 10%;
   background: #fff;
   min-height: 100vh;
   font-family: 'Mingijuk', 'SUIT', sans-serif;
   color: #1a1a1a;
 }
 
-/* ===== 페이지 타이틀 & 메타 ===== */
+/* ===== 페이지 타이틀 ===== */
 .page-title {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
   text-align: center;
-  font-family: 'mingijuk', sans-serif;
 }
 
 .page-meta {
@@ -46,11 +45,12 @@
   background-color: #f9f9f9;
 }
 
-/* ===== 선수 카드 그리드 ===== */
+/* ===== 선수 카드 그리드 (고정 3열) ===== */
 .players-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  justify-items: center;
 }
 
 /* ===== 개별 카드 ===== */
@@ -66,6 +66,7 @@
   color: inherit;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   width: 100%;
+  max-width: 220px;
 }
 
 .player-card:hover {
@@ -83,7 +84,7 @@
   border: 1.5px solid #e3e3e3;
 }
 
-/* ===== 카드 내부 정보 ===== */
+/* 카드 내부 정보 */
 .player-info {
   text-align: center;
   width: 100%;
@@ -163,16 +164,9 @@
 .player-card.kt .player-popularity { background: #000; color: #fff; }
 
 /* ===== 반응형 ===== */
-@media (max-width: 768px) {
-  .players-container {
-    padding: 16px 5%;
-  }
-  .players-grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 1rem;
-  }
-  .player-photo {
-    width: 80px;
-    height: 80px;
-  }
+@media (max-width: 1024px) {
+  .players-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .players-grid { grid-template-columns: 1fr; }
 }
