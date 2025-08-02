@@ -2,7 +2,6 @@
   {% include "header.njk" %}
 
   <link rel="stylesheet" href="/style/main.css" />
-
   {% if title == "트윈스타" %}
     <link rel="stylesheet" href="/style/twins-tar.css" />
   {% endif %}
@@ -12,12 +11,7 @@
       <button id="sidebar-toggle" class="sidebar-toggle">보드</button>
       <aside class="sidebar">
         <!-- ✅ 최신 경기 결과 -->
-        {% set finishedGames = leagueSchedule 
-          | selectattr("status", "equalto", "종료") 
-          | sort(false, true, "date") 
-          | slice(0, 5) 
-        %}
-
+        {% set finishedGames = leagueSchedule | latestGames %}
         {% if finishedGames | length > 0 %}
           <div class="latest-games-section">
             <h3>최신 경기 결과</h3>

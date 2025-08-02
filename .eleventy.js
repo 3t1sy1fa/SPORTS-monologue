@@ -62,25 +62,14 @@ module.exports = function(eleventyConfig) {
     );
   });
 
-  // ✅ 최신 경기 5개 필터
-  eleventyConfig.addFilter("latestGames", (schedule) => {
-    if (!Array.isArray(schedule)) return [];
-    return schedule
-      .filter(game => String(game.status).trim() === "종료")
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .slice(0, 5);
-  })
-
-  eleventyConfig.addFilter("getRecentGame", (games = []) => {
-  if (!Array.isArray(games) || games.length === 0) return null;
-
-  // 1️⃣ 종료된 경기만 필터링
-  const finishedGames = games.filter(g => g.status === "종료");
-
-  // 2️⃣ 가장 최근 경기 선택
-  if (finishedGames.length === 0) return null;
-  return finishedGames.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
-});
+  // 🔥 종료된 경기 중 최신 5개만 추출
+  eleventyConfig.addFilter("latestGames", (games) => {
+    if (!Array.isArray(games)) return [];
+    return games
+      .filter(game => String(game.status).trim() === "종료") // 종료 경기만
+      .sort((a, b) => new Date(b.date) - new Date(a.date)) // 최신순 정렬
+      .slice(0, 5); // 상위 5개
+  });
 
   // ✅ 팀 홈페이지 필터
   eleventyConfig.addFilter("getHomepage", (teamsBoard, slug) => {
