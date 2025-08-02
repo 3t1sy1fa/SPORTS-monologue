@@ -134,6 +134,11 @@
   background: linear-gradient(145deg, #fff, rgba(235, 28, 36, 0.08));
 }
 
+.player-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
 /* 선수 이미지 */
 .player-photo {
   width: 100px;
