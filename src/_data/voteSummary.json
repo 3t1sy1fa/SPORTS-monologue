@@ -1,13 +1,44 @@
 {
-  "teams": {
-    "lg": 33,
-    "hanwha": 4,
-    "lotte": 1,
-    "nc": 5
-  },
-  "players": {
-    "park-hm": 45,
-    "kim-hs": 4,
-    "gu-bh": 66
-  }
+  "teams": [
+    {
+      "teamSlug": "lg",
+      "teamName": "LG 트윈스",
+      "teamTotalVotes": 33
+    },
+    {
+      "teamSlug": "hanwha",
+      "teamName": "한화 이글스",
+      "teamTotalVotes": 4
+    },
+    {
+      "teamSlug": "lotte",
+      "teamName": "롯데 자이언츠",
+      "teamTotalVotes": 1
+    },
+    {
+      "teamSlug": "nc",
+      "teamName": "NC 다이노스",
+      "teamTotalVotes": 5
+    }
+  ],
+  "players": [
+    {
+      "playerSlug": "park-hm",
+      "playerName": "박해민",
+      "playerTeamSlug": "lg",
+      "playerTotalVotes": 45
+    },
+    {
+      "playerSlug": "kim-hs",
+      "playerName": "김현수",
+      "playerTeamSlug": "lg",
+      "playerTotalVotes": 4
+    },
+    {
+      "playerSlug": "gu-bh",
+      "playerName": "구본혁",
+      "playerTeamSlug": "lg",
+      "playerTotalVotes": 66
+    }
+  ]
 }

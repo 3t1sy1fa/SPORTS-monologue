@@ -16,7 +16,7 @@ const fs = require("fs");
     /* ----------------------------- 1️⃣ TeamsBoard ----------------------------- */
     const teamsBoardRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "TeamsBoard!A2:J20", // 10개 컬럼
+      range: "TeamsBoard!A2:J20",
     });
     const teamsBoard = (teamsBoardRes.data.values || []).map((row) => ({
       name: row[0],
@@ -30,15 +30,12 @@ const fs = require("fs");
       lastGame: row[8],
       homepage: row[9],
     }));
-    fs.writeFileSync(
-      "./src/_data/teams-board.json",
-      JSON.stringify(teamsBoard, null, 2)
-    );
+    fs.writeFileSync("./src/_data/teams-board.json", JSON.stringify(teamsBoard, null, 2));
 
     /* --------------------------- 2️⃣ LeagueSchedule --------------------------- */
     const leagueScheduleRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "LeagueSchedule!A2:L200", // 컬럼 수에 맞춰 L까지
+      range: "LeagueSchedule!A2:L200",
     });
     const leagueSchedule = (leagueScheduleRes.data.values || []).map((row) => ({
       season: row[0],
@@ -54,15 +51,12 @@ const fs = require("fs");
       winner: row[10],
       doubleHeader: row[11],
     }));
-    fs.writeFileSync(
-      "./src/_data/leagueSchedule.json",
-      JSON.stringify(leagueSchedule, null, 2)
-    );
+    fs.writeFileSync("./src/_data/leagueSchedule.json", JSON.stringify(leagueSchedule, null, 2));
 
     /* ---------------------------- 3️⃣ twinsSchedule --------------------------- */
     const twinsScheduleRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "twinsSchedule!A2:H100", // 컬럼 8개
+      range: "twinsSchedule!A2:H100",
     });
     const twinsSchedule = (twinsScheduleRes.data.values || []).map((row) => ({
       season: row[0],
@@ -74,15 +68,12 @@ const fs = require("fs");
       result: row[6],
       score: row[7],
     }));
-    fs.writeFileSync(
-      "./src/_data/twinsSchedule.json",
-      JSON.stringify(twinsSchedule, null, 2)
-    );
+    fs.writeFileSync("./src/_data/twinsSchedule.json", JSON.stringify(twinsSchedule, null, 2));
 
     /* ------------------------------- 4️⃣ Players ------------------------------- */
     const playersRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "Players!A2:G200", // 7개 컬럼
+      range: "Players!A2:G200",
     });
     const players = (playersRes.data.values || []).map((row) => ({
       name: row[0],
@@ -93,15 +84,12 @@ const fs = require("fs");
       number: row[5],
       popularity: Number(row[6] || 0),
     }));
-    fs.writeFileSync(
-      "./src/_data/players.json",
-      JSON.stringify(players, null, 2)
-    );
+    fs.writeFileSync("./src/_data/players.json", JSON.stringify(players, null, 2));
 
     /* ----------------------------- 5️⃣ PlayerStats ----------------------------- */
     const playerStatsRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "PlayerStats!A2:G500", // 7개 컬럼
+      range: "PlayerStats!A2:G500",
     });
     const playerStats = (playerStatsRes.data.values || []).map((row) => ({
       playerSlug: row[0],
@@ -112,15 +100,12 @@ const fs = require("fs");
       rating: row[5],
       teamSlug: row[6],
     }));
-    fs.writeFileSync(
-      "./src/_data/playerStats.json",
-      JSON.stringify(playerStats, null, 2)
-    );
+    fs.writeFileSync("./src/_data/playerStats.json", JSON.stringify(playerStats, null, 2));
 
     /* --------------------------------- 6️⃣ Votes -------------------------------- */
     const votesRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "Votes!A2:E500", // 5개 컬럼
+      range: "Votes!A2:E500",
     });
     const votes = (votesRes.data.values || []).map((row) => ({
       voterId: row[0],
@@ -129,31 +114,50 @@ const fs = require("fs");
       playerSlug: row[3],
       timestamp: row[4],
     }));
-    fs.writeFileSync(
-      "./src/_data/votes.json",
-      JSON.stringify(votes, null, 2)
-    );
+    fs.writeFileSync("./src/_data/votes.json", JSON.stringify(votes, null, 2));
 
     /* ----------------------------- 7️⃣ VoteSummary ----------------------------- */
-    const teamsCount = {};
+    const teams = {};
     const playersCount = {};
 
+    // ✅ 팀 투표 집계
     votes.forEach((vote) => {
       if (vote.targetType === "team" && vote.teamSlug) {
-        teamsCount[vote.teamSlug] = (teamsCount[vote.teamSlug] || 0) + 1;
-      }
-      if (vote.targetType === "player" && vote.playerSlug) {
-        playersCount[vote.playerSlug] = (playersCount[vote.playerSlug] || 0) + 1;
+        const team = teamsBoard.find((t) => t.slug === vote.teamSlug);
+        if (!teams[vote.teamSlug]) {
+          teams[vote.teamSlug] = {
+            teamSlug: vote.teamSlug,
+            teamName: team ? team.name : vote.teamSlug,
+            teamTotalVotes: 0,
+          };
+        }
+        teams[vote.teamSlug].teamTotalVotes += 1;
       }
     });
 
-    const voteSummary = { teams: teamsCount, players: playersCount };
-    fs.writeFileSync(
-      "./src/_data/voteSummary.json",
-      JSON.stringify(voteSummary, null, 2)
-    );
+    // ✅ 선수 투표 집계
+    votes.forEach((vote) => {
+      if (vote.targetType === "player" && vote.playerSlug) {
+        const player = players.find((p) => p.slug === vote.playerSlug);
+        if (!playersCount[vote.playerSlug]) {
+          playersCount[vote.playerSlug] = {
+            playerSlug: vote.playerSlug,
+            playerName: player ? player.name : vote.playerSlug,
+            playerTeamSlug: player ? player.teamSlug : "",
+            playerTotalVotes: 0,
+          };
+        }
+        playersCount[vote.playerSlug].playerTotalVotes += 1;
+      }
+    });
 
-    console.log("✅ 모든 JSON 파일 생성 완료");
+    const voteSummary = {
+      teams: Object.values(teams),
+      players: Object.values(playersCount),
+    };
+    fs.writeFileSync("./src/_data/voteSummary.json", JSON.stringify(voteSummary, null, 2));
+
+    console.log("✅ 모든 JSON 파일 생성 완료 (상세 VoteSummary 포함)");
   } catch (error) {
     console.error("❌ fetch-sheets.js 오류:", error);
     process.exit(1);
