@@ -40,11 +40,11 @@
     "NC 다이노스": "team-nc.css",
     "KT 위즈": "team-kt.css"
   } %}
+  
+{% if teamCss %}
+  <link rel="stylesheet" href="/style/{{ teamCss }}" />
+{% endif %}
 
-  {% set resolvedCss = teamCss or teamMap[title] %}
-  {% if resolvedCss %}
-    <link rel="stylesheet" href="src/style/{{ resolvedCss }}" />
-  {% endif %}
 </head>
 
 <body>
