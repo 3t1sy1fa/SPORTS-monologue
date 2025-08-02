@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+// netlify/functions/vote.js
+const { google } = require("googleapis");
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -13,20 +13,33 @@ exports.handler = async (event) => {
       return { statusCode: 400, body: "Invalid vote payload" };
     }
 
-    const votesPath = path.join(__dirname, "../../src/_data/votes.json");
-    const votes = fs.existsSync(votesPath)
-      ? JSON.parse(fs.readFileSync(votesPath, "utf8"))
-      : [];
+    // ✅ Google Sheets 인증
+    const client = new google.auth.JWT(
+      process.env.GOOGLE_CLIENT_EMAIL,
+      null,
+      process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+      ["https://www.googleapis.com/auth/spreadsheets"]
+    );
 
-    const newVote = {
-      targetType,
-      teamSlug: teamSlug || "",
-      playerSlug: playerSlug || "",
-      timestamp: new Date().toISOString(),
-    };
+    const sheets = google.sheets({ version: "v4", auth: client });
 
-    votes.push(newVote);
-    fs.writeFileSync(votesPath, JSON.stringify(votes, null, 2));
+    // ✅ 투표 데이터 시트에 추가
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.SHEET_ID,
+      range: "votes!A:E",
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [
+          [
+            new Date().toISOString(),
+            targetType,
+            teamSlug || "",
+            playerSlug || "",
+            event.headers["x-nf-client-connection-ip"] || "unknown",
+          ],
+        ],
+      },
+    });
 
     return {
       statusCode: 200,
