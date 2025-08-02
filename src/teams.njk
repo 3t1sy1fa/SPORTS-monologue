@@ -11,48 +11,18 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 {% block content %}
 <h1 class="page-title">구단 분석</h1>
 
-<!-- 🏆 인기 구단 카드 (포디움 → 카드형식) -->
-<section class="top-teams-section">
-  <h2>인기 구단 TOP 3</h2>
-  <div class="top-teams-card-wrapper">
-    {% set topTeams = [] %}
-    {% for slug, count in voteSummary.teams %}
-      {% set team = teamsBoard | selectattr("slug", "equalto", slug) | first %}
-      {% if team %}
-        {% set obj = { "teamSlug": slug, "teamName": team.name, "teamTotalVotes": count } %}
-        {% set topTeams = topTeams.concat([obj]) %}
-      {% endif %}
-    {% endfor %}
-    {% set topTeams = topTeams | sort(attribute="teamTotalVotes", order="desc") | slice(0, 3) %}
-
-    {% if topTeams | length > 0 %}
-      {% for team in topTeams %}
-        <div class="top-team-card team-{{ team.teamSlug }}">
-          <img src="/images/{{ team.teamSlug }}.png" alt="{{ team.teamName }}">
-          <div>
-            <h3>{{ team.teamName }}</h3>
-            <p>{{ team.teamTotalVotes }}표</p>
-          </div>
-        </div>
-      {% endfor %}
-    {% else %}
-      <p>아직 인기 구단 데이터가 없습니다.</p>
-    {% endif %}
-  </div>
-</section>
-
 <!-- 📊 구단 카드 리스트 -->
 <section class="teams-card-section">
   {% for team in teamsBoard | sort(attribute="rank") %}
-    {% set count = voteSummary.teams[team.slug] or 0 %}
-    <div class="team-card team-{{ team.slug }}">
+    <div class="team-card team-{{ team.slug }}" data-slug="{{ team.slug }}">
       <a href="/teams/{{ team.slug }}/">
         <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
         <div class="team-info">
           <h3>{{ team.name }}</h3>
           <p>순위: {{ team.rank }}위 | 승률: {{ team.winRate }}</p>
           <span class="last-game">최근 경기: {{ team.lastGame }}</span>
-          <span class="vote-count">투표 수: {{ count }}표</span>
+          <!-- ✅ 실시간 표 수 표시 -->
+          <span class="vote-count">투표 수: 0표</span>
         </div>
       </a>
       <button 
@@ -91,11 +61,12 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 
 <!-- JS -->
 <script type="module">
-  import { handleVote } from "/scripts/voteHandler.js";
+  import { handleVote, updateVoteCounts } from "/scripts/voteHandler.js";
   document.querySelectorAll(".vote-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       handleVote(btn.dataset.type, btn.dataset.slug);
     });
   });
+  document.addEventListener("DOMContentLoaded", updateVoteCounts);
 </script>
 {% endblock %}

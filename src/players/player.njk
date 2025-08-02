@@ -14,7 +14,9 @@ layout: layout.njk
 {% block content %}
 <section class="player-detail-container">
   <header class="player-header">
-    <img src="/images/players/{{ player.slug }}.png" alt="{{ player.name }}" class="player-photo">
+    <img src="/images/players/{{ player.slug }}.png" 
+         alt="{{ player.name }}" 
+         class="player-photo">
     <div class="player-info">
       <h1>{{ player.name }}</h1>
       <p class="player-position">{{ player.position }}</p>
@@ -25,7 +27,6 @@ layout: layout.njk
     </div>
   </header>
 
-  <!-- 🏟 최근 경기 기록 -->
   <section class="player-stats">
     <h2>최근 경기 기록</h2>
     <table class="stats-table">
@@ -53,10 +54,10 @@ layout: layout.njk
   </section>
 
   <!-- 🗳 인기 투표 -->
-  {% set voteCount = voteSummary.players[player.slug] or 0 %}
   <section class="player-votes">
     <h2>인기 투표</h2>
-    <p>현재 투표 수: {{ voteCount }}표</p>
+    <!-- ✅ 실시간 표 수 -->
+    <p class="player-vote-count" data-slug="{{ player.slug }}">0표</p>
     <button 
       class="vote-btn" 
       data-type="player" 
@@ -66,10 +67,12 @@ layout: layout.njk
   </section>
 </section>
 
+<!-- JS -->
 <script type="module">
-  import { handleVote } from "/scripts/voteHandler.js";
+  import { handleVote, updateVoteCounts } from "/scripts/voteHandler.js";
   document.querySelector(".vote-btn").addEventListener("click", () => {
     handleVote("player", "{{ player.slug }}");
   });
+  document.addEventListener("DOMContentLoaded", updateVoteCounts);
 </script>
 {% endblock %}
