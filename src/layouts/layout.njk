@@ -10,62 +10,61 @@
   <main class="main-container {% if isHome %}with-sidebar{% endif %}">
     {% if isHome %}
       <button id="sidebar-toggle" class="sidebar-toggle">보드</button>
-      <aside class="sidebar">
-        <!-- ✅ 최신 경기 결과 -->
-        {% set finishedGames = leagueSchedule
-          | selectattr("status", "equalto", "종료")
-          | reverse
-          | slice(0, 5)
-        %}
+<aside class="sidebar">
+  <!-- ✅ 최신 경기 결과 -->
+  {% set finishedGames = leagueSchedule 
+      | selectattr("status", "equalto", "종료") 
+      | reverse 
+      | slice(0, 5) 
+  %}
+  {% if finishedGames | length > 0 %}
+    <div class="latest-games-section">
+      <h3>최신 경기 결과</h3>
+      <ul class="latest-games">
+        {% for game in finishedGames %}
+          <li>
+            <span class="match">
+              <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
+              {{ game.home }} vs 
+              <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
+              {{ game.away }}
+            </span>
+            <span class="score">
+              {{ game.homeScore }} - {{ game.awayScore }}
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% else %}
+    <p class="no-games">최근 종료된 경기가 없습니다.</p>
+  {% endif %}
 
-        {% if finishedGames | length > 0 %}
-          <div class="latest-games-section">
-            <h3>최신 경기 결과</h3>
-            <ul class="latest-games">
-              {% for game in finishedGames %}
-                <li>
-                  <span class="match">
-                    <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
-                    {{ game.home }} vs 
-                    <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
-                    {{ game.away }}
-                  </span>
-                  <span class="score">
-                    {{ game.homeScore }} - {{ game.awayScore }}
-                  </span>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% else %}
-          <p class="no-games">최근 종료된 경기 데이터가 없습니다.</p>
-        {% endif %}
-
-        <!-- ✅ 구단 보드 -->
-        <div class="teams-board-section">
-          <h3>구단 보드</h3>
-          <div class="teams-board">
-            {% for team in teamsBoard | sort(attribute="rank") %}
-              <div class="team-card">
-                <a href="/teams/{{ team.slug }}/">
-                  <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
-                  <div class="team-info">
-                    <span class="team-name">{{ team.name }}</span>
-                    <span class="team-rank">{{ team.rank }}위</span>
-                    <span class="team-record">
-                      {{ team.wins }}승 {{ team.losses }}패 {{ team.draws }}무
-                      ({{ (team.winRate * 100) | round(1) }}%)
-                    </span>
-                    <span class="last-game {% if team.lastGame == '승' %}win{% else %}lose{% endif %}">
-                      최근: {{ team.lastGame }}
-                    </span>
-                  </div>
-                </a>
-              </div>
-            {% endfor %}
-          </div>
+  <!-- ✅ 구단 보드 -->
+  <div class="teams-board-section">
+    <h3>구단 보드</h3>
+    <div class="teams-board">
+      {% for team in teamsBoard | sort(attribute="rank") %}
+        <div class="team-card">
+          <a href="/teams/{{ team.slug }}/">
+            <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
+            <div class="team-info">
+              <span class="team-name">{{ team.name }}</span>
+              <span class="team-rank">{{ team.rank }}위</span>
+              <span class="team-record">
+                {{ team.wins }}승 {{ team.losses }}패 {{ team.draws }}무
+                ({{ (team.winRate * 100) | round(1) }}%)
+              </span>
+              <span class="last-game {% if team.lastGame == '승' %}win{% else %}lose{% endif %}">
+                최근: {{ team.lastGame }}
+              </span>
+            </div>
+          </a>
         </div>
-      </aside>
+      {% endfor %}
+    </div>
+  </div>
+</aside>
     {% endif %}
 
     <!-- ✅ 본문 영역 -->
