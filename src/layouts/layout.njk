@@ -12,18 +12,17 @@
       <button id="sidebar-toggle" class="sidebar-toggle">보드</button>
       <aside class="sidebar">
         <!-- ✅ 최신 경기 결과 -->
-        {% set finishedGames = [] %}
-        {% for game in leagueSchedule | reverse %}
-          {% if (game.status | trim) == "종료" %}
-            {% set finishedGames = finishedGames.concat([game]) %}
-          {% endif %}
-        {% endfor %}
+        {% set finishedGames = leagueSchedule 
+          | selectattr("status", "equalto", "종료") 
+          | sort(false, true, "date") 
+          | slice(0, 5) 
+        %}
 
         {% if finishedGames | length > 0 %}
           <div class="latest-games-section">
             <h3>최신 경기 결과</h3>
             <ul class="latest-games">
-              {% for game in finishedGames | slice(0, 5) %}
+              {% for game in finishedGames %}
                 <li>
                   <span class="match">
                     <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">

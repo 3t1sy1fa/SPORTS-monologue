@@ -31,7 +31,7 @@
   {% include "header.njk" %}
 
 {% set games = leagueSchedule | teamGames(slug) %}
-{% set recentGame = games | first %}
+{% set recentGame = games | getRecentGame %}
 {% set homepage = teamsBoard | getHomepage(slug) %}
 {% set filteredPosts = collections.teamPosts | getTeamPosts(slug) %}
 

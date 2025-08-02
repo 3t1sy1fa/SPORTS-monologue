@@ -62,6 +62,17 @@ module.exports = function(eleventyConfig) {
     );
   });
 
+  eleventyConfig.addFilter("getRecentGame", (games = []) => {
+  if (!Array.isArray(games) || games.length === 0) return null;
+
+  // 1️⃣ 종료된 경기만 필터링
+  const finishedGames = games.filter(g => g.status === "종료");
+
+  // 2️⃣ 가장 최근 경기 선택
+  if (finishedGames.length === 0) return null;
+  return finishedGames.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+});
+
   // ✅ 팀 홈페이지 필터
   eleventyConfig.addFilter("getHomepage", (teamsBoard, slug) => {
     if (!Array.isArray(teamsBoard)) return "https://www.koreabaseball.com";
