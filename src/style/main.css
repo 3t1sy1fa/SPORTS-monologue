@@ -1,6 +1,3 @@
-/* ==============================
-   기본 설정
-   ============================== */
 body {
   margin: 0;
   padding: 0;
@@ -11,7 +8,6 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
-/* 폰트 */
 @font-face { font-family: 'Mingijuk'; src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff'); }
 @font-face { font-family: '슬로건폰트'; src: url('../fonts/KBO-Dia-Gothic_light.woff') format('truetype'); }
 @font-face { font-family: '사천항공'; src: url('../fonts/SacheonHangGong-Regular.ttf') format('truetype'); }
@@ -20,10 +16,8 @@ a { text-decoration: none; color: inherit; }
 @font-face { font-family: 'slog2'; src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2507-2@1.0/YeongwolTTF-Regular.woff2') format('woff2'); }
 @font-face { font-family: 'spomono'; src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2'); }
 
-/* ==============================
-   헤더
-   ============================== */
 .main-header {
+  max-width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,27 +26,30 @@ a { text-decoration: none; color: inherit; }
   background: #fff;
 }
 
-.logo-box .logo { font-size: 1.5rem; font-weight: 700; }
+.logo-box .logo { font-size: 1.5rem; font-weight: 700; color: black; }
 
 .nav-menu {
+  list-style: none;
   display: flex;
   gap: 2rem;
   margin: 0;
   padding: 0;
-  list-style: none;
+  align-self: center;
 }
 
 .nav-menu li { display: flex; align-items: center; }
 .nav-menu a {
   font-weight: 500;
   font-size: 1.1rem;
+  color: #1a1a1a;
   padding: 4px 0;
-  margin-top: 9px;
   transition: color 0.2s;
+  margin-top: 9px;
+  align-self: center;
 }
 .nav-menu a:hover { color: #6e6e6e; }
 
-.desktop-header { display: flex; width: 100%; }
+.desktop-header { width: 100%; display: flex; }
 .mobile-header { display: none; }
 
 @media (max-width: 768px) {
@@ -73,16 +70,26 @@ a { text-decoration: none; color: inherit; }
     background: #f8f8f8;
     padding: 10px;
   }
-  .mobile-menu.active { display: block; }
-  .mobile-menu ul { list-style: none; margin: 0; padding: 0; }
+  .mobile-menu ul { list-style: none; padding: 0; margin: 0; }
   .mobile-menu li { padding: 10px 0; border-bottom: 1px solid #ddd; }
-  .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
-  .hamburger span { width: 25px; height: 3px; background: #333; border-radius: 2px; }
+  .mobile-menu a { text-decoration: none; color: #333; }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+  }
+  .mobile-menu.active { display: block; }
 }
 
-/* ==============================
-   타이핑 슬로건
-   ============================== */
 .typing-slogan {
   font-size: 25px;
   font-weight: 500;
@@ -98,96 +105,88 @@ a { text-decoration: none; color: inherit; }
 #typing-text { display: inline-block; }
 @keyframes blink-caret { 50% { border-color: transparent; } }
 
-/* ==============================
-   글 읽기
-   ============================== */
-.post-container { padding: 10px 20%; }
-.post-title { font-size: 2.1rem; font-weight: 700; margin: 2rem 0 10px; }
-.post-page { padding: 10px 30px; background: #fdfdfd; border: 1px solid #ddd; border-radius: 8px; }
-.post-meta { font-size: 0.9rem; color: #666; margin: 10px 0 24px; }
+@media (max-width: 480px) {
+  .typing-slogan { font-size: 20px; max-width: 468px; }
+}
+
+/* 글 읽기 */
+.post-container { max-width: 100%; margin: 0; padding: 10px 20%; align-items: center; }
+.post-title { font-size: 2.1rem; font-weight: 700; margin-bottom: 10px; margin-top: 2rem;}
+.post-page { max-width: 100%; margin: 0; padding: 10px 30px; background: #fdfdfd; border: 1px solid #ddd; border-radius: 8px; }
+.post-meta { font-size: 0.9rem; color: #666; margin-bottom: 24px; margin-top: 10px;}
 .post-body { line-height: 1.4; font-size: 1.2rem; }
 .post-body p { margin-bottom: 0.9rem; }
-.post-body h2 { font-size: 24px; margin: 40px 0 16px; }
+.post-body h2 { font-size: 24px; margin-top: 40px; margin-bottom: 16px; }
+.post-page h1 { margin-top: 2rem; }
+.post-list-section { margin-top: 70px; }
+.post-list { display: flex; flex-direction: column; gap: 20px; }
+.post-item { border: 1px solid #ddd; padding: 16px; border-radius: 6px; background-color: #fff; }
+.post-item h4 { margin: 0 0 8px; font-size: 1.1rem; }
+.post-item p { margin: 0; color: #555; font-size: 1rem; }
 
 @media (max-width: 480px) {
   .post-container { padding: 10px 4px; }
-  .post-body { font-size: 1rem; }
+  .post-body { font-size: 1rem; font-weight: 100; }
 }
 
-/* ==============================
-   스포츠 경영
-   ============================== */
-.sports-container { padding: 20px 20%; background: #fff; }
+/* 스포츠 경영 페이지 */
 .sports-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
-.sports-header h1 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  font-family: 'spomono', sans-serif;
-}
+.sports-container { max-width: 100%; margin: 0; padding: 10px 20%; align-items: center; }
 
-.topic-filter { display: flex; align-items: center; gap: 8px; }
-.topic-filter label { font-size: 1rem; color: #535977; }
 .topic-filter select {
-  font-family: 'Mingijuk';
-  padding: 5px 10px;
+  font-family: "Mingijuk";
+  padding: 5px;
   font-size: 1rem;
-  background: #e3e9ee;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  background-color: #e3e9ee;
   color: #535977;
 }
 
-#postList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.2rem;
-}
-
-.post-item {
-  border: 1px solid #ddd;
-  padding: 16px;
-  border-radius: 6px;
-  background: #fff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.post-item:hover { transform: translateY(-4px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12); }
-.post-item h4 { font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; }
-.post-item a:hover { color: #C30452; }
-.post-item p { font-size: 0.95rem; color: #555; line-height: 1.4; }
-.post-item strong { color: #C30452; margin-right: 4px; }
-.post-item time { color: #777; font-size: 0.9rem; }
-
 @media (max-width: 768px) {
-  .sports-container { padding: 16px 5%; }
-  .sports-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-  .sports-header h1 { font-size: 1.8rem; }
-  #postList { grid-template-columns: 1fr; }
+  .topic-filter select { font-size: 0.8rem; }
 }
 
-/* ==============================
-   공통 레이아웃
-   ============================== */
-.main-container { padding: 20px; }
+/* 메인 컨테이너 */
+.main-container { max-width: 100%; margin: 0 auto; padding: 20px 20px; }
+@media (max-width: 480px) {
+  .main-container { padding: 20px 4px; }
+}
+
+/* 푸터 */
 .site-footer { text-align: center; font-size: 0.85rem; color: #777; padding: 32px 16px; border-top: 1px solid #ccc; margin-top: 80px; }
 
-.grid-container { display: grid; grid-template-columns: 1fr 2fr; max-width: 1200px; margin: 0 auto; }
-.left-top { border-right: 1.5px solid black; padding: 24px; display: flex; flex-direction: column; }
-.right-top { padding: 24px; display: flex; flex-direction: column; }
-.sports { font-family: 'spomono'; font-size: 3rem; font-weight: 700; margin: -22px; letter-spacing: -6px; }
-.monologue { font-family: 'spomono'; font-size: 2rem; color: #666; margin: -13px; }
-.since { font-size: 0.9rem; color: #666; }
-.divider-line { width: 100%; height: 1.4px; background: black; margin-top: 14px; }
+/* 상단 타이틀 */
+.grid-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.left-top {
+  grid-area: left;
+  border-right: 1.5px solid black;
+  align-items: center;
+}
+.right-top { grid-area: right; }
+.left-top, .right-top {
+  padding: 24px;
+  border-bottom: 1.5px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sports { font-family: 'spomono', sans-serif; font-size: 3rem; font-weight: 700; margin: -22px; letter-spacing: -6px; }
+.monologue { font-family: 'spomono', sans-serif; font-size: 2rem; color: #666; margin: -13px; }
+.since { font-size: 0.9rem; color: #666; align-self: flex-start; }
+.log { font-size: 2rem; font-family: 'spomono', sans-serif; line-height: 1; align-self: flex-start;}
+.divider-line { width: 100%; height: 1.4px; background-color: black; margin-top: 14px; }
 
-/* ==============================
-   사이드바
-   ============================== */
+/* 사이드바 */
 .with-sidebar { display: flex; }
 .sidebar {
   width: 260px;
@@ -200,59 +199,113 @@ a { text-decoration: none; color: inherit; }
   overflow-y: auto;
 }
 .content-area { flex: 1; padding: 20px; }
-.latest-games-section h3, .teams-board-section h3 { font-size: 1.2rem; border-bottom: 2px solid #000; padding-bottom: 6px; }
-.latest-games li { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #eee; }
-.team-card { display: flex; align-items: center; background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 8px; transition: background 0.2s; }
+.latest-games-section, .teams-board-section { margin-bottom: 24px; }
+.latest-games-section h3, .teams-board-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #000;
+}
+.latest-games { list-style: none; padding: 0; margin: 0; }
+.latest-games li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #eee;
+}
+.latest-games .match img { width: 15px; height: 15px; object-fit: contain; }
+.latest-games .score { flex: 1; text-align: center; font-weight: bold; }
+.latest-games .date { flex: 0.8; text-align: right; color: #888; }
+.teams-board { display: flex; flex-direction: column; gap: 10px; }
+.team-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  transition: background 0.2s;
+}
 .team-card:hover { background: #f0f0f0; }
-.team-card img { width: 30px; height: 30px; margin-right: 10px; }
-.last-game.승 { color: #008000; font-weight: bold; }
-.last-game.패 { color: #ff0000; font-weight: bold; }
-.last-game.휴식 { color: #919191; }
+.team-card img { width: 30px; height: 30px; margin-right: 10px; transition: transform 0.2s ease; object-fit: contain; }
+.team-card img:hover { transform: scale(1.1); }
+.team-info { display: flex; flex-direction: column; font-size: 0.85rem; }
+.with-sidebar .last-game.승 { color: #008000; font-weight: bold; }
+.with-sidebar .last-game.패 { color: #ff0000; font-weight: bold; }
+.with-sidebar .last-game.휴식 { color: #919191; }
+.sidebar-toggle { display: none; }
 
 @media (max-width: 768px) {
-  .with-sidebar { flex-direction: column; }
   .sidebar {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 70%;
+    height: 100%;
+    background: #fff;
+    border-right: 1px solid #ddd;
+    padding: 16px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     z-index: 1000;
+    display: block !important;
   }
   .sidebar.active { transform: translateX(0); }
+  .content-area { padding: 16px; }
   .sidebar-toggle {
     position: fixed;
     right: 20px;
     bottom: 20px;
     background: #000;
-    color: white;
+    color: #fff;
     border: none;
     padding: 12px 20px;
-    border-radius: 50px;
+    font-size: 16px;
     cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     z-index: 1500;
+    display: block;
   }
 }
 
-/* ==============================
-   Log / Contact
-   ============================== */
-.log-container, .contact-container { padding: 10px 20%; }
+/* Log */
+.log-container { max-width: 100%; margin: 0 auto; padding: 10px 20%; }
+.log-container h1 { font-size: 2.1rem; margin-bottom: 12px; }
+.log-desc { font-size: 16px; color: #666; margin-bottom: 20px; }
 .log-post { border-bottom: 1px solid #ddd; padding: 16px 0 10px; }
+.log-post-title { font-size: 1.5rem; margin: 0; }
+.log-post-date { font-size: 14px; color: #999; }
+.log-post-desc { margin-top: 6px; color: #444; }
+.log-post-category { font-size: 13px; color: #007acc; }
+.log-nav { display: flex; gap: 10px; margin-bottom: 1rem; }
+.log-nav button.active { font-weight: bold; border-bottom: 2px solid #000; }
+@media (max-width: 480px) { .log-container { padding: 10px 4px; } }
+
+/* Contact */
+.contact-container { max-width: 100%; margin: 0 auto; padding: 10px 20%; }
+.contact-container h1 { font-size: 2.1rem; margin-bottom: 10px; }
+.contact-container p { margin-bottom: 20px; color: #555; }
+.contact-container form { display: flex; flex-direction: column; gap: 5px; }
 .contact-container input, .contact-container textarea {
   width: 100%;
   padding: 12px;
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 .contact-container button {
   width: 120px;
   padding: 12px;
-  background: black;
+  font-size: 16px;
+  background-color: black;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  align-self: flex-start;
 }
-@media (max-width: 480px) {
-  .log-container, .contact-container { padding: 10px 4px; }
-}
+@media (max-width: 480px) { .contact-container { padding: 10px 4px; } }
