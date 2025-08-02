@@ -53,9 +53,7 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
       <div class="players-list">
         {% for player in players | selectattr("teamSlug", "equalto", "lg") %}
         <a href="/players/{{ player.slug }}/" class="player-card">
-          <img src="/images/players/{{ player.slug }}.png" 
-               alt="{{ player.name }}" 
-               class="player-photo">
+          <img src="/images/players/{{ player.slug }}.png" alt="{{ player.name }}" class="player-photo">
           <div class="player-info">
             <div class="player-name">{{ player.name }}</div>
             <div class="player-position">{{ player.position }}</div>
@@ -73,20 +71,17 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
     <table class="stats-table">
       <thead>
         <tr>
-          <th scope="col">선수</th>
-          <th scope="col">경기</th>
-          <th scope="col">기록</th>
-          <th scope="col">평점</th>
+          <th>선수</th>
+          <th>경기</th>
+          <th>기록</th>
+          <th>평점</th>
         </tr>
       </thead>
       <tbody>
         {% for stat in playerStats | selectattr("teamSlug", "equalto", "lg") %}
         <tr>
           <td>{{ stat.playerName }}</td>
-          <td>
-            <time datetime="{{ stat.date }}">{{ stat.date | date("MM.dd") }}</time>
-            {{ stat.game }}
-          </td>
+          <td><time datetime="{{ stat.date }}">{{ stat.date | date("MM.dd") }}</time> {{ stat.game }}</td>
           <td>{{ stat.record }}</td>
           <td>{{ stat.rating }}</td>
         </tr>
@@ -95,38 +90,28 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
     </table>
   </div>
 
-  <!-- 🗳 인기 선수 TOP 3 -->
-<!-- 🗳 인기 선수 TOP 3 -->
-<div class="vote-section">
-  <h2>트윈스 인기 선수 TOP 3</h2>
-  <div class="vote-cards">
-    {% set lgVotes = [] %}
-    {% for slug, count in voteSummary.players %}
-      {% set player = players | selectattr("slug", "equalto", slug) | first %}
-      {% if player and player.teamSlug == "lg" %}
-        {% set obj = {
-          "playerSlug": slug,
-          "playerName": player.name,
-          "playerTeamSlug": player.teamSlug,
-          "playerTotalVotes": count
-        } %}
-        {% set lgVotes = lgVotes.concat([obj]) %}
-      {% endif %}
-    {% endfor %}
-
-    {% set lgVotes = lgVotes | sort(attribute="playerTotalVotes", order="desc") | slice(0, 3) %}
-
-    {% for vote in lgVotes %}
-      <div class="vote-card">
-        <img src="/images/players/{{ vote.playerSlug }}.png" 
-             alt="{{ vote.playerName }}" 
-             class="vote-player-photo">
-        <div class="vote-info">
-          <span class="vote-player-name">{{ vote.playerName }}</span>
-          <span class="vote-count">{{ vote.playerTotalVotes }}표</span>
+  <div class="vote-section">
+    <h2>인기 선수 TOP 3</h2>
+    <div class="top-votes">
+      {% set lgVotes = [] %}
+      {% for slug, count in voteSummary.players %}
+        {% set player = players | selectattr("slug", "equalto", slug) | first %}
+        {% if player and player.teamSlug == "lg" %}
+          {% set obj = { "slug": slug, "name": player.name, "votes": count } %}
+          {% set lgVotes = lgVotes.concat([obj]) %}
+        {% endif %}
+      {% endfor %}
+      {% set lgVotes = lgVotes | sort(attribute="votes", order="desc") %}
+      {% for vote in lgVotes | slice(0, 3) %}
+        <div class="vote-card">
+          <img src="/images/players/{{ vote.slug }}.png" alt="{{ vote.name }}" class="vote-player-photo">
+          <div class="vote-info">
+            <span class="vote-player-name">{{ vote.name }}</span>
+            <span class="vote-count">{{ vote.votes }}표</span>
+          </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
-</div>
+</section>
 {% endblock %}
