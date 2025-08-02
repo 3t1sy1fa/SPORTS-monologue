@@ -54,6 +54,7 @@
 }
 
 /* ===== 개별 카드 ===== */
+/* 기본 카드 스타일 */
 .player-card {
   display: flex;
   flex-direction: column;
@@ -64,14 +65,73 @@
   padding: 16px;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease, background 0.3s ease;
   width: 100%;
   max-width: 220px;
+  position: relative;
+  overflow: hidden;
 }
 
-.player-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+/* ===== 팀별 마우스 오버 보더/그라데이션 ===== */
+
+/* LG */
+.player-card.lg:hover {
+  border-color: #C30452;
+  background: linear-gradient(145deg, #fff, rgba(195, 4, 82, 0.08));
+}
+
+/* 두산 */
+.player-card.doosan:hover {
+  border-color: #1A1748;
+  background: linear-gradient(145deg, #fff, rgba(26, 23, 72, 0.08));
+}
+
+/* SSG */
+.player-card.ssg:hover {
+  border-color: #CE0E2D;
+  background: linear-gradient(145deg, #fff, rgba(206, 14, 45, 0.08));
+}
+
+/* 롯데 */
+.player-card.lotte:hover {
+  border-color: #D00F31;
+  background: linear-gradient(145deg, #fff, rgba(208, 15, 49, 0.08));
+}
+
+/* 삼성 */
+.player-card.samsung:hover {
+  border-color: #074CA1;
+  background: linear-gradient(145deg, #fff, rgba(7, 76, 161, 0.08));
+}
+
+/* 한화 */
+.player-card.hanwha:hover {
+  border-color: #FC4E00;
+  background: linear-gradient(145deg, #fff, rgba(252, 78, 0, 0.08));
+}
+
+/* KIA */
+.player-card.kia:hover {
+  border-color: #EA0029;
+  background: linear-gradient(145deg, #fff, rgba(234, 0, 41, 0.08));
+}
+
+/* 키움 */
+.player-card.kiwoom:hover {
+  border-color: #570514;
+  background: linear-gradient(145deg, #fff, rgba(87, 5, 20, 0.08));
+}
+
+/* NC */
+.player-card.nc:hover {
+  border-color: #315288;
+  background: linear-gradient(145deg, #fff, rgba(49, 82, 136, 0.08));
+}
+
+/* KT */
+.player-card.kt:hover {
+  border-color: #EB1C24;
+  background: linear-gradient(145deg, #fff, rgba(235, 28, 36, 0.08));
 }
 
 /* 선수 이미지 */
