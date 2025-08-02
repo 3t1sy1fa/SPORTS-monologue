@@ -10,9 +10,8 @@
       <!-- 사이드바 토글 버튼 -->
       <button id="sidebar-toggle" class="sidebar-toggle">보드</button>
 
-      <aside class="sidebar">     
-        <!-- ✅ 최신 경기 결과 -->
-        {% if leagueSchedule and leagueSchedule.length > 0 %}
+      {% if isHome and leagueSchedule and leagueSchedule | length > 0 %}
+        <aside class="sidebar">
           <div class="latest-games-section">
             <h3>최신 경기 결과</h3>
             <ul class="latest-games">
