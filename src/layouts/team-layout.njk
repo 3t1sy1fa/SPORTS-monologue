@@ -36,19 +36,20 @@
 
   {% include "header.njk" %}
 
-  {# ✅ 팀 경기 데이터 필터링 #}
-  {% set homeGames = leagueSchedule | selectattr("homeSlug", "equalto", slug) | list %}
-  {% set awayGames = leagueSchedule | selectattr("awaySlug", "equalto", slug) | list %}
-  {% set teamGames = homeGames.concat(awayGames) %}
-  {% set sortedGames = teamGames | sort(false, true, "date") %}
-  {% set recentGame = sortedGames | first %}
+{% set homeGames = leagueSchedule | selectattr("homeSlug", "equalto", slug) | list %}
+{% set awayGames = leagueSchedule | selectattr("awaySlug", "equalto", slug) | list %}
 
-  {# ✅ 공식 홈페이지 링크 가져오기 #}
-  {% set homepageItem = teamsBoard | selectattr("homepage", "equalto", slug) | first %}
-  {% set homepage = homepageItem.homepage if homepageItem else "https://www.koreabaseball.com" %}
+{# 안전하게 배열 병합 #}
+{% set teamGames = [] %}
+{% for g in homeGames %}
+  {% set teamGames = teamGames.append(g) %}
+{% endfor %}
+{% for g in awayGames %}
+  {% set teamGames = teamGames.append(g) %}
+{% endfor %}
 
-  {# ✅ 팀별 분석글 필터링 #}
-  {% set filteredPosts = collections.teamPosts | selectattr("data.slug", "equalto", slug) %}
+{% set sortedGames = teamGames | sort(false, true, "date") %}
+{% set recentGame = sortedGames | first %}
 
   <main class="team-layout">
     <!-- ✅ 좌측 패널 -->
