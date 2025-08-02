@@ -31,11 +31,16 @@
   {% include "header.njk" %}
 
   {# ✅ 최근 경기 데이터 #}
-  {% set homeGames = leagueSchedule | selectattr("homeSlug", "equalto", slug) | list %}
-  {% set awayGames = leagueSchedule | selectattr("awaySlug", "equalto", slug) | list %}
-  {% set teamGames = homeGames | concat(awayGames) %}
-  {% set sortedGames = teamGames | sort(false, true, "date") %}
-  {% set recentGame = sortedGames | first %}
+{% set homeGames = leagueSchedule | selectattr("homeSlug", "equalto", slug) | list %}
+{% set awayGames = leagueSchedule | selectattr("awaySlug", "equalto", slug) | list %}
+
+{% set teamGames = (homeGames | list) %}
+{% for game in awayGames %}
+  {% set _ = teamGames.push(game) %}
+{% endfor %}
+
+{% set sortedGames = teamGames | sort(false, true, "date") %}
+{% set recentGame = sortedGames | first %}
 
   {# ✅ 팀 홈페이지 URL #}
   {% set homepageItem = teamsBoard | selectattr("slug", "equalto", slug) | first %}
