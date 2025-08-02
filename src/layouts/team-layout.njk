@@ -51,13 +51,27 @@
   {% include "header.njk" %}
 
   {# ✅ 최근 경기 데이터 (leagueSchedule에서 해당 팀만) #}
-  {% set recentGame = (leagueSchedule | reverse).find(game => 
-    game.homeSlug == category or game.awaySlug == category
-  ) or {
-    date: "날짜 정보 없음",
-    summary: "요약 정보 없음",
-    link: teamsBoard.find(t => t.slug == category).homepage
-  } %}
+  {% set recentGame = false %}
+  {% for game in leagueSchedule | reverse %}
+    {% if game.homeSlug == category or game.awaySlug == category %}
+      {% set recentGame = game %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% if not recentGame %}
+    {% set homepage = '' %}
+    {% for team in teamsBoard %}
+      {% if team.slug == category %}
+        {% set homepage = team.homepage %}
+      {% endif %}
+    {% endfor %}
+    {% set recentGame = {
+      "date": "날짜 정보 없음",
+      "summary": "요약 정보 없음",
+      "link": homepage
+    } %}
+  {% endif %}
 
   {# ✅ 글 목록 필터링 #}
   {% set filteredPosts = [] %}
@@ -78,7 +92,7 @@
             {{ recentGame.summary }}
           {% endif %}
         </p>
-        <a href="{{ teamsBoard.find(t => t.slug == category).homepage }}" 
+        <a href="{{ recentGame.link }}" 
            class="team-btn" target="_blank" rel="noopener noreferrer">
           구단 공식 홈페이지
         </a>
