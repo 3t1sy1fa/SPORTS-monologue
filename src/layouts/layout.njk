@@ -1,6 +1,14 @@
 <body>
   {% include "header.njk" %}
 
+  {% for team in teamsBoard %}
+  {{ team.name }}
+{% endfor %}
+
+{% for game in leagueSchedule %}
+  {{ game.home }} vs {{ game.away }}
+{% endfor %}
+
   {% if title == "트윈스타" %}
     <link rel="stylesheet" href="/style/twins-tar.css" />
   {% endif %}
