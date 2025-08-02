@@ -5,26 +5,8 @@ teamCss: team-nc.css
 category: nc
 ---
 
-{% set filteredPosts = [] %}
-{% for post in collections.teamPosts %}
-  {% if post.data.category == category %}
-    {% set filteredPosts = filteredPosts.concat([post]) %}
-  {% endif %}
-{% endfor %}
-
-{% set leftContent %}
-  <h3>상세 분석 목록</h3>
-  <ul class="team-post-list">
-    {% for post in filteredPosts %}
-      <li>
-        <a href="{{ post.url }}">{{ post.data.title }}</a>
-        <span class="date">{{ post.date | date }}</span>
-      </li>
-    {% endfor %}
-  </ul>
-{% endset %}
-
 <div class="team-analysis">
   <h2>구단에 대한 분석</h2>
-  <p>우측은 사견, 좌측은 분석글 목록!</p>
+  <p>우측 영역에 작성되는 사견 및 분석 내용입니다.</p>
+  <p>좌측에는 자동으로 두산 관련 분석글 목록이 표시됩니다.</p>
 </div>
