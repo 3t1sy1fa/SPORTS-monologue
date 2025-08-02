@@ -61,7 +61,7 @@
         {% endif %}
       </p>
 
-      {% set homepageItem = teamsBoard | selectattr("slug", "equalto", category) | first %}
+      {% set homepageItem = teamsBoard | selectattr("slug", "equalto", slug) | first %}
       {% set homepage = homepageItem.homepage if homepageItem else "https://www.koreabaseball.com" %}
 
       <a href="{{ homepage }}" class="team-btn" target="_blank" rel="noopener noreferrer">
@@ -70,7 +70,7 @@
     </div>
 
     <div class="team-post-list-wrapper">
-      {% set filteredPosts = collections.teamPosts | selectattr("data.category", "equalto", category) %}
+      {% set filteredPosts = collections.teamPosts | selectattr("data.slug", "equalto", slug) %}
       {% if filteredPosts | length > 0 %}
         <h3>상세 분석 목록</h3>
         <ul class="team-post-list">
