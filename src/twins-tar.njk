@@ -8,6 +8,13 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
 <link rel="stylesheet" href="/style/twins-tar.css" />
 {% endblock %}
 
+<p>전체 선수 수: {{ players | length }}</p>
+<ul>
+  {% for p in players %}
+    <li>{{ p.name }} ({{ p.teamSlug }})</li>
+  {% endfor %}
+</ul>
+
 {% block content %}
 <section class="twins-tar-container">
   <header class="twins-tar-header">
