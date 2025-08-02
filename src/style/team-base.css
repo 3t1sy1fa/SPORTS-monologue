@@ -123,3 +123,31 @@
 @media (max-width: 480px) {
   .teams-card-section { grid-template-columns: 1fr; }
 }
+
+/* 🗳️ 투표 버튼 */
+.vote-form {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.vote-btn {
+  background: var(--team-maincolor, #c30452); /* 팀 색상 변수 (기본은 LG 트윈스 핑크) */
+  color: #fff;
+  font-weight: 600;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.vote-btn:hover {
+  background: #a50342;
+  transform: translateY(-2px);
+}
+
+.vote-btn:active {
+  transform: scale(0.98);
+  background: #8c0336;
+}
