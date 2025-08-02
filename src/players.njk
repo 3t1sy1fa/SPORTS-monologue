@@ -4,17 +4,33 @@ layout: layout.njk
 description: "KBO 선수들의 전력과 가능성, 잠재력을 분석합니다."
 ---
 
+{% block styles %}
+  <link rel="stylesheet" href="/style/players.css">
+{% endblock %}
+
 {% block content %}
 <section class="players-container">
   <h1 class="page-title">선수 분석</h1>
   <p class="page-meta">KBO 리그 선수들의 전력과 가능성, 잠재력을 분석합니다.</p>
 
+  <!-- 🔽 팀 선택 필터 -->
+  <div class="filter-container">
+    <label for="teamFilter">팀별 보기:</label>
+    <select id="teamFilter">
+      <option value="all">전체</option>
+      {% for team in teamsBoard %}
+        <option value="{{ team.slug }}">{{ team.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <!-- 🧑‍💼 선수 카드 그리드 -->
   <div class="players-grid">
     {% for player in players %}
-      <a href="/players/{{ player.slug }}/" class="player-card">
-        <img src="/images/players/{{ player.slug }}.png" 
-             alt="{{ player.name }}" 
-             class="player-photo">
+      <a href="/players/{{ player.slug }}/" 
+         class="player-card" 
+         data-team="{{ player.teamSlug }}">
+        <img src="/images/players/{{ player.slug }}.png" alt="{{ player.name }}" class="player-photo">
 
         <div class="player-info">
           <h3 class="player-name">{{ player.name }}</h3>
@@ -30,4 +46,21 @@ description: "KBO 선수들의 전력과 가능성, 잠재력을 분석합니다
     {% endfor %}
   </div>
 </section>
+
+<!-- ✅ 필터 스크립트 -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const filter = document.getElementById("teamFilter");
+    const cards = document.querySelectorAll(".player-card");
+
+    filter.addEventListener("change", () => {
+      const selected = filter.value;
+      cards.forEach(card => {
+        card.style.display = (selected === "all" || card.dataset.team === selected) 
+          ? "block" 
+          : "none";
+      });
+    });
+  });
+</script>
 {% endblock %}
