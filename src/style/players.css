@@ -2,23 +2,24 @@
    선수 상세 페이지
    ============================== */
 .player-detail-container {
-  padding: 2rem 10%;
-  background: #f9f9f9;
-  min-height: 100vh;
-  font-family: 'Noto Sans KR', sans-serif;
-  color: #333;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px 20%;
+  background-color: #fff;
+  color: #1a1a1a;
+  font-family: 'Mingijuk', 'SUIT', sans-serif;
 }
 
-/* 헤더 영역 */
+/* ===== 헤더 영역 ===== */
 .player-header {
   display: flex;
   align-items: center;
+  border: 1.5px solid #ddd;
+  padding: 24px;
+  border-radius: 8px;
   background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
-  margin-bottom: 2rem;
-  gap: 2rem;
+  margin-bottom: 32px;
+  gap: 24px;
 }
 
 .player-header .player-photo {
@@ -26,7 +27,7 @@
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #e3e3e3;
+  border: 1.5px solid #ccc;
   flex-shrink: 0;
 }
 
@@ -34,6 +35,7 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.3rem;
+  font-family: 'spomono', sans-serif;
 }
 
 .player-position {
@@ -52,24 +54,25 @@
   font-size: 0.95rem;
   color: #555;
   font-style: italic;
-  border-left: 4px solid #ccc;
-  padding-left: 0.8rem;
-  margin-top: 0.5rem;
+  border-left: 3px solid #ddd;
+  padding-left: 12px;
+  margin-top: 8px;
 }
 
-/* 최근 경기 기록 섹션 */
+/* ===== 최근 경기 기록 섹션 ===== */
 .player-stats {
+  border: 1.5px solid #ddd;
+  padding: 24px;
+  border-radius: 8px;
   background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
 }
 
 .player-stats h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
+  font-family: 'spomono', sans-serif;
 }
 
 /* 표 스타일 */
@@ -81,12 +84,12 @@
 .stats-table th,
 .stats-table td {
   text-align: center;
-  padding: 0.8rem;
+  padding: 12px;
   border-bottom: 1px solid #eee;
 }
 
 .stats-table th {
-  background: #f0f0f0;
+  background: #f9f9f9;
   font-weight: 600;
 }
 
@@ -94,28 +97,29 @@
   background: #fafafa;
 }
 
-/* 인기 투표 */
+/* ===== 인기 투표 ===== */
 .player-votes {
+  border: 1.5px solid #ddd;
+  padding: 24px;
+  border-radius: 8px;
   background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
 .player-votes h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 0.8rem;
+  margin-bottom: 12px;
+  font-family: 'spomono', sans-serif;
 }
 
 .vote-form {
-  margin-top: 1rem;
+  margin-top: 16px;
 }
 
 .vote-form button {
-  background: #C30452; /* LG 트윈스 기본 컬러 (변경 가능) */
+  background: #C30452; /* LG 트윈스 기본 컬러 */
   color: #fff;
-  padding: 0.6rem 1.2rem;
+  padding: 10px 20px;
   font-size: 1rem;
   font-weight: 600;
   border: none;
@@ -128,10 +132,10 @@
   background: #a00240;
 }
 
-/* 반응형 */
+/* ===== 반응형 ===== */
 @media (max-width: 768px) {
   .player-detail-container {
-    padding: 1rem 5%;
+    padding: 16px 5%;
   }
 
   .player-header {
