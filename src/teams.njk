@@ -11,32 +11,38 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 {% block content %}
 <h1 class="page-title">구단 분석</h1>
 
-<!-- 🏆 인기 구단 카드 TOP 3 -->
-<section class="teams-top-section">
-  {% set sortedTeams = [] %}
-  {% for slug, count in voteSummary.teams %}
-    {% set team = teamsBoard | selectattr("slug", "equalto", slug) | first %}
-    {% if team %}
-      {% set obj = { "teamSlug": slug, "teamName": team.name, "votes": count } %}
-      {% set sortedTeams = sortedTeams.concat([obj]) %}
-    {% endif %}
-  {% endfor %}
-  {% set sortedTeams = sortedTeams | sort(attribute="votes", order="desc") %}
-  
-  <div class="top-cards">
-    {% for team in sortedTeams | slice(0, 3) %}
-      <div class="team-card team-{{ team.teamSlug }}">
+{# 🏆 인기 구단 TOP3 카드 #}
+{% set topTeams = [] %}
+{% for slug, count in voteSummary.teams %}
+  {% set teamObj = teamsBoard | selectattr("slug", "equalto", slug) | first %}
+  {% if teamObj %}
+    {% set topTeams = topTeams.concat([{
+      teamSlug: slug,
+      teamName: teamObj.name,
+      teamTotalVotes: count
+    }]) %}
+  {% endif %}
+{% endfor %}
+{% set topTeams = topTeams | sort(attribute="teamTotalVotes", order="desc") %}
+
+<section class="podium-section">
+  {% if topTeams | length > 0 %}
+    {% for team in topTeams | slice(0, 3) %}
+      <div class="podium podium-{{ loop.index }} team-{{ team.teamSlug }}">
         <img src="/images/{{ team.teamSlug }}.png" alt="{{ team.teamName }}">
-        <h3>{{ team.teamName }}</h3>
-        <p>투표 수: {{ team.votes }}표</p>
+        <span>{{ team.teamName }}</span>
+        <span class="vote-count">{{ team.teamTotalVotes }}표</span>
       </div>
     {% endfor %}
-  </div>
+  {% else %}
+    <p class="no-data">인기 구단 데이터가 부족합니다.</p>
+  {% endif %}
 </section>
 
-<!-- 📊 전체 구단 카드 -->
+{# 📊 구단 카드 리스트 #}
 <section class="teams-card-section">
   {% for team in teamsBoard | sort(attribute="rank") %}
+    {% set count = voteSummary.teams[team.slug] or 0 %}
     <div class="team-card team-{{ team.slug }}">
       <a href="/teams/{{ team.slug }}/">
         <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
@@ -44,33 +50,34 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
           <h3>{{ team.name }}</h3>
           <p>순위: {{ team.rank }}위 | 승률: {{ team.winRate }}</p>
           <span class="last-game">최근 경기: {{ team.lastGame }}</span>
-          <span class="vote-count">투표 수: {{ voteSummary.teams[team.slug] or 0 }}표</span>
+          <span class="vote-count">투표 수: {{ count }}표</span>
         </div>
       </a>
-      <button 
-        class="vote-btn" 
-        data-type="team" 
-        data-slug="{{ team.slug }}">
+      <button class="vote-btn" data-type="team" data-slug="{{ team.slug }}">
         이 구단에 투표하기
       </button>
     </div>
   {% endfor %}
 </section>
 
-<!-- 📅 이번 주 경기 일정 -->
+{# 📅 이번 주 경기 일정 #}
 <section class="extra-info">
   <div class="weekly-schedule">
     <h3>이번 주 경기 일정</h3>
-    {% set today = "" | date("yyyy-MM-dd") %}
+    {% set today = now | date("yyyy-MM-dd") %}
     {% set upcomingGames = leagueSchedule 
-      | selectattr("date", "ge", today) 
-      | slice(0, 7) %}
+      | selectattr("date", "ge", today)
+      | slice(0, 7)
+    %}
     {% if upcomingGames | length > 0 %}
       <ul>
         {% for game in upcomingGames %}
           <li>
             <time datetime="{{ game.date }}">{{ game.date | date("MM.dd") }}</time>
-            {{ game.home }} vs {{ game.away }}
+            {{ game.home }} ({{ game.homeScore or "-" }}) 
+            vs 
+            {{ game.away }} ({{ game.awayScore or "-" }})
+            <span class="status">{{ game.status }}</span>
           </li>
         {% endfor %}
       </ul>
