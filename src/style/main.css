@@ -127,17 +127,144 @@ a { text-decoration: none; color: inherit; }
 }
 
 
+/* ===========================
+   스포츠 경영 페이지 스타일
+   =========================== */
+
+.sports-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px 20%;
+  background-color: #fff;
+  font-family: 'Mingijuk', 'SUIT', sans-serif;
+}
 
 .sports-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
 }
 
+.sports-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-family: 'spomono', sans-serif;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
 
+/* ===== 필터 영역 ===== */
+.topic-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-.sports-container { max-width: 100%; margin: 0; padding: 10px 20%; align-items: center; }
+.topic-filter label {
+  font-size: 1rem;
+  color: #535977;
+  font-weight: 500;
+}
+
+.topic-filter select {
+  font-family: 'Mingijuk', sans-serif;
+  padding: 6px 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #e3e9ee;
+  color: #535977;
+  transition: background 0.2s ease, border 0.2s ease;
+}
+
+.topic-filter select:hover {
+  background-color: #d8dee5;
+  border-color: #bbb;
+}
+
+/* ===== 포스트 리스트 ===== */
+#postList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.2rem;
+}
+
+/* 포스트 카드 */
+.post-item {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.post-item h4 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: 'Mingijuk', sans-serif;
+}
+
+.post-item h4 a {
+  text-decoration: none;
+  color: #1a1a1a;
+  transition: color 0.2s ease;
+}
+
+.post-item h4 a:hover {
+  color: #C30452; /* 포인트 컬러 */
+}
+
+.post-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* 카테고리와 날짜 */
+.post-item p strong {
+  color: #C30452;
+  margin-right: 4px;
+}
+
+.post-item time {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 768px) {
+  .sports-container {
+    padding: 16px 5%;
+  }
+
+  .sports-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .sports-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .topic-filter select {
+    font-size: 0.9rem;
+  }
+
+  #postList {
+    grid-template-columns: 1fr;
+  }
+}
 
 .topic-filter select {
   font-family: "mingijuk";
