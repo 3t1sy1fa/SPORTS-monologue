@@ -19,28 +19,15 @@
   font-weight: 600;
   transition: transform 0.2s ease;
 }
-
 .podium:hover { transform: translateY(-5px); }
 
 .podium img { width: 50px; height: 50px; margin-bottom: 8px; }
 .podium span { font-size: 0.9rem; }
 .vote-count { font-size: 0.8rem; color: #333; margin-top: 4px; }
 
-.podium-1 { 
-  height: 150px; 
-  background: linear-gradient(to top, gold, #fff8dc);
-  border: 2px solid gold;
-}
-.podium-2 { 
-  height: 120px; 
-  background: linear-gradient(to top, silver, #f8f8f8);
-  border: 2px solid silver;
-}
-.podium-3 { 
-  height: 100px; 
-  background: linear-gradient(to top, #cd7f32, #ffe0b2);
-  border: 2px solid #cd7f32;
-}
+.podium-1 { background: linear-gradient(to top, gold, #fff8dc); border: 2px solid gold; height: 150px; }
+.podium-2 { background: linear-gradient(to top, silver, #f8f8f8); border: 2px solid silver; height: 120px; }
+.podium-3 { background: linear-gradient(to top, #cd7f32, #ffe0b2); border: 2px solid #cd7f32; height: 100px; }
 
 /* 📊 구단 카드 리스트 */
 .teams-card-section {
@@ -63,64 +50,42 @@
   color: inherit;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
-
 .team-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  border-color: var(--team-maincolor);
 }
-
 .team-card img { width: 50px; height: 50px; margin-bottom: 10px; }
 .team-card .team-info h3 { margin: 0; font-size: 1.2rem; }
 .team-card .team-info p { margin: 5px 0; font-size: 0.9rem; color: #555; }
 .team-card .last-game { font-size: 0.8rem; color: #999; }
 
 /* ✅ 투표 버튼 */
-/* ✅ 투표 버튼 (hover 시 색상만 변경, 움직임 제거) */
 .vote-btn {
-  color: #fff;
-  font-weight: 600;
-  padding: 8px 16px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 12px;
   border: none;
   border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #fff;
   cursor: pointer;
   transition: background 0.2s ease;
-  font-size: 0.9rem;
-  display: inline-block;
-  margin-top: 10px;
+  text-align: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* 팀별 색상 */
-.team-lg .vote-btn { background: #C30452; }
-.team-lg .vote-btn:hover { background: #a50342; }
-
-.team-doosan .vote-btn { background: #1A1748; }
-.team-doosan .vote-btn:hover { background: #120f36; }
-
-.team-ssg .vote-btn { background: #CE0E2D; }
-.team-ssg .vote-btn:hover { background: #a20b23; }
-
-.team-kia .vote-btn { background: #EA0029; }
-.team-kia .vote-btn:hover { background: #b80020; }
-
-.team-hanwha .vote-btn { background: #FC4E00; }
-.team-hanwha .vote-btn:hover { background: #d63f00; }
-
-.team-samsung .vote-btn { background: #074CA1; }
-.team-samsung .vote-btn:hover { background: #053d83; }
-
-.team-lotte .vote-btn { background: #041E42; }
-.team-lotte .vote-btn:hover { background: #031532; }
-
-.team-kiwoom .vote-btn { background: #570514; }
-.team-kiwoom .vote-btn:hover { background: #3d030e; }
-
-.team-kt .vote-btn { background: #000000; }
-.team-kt .vote-btn:hover { background: #333333; }
-
-.team-nc .vote-btn { background: #315288; }
-.team-nc .vote-btn:hover { background: #243c63; }
+.team-lg .vote-btn { background-color: #C30452; }
+.team-doosan .vote-btn { background-color: #1A1748; }
+.team-ssg .vote-btn { background-color: #CE0E2D; }
+.team-kia .vote-btn { background-color: #EA0029; }
+.team-hanwha .vote-btn { background-color: #FC4E00; }
+.team-samsung .vote-btn { background-color: #074CA1; }
+.team-lotte .vote-btn { background-color: #041E42; }
+.team-kiwoom .vote-btn { background-color: #570514; }
+.team-kt .vote-btn { background-color: #000000; }
+.team-nc .vote-btn { background-color: #315288; }
 
 /* 📅 이번 주 경기 일정 */
 .extra-info {
@@ -130,38 +95,29 @@
   margin: 40px auto;
   padding: 0 20px;
 }
-
 .weekly-schedule {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
 }
-
 .weekly-schedule ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
 .weekly-schedule li {
   padding: 8px 0;
   border-bottom: 1px solid #eee;
   font-size: 0.95rem;
 }
-
 .weekly-schedule li:last-child { border-bottom: none; }
 
 /* 반응형 */
 @media (max-width: 768px) {
   .teams-card-section { grid-template-columns: 1fr 1fr; }
   .extra-info { grid-template-columns: 1fr; }
-
-  .podium-section {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
+  .podium-section { flex-direction: column; align-items: center; gap: 10px; }
   .podium { width: 80%; height: auto; flex-direction: row; justify-content: space-between; }
   .podium img { margin: 0 10px 0 0; }
 }

@@ -1,23 +1,20 @@
-// src/_data/voteSummary.js
 const votes = require("./votes.json");
 
 module.exports = () => {
-  const players = {};
+  const teamVotes = {};
+  const playerVotes = {};
 
-  votes.forEach(vote => {
+  votes.forEach((vote) => {
+    if (vote.targetType === "team") {
+      teamVotes[vote.teamSlug] = (teamVotes[vote.teamSlug] || 0) + 1;
+    }
     if (vote.targetType === "player") {
-      const key = vote.playerSlug;
-      if (!players[key]) {
-        players[key] = {
-          playerSlug: vote.playerSlug,
-          playerName: vote.playerName || "이름 없음",
-          playerTeamSlug: vote.playerTeamSlug || "",
-          playerTotalVotes: 0
-        };
-      }
-      players[key].playerTotalVotes++;
+      playerVotes[vote.playerSlug] = (playerVotes[vote.playerSlug] || 0) + 1;
     }
   });
 
-  return Object.values(players); // ✅ 배열로 반환
+  return {
+    teams: teamVotes,
+    players: playerVotes,
+  };
 };

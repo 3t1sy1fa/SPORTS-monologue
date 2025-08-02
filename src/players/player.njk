@@ -1,14 +1,14 @@
 ---
 pagination:
-  data: players           # players.json 데이터를 사용
-  size: 1                 # 한 페이지당 1명씩
-  alias: player           # 데이터 접근 시 이름
+  data: players
+  size: 1
+  alias: player
 permalink: "players/{{ player.slug }}/index.html"
 layout: layout.njk
 ---
 
 {% block styles %}
-  <link rel="stylesheet" href="/style/player-detail.css">
+<link rel="stylesheet" href="/style/player-detail.css">
 {% endblock %}
 
 {% block content %}
@@ -53,30 +53,22 @@ layout: layout.njk
     </table>
   </section>
 
+  <!-- 🗳 투표 버튼 -->
   <section class="player-votes">
- <form id="voteForm">
-  <input type="hidden" name="targetType" value="player">
-  <input type="hidden" name="playerSlug" value="{{ player.slug }}">
-  <button type="submit">이 선수에게 투표하기</button>
-</form>
-
-<script>
-document.getElementById("voteForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const res = await fetch("/.netlify/functions/vote", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      targetType: "player",
-      playerSlug: "{{ player.slug }}",
-    }),
-  });
-
-  const data = await res.json();
-  alert(data.message);
-});
-</script>
+    <button 
+      class="vote-btn" 
+      data-type="player" 
+      data-slug="{{ player.slug }}">
+      이 선수에게 투표하기
+    </button>
   </section>
 </section>
+
+<!-- ✅ 투표 JS -->
+<script type="module">
+  import { handleVote } from "/scripts/voteHandler.js";
+  document.querySelector(".vote-btn").addEventListener("click", () => {
+    handleVote("player", "{{ player.slug }}");
+  });
+</script>
 {% endblock %}

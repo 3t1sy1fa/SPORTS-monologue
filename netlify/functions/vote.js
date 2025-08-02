@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const fetch = require("node-fetch");
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -18,7 +19,6 @@ exports.handler = async (event) => {
       ? JSON.parse(fs.readFileSync(votesPath, "utf8"))
       : [];
 
-    // ✅ 중복 투표 방지 (동일 브라우저 + 동일 대상)
     const voterId = event.headers["client-ip"] || `anon-${Date.now()}`;
     const isDuplicate = votes.some(
       (vote) =>
@@ -42,9 +42,12 @@ exports.handler = async (event) => {
     votes.push(newVote);
     fs.writeFileSync(votesPath, JSON.stringify(votes, null, 2));
 
+    // ✅ Netlify 빌드 트리거
+    await fetch(process.env.NETLIFY_BUILD_HOOK, { method: "POST" });
+
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "투표가 완료되었습니다.", vote: newVote }),
+      body: JSON.stringify({ message: "투표가 완료되었습니다. 사이트가 곧 업데이트됩니다.", vote: newVote }),
     };
   } catch (error) {
     console.error("Vote save error:", error);

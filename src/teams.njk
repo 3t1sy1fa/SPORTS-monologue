@@ -53,12 +53,12 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
             <span class="vote-count">투표 수: {{ voteCount }}표</span>
           </div>
         </a>
-        <!-- ✅ 구단 투표 폼 -->
-        <form class="vote-form" data-team="{{ team.slug }}">
-          <input type="hidden" name="targetType" value="team">
-          <input type="hidden" name="teamSlug" value="{{ team.slug }}">
-          <button type="submit" class="vote-btn">이 구단에 투표하기</button>
-        </form>
+        <button 
+          class="vote-btn" 
+          data-type="team" 
+          data-slug="{{ team.slug }}">
+          이 구단에 투표하기
+        </button>
       </div>
     {% endfor %}
   </section>
@@ -86,4 +86,14 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
       {% endif %}
     </div>
   </section>
+
+  <!-- JS -->
+  <script type="module">
+    import { handleVote } from "/scripts/voteHandler.js";
+    document.querySelectorAll(".vote-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        handleVote(btn.dataset.type, btn.dataset.slug);
+      });
+    });
+  </script>
 {% endblock %}
