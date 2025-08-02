@@ -33,10 +33,7 @@
 <body>
   {% include "header.njk" %}
 
-  {# ✅ 홈페이지 주소 가져오기 #}
-  {% set homepage = (teamsBoard | selectattr("slug", "equalto", category) | map(attribute="homepage") | first) %}
-
-  {# ✅ 최근 경기 데이터 가져오기 #}
+  {# ✅ 최근 경기 데이터 #}
   {% set recentGame = (leagueSchedule 
     | selectattr("homeSlug", "equalto", category) 
     | list 
@@ -47,7 +44,11 @@
     | list 
     | first) %}
 
-  {# ✅ 홈페이지 링크 병합 (없으면 기본값 사용) #}
+  {# ✅ 구단 홈페이지 URL 가져오기 (map 제거) #}
+  {% set homepageData = (teamsBoard | selectattr("slug", "equalto", category) | first) %}
+  {% set homepage = homepageData.homepage if homepageData else '' %}
+
+  {# ✅ 최근 경기 데이터가 없을 경우 #}
   {% if recentGame %}
     {% set recentGame = recentGame | merge({"link": homepage}) %}
   {% else %}

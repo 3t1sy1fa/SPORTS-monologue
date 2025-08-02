@@ -66,22 +66,5 @@ module.exports = function(eleventyConfig) {
       data: "_data" // 🔑 Eleventy가 자동으로 JSON 로드
     },
   };
-
-
-  // ✅ map 필터 추가
-  eleventyConfig.addFilter("map", function(array, key) {
-    if (!Array.isArray(array)) return [];
-    return array.map(item => item[key]);
-  });
-
-  return {
-    dir: {
-      input: "src",
-      includes: "includes",
-      layouts: "layouts",
-      output: "_site",
-      data: "_data"
-    },
-  };
-
+  
 };
