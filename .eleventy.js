@@ -21,29 +21,6 @@ module.exports = function(eleventyConfig) {
   });
   eleventyConfig.addCollection("log", c => c.getFilteredByGlob("src/log/*.md"));
 
-  // ✅ 글로벌 데이터
-  eleventyConfig.addGlobalData("teamsBoard", () => safeRequire("./src/data/teams-board.json"));
-  eleventyConfig.addGlobalData("players", () => safeRequire("./src/data/players.json"));
-  eleventyConfig.addGlobalData("twinsPlayers", () => {
-    const players = safeRequire("./src/data/players.json");
-    return players.filter(p => p.teamSlug === "lg");
-  });
-  eleventyConfig.addGlobalData("playerStats", () => safeRequire("./src/data/player-stats.json"));
-  eleventyConfig.addGlobalData("twinsSchedule", () => safeRequire("./src/data/twins-schedule.json"));
-  eleventyConfig.addGlobalData("leagueSchedule", () => safeRequire("./src/data/league-schedule.json"));
-  eleventyConfig.addGlobalData("votes", () => safeRequire("./src/data/votes.json"));
-  eleventyConfig.addGlobalData("voteSummary", () => safeRequire("./src/data/vote-summary.json"));
-
-  // ✅ 안전한 require
-  function safeRequire(path) {
-    try {
-      return require(path);
-    } catch (err) {
-      console.warn(`⚠️ Missing or invalid data file: ${path}`);
-      return [];
-    }
-  }
-
   // ✅ 날짜 필터
   eleventyConfig.addFilter("date", dateObj =>
     dateObj ? new Date(dateObj).toLocaleDateString("ko-KR", {
@@ -86,6 +63,7 @@ module.exports = function(eleventyConfig) {
       includes: "includes",
       layouts: "layouts",
       output: "_site",
+      data: "_data" // 🔑 Eleventy가 자동으로 JSON 로드
     },
   };
 };

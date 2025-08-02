@@ -4,14 +4,13 @@
   {% if title == "트윈스타" %}
     <link rel="stylesheet" href="/style/twins-tar.css" />
   {% endif %}
-    
+
   <main class="main-container {% if isHome %}with-sidebar{% endif %}">
     {% if isHome %}
-      <!-- 사이드바 토글 버튼 -->
       <button id="sidebar-toggle" class="sidebar-toggle">보드</button>
-
-      {% if isHome and leagueSchedule and leagueSchedule | length > 0 %}
-        <aside class="sidebar">
+      <aside class="sidebar">
+        <!-- ✅ 최신 경기 결과 -->
+        {% if leagueSchedule and leagueSchedule | length > 0 %}
           <div class="latest-games-section">
             <h3>최신 경기 결과</h3>
             <ul class="latest-games">
@@ -74,13 +73,10 @@
   </main>
 
   {% include "footer.njk" %}
-
-  <!-- ✅ 토글 스크립트 -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const toggleBtn = document.getElementById("sidebar-toggle");
       const sidebar = document.querySelector(".sidebar");
-
       toggleBtn.addEventListener("click", () => {
         sidebar.classList.toggle("active");
       });
