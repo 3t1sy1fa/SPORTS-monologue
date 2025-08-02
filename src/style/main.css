@@ -5,16 +5,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Mingijuk', 'SUIT', sans-serif;
-  background-color: #fff;
+  background-color: white;
   color: #1a1a1a;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
+a { text-decoration: none; color: inherit; }
 
-/* 폰트 설정 */
+/* 폰트 */
 @font-face { font-family: 'Mingijuk'; src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff'); }
 @font-face { font-family: '슬로건폰트'; src: url('../fonts/KBO-Dia-Gothic_light.woff') format('truetype'); }
 @font-face { font-family: '사천항공'; src: url('../fonts/SacheonHangGong-Regular.ttf') format('truetype'); }
@@ -46,7 +43,6 @@ a {
 }
 
 .nav-menu li { display: flex; align-items: center; }
-
 .nav-menu a {
   font-weight: 500;
   font-size: 1.1rem;
@@ -54,10 +50,8 @@ a {
   margin-top: 9px;
   transition: color 0.2s;
 }
-
 .nav-menu a:hover { color: #6e6e6e; }
 
-/* 모바일 헤더 */
 .desktop-header { display: flex; width: 100%; }
 .mobile-header { display: none; }
 
@@ -80,9 +74,8 @@ a {
     padding: 10px;
   }
   .mobile-menu.active { display: block; }
-  .mobile-menu ul { list-style: none; padding: 0; margin: 0; }
+  .mobile-menu ul { list-style: none; margin: 0; padding: 0; }
   .mobile-menu li { padding: 10px 0; border-bottom: 1px solid #ddd; }
-  .mobile-menu a { color: #333; }
   .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
   .hamburger span { width: 25px; height: 3px; background: #333; border-radius: 2px; }
 }
@@ -106,7 +99,7 @@ a {
 @keyframes blink-caret { 50% { border-color: transparent; } }
 
 /* ==============================
-   글 읽기 페이지
+   글 읽기
    ============================== */
 .post-container { padding: 10px 20%; }
 .post-title { font-size: 2.1rem; font-weight: 700; margin: 2rem 0 10px; }
@@ -122,16 +115,26 @@ a {
 }
 
 /* ==============================
-   스포츠 경영 페이지
+   스포츠 경영
    ============================== */
 .sports-container { padding: 20px 20%; background: #fff; }
-.sports-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
-.sports-header h1 { font-size: 2.2rem; font-weight: 700; font-family: 'spomono', sans-serif; }
+.sports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.sports-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-family: 'spomono', sans-serif;
+}
 
 .topic-filter { display: flex; align-items: center; gap: 8px; }
 .topic-filter label { font-size: 1rem; color: #535977; }
 .topic-filter select {
-  font-family: 'Mingijuk', sans-serif;
+  font-family: 'Mingijuk';
   padding: 5px 10px;
   font-size: 1rem;
   background: #e3e9ee;
@@ -140,12 +143,17 @@ a {
   color: #535977;
 }
 
-#postList { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.2rem; }
+#postList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.2rem;
+}
+
 .post-item {
-  background: #fff;
   border: 1px solid #ddd;
   padding: 16px;
   border-radius: 6px;
+  background: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -169,7 +177,6 @@ a {
 .main-container { padding: 20px; }
 .site-footer { text-align: center; font-size: 0.85rem; color: #777; padding: 32px 16px; border-top: 1px solid #ccc; margin-top: 80px; }
 
-/* 상단 타이틀 */
 .grid-container { display: grid; grid-template-columns: 1fr 2fr; max-width: 1200px; margin: 0 auto; }
 .left-top { border-right: 1.5px solid black; padding: 24px; display: flex; flex-direction: column; }
 .right-top { padding: 24px; display: flex; flex-direction: column; }
@@ -202,7 +209,6 @@ a {
 .last-game.패 { color: #ff0000; font-weight: bold; }
 .last-game.휴식 { color: #919191; }
 
-/* 모바일 사이드바 */
 @media (max-width: 768px) {
   .with-sidebar { flex-direction: column; }
   .sidebar {
@@ -218,7 +224,7 @@ a {
     right: 20px;
     bottom: 20px;
     background: #000;
-    color: #fff;
+    color: white;
     border: none;
     padding: 12px 20px;
     border-radius: 50px;
