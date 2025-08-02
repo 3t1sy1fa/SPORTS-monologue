@@ -12,9 +12,9 @@
 
       <aside class="sidebar">     
         <!-- ✅ 최신 경기 결과 -->
-        <div class="latest-games-section">
+        <div class="league-schedule-section">
           <h3>최신 경기 결과</h3>
-          <ul class="latest-games">
+          <ul class="league-schedule">
             {% for game in leagueSchedule | reverse | slice(0, 5) %}
               <li>
                 <span class="match">
