@@ -8,13 +8,6 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
 <link rel="stylesheet" href="/style/twins-tar.css" />
 {% endblock %}
 
-<p>전체 선수 수: {{ players | length }}</p>
-<ul>
-  {% for p in players %}
-    <li>{{ p.name }} ({{ p.teamSlug }})</li>
-  {% endfor %}
-</ul>
-
 {% block content %}
 <section class="twins-tar-container">
   <header class="twins-tar-header">
@@ -58,7 +51,7 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
     <div class="players-board">
       <h3>트윈스 선수단</h3>
       <div class="players-list">
-        {% for player in players if player.teamSlug == "lg" %}
+        {% for player in players | selectattr("teamSlug", "equalto", "lg") %}
         <a href="/players/{{ player.slug }}/" class="player-card">
           <img src="/images/players/{{ player.slug }}.png" 
                alt="{{ player.name }}" 
@@ -87,7 +80,7 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
         </tr>
       </thead>
       <tbody>
-        {% for stat in playerStats if stat.teamSlug == "lg" %}
+        {% for stat in playerStats | selectattr("teamSlug", "equalto", "lg") %}
         <tr>
           <td>{{ stat.playerName }}</td>
           <td>
