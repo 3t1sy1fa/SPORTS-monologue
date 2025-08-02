@@ -23,13 +23,16 @@
   <meta name="twitter:description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
   <meta name="twitter:image" content="/images/og/{{ slug }}.jpg">
   <meta name="twitter:domain" content="Sports Monologue">
+
+  <link rel="stylesheet" href="/style/main.css" />
+  <link rel="stylesheet" href="/style/teams.css" />
+  <link rel="stylesheet" href="/style/team-{{ slug }}.css" />
+
 </head>
 
 <body>
 
-  <link rel="stylesheet" href="/style/main.css" />
-  <link rel="stylesheet" href="/style/team-base.css" />
-  <link rel="stylesheet" href="/style/team-{{ slug }}.css" />
+
 
   {% include "header.njk" %}
 
