@@ -1,5 +1,6 @@
 // netlify/functions/vote.js
 const { google } = require("googleapis");
+const fetch = require("node-fetch");
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -34,14 +35,16 @@ exports.handler = async (event) => {
             targetType,
             teamSlug || "",
             playerSlug || "",
-            new Date().toISOString()      // timestamp
+            new Date().toISOString()     // timestamp
           ],
         ],
       },
     });
 
     // ✅ Netlify Build Hook 호출 → 사이트 리빌드
-    await fetch(process.env.NETLIFY_BUILD_HOOK, { method: "POST" });
+    if (process.env.NETLIFY_BUILD_HOOK) {
+      await fetch(process.env.NETLIFY_BUILD_HOOK, { method: "POST" });
+    }
 
     return {
       statusCode: 200,
