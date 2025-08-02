@@ -50,12 +50,11 @@
 <body>
   {% include "header.njk" %}
 
-  {# ✅ 최근 경기 데이터 (leagueSchedule에서 해당 팀만) #}
+  {# ✅ 최근 경기 데이터 (leagueSchedule에서 해당 팀만 가져오기) #}
   {% set recentGame = false %}
   {% for game in leagueSchedule | reverse %}
-    {% if game.homeSlug == category or game.awaySlug == category %}
+    {% if (not recentGame) and (game.homeSlug == category or game.awaySlug == category) %}
       {% set recentGame = game %}
-      {% break %}
     {% endif %}
   {% endfor %}
 
@@ -87,7 +86,8 @@
         <p class="game-date">{{ recentGame.date | date }}</p>
         <p class="game-summary">
           {% if recentGame.home %}
-            {{ recentGame.home }} vs {{ recentGame.away }} ({{ recentGame.homeScore }} - {{ recentGame.awayScore }})
+            {{ recentGame.home }} vs {{ recentGame.away }} 
+            ({{ recentGame.homeScore }} - {{ recentGame.awayScore }})
           {% else %}
             {{ recentGame.summary }}
           {% endif %}
