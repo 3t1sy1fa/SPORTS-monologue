@@ -41,7 +41,7 @@
   {% set recentGame = sortedGames | first %}
 
   {# ✅ 공식 홈페이지 링크 가져오기 #}
-  {% set homepageItem = teamsBoard | selectattr("slug", "equalto", slug) | first %}
+  {% set homepageItem = teamsBoard | selectattr("homepage", "equalto", slug) | first %}
   {% set homepage = homepageItem.homepage if homepageItem else "https://www.koreabaseball.com" %}
 
   {# ✅ 팀별 분석글 필터링 #}
