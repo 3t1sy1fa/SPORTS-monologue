@@ -76,32 +76,34 @@
 .team-card .last-game { font-size: 0.8rem; color: #999; }
 
 /* ===== 🗳️ 투표 버튼 ===== */
-.vote-form {
-  margin-top: 10px;
-  text-align: center;
-}
-
 .vote-btn {
   background: var(--team-maincolor, #c30452);
   color: #fff;
   font-weight: 600;
-  padding: 8px 14px;
+  padding: 8px 16px;       /* 🔑 버튼 크기 조금 여유 있게 */
   border: none;
-  border-radius: 6px;
+  border-radius: 20px;      /* ✅ 둥근 버튼 */
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-  width: 100%;
-  font-size: 0.95rem;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-top: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* ✅ 버튼 그림자 */
 }
 
 .vote-btn:hover {
   background: #a50342;
   transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .vote-btn:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
   background: #8c0336;
+}
+
+.vote-form {
+  text-align: center;  /* ✅ 중앙 배치 */
 }
 
 /* ===== 📅 이번 주 경기 일정 & 📰 뉴스 ===== */
