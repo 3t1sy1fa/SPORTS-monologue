@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+// netlify/functions/vote.js
+const { google } = require("googleapis");
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -8,26 +8,40 @@ exports.handler = async (event) => {
 
   try {
     const { targetType, teamSlug, playerSlug } = JSON.parse(event.body);
-    if (!targetType || (targetType === "team" && !teamSlug) || (targetType === "player" && !playerSlug)) {
-      return { statusCode: 400, body: JSON.stringify({ message: "잘못된 요청입니다." }) };
+
+    if (!targetType || (targetType === "player" && !playerSlug) || (targetType === "team" && !teamSlug)) {
+      return { statusCode: 400, body: "Invalid vote payload" };
     }
 
-    // ✅ votes.json 경로
-    const votesPath = path.join(__dirname, "../../src/_data/votes.json");
-    const votes = fs.existsSync(votesPath)
-      ? JSON.parse(fs.readFileSync(votesPath, "utf8"))
-      : { teams: {}, players: {} };
+    // ✅ Google Sheets 인증
+    const client = new google.auth.JWT(
+      process.env.GOOGLE_CLIENT_EMAIL,
+      null,
+      process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+      ["https://www.googleapis.com/auth/spreadsheets"]
+    );
+    const sheets = google.sheets({ version: "v4", auth: client });
 
-    // ✅ 투표 카운트 증가
-    if (targetType === "team") {
-      votes.teams[teamSlug] = (votes.teams[teamSlug] || 0) + 1;
-    }
-    if (targetType === "player") {
-      votes.players[playerSlug] = (votes.players[playerSlug] || 0) + 1;
-    }
+    // ✅ 시트에 한 줄 추가
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.SHEET_ID,
+      range: "votes!A:E",
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [
+          [
+            Date.now().toString(),       // voterId
+            targetType,
+            teamSlug || "",
+            playerSlug || "",
+            new Date().toISOString()      // timestamp
+          ],
+        ],
+      },
+    });
 
-    // ✅ 파일 업데이트
-    fs.writeFileSync(votesPath, JSON.stringify(votes, null, 2));
+    // ✅ Netlify Build Hook 호출 → 사이트 리빌드
+    await fetch(process.env.NETLIFY_BUILD_HOOK, { method: "POST" });
 
     return {
       statusCode: 200,
@@ -35,6 +49,6 @@ exports.handler = async (event) => {
     };
   } catch (error) {
     console.error("Vote error:", error);
-    return { statusCode: 500, body: JSON.stringify({ message: "서버 오류 발생" }) };
+    return { statusCode: 500, body: "Internal Server Error" };
   }
 };
