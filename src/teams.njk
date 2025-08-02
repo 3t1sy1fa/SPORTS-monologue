@@ -11,6 +11,14 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 {% block content %}
 <h1 class="page-title">구단 분석</h1>
 
+<!-- 🏆 인기 구단 TOP 3 카드 -->
+<section class="top-teams-section">
+  <h2>인기 구단 TOP 3</h2>
+  <div class="top-teams-list">
+    <!-- JS로 실시간 상위 3개 구단 표시 -->
+  </div>
+</section>
+
 <!-- 📊 구단 카드 리스트 -->
 <section class="teams-card-section">
   {% for team in teamsBoard | sort(attribute="rank") %}
@@ -21,7 +29,6 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
           <h3>{{ team.name }}</h3>
           <p>순위: {{ team.rank }}위 | 승률: {{ team.winRate }}</p>
           <span class="last-game">최근 경기: {{ team.lastGame }}</span>
-          <!-- ✅ 실시간 표 수 표시 -->
           <span class="vote-count">투표 수: 0표</span>
         </div>
       </a>
@@ -61,12 +68,16 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 
 <!-- JS -->
 <script type="module">
-  import { handleVote, updateVoteCounts } from "/scripts/voteHandler.js";
-  document.querySelectorAll(".vote-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      handleVote(btn.dataset.type, btn.dataset.slug);
+  import { handleVote, updateVoteCounts, updateTopTeams } from "/scripts/voteHandler.js";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".vote-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        handleVote(btn.dataset.type, btn.dataset.slug);
+      });
     });
+    updateVoteCounts();  // 카드별 표 수 업데이트
+    updateTopTeams();    // TOP 3 구단 카드 표시
   });
-  document.addEventListener("DOMContentLoaded", updateVoteCounts);
 </script>
 {% endblock %}

@@ -27,6 +27,7 @@ layout: layout.njk
     </div>
   </header>
 
+  <!-- 📊 최근 경기 기록 -->
   <section class="player-stats">
     <h2>최근 경기 기록</h2>
     <table class="stats-table">
@@ -56,7 +57,6 @@ layout: layout.njk
   <!-- 🗳 인기 투표 -->
   <section class="player-votes">
     <h2>인기 투표</h2>
-    <!-- ✅ 실시간 표 수 -->
     <p class="player-vote-count" data-slug="{{ player.slug }}">0표</p>
     <button 
       class="vote-btn" 
@@ -70,9 +70,12 @@ layout: layout.njk
 <!-- JS -->
 <script type="module">
   import { handleVote, updateVoteCounts } from "/scripts/voteHandler.js";
-  document.querySelector(".vote-btn").addEventListener("click", () => {
-    handleVote("player", "{{ player.slug }}");
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector(".vote-btn").addEventListener("click", () => {
+      handleVote("player", "{{ player.slug }}");
+    });
+    updateVoteCounts();  // 선수 표 수 업데이트
   });
-  document.addEventListener("DOMContentLoaded", updateVoteCounts);
 </script>
 {% endblock %}
