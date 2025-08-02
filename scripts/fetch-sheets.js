@@ -12,9 +12,9 @@ const client = new google.auth.JWT(
 
 const sheets = google.sheets({ version: "v4", auth: client });
 
-// 📌 시트 → JSON 파일 매핑
+// 📌 시트 → JSON 파일 매핑 (파일명을 CamelCase로 변경)
 const sheetConfig = [
-  { sheetName: "TeamsBoard", range: "A2:J20", file: "teams-board.json", map: row => ({
+  { sheetName: "TeamsBoard", range: "A2:J20", file: "teamsBoard.json", map: row => ({
       name: row[0],
       slug: row[1],
       rank: Number(row[2]),
@@ -27,7 +27,7 @@ const sheetConfig = [
       homepage: row[9]
     })
   },
-  { sheetName: "LeagueSchedule", range: "A2:L300", file: "league-schedule.json", map: row => ({
+  { sheetName: "LeagueSchedule", range: "A2:L300", file: "leagueSchedule.json", map: row => ({
       season: row[0],
       date: row[1],
       gameNo: row[2],
@@ -42,7 +42,7 @@ const sheetConfig = [
       doubleHeader: row[11]
     })
   },
-  { sheetName: "twinsSchedule", range: "A2:H100", file: "twins-schedule.json", map: row => ({
+  { sheetName: "twinsSchedule", range: "A2:H100", file: "twinsSchedule.json", map: row => ({
       season: row[0],
       date: row[1],
       opponent: row[2],
@@ -63,7 +63,7 @@ const sheetConfig = [
       popularity: Number(row[6] || 0)
     })
   },
-  { sheetName: "PlayerStats", range: "A2:G500", file: "player-stats.json", map: row => ({
+  { sheetName: "PlayerStats", range: "A2:G500", file: "playerStats.json", map: row => ({
       playerSlug: row[0],
       playerName: row[1],
       date: row[2],
@@ -81,7 +81,7 @@ const sheetConfig = [
       timestamp: row[4]
     })
   },
-  { sheetName: "VoteSummary", range: "A2:G1000", file: "vote-summary.json", map: row => ({
+  { sheetName: "VoteSummary", range: "A2:G1000", file: "voteSummary.json", map: row => ({
       teamSlug: row[0],
       teamName: row[1],
       teamTotalVotes: Number(row[2]),
@@ -93,8 +93,8 @@ const sheetConfig = [
   }
 ];
 
-// ✅ 저장 경로
-const outputDir = path.join(__dirname, "../src/data");
+// ✅ 저장 경로 (_data 폴더)
+const outputDir = path.join(__dirname, "../src/_data");
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
@@ -110,11 +110,15 @@ if (!fs.existsSync(outputDir)) {
       const rows = res.data.values || [];
       const data = rows.map(map);
 
-      fs.writeFileSync(path.join(outputDir, file), JSON.stringify(data, null, 2), "utf8");
+      fs.writeFileSync(
+        path.join(outputDir, file),
+        JSON.stringify(data, null, 2),
+        "utf8"
+      );
       console.log(`✅ ${sheetName} → ${file} 변환 완료`);
     }
 
-    console.log("🚀 모든 시트 데이터가 JSON으로 변환되었습니다.");
+    console.log("🚀 모든 시트 데이터가 _data 폴더에 JSON으로 변환되었습니다.");
   } catch (error) {
     console.error("❌ 시트 데이터 변환 실패:", error);
     process.exit(1);
