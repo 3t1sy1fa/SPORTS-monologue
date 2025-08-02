@@ -1,188 +1,249 @@
 [
   {
-    "date": "2025",
-    "opponent": "2025-07-29",
-    "opponentSlug": "KT",
-    "result": "skt",
-    "link": "홈"
+    "season": "2025",
+    "date": "2025-07-29",
+    "opponent": "KT",
+    "opponentSlug": "skt",
+    "homeAway": "홈",
+    "status": "종료",
+    "result": "w"
   },
   {
-    "date": "2025",
-    "opponent": "2025-07-30",
-    "opponentSlug": "KT",
-    "result": "skt",
-    "link": "홈"
+    "season": "2025",
+    "date": "2025-07-30",
+    "opponent": "KT",
+    "opponentSlug": "skt",
+    "homeAway": "홈",
+    "status": "종료",
+    "result": "w",
+    "score": "0 - 5"
   },
   {
-    "date": "2025",
-    "opponent": "2025-07-31",
-    "opponentSlug": "KT",
-    "result": "skt",
-    "link": "홈"
+    "season": "2025",
+    "date": "2025-07-31",
+    "opponent": "KT",
+    "opponentSlug": "skt",
+    "homeAway": "홈",
+    "status": "종료",
+    "result": "w",
+    "score": "0 - 18"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-01",
-    "opponentSlug": "삼성",
-    "result": "ssamsung",
-    "link": "원정"
+    "season": "2025",
+    "date": "2025-08-01",
+    "opponent": "삼성",
+    "opponentSlug": "ssamsung",
+    "homeAway": "원정",
+    "status": "종료",
+    "result": "w",
+    "score": "2 - 4"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-02",
-    "opponentSlug": "삼성",
-    "result": "ssamsung",
-    "link": "원정"
+    "season": "2025",
+    "date": "2025-08-02",
+    "opponent": "삼성",
+    "opponentSlug": "ssamsung",
+    "homeAway": "원정",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-03",
-    "opponentSlug": "삼성",
-    "result": "ssamsung",
-    "link": "원정"
+    "season": "2025",
+    "date": "2025-08-03",
+    "opponent": "삼성",
+    "opponentSlug": "ssamsung",
+    "homeAway": "원정",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-05",
-    "opponentSlug": "두산",
-    "result": "sdoosan"
+    "season": "2025",
+    "date": "2025-08-05",
+    "opponent": "두산",
+    "opponentSlug": "sdoosan",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-06",
-    "opponentSlug": "두산",
-    "result": "sdoosan"
+    "season": "2025",
+    "date": "2025-08-06",
+    "opponent": "두산",
+    "opponentSlug": "sdoosan",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-07",
-    "opponentSlug": "두산",
-    "result": "sdoosan"
+    "season": "2025",
+    "date": "2025-08-07",
+    "opponent": "두산",
+    "opponentSlug": "sdoosan",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-08",
-    "opponentSlug": "한화",
-    "result": "shanwha"
+    "season": "2025",
+    "date": "2025-08-08",
+    "opponent": "한화",
+    "opponentSlug": "shanwha",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-09",
-    "opponentSlug": "한화",
-    "result": "shanwha"
+    "season": "2025",
+    "date": "2025-08-09",
+    "opponent": "한화",
+    "opponentSlug": "shanwha",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-10",
-    "opponentSlug": "한화",
-    "result": "shanwha"
+    "season": "2025",
+    "date": "2025-08-10",
+    "opponent": "한화",
+    "opponentSlug": "shanwha",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-12",
-    "opponentSlug": "KT",
-    "result": "skt"
+    "season": "2025",
+    "date": "2025-08-12",
+    "opponent": "KT",
+    "opponentSlug": "skt",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-13",
-    "opponentSlug": "KT",
-    "result": "skt"
+    "season": "2025",
+    "date": "2025-08-13",
+    "opponent": "KT",
+    "opponentSlug": "skt",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-14",
-    "opponentSlug": "KT",
-    "result": "skt"
+    "season": "2025",
+    "date": "2025-08-14",
+    "opponent": "KT",
+    "opponentSlug": "skt",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-15",
-    "opponentSlug": "SSG",
-    "result": "sssg"
+    "season": "2025",
+    "date": "2025-08-15",
+    "opponent": "SSG",
+    "opponentSlug": "sssg",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-16",
-    "opponentSlug": "SSG",
-    "result": "sssg"
+    "season": "2025",
+    "date": "2025-08-16",
+    "opponent": "SSG",
+    "opponentSlug": "sssg",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-17",
-    "opponentSlug": "SSG",
-    "result": "sssg"
+    "season": "2025",
+    "date": "2025-08-17",
+    "opponent": "SSG",
+    "opponentSlug": "sssg",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-19",
-    "opponentSlug": "롯데",
-    "result": "slotte"
+    "season": "2025",
+    "date": "2025-08-19",
+    "opponent": "롯데",
+    "opponentSlug": "slotte",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-20",
-    "opponentSlug": "롯데",
-    "result": "slotte"
+    "season": "2025",
+    "date": "2025-08-20",
+    "opponent": "롯데",
+    "opponentSlug": "slotte",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-21",
-    "opponentSlug": "롯데",
-    "result": "slotte"
+    "season": "2025",
+    "date": "2025-08-21",
+    "opponent": "롯데",
+    "opponentSlug": "slotte",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-22",
-    "opponentSlug": "KIA",
-    "result": "skia"
+    "season": "2025",
+    "date": "2025-08-22",
+    "opponent": "KIA",
+    "opponentSlug": "skia",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-23",
-    "opponentSlug": "KIA",
-    "result": "skia"
+    "season": "2025",
+    "date": "2025-08-23",
+    "opponent": "KIA",
+    "opponentSlug": "skia",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-24",
-    "opponentSlug": "KIA",
-    "result": "skia"
+    "season": "2025",
+    "date": "2025-08-24",
+    "opponent": "KIA",
+    "opponentSlug": "skia",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-26",
-    "opponentSlug": "NC",
-    "result": "snc"
+    "season": "2025",
+    "date": "2025-08-26",
+    "opponent": "NC",
+    "opponentSlug": "snc",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-27",
-    "opponentSlug": "NC",
-    "result": "snc"
+    "season": "2025",
+    "date": "2025-08-27",
+    "opponent": "NC",
+    "opponentSlug": "snc",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-28",
-    "opponentSlug": "NC",
-    "result": "snc"
+    "season": "2025",
+    "date": "2025-08-28",
+    "opponent": "NC",
+    "opponentSlug": "snc",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-29",
-    "opponentSlug": "키움",
-    "result": "skiwoom"
+    "season": "2025",
+    "date": "2025-08-29",
+    "opponent": "키움",
+    "opponentSlug": "skiwoom",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-30",
-    "opponentSlug": "키움",
-    "result": "skiwoom"
+    "season": "2025",
+    "date": "2025-08-30",
+    "opponent": "키움",
+    "opponentSlug": "skiwoom",
+    "homeAway": "",
+    "status": "예정"
   },
   {
-    "date": "2025",
-    "opponent": "2025-08-31",
-    "opponentSlug": "키움",
-    "result": "skiwoom"
+    "season": "2025",
+    "date": "2025-08-31",
+    "opponent": "키움",
+    "opponentSlug": "skiwoom",
+    "homeAway": "",
+    "status": "예정"
   }
 ]

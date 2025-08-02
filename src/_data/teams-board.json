@@ -5,7 +5,11 @@
     "rank": 1,
     "wins": 59,
     "losses": 38,
-    "lastGame": "3"
+    "draws": 3,
+    "winRate": "0.59",
+    "gamesBehind": "0",
+    "lastGame": "패",
+    "homepage": "https://www.hanwhaeagles.co.kr"
   },
   {
     "name": "LG 트윈스",
@@ -13,7 +17,11 @@
     "rank": 2,
     "wins": 59,
     "losses": 40,
-    "lastGame": "2"
+    "draws": 2,
+    "winRate": "0.584",
+    "gamesBehind": "1",
+    "lastGame": "승",
+    "homepage": "https://www.lgtwins.com"
   },
   {
     "name": "롯데 자이언츠",
@@ -21,7 +29,11 @@
     "rank": 3,
     "wins": 55,
     "losses": 44,
-    "lastGame": "3"
+    "draws": 3,
+    "winRate": "0.539",
+    "gamesBehind": "5",
+    "lastGame": "패",
+    "homepage": "https://www.giantsclub.com"
   },
   {
     "name": "SSG 랜더스",
@@ -29,7 +41,11 @@
     "rank": 4,
     "wins": 49,
     "losses": 46,
-    "lastGame": "4"
+    "draws": 4,
+    "winRate": "0.495",
+    "gamesBehind": "9",
+    "lastGame": "승",
+    "homepage": "https://www.ssglanders.com"
   },
   {
     "name": "KIA 타이거즈",
@@ -37,7 +53,11 @@
     "rank": 5,
     "wins": 48,
     "losses": 47,
-    "lastGame": "3"
+    "draws": 3,
+    "winRate": "0.49",
+    "gamesBehind": "10",
+    "lastGame": "승",
+    "homepage": "https://www.ktwiz.co.kr"
   },
   {
     "name": "NC 다이노스",
@@ -45,7 +65,11 @@
     "rank": 6,
     "wins": 45,
     "losses": 46,
-    "lastGame": "1"
+    "draws": 1,
+    "winRate": "0.489",
+    "gamesBehind": "11",
+    "lastGame": "승",
+    "homepage": "https://www.samsunglions.com"
   },
   {
     "name": "KT 위즈",
@@ -53,7 +77,11 @@
     "rank": 7,
     "wins": 50,
     "losses": 49,
-    "lastGame": "4"
+    "draws": 4,
+    "winRate": "0.485",
+    "gamesBehind": "10",
+    "lastGame": "패",
+    "homepage": "https://tigers.co.kr"
   },
   {
     "name": "삼성 라이온즈",
@@ -61,7 +89,11 @@
     "rank": 8,
     "wins": 48,
     "losses": 50,
-    "lastGame": "5"
+    "draws": 5,
+    "winRate": "0.466",
+    "gamesBehind": "11.5",
+    "lastGame": "패",
+    "homepage": "https://www.ncdinos.com"
   },
   {
     "name": "두산 베어스",
@@ -69,7 +101,11 @@
     "rank": 9,
     "wins": 41,
     "losses": 54,
-    "lastGame": "5"
+    "draws": 5,
+    "winRate": "0.41",
+    "gamesBehind": "17",
+    "lastGame": "패",
+    "homepage": "https://www.doosanbears.com"
   },
   {
     "name": "키움 히어로즈",
@@ -77,6 +113,10 @@
     "rank": 10,
     "wins": 29,
     "losses": 69,
-    "lastGame": "4"
+    "draws": 4,
+    "winRate": "0.284",
+    "gamesBehind": "30.5",
+    "lastGame": "승",
+    "homepage": "https://www.heroesbaseball.co.kr"
   }
 ]
