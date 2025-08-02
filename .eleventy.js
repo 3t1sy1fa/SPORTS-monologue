@@ -54,12 +54,25 @@ module.exports = function(eleventyConfig) {
     return days;
   });
 
-  // ✅ teamGames 필터 (팀별 경기만 가져오기)
+  // ✅ 팀별 경기 필터
   eleventyConfig.addFilter("teamGames", (schedule, slug) => {
     if (!Array.isArray(schedule)) return [];
     return schedule.filter(
       game => game.homeSlug === slug || game.awaySlug === slug
     );
+  });
+
+  // ✅ 팀 홈페이지 필터
+  eleventyConfig.addFilter("getHomepage", (teamsBoard, slug) => {
+    if (!Array.isArray(teamsBoard)) return "https://www.koreabaseball.com";
+    const team = teamsBoard.find(t => t.slug === slug);
+    return team?.homepage || "https://www.koreabaseball.com";
+  });
+
+  // ✅ 구단별 분석글 필터
+  eleventyConfig.addFilter("getTeamPosts", (teamPosts, slug) => {
+    if (!Array.isArray(teamPosts)) return [];
+    return teamPosts.filter(post => post.data?.slug === slug);
   });
 
   // ✅ 레이아웃 별칭
@@ -71,7 +84,7 @@ module.exports = function(eleventyConfig) {
       includes: "includes",
       layouts: "layouts",
       output: "_site",
-      data: "_data" // 🔑 Eleventy가 자동으로 JSON 로드
+      data: "_data"
     },
   };
 };

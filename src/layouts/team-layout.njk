@@ -32,13 +32,8 @@
 
 {% set games = leagueSchedule | teamGames(slug) %}
 {% set recentGame = games | first %}
-
-  {# ✅ 팀 홈페이지 URL #}
-  {% set homepageItem = teamsBoard | selectattr("slug", "equalto", slug) | first %}
-  {% set homepage = homepageItem | attr("homepage") if homepageItem else "https://www.koreabaseball.com" %}
-
-  {# ✅ 구단별 분석글 #}
-  {% set filteredPosts = collections.teamPosts | selectattr("data.slug", "equalto", slug) %}
+{% set homepage = teamsBoard | getHomepage(slug) %}
+{% set filteredPosts = collections.teamPosts | getTeamPosts(slug) %}
 
   <main class="team-layout">
     <div class="team-left">
