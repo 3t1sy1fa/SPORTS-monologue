@@ -62,6 +62,15 @@ module.exports = function(eleventyConfig) {
     );
   });
 
+  // ✅ 최신 경기 5개 필터
+  eleventyConfig.addFilter("latestGames", (schedule) => {
+    if (!Array.isArray(schedule)) return [];
+    return schedule
+      .filter(game => String(game.status).trim() === "종료")
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 5);
+  })
+
   eleventyConfig.addFilter("getRecentGame", (games = []) => {
   if (!Array.isArray(games) || games.length === 0) return null;
 
