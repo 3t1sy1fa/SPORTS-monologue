@@ -5,10 +5,6 @@
   <link rel="stylesheet" href="/style/twins-tar.css" />
   {% endif %}
     
-  {% if not isHome %}
-    <button class="back-button" onclick="history.back()">←</button>
-  {% endif %}
-
   <main class="main-container {% if isHome %}with-sidebar{% endif %}">
     {% if isHome %}
       <!-- 버튼을 사이드바 밖으로 이동 -->

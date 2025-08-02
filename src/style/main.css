@@ -153,26 +153,6 @@ a { text-decoration: none; color: inherit; }
   }
 }
 
-.back-button {
-  position: sticky;
-  top: 185px;
-  left: 20px;
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  color: #333;
-  font-weight: 600;
-  padding: 8px 12px;
-  transition: background 0.2s;
-}
-.back-button:hover {
-  background: #f0f0f0;
-  border-radius: 4px;
-}
-@media (max-width: 768px) {
-  .back-button { top: 60px; left: 10px; font-size: 0.9rem; }
-}
 
 /* ---------------------- 메인 컨테이너 ---------------------- */
 .main-container { max-width: 100%; margin: 0 auto; padding: 20px 20px; }
