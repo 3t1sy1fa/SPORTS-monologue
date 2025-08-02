@@ -1,155 +1,178 @@
 /* ==============================
-   선수 상세 페이지
+   선수 분석 페이지
    ============================== */
-.player-detail-container {
+.players-container {
   max-width: 100%;
   margin: 0 auto;
   padding: 20px 20%;
-  background-color: #fff;
-  color: #1a1a1a;
-  font-family: 'Mingijuk', 'SUIT', sans-serif;
-}
-
-/* ===== 헤더 영역 ===== */
-.player-header {
-  display: flex;
-  align-items: center;
-  border: 1.5px solid #ddd;
-  padding: 24px;
-  border-radius: 8px;
   background: #fff;
-  margin-bottom: 32px;
-  gap: 24px;
+  min-height: 100vh;
+  font-family: 'Mingijuk', 'SUIT', sans-serif;
+  color: #1a1a1a;
 }
 
-.player-header .player-photo {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1.5px solid #ccc;
-  flex-shrink: 0;
-}
-
-.player-info h1 {
+/* ===== 페이지 타이틀 & 메타 ===== */
+.page-title {
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
   font-family: 'spomono', sans-serif;
+}
+
+.page-meta {
+  font-size: 1rem;
+  color: #777;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* ===== 팀 필터 ===== */
+.filter-container {
+  margin: 1rem 0;
+  text-align: right;
+}
+
+.filter-container label {
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+#teamFilter {
+  padding: 6px 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+/* ===== 선수 카드 그리드 ===== */
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ===== 개별 카드 ===== */
+.player-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.player-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 선수 이미지 */
+.player-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 1.5px solid #e3e3e3;
+}
+
+/* ===== 카드 내부 정보 ===== */
+.player-info {
+  text-align: center;
+  width: 100%;
+}
+
+.player-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+.player-team .team-logo {
+  width: 28px;
+  height: 28px;
+  margin: 0.3rem 0;
 }
 
 .player-position {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   color: #555;
-  margin-bottom: 0.3rem;
-}
-
-.player-number {
-  font-size: 1rem;
-  color: #777;
-  margin-bottom: 0.5rem;
 }
 
 .player-note {
-  font-size: 0.95rem;
-  color: #555;
-  font-style: italic;
-  border-left: 3px solid #ddd;
-  padding-left: 12px;
-  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0.4rem 0;
+  min-height: 32px;
 }
 
-/* ===== 최근 경기 기록 섹션 ===== */
-.player-stats {
-  border: 1.5px solid #ddd;
-  padding: 24px;
-  border-radius: 8px;
-  background: #fff;
-  margin-bottom: 32px;
+.player-number {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 0.5rem;
 }
 
-.player-stats h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  font-family: 'spomono', sans-serif;
+/* 인기 점수 배지 */
+.player-popularity {
+  display: inline-block;
+  background: #ffeb3b;
+  color: #333;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
 }
 
-/* 표 스타일 */
-.stats-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+/* ===== 팀별 포인트 색상 ===== */
+.player-card.lg .player-name { color: #C30452; }
+.player-card.lg .player-popularity { background: #C30452; color: #fff; }
 
-.stats-table th,
-.stats-table td {
-  text-align: center;
-  padding: 12px;
-  border-bottom: 1px solid #eee;
-}
+.player-card.doosan .player-name { color: #1A1748; }
+.player-card.doosan .player-popularity { background: #1A1748; color: #fff; }
 
-.stats-table th {
-  background: #f9f9f9;
-  font-weight: 600;
-}
+.player-card.ssg .player-name { color: #CE0E2D; }
+.player-card.ssg .player-popularity { background: #FFB81C; color: #333; }
 
-.stats-table tbody tr:hover {
-  background: #fafafa;
-}
+.player-card.lotte .player-name { color: #041E42; }
+.player-card.lotte .player-popularity { background: #D00F31; color: #fff; }
 
-/* ===== 인기 투표 ===== */
-.player-votes {
-  border: 1.5px solid #ddd;
-  padding: 24px;
-  border-radius: 8px;
-  background: #fff;
-}
+.player-card.samsung .player-name { color: #074CA1; }
+.player-card.samsung .player-popularity { background: #074CA1; color: #fff; }
 
-.player-votes h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  font-family: 'spomono', sans-serif;
-}
+.player-card.hanwha .player-name { color: #FC4E00; }
+.player-card.hanwha .player-popularity { background: #07111F; color: #fff; }
 
-.vote-form {
-  margin-top: 16px;
-}
+.player-card.kia .player-name { color: #EA0029; }
+.player-card.kia .player-popularity { background: #06141F; color: #fff; }
 
-.vote-form button {
-  background: #C30452; /* LG 트윈스 기본 컬러 */
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
+.player-card.kiwoom .player-name { color: #570514; }
+.player-card.kiwoom .player-popularity { background: #570514; color: #fff; }
 
-.vote-form button:hover {
-  background: #a00240;
-}
+.player-card.nc .player-name { color: #315288; }
+.player-card.nc .player-popularity { background: #AF917B; color: #fff; }
+
+.player-card.kt .player-name { color: #EB1C24; }
+.player-card.kt .player-popularity { background: #000; color: #fff; }
 
 /* ===== 반응형 ===== */
 @media (max-width: 768px) {
-  .player-detail-container {
+  .players-container {
     padding: 16px 5%;
   }
-
-  .player-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .players-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
   }
-
-  .player-header .player-photo {
-    width: 100px;
-    height: 100px;
-  }
-
-  .player-info h1 {
-    font-size: 1.6rem;
+  .player-photo {
+    width: 80px;
+    height: 80px;
   }
 }
