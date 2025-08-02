@@ -12,29 +12,28 @@
       <button id="sidebar-toggle" class="sidebar-toggle">보드</button>
       <aside class="sidebar">
         <!-- ✅ 최신 경기 결과 -->
-        {% if leagueSchedule and leagueSchedule | length > 0 %}
-          <div class="latest-games-section">
-            <h3>최신 경기 결과</h3>
-            <ul class="latest-games">
-              {% for game in leagueSchedule | reverse | slice(0, 5) %}
-                <li>
-                  <span class="match">
-                    <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
-                    {{ game.home }} vs 
-                    <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
-                    {{ game.away }}
-                  </span>
-                  <span class="score">
-                    {% if game.status == "종료" %}
-                      {{ game.homeScore }} - {{ game.awayScore }}
-                    {% else %}
-                      예정
-                    {% endif %}
-                  </span>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
+        <div class="latest-games-section">
+  <h3>최신 경기 결과</h3>
+  <ul class="latest-games">
+    {% for game in leagueSchedule | reverse | slice(0, 5) %}
+      <li>
+        <span class="match">
+          <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
+          {{ game.home }} vs 
+          <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
+          {{ game.away }}
+        </span>
+        <span class="score">
+          {% if game.status == "종료" %}
+            {{ game.homeScore }} - {{ game.awayScore }}
+          {% else %}
+            예정
+          {% endif %}
+        </span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
         {% else %}
           <p class="no-games">최근 경기 데이터가 없습니다.</p>
         {% endif %}
