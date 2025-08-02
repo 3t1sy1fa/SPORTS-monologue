@@ -1,7 +1,7 @@
 [
   {
-    "playerSlug": "Kim-hs",
-    "playerName": "김현수",
+    "playerName": "Kim-hs",
+    "playerSlug": "김현수",
     "date": "2025-07-24",
     "game": "KIA 시즌 11차전",
     "record": "쓰리런 홈런",
@@ -9,8 +9,8 @@
     "teamSlug": "lg"
   },
   {
-    "playerSlug": "moon-sj",
-    "playerName": "문성주",
+    "playerName": "moon-sj",
+    "playerSlug": "문성주",
     "date": "2025-07-25",
     "game": "두산 시즌 9차전",
     "record": "9회 초 2타점 적시 결승타",
@@ -18,8 +18,8 @@
     "teamSlug": "lg"
   },
   {
-    "playerSlug": "gu-bh",
-    "playerName": "구본혁",
+    "playerName": "gu-bh",
+    "playerSlug": "구본혁",
     "date": "2025-07-25",
     "game": "두산 시즌 9차전",
     "record": "9회 말 슈퍼캐치",
@@ -27,8 +27,8 @@
     "teamSlug": "lg"
   },
   {
-    "playerSlug": "gu-bh",
-    "playerName": "구본혁",
+    "playerName": "gu-bh",
+    "playerSlug": "구본혁",
     "date": "2025-07-29",
     "game": "KT 주중 3연전-1차전",
     "record": "3회 말 2타점 적시 2루타",
@@ -36,8 +36,8 @@
     "teamSlug": "lg"
   },
   {
-    "playerSlug": "park-hm",
-    "playerName": "박해민",
+    "playerName": "park-hm",
+    "playerSlug": "박해민",
     "date": "2025-07-29",
     "game": "KT 주중 3연전-1차전",
     "record": "2,3회 도루",
@@ -45,8 +45,8 @@
     "teamSlug": "lg"
   },
   {
-    "playerSlug": "Kim-hs",
-    "playerName": "김현수",
+    "playerName": "Kim-hs",
+    "playerSlug": "김현수",
     "date": "2025-07-31",
     "game": "KT 주중 3연전-3차전",
     "record": "16시즌 연속 100안타",
@@ -54,8 +54,8 @@
     "teamSlug": "lg"
   },
   {
-    "playerSlug": "kim-hs",
-    "playerName": "김현수",
+    "playerName": "kim-hs",
+    "playerSlug": "김현수",
     "date": "2025-07-31",
     "game": "KT 주중 3연전-3차전",
     "record": "KBO 통산 3번째 개인 통산 1500타점",
@@ -63,8 +63,8 @@
     "teamSlug": "lg"
   },
   {
-    "playerSlug": "park-hm",
-    "playerName": "박해민",
+    "playerName": "park-hm",
+    "playerSlug": "박해민",
     "date": "2025-08-01",
     "game": "삼성 주말 3연전-1차전",
     "record": "개인 통산 450 도루",

@@ -1,0 +1,82 @@
+[
+  {
+    "name": "한화 이글스",
+    "slug": "hanwha",
+    "rank": 1,
+    "wins": 59,
+    "losses": 38,
+    "lastGame": "3"
+  },
+  {
+    "name": "LG 트윈스",
+    "slug": "lg",
+    "rank": 2,
+    "wins": 59,
+    "losses": 40,
+    "lastGame": "2"
+  },
+  {
+    "name": "롯데 자이언츠",
+    "slug": "lotte",
+    "rank": 3,
+    "wins": 55,
+    "losses": 44,
+    "lastGame": "3"
+  },
+  {
+    "name": "SSG 랜더스",
+    "slug": "ssg",
+    "rank": 4,
+    "wins": 49,
+    "losses": 46,
+    "lastGame": "4"
+  },
+  {
+    "name": "KIA 타이거즈",
+    "slug": "kia",
+    "rank": 5,
+    "wins": 48,
+    "losses": 47,
+    "lastGame": "3"
+  },
+  {
+    "name": "NC 다이노스",
+    "slug": "nc",
+    "rank": 6,
+    "wins": 45,
+    "losses": 46,
+    "lastGame": "1"
+  },
+  {
+    "name": "KT 위즈",
+    "slug": "kt",
+    "rank": 7,
+    "wins": 50,
+    "losses": 49,
+    "lastGame": "4"
+  },
+  {
+    "name": "삼성 라이온즈",
+    "slug": "samsung",
+    "rank": 8,
+    "wins": 48,
+    "losses": 50,
+    "lastGame": "5"
+  },
+  {
+    "name": "두산 베어스",
+    "slug": "doosan",
+    "rank": 9,
+    "wins": 41,
+    "losses": 54,
+    "lastGame": "5"
+  },
+  {
+    "name": "키움 히어로즈",
+    "slug": "kiwoom",
+    "rank": 10,
+    "wins": 29,
+    "losses": 69,
+    "lastGame": "4"
+  }
+]

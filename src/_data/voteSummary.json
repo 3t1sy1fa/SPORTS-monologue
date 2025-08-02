@@ -1,11 +1,13 @@
-[
-  {
-    "teamSlug": "",
-    "teamName": "",
-    "teamTotalVotes": 0,
-    "playerSlug": "",
-    "playerName": "",
-    "playerTeamSlug": "",
-    "playerTotalVotes": 0
+{
+  "teams": {
+    "lg": 33,
+    "hanwha": 4,
+    "lotte": 1,
+    "nc": 5
+  },
+  "players": {
+    "park-hm": 45,
+    "kim-hs": 4,
+    "gu-bh": 66
   }
-]
+}
