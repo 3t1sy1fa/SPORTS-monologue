@@ -42,12 +42,9 @@
     | selectattr("awaySlug", "equalto", category) 
     | first) %}
 
-  {# ✅ 홈페이지 URL 가져오기 #}
-  {% set homepage = (teamsBoard 
-    | selectattr("slug", "equalto", category) 
-    | map(attribute="homepage") 
-    | first) 
-    or "https://www.koreabaseball.com" %}
+  {# ✅ 홈페이지 URL 가져오기 (map 제거) #}
+  {% set homepageItem = teamsBoard | selectattr("slug", "equalto", category) | first %}
+  {% set homepage = homepageItem.homepage if homepageItem else "https://www.koreabaseball.com" %}
 
   {# ✅ 구단별 글 목록 #}
   {% set filteredPosts = (collections.teamPosts 
