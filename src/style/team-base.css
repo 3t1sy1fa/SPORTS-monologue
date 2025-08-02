@@ -13,18 +13,33 @@
   flex-direction: column;
   align-items: center;
   width: 100px;
-  background: #eee;
   border-radius: 8px;
   padding: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   font-weight: 600;
+  transition: transform 0.2s ease;
 }
+
+.podium:hover { transform: translateY(-5px); }
 
 .podium img { width: 50px; height: 50px; margin-bottom: 8px; }
 .podium span { font-size: 0.9rem; }
-.podium-1 { height: 140px; background: gold; }
-.podium-2 { height: 100px; background: silver; }
-.podium-3 { height: 80px; background: #cd7f32; }
+
+.podium-1 { 
+  height: 150px; 
+  background: linear-gradient(to top, gold, #fff8dc);
+  border: 2px solid gold;
+}
+.podium-2 { 
+  height: 120px; 
+  background: linear-gradient(to top, silver, #f8f8f8);
+  border: 2px solid silver;
+}
+.podium-3 { 
+  height: 100px; 
+  background: linear-gradient(to top, #cd7f32, #ffe0b2);
+  border: 2px solid #cd7f32;
+}
 
 /* 📊 구단 카드 리스트 */
 .teams-card-section {
@@ -40,17 +55,18 @@
   display: flex;
   flex-direction: column;
   background: #fff;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   border-radius: 8px;
   padding: 16px;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .team-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  border-color: var(--team-maincolor);
 }
 
 .team-card img { width: 50px; height: 50px; margin-bottom: 10px; }
@@ -95,6 +111,14 @@
 @media (max-width: 768px) {
   .teams-card-section { grid-template-columns: 1fr 1fr; }
   .extra-info { grid-template-columns: 1fr; }
+
+  .podium-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .podium { width: 80%; height: auto; flex-direction: row; justify-content: space-between; }
+  .podium img { margin: 0 10px 0 0; }
 }
 @media (max-width: 480px) {
   .teams-card-section { grid-template-columns: 1fr; }
