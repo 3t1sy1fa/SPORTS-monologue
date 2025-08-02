@@ -26,6 +26,9 @@
                 <span class="score">
                   {% if game.status == "종료" %}
                     {{ game.homeScore }} - {{ game.awayScore }}
+                  {% else %}
+                    예정
+                  {% endif %}
                 </span>
               </li>
             {% endfor %}
