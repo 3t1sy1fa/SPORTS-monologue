@@ -1,4 +1,4 @@
-/* 🏆 Podium Section */
+/* ===== 🏆 Podium Section ===== */
 .podium-section {
   display: flex;
   justify-content: center;
@@ -18,12 +18,13 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   font-weight: 600;
   transition: transform 0.2s ease;
+  background: #fff;
 }
 
 .podium:hover { transform: translateY(-5px); }
 
 .podium img { width: 50px; height: 50px; margin-bottom: 8px; }
-.podium span { font-size: 0.9rem; }
+.podium span { font-size: 0.9rem; text-align: center; }
 
 .podium-1 { 
   height: 150px; 
@@ -41,7 +42,7 @@
   border: 2px solid #cd7f32;
 }
 
-/* 📊 구단 카드 리스트 */
+/* ===== 📊 팀 카드 리스트 ===== */
 .teams-card-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -66,7 +67,7 @@
 .team-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  border-color: var(--team-maincolor);
+  border-color: var(--team-maincolor, #ccc);
 }
 
 .team-card img { width: 50px; height: 50px; margin-bottom: 10px; }
@@ -74,7 +75,36 @@
 .team-card .team-info p { margin: 5px 0; font-size: 0.9rem; color: #555; }
 .team-card .last-game { font-size: 0.8rem; color: #999; }
 
-/* 📅 이번 주 경기 일정 & 📰 뉴스 */
+/* ===== 🗳️ 투표 버튼 ===== */
+.vote-form {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.vote-btn {
+  background: var(--team-maincolor, #c30452);
+  color: #fff;
+  font-weight: 600;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+.vote-btn:hover {
+  background: #a50342;
+  transform: translateY(-2px);
+}
+
+.vote-btn:active {
+  transform: scale(0.98);
+  background: #8c0336;
+}
+
+/* ===== 📅 이번 주 경기 일정 & 📰 뉴스 ===== */
 .extra-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -107,7 +137,7 @@
 .news-section a { text-decoration: none; color: #333; }
 .news-section a:hover { color: #000; font-weight: bold; }
 
-/* 반응형 */
+/* ===== 반응형 ===== */
 @media (max-width: 768px) {
   .teams-card-section { grid-template-columns: 1fr 1fr; }
   .extra-info { grid-template-columns: 1fr; }
@@ -117,37 +147,16 @@
     align-items: center;
     gap: 10px;
   }
-  .podium { width: 80%; height: auto; flex-direction: row; justify-content: space-between; }
+  .podium { 
+    width: 80%; 
+    height: auto; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    padding: 12px;
+  }
   .podium img { margin: 0 10px 0 0; }
 }
+
 @media (max-width: 480px) {
   .teams-card-section { grid-template-columns: 1fr; }
-}
-
-/* 🗳️ 투표 버튼 */
-.vote-form {
-  margin-top: 10px;
-  text-align: center;
-}
-
-.vote-btn {
-  background: var(--team-maincolor, #c30452); /* 팀 색상 변수 (기본은 LG 트윈스 핑크) */
-  color: #fff;
-  font-weight: 600;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-  width: 100%;
-}
-
-.vote-btn:hover {
-  background: #a50342;
-  transform: translateY(-2px);
-}
-
-.vote-btn:active {
-  transform: scale(0.98);
-  background: #8c0336;
 }
