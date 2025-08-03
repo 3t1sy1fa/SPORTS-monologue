@@ -1104,5 +1104,75 @@
     "teamSlug": "",
     "playerSlug": "gu-bh",
     "timestamp": "2025-08-02T12:06:40.199Z"
+  },
+  {
+    "voterId": "1754196046554",
+    "targetType": "team",
+    "teamSlug": "kiwoom",
+    "playerSlug": "",
+    "timestamp": "2025-08-03T04:40:46.554Z"
+  },
+  {
+    "voterId": "1754196057620",
+    "targetType": "team",
+    "teamSlug": "lg",
+    "playerSlug": "",
+    "timestamp": "2025-08-03T04:40:57.620Z"
+  },
+  {
+    "voterId": "1754196247140",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "park-hm",
+    "timestamp": "2025-08-03T04:44:07.140Z"
+  },
+  {
+    "voterId": "1754196979203",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "park-hm",
+    "timestamp": "2025-08-03T04:56:19.203Z"
+  },
+  {
+    "voterId": "1754209652395",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "gu-bh",
+    "timestamp": "2025-08-03T08:27:32.395Z"
+  },
+  {
+    "voterId": "1754209654228",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "gu-bh",
+    "timestamp": "2025-08-03T08:27:34.228Z"
+  },
+  {
+    "voterId": "1754209840294",
+    "targetType": "team",
+    "teamSlug": "hanwha",
+    "playerSlug": "",
+    "timestamp": "2025-08-03T08:30:40.294Z"
+  },
+  {
+    "voterId": "1754209850928",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "gu-bh",
+    "timestamp": "2025-08-03T08:30:50.928Z"
+  },
+  {
+    "voterId": "1754209871594",
+    "targetType": "team",
+    "teamSlug": "doosan",
+    "playerSlug": "",
+    "timestamp": "2025-08-03T08:31:11.594Z"
+  },
+  {
+    "voterId": "1754209876638",
+    "targetType": "team",
+    "teamSlug": "kia",
+    "playerSlug": "",
+    "timestamp": "2025-08-03T08:31:16.638Z"
   }
 ]

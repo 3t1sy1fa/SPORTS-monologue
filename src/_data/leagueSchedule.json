@@ -119,9 +119,9 @@
     "homeSlug": "kia",
     "away": "한화",
     "awaySlug": "hanwha",
-    "homeScore": "-",
+    "homeScore": "",
     "awayScore": "-",
-    "status": "취소",
+    "status": "",
     "winner": "취소"
   },
   {
@@ -207,5 +207,30 @@
     "status": "",
     "winner": "예정",
     "doubleHeader": "lotte"
+  },
+  {
+    "season": "",
+    "date": "2025-08-04",
+    "gameNo": "1"
+  },
+  {
+    "season": "",
+    "date": "2025-08-04",
+    "gameNo": "1"
+  },
+  {
+    "season": "",
+    "date": "2025-08-04",
+    "gameNo": "1"
+  },
+  {
+    "season": "",
+    "date": "2025-08-04",
+    "gameNo": "1"
+  },
+  {
+    "season": "",
+    "date": "2025-08-04",
+    "gameNo": "1"
   }
 ]

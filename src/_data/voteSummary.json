@@ -3,12 +3,12 @@
     {
       "teamSlug": "hanwha",
       "teamName": "한화 이글스",
-      "teamTotalVotes": 4
+      "teamTotalVotes": 5
     },
     {
       "teamSlug": "lg",
       "teamName": "LG 트윈스",
-      "teamTotalVotes": 33
+      "teamTotalVotes": 34
     },
     {
       "teamSlug": "lotte",
@@ -23,7 +23,7 @@
     {
       "teamSlug": "kia",
       "teamName": "KIA 타이거즈",
-      "teamTotalVotes": 0
+      "teamTotalVotes": 1
     },
     {
       "teamSlug": "nc",
@@ -43,12 +43,12 @@
     {
       "teamSlug": "doosan",
       "teamName": "두산 베어스",
-      "teamTotalVotes": 0
+      "teamTotalVotes": 1
     },
     {
       "teamSlug": "kiwoom",
       "teamName": "키움 히어로즈",
-      "teamTotalVotes": 0
+      "teamTotalVotes": 1
     }
   ],
   "players": [
@@ -62,13 +62,13 @@
       "playerSlug": "park-hm",
       "playerName": "박해민",
       "playerTeamSlug": "lg",
-      "playerTotalVotes": 45
+      "playerTotalVotes": 47
     },
     {
       "playerSlug": "gu-bh",
       "playerName": "구본혁",
       "playerTeamSlug": "lg",
-      "playerTotalVotes": 66
+      "playerTotalVotes": 69
     },
     {
       "playerSlug": "lim-ck",
