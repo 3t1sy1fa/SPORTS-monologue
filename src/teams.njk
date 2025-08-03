@@ -11,18 +11,18 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 {% block content %}
 <h1 class="page-title">구단 분석</h1>
 
+{# 🏆 인기 구단 포디움 (TOP 3) #}
+{% if voteSummary and voteSummary.teams %}
+  {% set voteTeams = voteSummary.teams %}
+{% else %}
+  {% set voteTeams = [] %}
+{% endif %}
 
-   🏆 인기 구단 포디움 (TOP 3)
-
-{% set voteTeams = (voteSummary and voteSummary.teams) ? voteSummary.teams : [] %}
-{% set topTeams = voteTeams 
-  | sort(attribute="teamTotalVotes") 
-  | reverse 
-  | slice(0, 3) %}
+{% set topTeams = voteTeams | sort(attribute="teamTotalVotes") | reverse | slice(0, 3) %}
 
 <section class="vote-podium-section">
   <h2>인기 구단 포디움</h2>
-  {% if topTeams and (topTeams | length > 0) %}
+  {% if topTeams | length > 0 %}
     <div class="podium-wrapper">
       {% for team in topTeams %}
         <div class="podium-card podium-{{ loop.index }}">
@@ -39,31 +39,25 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
   {% endif %}
 </section>
 
-
-   🏟️ 이번 주 경기 일정 캘린더
-
-{% set scheduleArray = (leagueSchedule and leagueSchedule is iterable) ? leagueSchedule : [] %}
-{% set weekStart = "now" | date("yyyy-MM-dd", "Asia/Seoul", "monday") %}
-{% set weekEnd = "now" | date("yyyy-MM-dd", "Asia/Seoul", "sunday") %}
-
-{% set weeklyGames = [] %}
-{% for game in scheduleArray %}
-  {% if game.date and game.date >= weekStart and game.date <= weekEnd %}
-    {% set weeklyGames = weeklyGames.concat([game]) %}
-  {% endif %}
-{% endfor %}
-{% set groupedGames = weeklyGames | sort(attribute="date") %}
+{# 🏟️ 이번 주 경기 일정 캘린더 #}
+{% set today = "now" | date("yyyy-MM-dd") %}
+{% set nextWeek = (("now" | date("timestamp")) + (7 * 24 * 60 * 60 * 1000)) | date("yyyy-MM-dd") %}
+{% set weeklyGames = scheduleArray 
+  | selectattr("date", "defined") 
+  | selectattr("date", "ge", today) 
+  | selectattr("date", "le", nextWeek) 
+  | sort(attribute="date") %}
 
 <section class="calendar-section">
   <h2>이번 주 경기 일정</h2>
-  {% if groupedGames | length > 0 %}
+  {% if weeklyGames | length > 0 %}
     <div class="calendar-grid">
-      {% set dates = groupedGames | map(attribute="date") | unique %}
+      {% set dates = weeklyGames | map(attribute="date") | unique %}
       {% for date in dates %}
         <div class="calendar-day">
           <h3>{{ date | date("MM.dd (EEE)") }}</h3>
           <ul>
-            {% for game in groupedGames if game.date == date %}
+            {% for game in weeklyGames if game.date == date %}
               <li>
                 <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
                 {{ game.home }} vs 
@@ -91,10 +85,13 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
   {% endif %}
 </section>
 
+{# 📋 전체 구단 카드 리스트 #}
+{% if teamsBoard and teamsBoard is iterable %}
+  {% set teamsArray = teamsBoard %}
+{% else %}
+  {% set teamsArray = [] %}
+{% endif %}
 
-   📋 전체 구단 카드 리스트
-
-{% set teamsArray = (teamsBoard and teamsBoard is iterable) ? teamsBoard : [] %}
 <section class="teams-card-section">
   {% for team in teamsArray | sort(attribute="rank") %}
     {% set voteCount = 0 %}
