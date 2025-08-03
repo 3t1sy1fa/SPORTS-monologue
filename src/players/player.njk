@@ -25,9 +25,10 @@ layout: layout.njk
     </div>
   </header>
 
+  <!-- ✅ 최근 경기 기록 -->
   <section class="player-stats">
     <h2>최근 경기 기록</h2>
-    {% set statsArray = playerStats if playerStats and playerStats is iterable else [] %}
+    {% set statsArray = playerStats if playerStats is iterable else [] %}
     <table class="stats-table">
       <thead>
         <tr>
@@ -52,20 +53,21 @@ layout: layout.njk
     </table>
   </section>
 
-<section class="player-votes">
-  <h2>인기 투표</h2>
-  {% set playerVotes = voteSummary.players if voteSummary.players is iterable else [] %}
-  {% set count = 0 %}
-  {% for vote in playerVotes %}
-    {% if vote.playerSlug == player.slug %}
-      {% set count = vote.playerTotalVotes %}
-    {% endif %}
-  {% endfor %}
-  <p>현재 투표 수: {{ count }}표</p>
-  <button class="vote-btn" data-type="player" data-slug="{{ player.slug }}">
-    이 선수에게 투표하기
-  </button>
-</section>
+  <!-- ✅ 인기 투표 -->
+  <section class="player-votes">
+    <h2>인기 투표</h2>
+    {% set playerVotes = voteSummary.players if voteSummary.players is iterable else [] %}
+    {% set count = 0 %}
+    {% for vote in playerVotes %}
+      {% if vote.playerSlug == player.slug %}
+        {% set count = vote.playerTotalVotes %}
+      {% endif %}
+    {% endfor %}
+    <p>현재 투표 수: {{ count }}표</p>
+    <button class="vote-btn" data-type="player" data-slug="{{ player.slug }}">
+      이 선수에게 투표하기
+    </button>
+  </section>
 </section>
 
 <script type="module">
