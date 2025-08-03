@@ -14,22 +14,24 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 {# 🏆 인기 구단 TOP3 카드 #}
 {% set voteTeams = voteSummary.teams | default([]) %}
 {% set topTeams = (voteTeams | sort(attribute="teamTotalVotes")) | reverse %}
-  {% set voteTeams = voteSummary.teams %}
-{% endif %}
-{% set topTeams = (voteTeams | sort(attribute="teamTotalVotes")) | reverse %}
 
-<section class="podium-section">
-  {% if topTeams | length > 0 %}
-    {% for team in topTeams | slice(0, 3) %}
-      <div class="podium podium-{{ loop.index }} team-{{ team.teamSlug }}">
-        <img src="/images/{{ team.teamSlug }}.png" alt="{{ team.teamName }}">
-        <span>{{ team.teamName }}</span>
-        <span class="vote-count">{{ team.teamTotalVotes }}표</span>
-      </div>
-    {% endfor %}
-  {% else %}
-    <p class="no-data">인기 구단 데이터가 부족합니다.</p>
-  {% endif %}
+<section class="top-teams-section">
+  <h2>인기 구단 TOP 3</h2>
+  <div class="top-teams-card-wrapper">
+    {% if topTeams | length > 0 %}
+      {% for team in topTeams | slice(0, 3) %}
+        <div class="top-team-card team-{{ team.teamSlug }}">
+          <img src="/images/{{ team.teamSlug }}.png" alt="{{ team.teamName }}">
+          <div>
+            <h3>{{ team.teamName }}</h3>
+            <p>{{ team.teamTotalVotes }}표</p>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="no-data">인기 구단 데이터가 부족합니다.</p>
+    {% endif %}
+  </div>
 </section>
 
 {# 📊 구단 카드 리스트 #}
