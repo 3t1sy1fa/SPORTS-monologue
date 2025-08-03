@@ -1174,5 +1174,12 @@
     "teamSlug": "kia",
     "playerSlug": "",
     "timestamp": "2025-08-03T08:31:16.638Z"
+  },
+  {
+    "voterId": "1754211741394",
+    "targetType": "team",
+    "teamSlug": "nc",
+    "playerSlug": "",
+    "timestamp": "2025-08-03T09:02:21.394Z"
   }
 ]
