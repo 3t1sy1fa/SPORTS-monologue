@@ -8,11 +8,11 @@ isHome: true
 {% block content %}
 <p class="typing-slogan"><span id="typing-text" aria-live="polite"></span></p>
 
-<main class="home-layout">
-
+<main class="home-layout" role="main">
   <!-- ✅ 글 목록 -->
   <section class="post-list">
-    {% for post in collections.posts | reverse %}
+    {% set postsArray = collections.posts or [] %}
+    {% for post in postsArray | reverse %}
       <article class="post-item">
         <h4>
           <a href="{{ post.url }}" title="{{ post.data.title }}">
@@ -23,38 +23,42 @@ isHome: true
           <strong>[{{ post.data.category }}]</strong> · 
           <time datetime="{{ post.date | date('yyyy-MM-dd') }}">{{ post.date | date }}</time>
         </p>
-        <p>{{ post.data.excerpt }}</p>
+        <p>{{ post.data.excerpt or "" }}</p>
       </article>
+    {% else %}
+      <p>게시된 글이 없습니다.</p>
     {% endfor %}
   </section>
 </main>
 
 <script>
-  const phrases = [
-    "경기 그 이상을 보기 위해",
-    "경영의 언어로 스포츠를 말하다"
-  ];
-  const speed = 60, pause = 1500, eraseSpeed = 40;
-  let i = 0, j = 0, isDeleting = false;
-  const el = document.getElementById("typing-text");
+  document.addEventListener("DOMContentLoaded", () => {
+    const phrases = [
+      "경기 그 이상을 보기 위해",
+      "경영의 언어로 스포츠를 말하다"
+    ];
+    const speed = 60, pause = 1500, eraseSpeed = 40;
+    let i = 0, j = 0, isDeleting = false;
+    const el = document.getElementById("typing-text");
 
-  function type() {
-    const current = phrases[i];
-    if (isDeleting) {
-      el.textContent = current.substring(0, j--);
-      if (j < 0) {
-        isDeleting = false;
-        i = (i + 1) % phrases.length;
-        setTimeout(type, 500);
-      } else setTimeout(type, eraseSpeed);
-    } else {
-      el.textContent = current.substring(0, j++);
-      if (j > current.length) {
-        isDeleting = true;
-        setTimeout(type, pause);
-      } else setTimeout(type, speed);
+    function type() {
+      const current = phrases[i];
+      if (isDeleting) {
+        el.textContent = current.substring(0, j--);
+        if (j < 0) {
+          isDeleting = false;
+          i = (i + 1) % phrases.length;
+          setTimeout(type, 500);
+        } else setTimeout(type, eraseSpeed);
+      } else {
+        el.textContent = current.substring(0, j++);
+        if (j > current.length) {
+          isDeleting = true;
+          setTimeout(type, pause);
+        } else setTimeout(type, speed);
+      }
     }
-  }
-  document.addEventListener("DOMContentLoaded", type);
+    type();
+  });
 </script>
 {% endblock %}

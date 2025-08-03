@@ -4,7 +4,8 @@ const fs = require("fs");
 
 (async () => {
   try {
-    // ✅ Google API 인증
+    fs.mkdirSync("./src/_data", { recursive: true });
+
     const client = new google.auth.JWT(
       process.env.GOOGLE_CLIENT_EMAIL,
       null,
@@ -13,29 +14,30 @@ const fs = require("fs");
     );
     const sheets = google.sheets({ version: "v4", auth: client });
 
-    /* ----------------------------- 1️⃣ TeamsBoard ----------------------------- */
+    // 1️⃣ TeamsBoard
     const teamsBoardRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "TeamsBoard!A2:J20",
+      range: "TeamsBoard!A2:J",
     });
     const teamsBoard = (teamsBoardRes.data.values || []).map((row) => ({
       name: row[0],
       slug: row[1],
-      rank: Number(row[2]),
-      wins: Number(row[3]),
-      losses: Number(row[4]),
-      draws: Number(row[5]),
-      winRate: row[6],
-      gamesBehind: row[7],
-      lastGame: row[8],
-      homepage: row[9],
+      rank: Number(row[2] || 0),
+      wins: Number(row[3] || 0),
+      losses: Number(row[4] || 0),
+      draws: Number(row[5] || 0),
+      winRate: row[6] || "0",
+      gamesBehind: row[7] || "-",
+      lastGame: row[8] || "",
+      homepage: row[9] || "",
     }));
     fs.writeFileSync("./src/_data/teams-board.json", JSON.stringify(teamsBoard, null, 2));
+    console.log("✅ TeamsBoard 생성 완료");
 
-    /* --------------------------- 2️⃣ LeagueSchedule --------------------------- */
+    // 2️⃣ LeagueSchedule
     const leagueScheduleRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "LeagueSchedule!A2:L200",
+      range: "LeagueSchedule!A2:L",
     });
     const leagueSchedule = (leagueScheduleRes.data.values || []).map((row) => ({
       season: row[0],
@@ -52,11 +54,12 @@ const fs = require("fs");
       doubleHeader: row[11],
     }));
     fs.writeFileSync("./src/_data/leagueSchedule.json", JSON.stringify(leagueSchedule, null, 2));
+    console.log("✅ LeagueSchedule 생성 완료");
 
-    /* ---------------------------- 3️⃣ twinsSchedule --------------------------- */
+    // 3️⃣ twinsSchedule
     const twinsScheduleRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "twinsSchedule!A2:H100",
+      range: "twinsSchedule!A2:H",
     });
     const twinsSchedule = (twinsScheduleRes.data.values || []).map((row) => ({
       season: row[0],
@@ -69,11 +72,12 @@ const fs = require("fs");
       score: row[7],
     }));
     fs.writeFileSync("./src/_data/twinsSchedule.json", JSON.stringify(twinsSchedule, null, 2));
+    console.log("✅ twinsSchedule 생성 완료");
 
-    /* ------------------------------- 4️⃣ Players ------------------------------- */
+    // 4️⃣ Players
     const playersRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "Players!A2:G200",
+      range: "Players!A2:G",
     });
     const players = (playersRes.data.values || []).map((row) => ({
       name: row[0],
@@ -85,11 +89,12 @@ const fs = require("fs");
       popularity: Number(row[6] || 0),
     }));
     fs.writeFileSync("./src/_data/players.json", JSON.stringify(players, null, 2));
+    console.log("✅ Players 생성 완료");
 
-    /* ----------------------------- 5️⃣ PlayerStats ----------------------------- */
+    // 5️⃣ PlayerStats
     const playerStatsRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "PlayerStats!A2:G500",
+      range: "PlayerStats!A2:G",
     });
     const playerStats = (playerStatsRes.data.values || []).map((row) => ({
       playerSlug: row[0],
@@ -101,11 +106,12 @@ const fs = require("fs");
       teamSlug: row[6],
     }));
     fs.writeFileSync("./src/_data/playerStats.json", JSON.stringify(playerStats, null, 2));
+    console.log("✅ PlayerStats 생성 완료");
 
-    /* --------------------------------- 6️⃣ Votes -------------------------------- */
+    // 6️⃣ Votes
     const votesRes = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "Votes!A2:E500",
+      range: "Votes!A2:E",
     });
     const votes = (votesRes.data.values || []).map((row) => ({
       voterId: row[0],
@@ -115,58 +121,46 @@ const fs = require("fs");
       timestamp: row[4],
     }));
     fs.writeFileSync("./src/_data/votes.json", JSON.stringify(votes, null, 2));
+    console.log("✅ Votes 생성 완료");
 
-    /* ----------------------------- 7️⃣ VoteSummary ----------------------------- */
-/* ----------------------------- 7️⃣ VoteSummary ----------------------------- */
-const teams = {};
-const playersCount = {};
+    // 7️⃣ VoteSummary
+    const teams = {};
+    const playersCount = {};
 
-// ✅ 모든 팀 기본값 추가
-teamsBoard.forEach((team) => {
-  teams[team.slug] = {
-    teamSlug: team.slug,
-    teamName: team.name,
-    teamTotalVotes: 0,
-  };
-});
+    teamsBoard.forEach((team) => {
+      teams[team.slug] = {
+        teamSlug: team.slug,
+        teamName: team.name,
+        teamTotalVotes: 0,
+      };
+    });
 
-// ✅ 모든 선수 기본값 추가
-players.forEach((player) => {
-  playersCount[player.slug] = {
-    playerSlug: player.slug,
-    playerName: player.name,
-    playerTeamSlug: player.teamSlug,
-    playerTotalVotes: 0,
-  };
-});
+    players.forEach((player) => {
+      playersCount[player.slug] = {
+        playerSlug: player.slug,
+        playerName: player.name,
+        playerTeamSlug: player.teamSlug,
+        playerTotalVotes: 0,
+      };
+    });
 
-// ✅ 팀 투표 합산
-votes.forEach((vote) => {
-  if (vote.targetType === "team" && vote.teamSlug) {
-    if (teams[vote.teamSlug]) {
-      teams[vote.teamSlug].teamTotalVotes++;
-    }
-  }
-});
+    votes.forEach((vote) => {
+      if (vote.targetType === "team" && vote.teamSlug && teams[vote.teamSlug]) {
+        teams[vote.teamSlug].teamTotalVotes++;
+      } else if (vote.targetType === "player" && vote.playerSlug && playersCount[vote.playerSlug]) {
+        playersCount[vote.playerSlug].playerTotalVotes++;
+      }
+    });
 
-// ✅ 선수 투표 합산
-votes.forEach((vote) => {
-  if (vote.targetType === "player" && vote.playerSlug) {
-    if (playersCount[vote.playerSlug]) {
-      playersCount[vote.playerSlug].playerTotalVotes++;
-    }
-  }
-});
+    const voteSummary = {
+      teams: Object.values(teams),
+      players: Object.values(playersCount),
+    };
 
-const voteSummary = {
-  teams: Object.values(teams),
-  players: Object.values(playersCount),
-};
+    fs.writeFileSync("./src/_data/voteSummary.json", JSON.stringify(voteSummary, null, 2));
+    console.log("✅ VoteSummary 생성 완료");
 
-fs.writeFileSync("./src/_data/voteSummary.json", JSON.stringify(voteSummary, null, 2));
-console.log("✅ VoteSummary 생성 완료");
-
-    console.log("✅ 모든 JSON 파일 생성 완료 (상세 VoteSummary 포함)");
+    console.log("✅ 모든 JSON 파일 생성 완료");
   } catch (error) {
     console.error("❌ fetch-sheets.js 오류:", error);
     process.exit(1);

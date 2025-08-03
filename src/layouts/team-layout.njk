@@ -7,39 +7,46 @@
   <link rel="icon" href="/favicon.png" type="image/png">
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
 
+  {% set safeSlug = slug or 'default' %}
   <title>{{ title or "구단 분석" }} | Sports Monologue</title>
   <meta name="description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ title or '구단 분석' }}">
   <meta property="og:description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
-  <meta property="og:image" content="/images/og/{{ slug }}.jpg">
+  <meta property="og:image" content="/images/og/{{ safeSlug }}.jpg">
   <meta property="og:url" content="https://3t1sy1fa.com{{ page.url }}">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title or '구단 분석' }}">
   <meta name="twitter:description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
-  <meta name="twitter:image" content="/images/og/{{ slug }}.jpg">
+  <meta name="twitter:image" content="/images/og/{{ safeSlug }}.jpg">
   <meta name="twitter:domain" content="Sports Monologue">
 
   <link rel="stylesheet" href="/style/main.css" />
   <link rel="stylesheet" href="/style/teams.css" />
-  <link rel="stylesheet" href="/style/team-{{ slug }}.css" />
+  <link rel="stylesheet" href="/style/team-{{ safeSlug }}.css" />
 </head>
 
 <body>
   {% include "header.njk" %}
 
-{% set games = leagueSchedule | teamGames(slug) %}
-{% set recentGame = games | getRecentGame %}
-{% set homepage = teamsBoard | getHomepage(slug) %}
-{% set filteredPosts = collections.teamPosts | getTeamPosts(slug) %}
+  {% set scheduleArray = leagueSchedule is iterable ? leagueSchedule : [] %}
+  {% set games = scheduleArray | teamGames(safeSlug) %}
+  {% set recentGame = games | getRecentGame %}
+  {% set homepage = teamsBoard | getHomepage(safeSlug) %}
+  {% set postsArray = collections.teamPosts or [] %}
+  {% set filteredPosts = postsArray | getTeamPosts(safeSlug) %}
 
   <main class="team-layout">
     <div class="team-left">
       <div class="game-results">
         <p class="game-date">
-          {{ recentGame.date | date if recentGame else "날짜 정보 없음" }}
+          {% if recentGame %}
+            {{ recentGame.date | date }}
+          {% else %}
+            날짜 정보 없음
+          {% endif %}
         </p>
         <p class="game-summary">
           {% if recentGame %}

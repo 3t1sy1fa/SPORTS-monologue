@@ -9,10 +9,13 @@ exports.handler = async (event) => {
   try {
     const { targetType, teamSlug, playerSlug } = JSON.parse(event.body);
 
-    // ✅ 유효성 검사
-    if (!targetType || 
-       (targetType === "player" && !playerSlug) || 
-       (targetType === "team" && !teamSlug)) {
+    // ✅ Validation
+    const validTypes = ["player", "team"];
+    if (!validTypes.includes(targetType)) {
+      return { statusCode: 400, body: "Invalid target type" };
+    }
+    if ((targetType === "player" && !playerSlug) || 
+        (targetType === "team" && !teamSlug)) {
       return { statusCode: 400, body: "Invalid vote payload" };
     }
 
@@ -28,7 +31,7 @@ exports.handler = async (event) => {
     // ✅ 시트에 새로운 투표 추가
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.SHEET_ID,
-      range: "Votes!A:E",
+      range: "Votes!A:E", // 실제 열 개수와 맞추기
       valueInputOption: "RAW",
       requestBody: {
         values: [
@@ -45,7 +48,10 @@ exports.handler = async (event) => {
 
     // ✅ Build Hook 호출 → 사이트 리빌드
     if (process.env.NETLIFY_BUILD_HOOK) {
-      await fetch(process.env.NETLIFY_BUILD_HOOK, { method: "POST" });
+      const res = await fetch(process.env.NETLIFY_BUILD_HOOK, { method: "POST" });
+      if (!res.ok) {
+        console.error("Build hook failed:", res.status, await res.text());
+      }
     }
 
     return {

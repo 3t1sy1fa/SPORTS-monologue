@@ -27,7 +27,8 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
             </tr>
           </thead>
           <tbody>
-            {% for week in twinsSchedule | monthCalendar("2025-08") %}
+            {% set scheduleArray = twinsSchedule is iterable ? twinsSchedule : [] %}
+            {% for week in scheduleArray | monthCalendar("2025-08") %}
             <tr>
               {% for day in week %}
               <td class="{{ day.result }}">
@@ -51,7 +52,7 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
     <div class="players-board">
       <h3>트윈스 선수단</h3>
       <div class="players-list">
-        {% for player in players | selectattr("teamSlug", "equalto", "lg") %}
+        {% for player in (players is iterable ? players : []) | selectattr("teamSlug", "equalto", "lg") %}
         <a href="/players/{{ player.slug }}/" class="player-card">
           <img src="/images/players/{{ player.slug }}.png" alt="{{ player.name }}" class="player-photo">
           <div class="player-info">
@@ -66,6 +67,7 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
     </div>
   </div>
 
+  <!-- twinS-TAR 선수별 기록 -->
   <div class="stat-section">
     <h2>twinS-TAR</h2>
     <table class="stats-table">
@@ -78,7 +80,7 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
         </tr>
       </thead>
       <tbody>
-        {% for stat in playerStats | selectattr("teamSlug", "equalto", "lg") %}
+        {% for stat in (playerStats is iterable ? playerStats : []) | selectattr("teamSlug", "equalto", "lg") %}
         <tr>
           <td>{{ stat.playerName }}</td>
           <td><time datetime="{{ stat.date }}">{{ stat.date | date("MM.dd") }}</time> {{ stat.game }}</td>
@@ -90,14 +92,14 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
     </table>
   </div>
 
+  <!-- 인기 선수 TOP 3 -->
   <div class="vote-section">
     <h2>인기 선수 TOP 3</h2>
     <div class="top-votes">
       {% set lgVotes = [] %}
-      {% for slug, count in voteSummary.players %}
-        {% set player = players | selectattr("slug", "equalto", slug) | first %}
-        {% if player and player.teamSlug == "lg" %}
-          {% set obj = { "slug": slug, "name": player.name, "votes": count } %}
+      {% for p in (voteSummary.players is iterable ? voteSummary.players : []) %}
+        {% if p.playerTeamSlug == "lg" %}
+          {% set obj = { "slug": p.playerSlug, "name": p.playerName, "votes": p.playerTotalVotes } %}
           {% set lgVotes = lgVotes.concat([obj]) %}
         {% endif %}
       {% endfor %}
