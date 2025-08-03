@@ -41,28 +41,32 @@
 
         <!-- ✅ 구단 보드 -->
         <div class="teams-board-section">
-          <h3>구단 보드</h3>
-          <div class="teams-board">
-            {% for team in teamsBoard | sort(attribute="rank") %}
-              <div class="team-card">
-                <a href="/teams/{{ team.slug }}/">
-                  <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
-                  <div class="team-info">
-                    <span class="team-name">{{ team.name }}</span>
-                    <span class="team-rank">{{ team.rank }}위</span>
-                    <span class="team-record">
-                      {{ team.wins }}승 {{ team.losses }}패 {{ team.draws }}무
-                      ({{ (team.winRate * 100) | round(1) }}%)
-                    </span>
-                    <span class="last-game {% if team.lastGame == '승' %}win{% else %}lose{% endif %}">
-                      최근: {{ team.lastGame }}
-                    </span>
-                  </div>
-                </a>
-              </div>
-            {% endfor %}
+  <h3>구단 보드</h3>
+  <div class="teams-board">
+    {% for team in teamsBoard | sort(attribute="rank") %}
+      <div class="team-card">
+        <a href="/teams/{{ team.slug }}/">
+          <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
+          <div class="team-info">
+            <span class="team-name">{{ team.name }}</span>
+            <span class="team-rank">{{ team.rank }}위</span>
+            <span class="team-record">
+              {{ team.wins }}승 {{ team.losses }}패 {{ team.draws }}무
+              ({{ (team.winRate * 100) | round(1) }}%)
+            </span>
+            <span class="last-game 
+              {% if team.lastGame == '승' %}win
+              {% elseif team.lastGame == '패' %}lose
+              {% elseif team.lastGame == '무' %}draw
+              {% endif %}">
+              최근: {{ team.lastGame }}
+            </span>
           </div>
-        </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
       </aside>
     {% endif %}
 
