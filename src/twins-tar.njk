@@ -27,7 +27,10 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
             </tr>
           </thead>
           <tbody>
-            {% set scheduleArray = twinsSchedule if twinsSchedule is iterable else [] %}
+            {% set scheduleArray = [] %}
+            {% if twinsSchedule and twinsSchedule is iterable %}
+              {% set scheduleArray = twinsSchedule %}
+            {% endif %}
             {% for week in scheduleArray | monthCalendar("2025-08") %}
             <tr>
               {% for day in week %}
@@ -52,7 +55,11 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
     <div class="players-board">
       <h3>트윈스 선수단</h3>
       <div class="players-list">
-        {% for player in (players if players is iterable else []) | selectattr("teamSlug", "equalto", "lg") %}
+        {% set playerArray = [] %}
+        {% if players and players is iterable %}
+          {% set playerArray = players %}
+        {% endif %}
+        {% for player in playerArray | selectattr("teamSlug", "equalto", "lg") %}
         <a href="/players/{{ player.slug }}/" class="player-card">
           <img src="/images/players/{{ player.slug }}.png" alt="{{ player.name }}" class="player-photo">
           <div class="player-info">
@@ -70,6 +77,10 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
   <!-- twinS-TAR 선수별 기록 -->
   <div class="stat-section">
     <h2>twinS-TAR</h2>
+    {% set statsArray = [] %}
+    {% if playerStats and playerStats is iterable %}
+      {% set statsArray = playerStats %}
+    {% endif %}
     <table class="stats-table">
       <thead>
         <tr>
@@ -80,7 +91,7 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
         </tr>
       </thead>
       <tbody>
-        {% for stat in (playerStats if playerStats is iterable else []) | selectattr("teamSlug", "equalto", "lg") %}
+        {% for stat in statsArray | selectattr("teamSlug", "equalto", "lg") %}
         <tr>
           <td>{{ stat.playerName }}</td>
           <td><time datetime="{{ stat.date }}">{{ stat.date | date("MM.dd") }}</time> {{ stat.game }}</td>
@@ -97,10 +108,17 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
     <h2>인기 선수 TOP 3</h2>
     <div class="top-votes">
       {% set lgVotes = [] %}
-      {% for p in (voteSummary.players if voteSummary.players is iterable else []) %}
+      {% set voteArray = [] %}
+      {% if voteSummary and voteSummary.players and voteSummary.players is iterable %}
+        {% set voteArray = voteSummary.players %}
+      {% endif %}
+      {% for p in voteArray %}
         {% if p.playerTeamSlug == "lg" %}
-          {% set obj = { "slug": p.playerSlug, "name": p.playerName, "votes": p.playerTotalVotes } %}
-          {% set lgVotes = (lgVotes | default([])) + [obj] %}
+          {% set lgVotes = lgVotes.concat([{ 
+            "slug": p.playerSlug, 
+            "name": p.playerName, 
+            "votes": p.playerTotalVotes 
+          }]) %}
         {% endif %}
       {% endfor %}
       {% set lgVotes = lgVotes | sort(attribute="votes", order="desc") %}
