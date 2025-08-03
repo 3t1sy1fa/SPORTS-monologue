@@ -14,7 +14,7 @@
         {% set yesterdayGames = leagueSchedule | latestGames %}
         {% if yesterdayGames | length > 0 %}
           <div class="latest-games-section">
-            <h3>어제 경기 결과</h3>
+            <h3>최신 경기 결과</h3>
             <ul class="latest-games">
               {% for game in yesterdayGames %}
                 <li>
