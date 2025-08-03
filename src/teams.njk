@@ -11,15 +11,18 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 {% block content %}
 <h1 class="page-title">구단 분석</h1>
 
-{# ==============================
+
    🏆 인기 구단 포디움 (TOP 3)
-   ============================== #}
-{% set voteTeams = voteSummary.teams if voteSummary and voteSummary.teams is iterable else [] %}
-{% set topTeams = (voteTeams | sort(attribute="teamTotalVotes") | reverse | slice(0, 3)) %}
+
+{% set voteTeams = (voteSummary and voteSummary.teams) ? voteSummary.teams : [] %}
+{% set topTeams = voteTeams 
+  | sort(attribute="teamTotalVotes") 
+  | reverse 
+  | slice(0, 3) %}
 
 <section class="vote-podium-section">
   <h2>인기 구단 포디움</h2>
-  {% if topTeams | length > 0 %}
+  {% if topTeams and (topTeams | length > 0) %}
     <div class="podium-wrapper">
       {% for team in topTeams %}
         <div class="podium-card podium-{{ loop.index }}">
@@ -36,62 +39,68 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
   {% endif %}
 </section>
 
-{# ==============================
-   🏟️ 경기 일정 카드
-   ============================== #}
-{% set scheduleArray = leagueSchedule if leagueSchedule and leagueSchedule is iterable else [] %}
-{% set today = "now" | date("yyyy-MM-dd") %}
 
-{% set upcomingGames = [] %}
+   🏟️ 이번 주 경기 일정 캘린더
+
+{% set scheduleArray = (leagueSchedule and leagueSchedule is iterable) ? leagueSchedule : [] %}
+{% set weekStart = "now" | date("yyyy-MM-dd", "Asia/Seoul", "monday") %}
+{% set weekEnd = "now" | date("yyyy-MM-dd", "Asia/Seoul", "sunday") %}
+
+{% set weeklyGames = [] %}
 {% for game in scheduleArray %}
-  {% if game.date and game.date >= today %}
-    {% set upcomingGames = upcomingGames.concat([game]) %}
+  {% if game.date and game.date >= weekStart and game.date <= weekEnd %}
+    {% set weeklyGames = weeklyGames.concat([game]) %}
   {% endif %}
 {% endfor %}
-{% set upcomingGames = upcomingGames | sort(attribute="date") | slice(0, 5) %}
+{% set groupedGames = weeklyGames | sort(attribute="date") %}
 
-<section class="team-schedule-section">
-  <h2>다가오는 경기 일정</h2>
-  {% if upcomingGames | length > 0 %}
-    <div class="schedule-cards">
-      {% for game in upcomingGames %}
-        <div class="schedule-card">
-          <time datetime="{{ game.date }}">{{ game.date | date("MM.dd") }}</time>
-          <div class="matchup">
-            <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
-            {{ game.home }} vs
-            <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
-            {{ game.away }}
-          </div>
-          <span class="status">
-            {% if game.winner == "취소" %}
-              취소
-            {% elseif game.winner == "예정" or (not game.homeScore and not game.awayScore) %}
-              예정
-            {% elseif game.status in ["승","패","무"] %}
-              {{ game.status }}
-            {% else %}
-              예정
-            {% endif %}
-          </span>
+<section class="calendar-section">
+  <h2>이번 주 경기 일정</h2>
+  {% if groupedGames | length > 0 %}
+    <div class="calendar-grid">
+      {% set dates = groupedGames | map(attribute="date") | unique %}
+      {% for date in dates %}
+        <div class="calendar-day">
+          <h3>{{ date | date("MM.dd (EEE)") }}</h3>
+          <ul>
+            {% for game in groupedGames if game.date == date %}
+              <li>
+                <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
+                {{ game.home }} vs 
+                <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
+                {{ game.away }}
+                <span class="status">
+                  {% if game.winner == "취소" %}
+                    취소
+                  {% elseif game.winner == "예정" or (not game.homeScore and not game.awayScore) %}
+                    예정
+                  {% elseif game.status in ["승","패","무"] %}
+                    {{ game.status }}
+                  {% else %}
+                    예정
+                  {% endif %}
+                </span>
+              </li>
+            {% endfor %}
+          </ul>
         </div>
       {% endfor %}
     </div>
   {% else %}
-    <p class="no-data">다가오는 경기가 없습니다.</p>
+    <p class="no-data">이번 주 경기 일정이 없습니다.</p>
   {% endif %}
 </section>
 
-{# ==============================
+
    📋 전체 구단 카드 리스트
-   ============================== #}
-{% set teamsArray = teamsBoard if teamsBoard is iterable else [] %}
+
+{% set teamsArray = (teamsBoard and teamsBoard is iterable) ? teamsBoard : [] %}
 <section class="teams-card-section">
   {% for team in teamsArray | sort(attribute="rank") %}
-    {% set count = 0 %}
+    {% set voteCount = 0 %}
     {% for vote in voteTeams %}
       {% if vote.teamSlug == team.slug %}
-        {% set count = vote.teamTotalVotes %}
+        {% set voteCount = vote.teamTotalVotes %}
       {% endif %}
     {% endfor %}
     <div class="team-card team-{{ team.slug }}">
@@ -99,9 +108,15 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
         <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
         <div class="team-info">
           <h3>{{ team.name }}</h3>
-          <p>순위: {{ team.rank }}위 | 승률: {{ team.winRate }}</p>
-          <span class="last-game">최근 경기: {{ team.lastGame }}</span>
-          <span class="vote-count">투표 수: {{ count }}표</span>
+          <p>순위: {{ team.rank }}위 | 승률: {{ (team.winRate * 100) | round(1) }}%</p>
+          <span class="last-game 
+            {% if team.lastGame == '승' %}win
+            {% elseif team.lastGame == '패' %}lose
+            {% elseif team.lastGame == '무' %}draw
+            {% endif %}">
+            최근 경기: {{ team.lastGame }}
+          </span>
+          <span class="vote-count">투표 수: {{ voteCount }}표</span>
         </div>
       </a>
       <button class="vote-btn" data-type="team" data-slug="{{ team.slug }}">
