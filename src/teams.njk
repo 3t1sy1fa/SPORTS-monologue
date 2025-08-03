@@ -58,7 +58,7 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
   <h2>이번 주 경기 일정</h2>
   {% if weeklyGames | length > 0 %}
     <div class="calendar-grid">
-      {% set dates = weeklyGames | map(attribute="date") | unique %}
+      {% set dates = weeklyGames | map(attribute="date")  %}
       {% for date in dates %}
         <div class="calendar-day">
           <h3>{{ date | date("MM.dd (EEE)") }}</h3>
