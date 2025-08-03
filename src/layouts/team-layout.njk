@@ -7,7 +7,12 @@
   <link rel="icon" href="/favicon.png" type="image/png">
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
 
-  {% set safeSlug = slug or 'default' %}
+  {% if slug %}
+    {% set safeSlug = slug %}
+  {% else %}
+    {% set safeSlug = 'default' %}
+  {% endif %}
+
   <title>{{ title or "구단 분석" }} | Sports Monologue</title>
   <meta name="description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
 
@@ -31,11 +36,23 @@
 <body>
   {% include "header.njk" %}
 
-  {% set scheduleArray = leagueSchedule is iterable ? leagueSchedule : [] %}
+  {# ✅ leagueSchedule 배열 안전 처리 #}
+  {% if leagueSchedule and leagueSchedule is iterable %}
+    {% set scheduleArray = leagueSchedule %}
+  {% else %}
+    {% set scheduleArray = [] %}
+  {% endif %}
+
   {% set games = scheduleArray | teamGames(safeSlug) %}
   {% set recentGame = games | getRecentGame %}
   {% set homepage = teamsBoard | getHomepage(safeSlug) %}
-  {% set postsArray = collections.teamPosts or [] %}
+
+  {# ✅ collections.teamPosts 배열 안전 처리 #}
+  {% if collections.teamPosts %}
+    {% set postsArray = collections.teamPosts %}
+  {% else %}
+    {% set postsArray = [] %}
+  {% endif %}
   {% set filteredPosts = postsArray | getTeamPosts(safeSlug) %}
 
   <main class="team-layout">
