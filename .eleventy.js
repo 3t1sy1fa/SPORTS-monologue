@@ -84,6 +84,12 @@ module.exports = function (eleventyConfig) {
       .sort((a, b) => new Date(b.date) - new Date(a.date));
   });
 
+  // ✅ 객체 → 배열 변환 필터 (🚩 추가)
+  eleventyConfig.addFilter("toArray", (obj) => {
+    if (!obj) return [];
+    return Object.values(obj);
+  });
+
   return {
     dir: {
       input: "src",

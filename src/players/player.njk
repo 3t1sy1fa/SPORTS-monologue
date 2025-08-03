@@ -53,7 +53,7 @@ layout: layout.njk
 
   <section class="player-votes">
     <h2>인기 투표</h2>
-    {% set playerVote = (voteSummary.players | selectattr("playerSlug", "equalto", player.slug) | first) %}
+    {% set playerVote = (voteSummary.players | toArray | selectattr("playerSlug", "equalto", player.slug) | first) %}
     {% if playerVote %}
       {% set count = playerVote.playerTotalVotes %}
     {% else %}
