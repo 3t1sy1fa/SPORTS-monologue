@@ -408,3 +408,38 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 480px) {
 .log-container { max-width: 480px; margin: 0; padding: 10px 4px; align-self: flex-start; }
 }
+
+
+/* 🛠️ 노트북 화면 대응 */
+@media (min-width: 769px) and (max-width: 1366px) {
+  .post-container,
+  .sports-container,
+  .log-container,
+  .contact-container {
+    padding: 10px 10%; /* 좌우 여백을 20% → 10%로 축소 */
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr 1.5fr; /* 1:2 → 1:1.5로 좁힘 */
+    max-width: 1000px; /* 전체 컨테이너 너비 제한 */
+  }
+
+  .sports { 
+    font-size: 3rem; /* 4rem → 3rem */
+  }
+
+  .monologue { 
+    font-size: 2.2rem; 
+  }
+
+  .sidebar { 
+    width: 200px; /* 220px → 200px */
+  }
+}
+
+/* 🛠️ 전체 콘텐츠 영역이 화면에 꽉 차도록 */
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 5%;
+}
