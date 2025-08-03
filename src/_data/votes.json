@@ -1181,5 +1181,12 @@
     "teamSlug": "nc",
     "playerSlug": "",
     "timestamp": "2025-08-03T09:02:21.394Z"
+  },
+  {
+    "voterId": "1754222063125",
+    "targetType": "team",
+    "teamSlug": "lg",
+    "playerSlug": "",
+    "timestamp": "2025-08-03T11:54:23.125Z"
   }
 ]

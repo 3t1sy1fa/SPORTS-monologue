@@ -78,80 +78,51 @@
 .podium-2 { background: #f0f0f0; border-color: silver; }
 .podium-3 { background: #f9ece3; border-color: #cd7f32; }
 
-/* ===============================
-   📅 이번 주 경기 일정 (캘린더)
-================================== */
-.calendar-section {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 16px;
-}
-
-.calendar-section h2 {
-  text-align: center;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  max-width: 1200px;
+  margin: 30px auto;
 }
 
 .calendar-day {
-  background: #f9f9f9;
+  background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 12px;
-}
-
-.calendar-day h3 {
-  font-size: 1rem;
-  margin-bottom: 10px;
+  padding: 10px;
   text-align: center;
 }
 
-.calendar-day ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.calendar-day h3 {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
 }
 
-.calendar-day li {
+.match-logos {
   display: flex;
-  align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 6px 0;
-  font-size: 0.9rem;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 4px;
 }
 
-.calendar-day li:last-child { border-bottom: none; }
-
-.calendar-day .team-logo {
-  width: 20px;
-  height: 20px;
+.match-logos img.team-logo {
+  width: 24px;
+  height: 24px;
 }
 
-.calendar-day .status {
+.no-game {
   font-size: 0.8rem;
-  color: #666;
+  color: #aaa;
 }
 
 /* 반응형 */
 @media (max-width: 768px) {
   .podium-card { width: 45%; }
-  .calendar-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 480px) {
   .podium-card { width: 100%; }
-  .calendar-grid { grid-template-columns: 1fr; }
 }
 
 /* ===============================
