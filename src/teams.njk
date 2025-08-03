@@ -12,7 +12,7 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 <h1 class="page-title">구단 분석</h1>
 
 {# 🏆 인기 구단 TOP3 카드 #}
-{% set topTeams = voteSummary.teams | toArray | sort(attribute="teamTotalVotes", order="desc") %}
+{% set topTeams = voteSummary.teams | sort(attribute="teamTotalVotes", order="desc") %}
 
 <section class="podium-section">
   {% if topTeams | length > 0 %}
@@ -31,7 +31,7 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 {# 📊 구단 카드 리스트 #}
 <section class="teams-card-section">
   {% for team in teamsBoard | sort(attribute="rank") %}
-    {% set vote = (voteSummary.teams | toArray | selectattr("teamSlug", "equalto", team.slug) | first) %}
+    {% set vote = (voteSummary.teams | selectattr("teamSlug", "equalto", team.slug) | first) %}
     {% if vote %}
       {% set count = vote.teamTotalVotes %}
     {% else %}
@@ -47,7 +47,10 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
           <span class="vote-count">투표 수: {{ count }}표</span>
         </div>
       </a>
-      <button class="vote-btn" data-type="team" data-slug="{{ team.slug }}">
+      <button 
+        class="vote-btn" 
+        data-type="team" 
+        data-slug="{{ team.slug }}">
         이 구단에 투표하기
       </button>
     </div>
@@ -81,12 +84,5 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
   </div>
 </section>
 
-<script type="module">
-  import { handleVote } from "/scripts/voteHandler.js";
-  document.querySelectorAll(".vote-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      handleVote(btn.dataset.type, btn.dataset.slug);
-    });
-  });
-</script>
+<script type="module" src="/scripts/voteHandlerInit.js"></script>
 {% endblock %}
