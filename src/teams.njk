@@ -40,12 +40,18 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 </section>
 
 {# 🏟️ 이번 주 경기 일정 캘린더 #}
+{% if leagueSchedule and leagueSchedule is iterable %}
+  {% set scheduleArray = leagueSchedule %}
+{% else %}
+  {% set scheduleArray = [] %}
+{% endif %}
+
 {% set today = "now" | date("yyyy-MM-dd") %}
 {% set nextWeek = (("now" | date("timestamp")) + (7 * 24 * 60 * 60 * 1000)) | date("yyyy-MM-dd") %}
-{% set weeklyGames = scheduleArray 
-  | selectattr("date", "defined") 
-  | selectattr("date", "ge", today) 
-  | selectattr("date", "le", nextWeek) 
+{% set weeklyGames = scheduleArray
+  | selectattr("date", "defined")
+  | selectattr("date", "ge", today)
+  | selectattr("date", "le", nextWeek)
   | sort(attribute="date") %}
 
 <section class="calendar-section">
