@@ -39,64 +39,47 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
   {% endif %}
 </section>
 
-{# 🏟️ 이번 주 경기 일정 캘린더 #}
+{# ===============================
+   🏟️ 이번 주 경기 일정 (7칸 캘린더)
+   =============================== #}
 {% if leagueSchedule and leagueSchedule is iterable %}
   {% set scheduleArray = leagueSchedule %}
 {% else %}
   {% set scheduleArray = [] %}
 {% endif %}
 
-{% set today = "now" | date("yyyy-MM-dd") %}
-{% set nextWeek = (("now" | date("timestamp")) + (7 * 24 * 60 * 60 * 1000)) | date("yyyy-MM-dd") %}
-
-{% set weeklyGames = scheduleArray
-  | selectattr("date", "defined")
-  | selectattr("date", "ge", today)
-  | selectattr("date", "le", nextWeek)
-  | sort(attribute="date") %}
-
-{# 중복 날짜 모음 (map 없이) #}
-{% set dates = [] %}
-{% for game in weeklyGames %}
-  {% if game.date not in dates %}
-    {% set dates = dates.concat([ game.date ]) %}
-  {% endif %}
+{# 이번 주 월요일 ~ 일요일 날짜 배열 생성 #}
+{% set weekDates = [] %}
+{% set startOfWeek = ("now" | date("timestamp") - ((("now" | date("EEE")) | lower == "mon") ? 0 : (("now" | date("EEE")) | date("u") - 1) * 24 * 60 * 60 * 1000)) %}
+{% for i in (0..6) %}
+  {% set date = (startOfWeek + (i * 24 * 60 * 60 * 1000)) | date("yyyy-MM-dd") %}
+  {% set weekDates = weekDates.concat([date]) %}
 {% endfor %}
 
 <section class="calendar-section">
   <h2>이번 주 경기 일정</h2>
-  {% if dates | length > 0 %}
-    <div class="calendar-grid">
-      {% for date in dates %}
-        <div class="calendar-day">
-          <h3>{{ date | date("MM.dd (EEE)") }}</h3>
-          <ul>
-            {% for game in weeklyGames if game.date == date %}
-              <li>
+  <div class="calendar-grid">
+    {% for day in weekDates %}
+      {% set games = scheduleArray 
+        | selectattr("date", "equalto", day) 
+        | sort(attribute="home") %}
+      <div class="calendar-day">
+        <h3>{{ day | date("MM.dd (EEE)") }}</h3>
+        {% if games | length > 0 %}
+          <div class="matches">
+            {% for game in games %}
+              <div class="match-logos">
                 <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
-                {{ game.home }} vs
                 <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
-                {{ game.away }}
-                <span class="status">
-                  {% if game.winner == "취소" %}
-                    취소
-                  {% elseif game.winner == "예정" or (not game.homeScore and not game.awayScore) %}
-                    예정
-                  {% elseif game.status in ["승","패","무"] %}
-                    {{ game.status }}
-                  {% else %}
-                    예정
-                  {% endif %}
-                </span>
-              </li>
+              </div>
             {% endfor %}
-          </ul>
-        </div>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p class="no-data">이번 주 경기 일정이 없습니다.</p>
-  {% endif %}
+          </div>
+        {% else %}
+          <p class="no-game">경기 없음</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
 </section>
 
 {# 📋 전체 구단 카드 리스트 #}
