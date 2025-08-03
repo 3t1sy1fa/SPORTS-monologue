@@ -1,4 +1,5 @@
 const moment = require("moment");
+require("dotenv").config();
 
 module.exports = function (eleventyConfig) {
   // ✅ 정적 파일 복사
@@ -48,7 +49,11 @@ module.exports = function (eleventyConfig) {
   // ✅ 최근 경기 필터
   eleventyConfig.addFilter("getRecentGame", (games) => {
     if (!Array.isArray(games)) return null;
-    return games.filter((g) => String(g.status).trim() === "종료").sort((a, b) => new Date(b.date) - new Date(a.date))[0] || null;
+    return (
+      games
+        .filter((g) => String(g.status).trim() === "종료")
+        .sort((a, b) => new Date(b.date) - new Date(a.date))[0] || null
+    );
   });
 
   // ✅ 홈페이지 필터
@@ -62,28 +67,22 @@ module.exports = function (eleventyConfig) {
     return teamPosts.filter((post) => post.data?.slug === slug);
   });
 
-    // ✅ latestGames 필터 추가
+  // ✅ latestGames 필터
   eleventyConfig.addFilter("latestGames", (games) => {
     if (!Array.isArray(games)) return [];
     return games
-      .filter(game => String(game.status).trim() === "종료")
+      .filter((game) => String(game.status).trim() === "종료")
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .slice(0, 5);
   });
 
-    eleventyConfig.addFilter("teamGames", (games, teamSlug) => {
+  // ✅ 팀별 경기 필터
+  eleventyConfig.addFilter("teamGames", (games, teamSlug) => {
     if (!Array.isArray(games)) return [];
     return games
-      .filter(game => 
-        game.homeSlug === teamSlug || game.awaySlug === teamSlug
-      )
+      .filter((game) => game.homeSlug === teamSlug || game.awaySlug === teamSlug)
       .sort((a, b) => new Date(b.date) - new Date(a.date));
   });
-
- 
-
- 
-
 
   return {
     dir: {
