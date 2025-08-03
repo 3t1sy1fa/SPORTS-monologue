@@ -89,12 +89,17 @@ module.exports = function (eleventyConfig) {
     return teamPosts.filter((post) => post.data?.slug === slug);
   });
 
-  // ✅ latestGames 필터
+  // ✅ latestGames 필터 (어제 경기, 취소 포함, 최대 5개)
   eleventyConfig.addFilter("latestGames", (games) => {
     if (!Array.isArray(games)) return [];
+
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
+    const yesterdayStr = yesterday.toISOString().split("T")[0];
+
     return games
-      .filter((game) => String(game.winner).trim() === "종료")
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .filter((g) => g.date === yesterdayStr)
       .slice(0, 5);
   });
 

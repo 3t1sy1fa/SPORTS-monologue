@@ -10,13 +10,13 @@
     {% if isHome %}
       <button id="sidebar-toggle" class="sidebar-toggle">보드</button>
       <aside class="sidebar">
-        <!-- ✅ 최신 경기 결과 -->
-        {% set finishedGames = leagueSchedule | latestGames %}
-        {% if finishedGames | length > 0 %}
+        <!-- ✅ 어제 경기 결과 -->
+        {% set yesterdayGames = leagueSchedule | latestGames %}
+        {% if yesterdayGames | length > 0 %}
           <div class="latest-games-section">
-            <h3>최신 경기 결과</h3>
+            <h3>어제 경기 결과</h3>
             <ul class="latest-games">
-              {% for game in finishedGames %}
+              {% for game in yesterdayGames %}
                 <li>
                   <span class="match">
                     <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
@@ -24,13 +24,19 @@
                     <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
                     {{ game.away }}
                   </span>
-                  <span class="score">{{ game.homeScore }} - {{ game.awayScore }}</span>
+                  <span class="score">
+                    {% if game.winner == "취소" %}
+                      취소
+                    {% else %}
+                      {{ game.homeScore or "-" }} - {{ game.awayScore or "-" }}
+                    {% endif %}
+                  </span>
                 </li>
               {% endfor %}
             </ul>
           </div>
         {% else %}
-          <p class="no-games">최근 종료된 경기가 없습니다.</p>
+          <p class="no-games">어제 경기가 없습니다.</p>
         {% endif %}
 
         <!-- ✅ 구단 보드 -->
