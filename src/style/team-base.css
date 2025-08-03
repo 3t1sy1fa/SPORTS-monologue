@@ -126,8 +126,9 @@
 .vote-btn {
   display: inline-block;
   font-family: "mingijuk";
-  width: 90%;
-  margin-top: 10px;
+  width: 40%;
+  height: auto;
+  margin-top: 13px;
   padding: 8px 12px;
   border: none;
   border-radius: 20px;
