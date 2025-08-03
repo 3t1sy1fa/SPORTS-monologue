@@ -78,6 +78,11 @@ module.exports = function (eleventyConfig) {
     );
   });
 
+  eleventyConfig.addFilter("map", function (array, attribute) {
+  if (!Array.isArray(array)) return [];
+  return array.map(item => item[attribute]);
+});
+
   // ✅ 홈페이지 필터
   eleventyConfig.addFilter("getHomepage", (teamsBoard, slug) => {
     const team = teamsBoard.find((t) => t.slug === slug);
