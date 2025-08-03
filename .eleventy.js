@@ -20,8 +20,8 @@ module.exports = function (eleventyConfig) {
       : ""
   );
 
-  // ✅ 캘린더 필터
-  eleventyConfig.addFilter("monthCalendar", (schedule, month) => {
+  // ✅ 캘린더 필터 (status + winner 전체 표시)
+  eleventyConfig.addFilter("monthCalendar", (schedule, month, teamSlug = null) => {
     const start = moment(month).startOf("month").startOf("week");
     const end = moment(month).endOf("month").endOf("week");
     const days = [];
@@ -31,13 +31,35 @@ module.exports = function (eleventyConfig) {
       const week = [];
       for (let i = 0; i < 7; i++) {
         const dateStr = current.format("YYYY-MM-DD");
-        const game = schedule.find((s) => s.date === dateStr);
+        const game = schedule.find(
+          (s) => s.date === dateStr && (!teamSlug || s.homeSlug === teamSlug || s.awaySlug === teamSlug)
+        );
+
+        let opponent = null;
+        let opponentSlug = null;
+        let gameResult = "";
+        let gameStatus = "";
+
+        if (game) {
+          if (game.homeSlug === teamSlug) {
+            opponent = game.away;
+            opponentSlug = game.awaySlug;
+          } else {
+            opponent = game.home;
+            opponentSlug = game.homeSlug;
+          }
+
+          gameResult = game.status || "";   // 승 / 패 / 무
+          gameStatus = game.winner || "";   // 종료 / 예정 / 취소
+        }
+
         week.push({
           day: current.date(),
-          result: game ? game.result : "",
-          logo: game ? game.opponentSlug : null,
-          opponent: game ? game.opponent : null,
-          link: game ? game.link : null,
+          result: gameResult,
+          status: gameStatus,
+          logo: opponentSlug,
+          opponent: opponent,
+          link: game ? game.link || "#" : null,
         });
         current.add(1, "day");
       }
@@ -51,7 +73,7 @@ module.exports = function (eleventyConfig) {
     if (!Array.isArray(games)) return null;
     return (
       games
-        .filter((g) => String(g.status).trim() === "종료")
+        .filter((g) => String(g.winner).trim() === "종료")
         .sort((a, b) => new Date(b.date) - new Date(a.date))[0] || null
     );
   });
@@ -71,7 +93,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("latestGames", (games) => {
     if (!Array.isArray(games)) return [];
     return games
-      .filter((game) => String(game.status).trim() === "종료")
+      .filter((game) => String(game.winner).trim() === "종료")
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .slice(0, 5);
   });
@@ -84,7 +106,7 @@ module.exports = function (eleventyConfig) {
       .sort((a, b) => new Date(b.date) - new Date(a.date));
   });
 
-  // ✅ 객체 → 배열 변환 필터 (🚩 추가)
+  // ✅ 객체 → 배열 변환 필터
   eleventyConfig.addFilter("toArray", (obj) => {
     if (!obj) return [];
     return Object.values(obj);
