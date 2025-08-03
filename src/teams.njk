@@ -12,11 +12,8 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 <h1 class="page-title">구단 분석</h1>
 
 {# 🏆 인기 구단 TOP3 카드 #}
-{% set topTeams = (
-  voteSummary.teams is iterable
-    ? (voteSummary.teams | sort(attribute="teamTotalVotes", order="desc"))
-    : []
-) %}
+{% set voteTeams = voteSummary.teams | default([]) %}
+{% set topTeams = voteTeams | sort(attribute="teamTotalVotes", order="desc") %}
 
 <section class="podium-section">
   {% if topTeams | length > 0 %}
@@ -34,13 +31,9 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 
 {# 📊 구단 카드 리스트 #}
 <section class="teams-card-section">
-  {% set teamsArray = teamsBoard is iterable ? teamsBoard : [] %}
+  {% set teamsArray = teamsBoard | default([]) %}
   {% for team in teamsArray | sort(attribute="rank") %}
-    {% set vote = (
-      voteSummary.teams is iterable
-        ? (voteSummary.teams | selectattr("teamSlug", "equalto", team.slug) | first)
-        : null
-    ) %}
+    {% set vote = voteTeams | selectattr("teamSlug", "equalto", team.slug) | first %}
     {% set count = vote ? vote.teamTotalVotes : 0 %}
     <div class="team-card team-{{ team.slug }}">
       <a href="/teams/{{ team.slug }}/">
@@ -64,11 +57,8 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
   <div class="weekly-schedule">
     <h3>이번 주 경기 일정</h3>
     {% set today = now | date("yyyy-MM-dd") %}
-    {% set upcomingGames = (
-      leagueSchedule is iterable
-        ? (leagueSchedule | selectattr("date", "ge", today) | slice(0, 7))
-        : []
-    ) %}
+    {% set scheduleArray = leagueSchedule | default([]) %}
+    {% set upcomingGames = scheduleArray | selectattr("date", "ge", today) | slice(0, 7) %}
     {% if upcomingGames | length > 0 %}
       <ul>
         {% for game in upcomingGames %}

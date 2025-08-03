@@ -18,7 +18,7 @@ layout: layout.njk
     <div class="player-info">
       <h1>{{ player.name }}</h1>
       <p class="player-position">{{ player.position }}</p>
-      <p class="player-number">등번호: {{ player.Number }}</p>
+      <p class="player-number">등번호: {{ player.number }}</p>
       {% if player.note %}
         <p class="player-note">"{{ player.note }}"</p>
       {% endif %}
@@ -37,7 +37,7 @@ layout: layout.njk
         </tr>
       </thead>
       <tbody>
-        {% set statsArray = playerStats is iterable ? playerStats : [] %}
+        {% set statsArray = playerStats | default([]) %}
         {% for stat in statsArray %}
           {% if stat.playerSlug == player.slug %}
           <tr>
@@ -54,17 +54,11 @@ layout: layout.njk
 
   <section class="player-votes">
     <h2>인기 투표</h2>
-    {% set playerVote = (
-      voteSummary.players is iterable
-        ? (voteSummary.players | selectattr("playerSlug", "equalto", player.slug) | first)
-        : null
-    ) %}
+    {% set playerVotes = voteSummary.players | default([]) %}
+    {% set playerVote = playerVotes | selectattr("playerSlug", "equalto", player.slug) | first %}
     {% set count = playerVote ? playerVote.playerTotalVotes : 0 %}
     <p>현재 투표 수: {{ count }}표</p>
-    <button 
-      class="vote-btn" 
-      data-type="player" 
-      data-slug="{{ player.slug }}">
+    <button class="vote-btn" data-type="player" data-slug="{{ player.slug }}">
       이 선수에게 투표하기
     </button>
   </section>
