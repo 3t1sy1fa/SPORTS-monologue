@@ -52,14 +52,20 @@ layout: layout.njk
     </table>
   </section>
 
-  <section class="player-votes">
-    <h2>인기 투표</h2>
-    {% set playerVote = (voteSummary.players | selectattr("playerSlug", "equalto", player.slug) | first) %}
-    <p>현재 투표 수: {{ playerVote.playerTotalVotes or 0 }}표</p>
-    <button class="vote-btn" data-type="player" data-slug="{{ player.slug }}">
-      이 선수에게 투표하기
-    </button>
-  </section>
+<section class="player-votes">
+  <h2>인기 투표</h2>
+  {% set playerVotes = voteSummary.players if voteSummary.players is iterable else [] %}
+  {% set count = 0 %}
+  {% for vote in playerVotes %}
+    {% if vote.playerSlug == player.slug %}
+      {% set count = vote.playerTotalVotes %}
+    {% endif %}
+  {% endfor %}
+  <p>현재 투표 수: {{ count }}표</p>
+  <button class="vote-btn" data-type="player" data-slug="{{ player.slug }}">
+    이 선수에게 투표하기
+  </button>
+</section>
 </section>
 
 <script type="module">
