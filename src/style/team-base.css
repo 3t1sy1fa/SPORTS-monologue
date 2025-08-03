@@ -13,60 +13,145 @@
 }
 
 /* ===============================
-   🏆 인기 구단 TOP 3 카드
+   🏆 포디움 카드 (Podium)
 ================================== */
-.top-teams-section {
+.vote-podium-section {
   max-width: 1200px;
-  margin: 50px auto;
-  padding: 15px;
+  margin: 40px auto;
+  padding: 20px;
   background: #fff;
   border: 1px solid #ddd;
-  border-radius: 20px;
+  border-radius: 16px;
 }
 
-.top-teams-section h2 {
+.vote-podium-section h2 {
   text-align: center;
+  font-size: 1.5rem;
   margin-bottom: 20px;
-  font-size: 1.4rem;
 }
 
-.top-teams-card-wrapper {
+.podium-wrapper {
   display: flex;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
-.top-team-card {
+.podium-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  width: 30%;
+  min-width: 180px;
   background: #f8f8f8;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px 16px;
-  gap: 12px;
-  width: 30%;
+  border-radius: 10px;
+  padding: 16px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 }
 
-.top-team-card:hover {
+.podium-card:hover {
   transform: translateY(-3px);
 }
 
-.top-team-card img {
-  width: 50px;
-  height: 50px;
+.podium-card img.team-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
 }
 
-.top-team-card h3 {
+.podium-card .team-info h3 {
   margin: 0;
   font-size: 1.1rem;
+  text-align: center;
 }
 
-.top-team-card p {
-  margin: 4px 0 0;
+.podium-card .team-info p {
+  margin: 5px 0 0;
   font-size: 0.9rem;
-  color: #555;
+  color: #666;
+}
+
+/* podium 순위별 강조 */
+.podium-1 { background: #fff7d6; border-color: gold; }
+.podium-2 { background: #f0f0f0; border-color: silver; }
+.podium-3 { background: #f9ece3; border-color: #cd7f32; }
+
+/* ===============================
+   📅 이번 주 경기 일정 (캘린더)
+================================== */
+.calendar-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+}
+
+.calendar-section h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.calendar-day {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.calendar-day h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.calendar-day ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.calendar-day li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #eee;
+}
+
+.calendar-day li:last-child { border-bottom: none; }
+
+.calendar-day .team-logo {
+  width: 20px;
+  height: 20px;
+}
+
+.calendar-day .status {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .podium-card { width: 45%; }
+  .calendar-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .podium-card { width: 100%; }
+  .calendar-grid { grid-template-columns: 1fr; }
 }
 
 /* ===============================
@@ -157,44 +242,11 @@
   opacity: 0.9;
 }
 
-/* ===============================
-   📅 이번 주 경기 일정
-================================== */
-.extra-info {
-  display: grid;
-  grid-template-columns: 1fr;
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.weekly-schedule {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-}
-
-.weekly-schedule ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.weekly-schedule li {
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 0.95rem;
-}
-
-.weekly-schedule li:last-child { border-bottom: none; }
 
 /* ===============================
    반응형
 ================================== */
 @media (max-width: 768px) {
-  .top-teams-card-wrapper { flex-direction: column; align-items: center; }
-  .top-team-card { width: 80%; }
   .teams-card-section { grid-template-columns: 1fr 1fr; }
   .extra-info { grid-template-columns: 1fr; }
 }
