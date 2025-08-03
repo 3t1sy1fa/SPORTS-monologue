@@ -12,8 +12,8 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 <h1 class="page-title">구단 분석</h1>
 
 {# 🏆 인기 구단 TOP3 카드 #}
-{% set voteTeams = voteSummary.teams | default([]) %}
-{% set topTeams = (voteTeams | sort(attribute="teamTotalVotes")) | reverse %}
+{% set voteTeams = (voteSummary.teams if voteSummary and voteSummary.teams is iterable else []) %}
+{% set topTeams = voteTeams | sort(attribute="teamTotalVotes", order="desc") %}
 
 <section class="top-teams-section">
   <h2>인기 구단 TOP 3</h2>
