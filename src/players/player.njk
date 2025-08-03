@@ -27,10 +27,7 @@ layout: layout.njk
 
   <section class="player-stats">
     <h2>최근 경기 기록</h2>
-    {% set statsArray = [] %}
-    {% if playerStats and playerStats is iterable %}
-      {% set statsArray = playerStats %}
-    {% endif %}
+    {% set statsArray = playerStats if playerStats and playerStats is iterable else [] %}
     <table class="stats-table">
       <thead>
         <tr>
@@ -57,16 +54,8 @@ layout: layout.njk
 
   <section class="player-votes">
     <h2>인기 투표</h2>
-    {% set playerVotes = [] %}
-    {% if voteSummary and voteSummary.players and voteSummary.players is iterable %}
-      {% set playerVotes = voteSummary.players %}
-    {% endif %}
-    {% set playerVote = playerVotes | selectattr("playerSlug", "equalto", player.slug) | first %}
-    {% set count = 0 %}
-    {% if playerVote and playerVote.playerTotalVotes %}
-      {% set count = playerVote.playerTotalVotes %}
-    {% endif %}
-    <p>현재 투표 수: {{ count }}표</p>
+    {% set playerVote = (voteSummary.players | selectattr("playerSlug", "equalto", player.slug) | first) %}
+    <p>현재 투표 수: {{ playerVote.playerTotalVotes or 0 }}표</p>
     <button class="vote-btn" data-type="player" data-slug="{{ player.slug }}">
       이 선수에게 투표하기
     </button>
