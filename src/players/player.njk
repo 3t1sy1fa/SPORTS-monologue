@@ -37,7 +37,7 @@ layout: layout.njk
         </tr>
       </thead>
       <tbody>
-        {% set statsArray = playerStats | default([]) %}
+        {% set statsArray = playerStats if playerStats is iterable else [] %}
         {% for stat in statsArray %}
           {% if stat.playerSlug == player.slug %}
           <tr>
@@ -54,7 +54,7 @@ layout: layout.njk
 
   <section class="player-votes">
     <h2>인기 투표</h2>
-    {% set playerVotes = voteSummary.players | default([]) %}
+    {% set playerVotes = voteSummary.players if voteSummary.players is iterable else [] %}
     {% set playerVote = playerVotes | selectattr("playerSlug", "equalto", player.slug) | first %}
     {% set count = playerVote ? playerVote.playerTotalVotes : 0 %}
     <p>현재 투표 수: {{ count }}표</p>
@@ -66,9 +66,11 @@ layout: layout.njk
 
 <script type="module">
   import { handleVote } from "/scripts/voteHandler.js";
-  document.querySelectorAll(".vote-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      handleVote(btn.dataset.type, btn.dataset.slug);
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".vote-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        handleVote(btn.dataset.type, btn.dataset.slug);
+      });
     });
   });
 </script>

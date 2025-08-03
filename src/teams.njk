@@ -12,7 +12,7 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 <h1 class="page-title">구단 분석</h1>
 
 {# 🏆 인기 구단 TOP3 카드 #}
-{% set voteTeams = voteSummary.teams | default([]) %}
+{% set voteTeams = voteSummary.teams if voteSummary.teams is iterable else [] %}
 {% set topTeams = voteTeams | sort(attribute="teamTotalVotes", order="desc") %}
 
 <section class="podium-section">
@@ -31,7 +31,7 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 
 {# 📊 구단 카드 리스트 #}
 <section class="teams-card-section">
-  {% set teamsArray = teamsBoard | default([]) %}
+  {% set teamsArray = teamsBoard if teamsBoard is iterable else [] %}
   {% for team in teamsArray | sort(attribute="rank") %}
     {% set vote = voteTeams | selectattr("teamSlug", "equalto", team.slug) | first %}
     {% set count = vote ? vote.teamTotalVotes : 0 %}
@@ -57,7 +57,7 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
   <div class="weekly-schedule">
     <h3>이번 주 경기 일정</h3>
     {% set today = now | date("yyyy-MM-dd") %}
-    {% set scheduleArray = leagueSchedule | default([]) %}
+    {% set scheduleArray = leagueSchedule if leagueSchedule is iterable else [] %}
     {% set upcomingGames = scheduleArray | selectattr("date", "ge", today) | slice(0, 7) %}
     {% if upcomingGames | length > 0 %}
       <ul>
@@ -79,9 +79,11 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 
 <script type="module">
   import { handleVote } from "/scripts/voteHandler.js";
-  document.querySelectorAll(".vote-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      handleVote(btn.dataset.type, btn.dataset.slug);
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".vote-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        handleVote(btn.dataset.type, btn.dataset.slug);
+      });
     });
   });
 </script>
