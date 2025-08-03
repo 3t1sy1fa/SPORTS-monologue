@@ -1,23 +1,30 @@
-const fs = require("fs");
-const path = require("path");
+const { google } = require("googleapis");
 
 exports.handler = async () => {
   try {
-    const votesPath = path.join(__dirname, "../../src/_data/votes.json");
-    const votes = fs.existsSync(votesPath)
-      ? JSON.parse(fs.readFileSync(votesPath, "utf8"))
-      : [];
+    const client = new google.auth.JWT(
+      process.env.GOOGLE_CLIENT_EMAIL,
+      null,
+      process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+      ["https://www.googleapis.com/auth/spreadsheets.readonly"]
+    );
+    const sheets = google.sheets({ version: "v4", auth: client });
 
-    // 표 집계
+    const res = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.SHEET_ID,
+      range: "Votes!A2:E500",
+    });
+
+    const votes = res.data.values || [];
     const teams = {};
     const players = {};
 
-    votes.forEach((vote) => {
-      if (vote.targetType === "team") {
-        teams[vote.teamSlug] = (teams[vote.teamSlug] || 0) + 1;
+    votes.forEach(([voterId, targetType, teamSlug, playerSlug]) => {
+      if (targetType === "team") {
+        teams[teamSlug] = (teams[teamSlug] || 0) + 1;
       }
-      if (vote.targetType === "player") {
-        players[vote.playerSlug] = (players[vote.playerSlug] || 0) + 1;
+      if (targetType === "player") {
+        players[playerSlug] = (players[playerSlug] || 0) + 1;
       }
     });
 
