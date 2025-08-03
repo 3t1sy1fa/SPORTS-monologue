@@ -27,7 +27,7 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
             </tr>
           </thead>
           <tbody>
-            {% set scheduleArray = twinsSchedule is iterable ? twinsSchedule : [] %}
+            {% set scheduleArray = twinsSchedule if twinsSchedule is iterable else [] %}
             {% for week in scheduleArray | monthCalendar("2025-08") %}
             <tr>
               {% for day in week %}
@@ -52,7 +52,7 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
     <div class="players-board">
       <h3>트윈스 선수단</h3>
       <div class="players-list">
-        {% for player in (players is iterable ? players : []) | selectattr("teamSlug", "equalto", "lg") %}
+        {% for player in (players if players is iterable else []) | selectattr("teamSlug", "equalto", "lg") %}
         <a href="/players/{{ player.slug }}/" class="player-card">
           <img src="/images/players/{{ player.slug }}.png" alt="{{ player.name }}" class="player-photo">
           <div class="player-info">
@@ -80,7 +80,7 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
         </tr>
       </thead>
       <tbody>
-        {% for stat in (playerStats is iterable ? playerStats : []) | selectattr("teamSlug", "equalto", "lg") %}
+        {% for stat in (playerStats if playerStats is iterable else []) | selectattr("teamSlug", "equalto", "lg") %}
         <tr>
           <td>{{ stat.playerName }}</td>
           <td><time datetime="{{ stat.date }}">{{ stat.date | date("MM.dd") }}</time> {{ stat.game }}</td>
@@ -97,10 +97,10 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
     <h2>인기 선수 TOP 3</h2>
     <div class="top-votes">
       {% set lgVotes = [] %}
-      {% for p in (voteSummary.players is iterable ? voteSummary.players : []) %}
+      {% for p in (voteSummary.players if voteSummary.players is iterable else []) %}
         {% if p.playerTeamSlug == "lg" %}
           {% set obj = { "slug": p.playerSlug, "name": p.playerName, "votes": p.playerTotalVotes } %}
-          {% set lgVotes = lgVotes.concat([obj]) %}
+          {% set lgVotes = (lgVotes | default([])) + [obj] %}
         {% endif %}
       {% endfor %}
       {% set lgVotes = lgVotes | sort(attribute="votes", order="desc") %}
