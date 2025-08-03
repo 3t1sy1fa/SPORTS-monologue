@@ -55,7 +55,9 @@
     "opponent": "삼성",
     "opponentSlug": "ssamsung",
     "homeAway": "원정",
-    "status": "예정"
+    "status": "종료",
+    "result": "승",
+    "score": "3 - 6"
   },
   {
     "season": "2025",

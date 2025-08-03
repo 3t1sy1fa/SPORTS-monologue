@@ -1188,5 +1188,12 @@
     "teamSlug": "lg",
     "playerSlug": "",
     "timestamp": "2025-08-03T11:54:23.125Z"
+  },
+  {
+    "voterId": "1754222996109",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "kim-yw",
+    "timestamp": "2025-08-03T12:09:56.109Z"
   }
 ]
