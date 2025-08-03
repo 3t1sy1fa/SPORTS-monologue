@@ -11,92 +11,64 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 {% block content %}
 <h1 class="page-title">구단 분석</h1>
 
-{# ================== 🏆 인기 구단 TOP3 ================== #}
-{% if voteSummary and voteSummary.teams and (voteSummary.teams is iterable) %}
-  {% set voteTeams = voteSummary.teams %}
-{% else %}
-  {% set voteTeams = [] %}
-{% endif %}
-
-{% if voteTeams | length > 0 %}
-  {% set topTeams = voteTeams | sort(attribute="teamTotalVotes", order="desc") %}
-{% else %}
-  {% set topTeams = [] %}
-{% endif %}
+{# 🏆 인기 구단 TOP3 카드 #}
+{% set voteTeams = (voteSummary.teams is iterable) ? voteSummary.teams : [] %}
+{% set topTeams = voteTeams | sort(attribute="teamTotalVotes", order="desc") %}
 
 <section class="podium-section">
   {% if topTeams | length > 0 %}
     {% for team in topTeams | slice(0, 3) %}
-      {% if team and team.teamSlug and team.teamName %}
-        <div class="podium podium-{{ loop.index }} team-{{ team.teamSlug }}">
-          <img src="/images/{{ team.teamSlug }}.png" alt="{{ team.teamName }}">
-          <span>{{ team.teamName }}</span>
-          <span class="vote-count">{{ team.teamTotalVotes or 0 }}표</span>
-        </div>
-      {% endif %}
+      <div class="podium podium-{{ loop.index }} team-{{ team.teamSlug }}">
+        <img src="/images/{{ team.teamSlug }}.png" alt="{{ team.teamName }}">
+        <span>{{ team.teamName }}</span>
+        <span class="vote-count">{{ team.teamTotalVotes }}표</span>
+      </div>
     {% endfor %}
   {% else %}
     <p class="no-data">인기 구단 데이터가 부족합니다.</p>
   {% endif %}
 </section>
 
-{# ================== 📊 구단 카드 리스트 ================== #}
-{% if teamsBoard and (teamsBoard is iterable) %}
-  {% set teamsArray = teamsBoard %}
-{% else %}
-  {% set teamsArray = [] %}
-{% endif %}
-
+{# 📊 구단 카드 리스트 #}
 <section class="teams-card-section">
+  {% set teamsArray = (teamsBoard is iterable) ? teamsBoard : [] %}
   {% for team in teamsArray | sort(attribute="rank") %}
-    {% if team and team.slug %}
-      {% set vote = voteTeams | selectattr("teamSlug", "equalto", team.slug) | first %}
-      {% set count = vote ? (vote.teamTotalVotes or 0) : 0 %}
-      <div class="team-card team-{{ team.slug }}">
-        <a href="/teams/{{ team.slug }}/">
-          <img src="/images/{{ team.slug }}.png" alt="{{ team.name or '팀명 없음' }}">
-          <div class="team-info">
-            <h3>{{ team.name or '팀명 없음' }}</h3>
-            <p>순위: {{ team.rank or '-' }}위 | 승률: {{ team.winRate or '-' }}</p>
-            <span class="last-game">최근 경기: {{ team.lastGame or '정보 없음' }}</span>
-            <span class="vote-count">투표 수: {{ count }}표</span>
-          </div>
-        </a>
-        <button class="vote-btn" data-type="team" data-slug="{{ team.slug }}">
-          이 구단에 투표하기
-        </button>
-      </div>
-    {% endif %}
+    {% set vote = voteTeams | selectattr("teamSlug", "equalto", team.slug) | first %}
+    {% set count = vote ? vote.teamTotalVotes : 0 %}
+    <div class="team-card team-{{ team.slug }}">
+      <a href="/teams/{{ team.slug }}/">
+        <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
+        <div class="team-info">
+          <h3>{{ team.name }}</h3>
+          <p>순위: {{ team.rank }}위 | 승률: {{ team.winRate }}</p>
+          <span class="last-game">최근 경기: {{ team.lastGame }}</span>
+          <span class="vote-count">투표 수: {{ count }}표</span>
+        </div>
+      </a>
+      <button class="vote-btn" data-type="team" data-slug="{{ team.slug }}">
+        이 구단에 투표하기
+      </button>
+    </div>
   {% endfor %}
 </section>
 
-{# ================== 📅 이번 주 경기 일정 ================== #}
-{% if leagueSchedule and (leagueSchedule is iterable) %}
-  {% set scheduleArray = leagueSchedule %}
-{% else %}
-  {% set scheduleArray = [] %}
-{% endif %}
-
+{# 📅 이번 주 경기 일정 #}
 <section class="extra-info">
   <div class="weekly-schedule">
     <h3>이번 주 경기 일정</h3>
     {% set today = now | date("yyyy-MM-dd") %}
-    {% set upcomingGames = scheduleArray 
-      | selectattr("date", "ge", today)
-      | slice(0, 7) 
-    %}
-    {% if upcomingGames and upcomingGames | length > 0 %}
+    {% set scheduleArray = (leagueSchedule is iterable) ? leagueSchedule : [] %}
+    {% set upcomingGames = scheduleArray | selectattr("date", "ge", today) | slice(0, 7) %}
+    {% if upcomingGames | length > 0 %}
       <ul>
         {% for game in upcomingGames %}
-          {% if game %}
-            <li>
-              <time datetime="{{ game.date }}">{{ game.date | date("MM.dd") }}</time>
-              {{ game.home or '홈팀' }} ({{ game.homeScore or "-" }}) 
-              vs 
-              {{ game.away or '원정팀' }} ({{ game.awayScore or "-" }})
-              <span class="status">{{ game.status or '' }}</span>
-            </li>
-          {% endif %}
+          <li>
+            <time datetime="{{ game.date }}">{{ game.date | date("MM.dd") }}</time>
+            {{ game.home }} ({{ game.homeScore or "-" }}) 
+            vs 
+            {{ game.away }} ({{ game.awayScore or "-" }})
+            <span class="status">{{ game.status }}</span>
+          </li>
         {% endfor %}
       </ul>
     {% else %}
@@ -110,13 +82,7 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".vote-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
-        const type = btn.dataset.type;
-        const slug = btn.dataset.slug;
-        if (!type || !slug) {
-          console.error("투표 데이터가 올바르지 않습니다.", { type, slug });
-          return;
-        }
-        handleVote(type, slug);
+        handleVote(btn.dataset.type, btn.dataset.slug);
       });
     });
   });
