@@ -26,14 +26,14 @@
 
 .vote-podium-section h2 {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin-bottom: 20px;
 }
 
 .podium-wrapper {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -41,12 +41,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30%;
-  min-width: 180px;
+  width: 26%;
+  min-width: 120px;
   background: #f8f8f8;
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 16px;
+  padding: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 }
@@ -56,20 +56,20 @@
 }
 
 .podium-card img.team-logo {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 6px;
 }
 
 .podium-card .team-info h3 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   text-align: center;
 }
 
 .podium-card .team-info p {
-  margin: 5px 0 0;
-  font-size: 0.9rem;
+  margin: 3px 0 0;
+  font-size: 0.8rem;
   color: #666;
 }
 
@@ -78,10 +78,13 @@
 .podium-2 { background: #f0f0f0; border-color: silver; }
 .podium-3 { background: #f9ece3; border-color: #cd7f32; }
 
+/* ===============================
+   📅 캘린더 (이번 주 경기 일정)
+================================== */
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
+  gap: 8px;
   max-width: 1200px;
   margin: 30px auto;
 }
@@ -89,40 +92,32 @@
 .calendar-day {
   background: #fff;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
+  border-radius: 6px;
+  padding: 6px;
   text-align: center;
+  font-size: 0.8rem;
 }
 
 .calendar-day h3 {
-  font-size: 0.95rem;
-  margin-bottom: 8px;
+  font-size: 0.8rem;
+  margin-bottom: 5px;
 }
 
 .match-logos {
   display: flex;
   justify-content: center;
-  gap: 6px;
-  margin-bottom: 4px;
+  gap: 4px;
+  margin-bottom: 3px;
 }
 
 .match-logos img.team-logo {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
 }
 
 .no-game {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #aaa;
-}
-
-/* 반응형 */
-@media (max-width: 768px) {
-  .podium-card { width: 45%; }
-}
-
-@media (max-width: 480px) {
-  .podium-card { width: 100%; }
 }
 
 /* ===============================
@@ -143,7 +138,7 @@
   background: #fff;
   border: 2px solid #ddd;
   border-radius: 8px;
-  padding: 16px;
+  padding: 12px;
   text-decoration: none;
   color: inherit;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -155,24 +150,24 @@
 }
 
 .team-card img {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 10px;
+  width: 45px;
+  height: 45px;
+  margin-bottom: 8px;
 }
 
 .team-card .team-info h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .team-card .team-info p {
-  margin: 5px 0;
-  font-size: 0.9rem;
+  margin: 4px 0;
+  font-size: 0.85rem;
   color: #555;
 }
 
 .team-card .last-game {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #999;
 }
 
@@ -183,9 +178,8 @@
   display: inline-block;
   font-family: "mingijuk";
   width: 80%;
-  height: 20px auto;
-  margin-top: 13px;
-  padding: 8px 12px;
+  margin-top: 10px;
+  padding: 6px 10px;
   border: none;
   border-radius: 20px;
   font-weight: 600;
@@ -193,7 +187,7 @@
   transition: background 0.2s ease;
   color: #fff;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -213,15 +207,17 @@
   opacity: 0.9;
 }
 
-
 /* ===============================
    반응형
 ================================== */
 @media (max-width: 768px) {
+  .podium-card { width: 40%; }
+  .calendar-grid { grid-template-columns: repeat(3, 1fr); }
   .teams-card-section { grid-template-columns: 1fr 1fr; }
-  .extra-info { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
+  .podium-card { width: 100%; }
+  .calendar-grid { grid-template-columns: repeat(2, 1fr); }
   .teams-card-section { grid-template-columns: 1fr; }
 }
