@@ -70,5 +70,14 @@
     "record": "개인 통산 450 도루",
     "rating": "4/5",
     "teamSlug": "lg"
+  },
+  {
+    "playerSlug": "oh-jw",
+    "playerName": "오지환",
+    "date": "2025-08-02",
+    "game": "삼성 주말 3연전-2차전",
+    "record": "9회 초 결승타 홈런",
+    "rating": "4.8/5",
+    "teamSlug": "lg"
   }
 ]

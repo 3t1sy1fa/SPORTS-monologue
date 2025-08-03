@@ -6,7 +6,8 @@
     "opponentSlug": "skt",
     "homeAway": "홈",
     "status": "종료",
-    "result": "w"
+    "result": "승",
+    "score": "2 - 8"
   },
   {
     "season": "2025",
@@ -15,7 +16,7 @@
     "opponentSlug": "skt",
     "homeAway": "홈",
     "status": "종료",
-    "result": "w",
+    "result": "승",
     "score": "0 - 5"
   },
   {
@@ -25,7 +26,7 @@
     "opponentSlug": "skt",
     "homeAway": "홈",
     "status": "종료",
-    "result": "w",
+    "result": "승",
     "score": "0 - 18"
   },
   {
@@ -35,7 +36,7 @@
     "opponentSlug": "ssamsung",
     "homeAway": "원정",
     "status": "종료",
-    "result": "w",
+    "result": "승",
     "score": "2 - 4"
   },
   {
@@ -44,7 +45,9 @@
     "opponent": "삼성",
     "opponentSlug": "ssamsung",
     "homeAway": "원정",
-    "status": "예정"
+    "status": "종료",
+    "result": "승",
+    "score": "2 - 3"
   },
   {
     "season": "2025",
@@ -59,7 +62,7 @@
     "date": "2025-08-05",
     "opponent": "두산",
     "opponentSlug": "sdoosan",
-    "homeAway": "",
+    "homeAway": "홈",
     "status": "예정"
   },
   {
@@ -67,7 +70,7 @@
     "date": "2025-08-06",
     "opponent": "두산",
     "opponentSlug": "sdoosan",
-    "homeAway": "",
+    "homeAway": "홈",
     "status": "예정"
   },
   {
@@ -75,7 +78,7 @@
     "date": "2025-08-07",
     "opponent": "두산",
     "opponentSlug": "sdoosan",
-    "homeAway": "",
+    "homeAway": "홈",
     "status": "예정"
   },
   {
@@ -83,7 +86,7 @@
     "date": "2025-08-08",
     "opponent": "한화",
     "opponentSlug": "shanwha",
-    "homeAway": "",
+    "homeAway": "홈",
     "status": "예정"
   },
   {
@@ -91,7 +94,7 @@
     "date": "2025-08-09",
     "opponent": "한화",
     "opponentSlug": "shanwha",
-    "homeAway": "",
+    "homeAway": "홈",
     "status": "예정"
   },
   {
@@ -99,7 +102,7 @@
     "date": "2025-08-10",
     "opponent": "한화",
     "opponentSlug": "shanwha",
-    "homeAway": "",
+    "homeAway": "홈",
     "status": "예정"
   },
   {
@@ -107,7 +110,7 @@
     "date": "2025-08-12",
     "opponent": "KT",
     "opponentSlug": "skt",
-    "homeAway": "",
+    "homeAway": "원정",
     "status": "예정"
   },
   {
@@ -115,7 +118,7 @@
     "date": "2025-08-13",
     "opponent": "KT",
     "opponentSlug": "skt",
-    "homeAway": "",
+    "homeAway": "원정",
     "status": "예정"
   },
   {
@@ -123,7 +126,7 @@
     "date": "2025-08-14",
     "opponent": "KT",
     "opponentSlug": "skt",
-    "homeAway": "",
+    "homeAway": "원정",
     "status": "예정"
   },
   {
@@ -131,7 +134,7 @@
     "date": "2025-08-15",
     "opponent": "SSG",
     "opponentSlug": "sssg",
-    "homeAway": "",
+    "homeAway": "원정",
     "status": "예정"
   },
   {
@@ -139,7 +142,7 @@
     "date": "2025-08-16",
     "opponent": "SSG",
     "opponentSlug": "sssg",
-    "homeAway": "",
+    "homeAway": "원정",
     "status": "예정"
   },
   {
@@ -147,7 +150,7 @@
     "date": "2025-08-17",
     "opponent": "SSG",
     "opponentSlug": "sssg",
-    "homeAway": "",
+    "homeAway": "원정",
     "status": "예정"
   },
   {
@@ -155,7 +158,7 @@
     "date": "2025-08-19",
     "opponent": "롯데",
     "opponentSlug": "slotte",
-    "homeAway": "",
+    "homeAway": "홈",
     "status": "예정"
   },
   {
@@ -163,7 +166,7 @@
     "date": "2025-08-20",
     "opponent": "롯데",
     "opponentSlug": "slotte",
-    "homeAway": "",
+    "homeAway": "홈",
     "status": "예정"
   },
   {
@@ -171,7 +174,7 @@
     "date": "2025-08-21",
     "opponent": "롯데",
     "opponentSlug": "slotte",
-    "homeAway": "",
+    "homeAway": "홈",
     "status": "예정"
   },
   {
@@ -179,7 +182,7 @@
     "date": "2025-08-22",
     "opponent": "KIA",
     "opponentSlug": "skia",
-    "homeAway": "",
+    "homeAway": "원정",
     "status": "예정"
   },
   {
@@ -187,7 +190,7 @@
     "date": "2025-08-23",
     "opponent": "KIA",
     "opponentSlug": "skia",
-    "homeAway": "",
+    "homeAway": "원정",
     "status": "예정"
   },
   {
@@ -195,7 +198,7 @@
     "date": "2025-08-24",
     "opponent": "KIA",
     "opponentSlug": "skia",
-    "homeAway": "",
+    "homeAway": "원정",
     "status": "예정"
   },
   {
@@ -203,7 +206,7 @@
     "date": "2025-08-26",
     "opponent": "NC",
     "opponentSlug": "snc",
-    "homeAway": "",
+    "homeAway": "원정",
     "status": "예정"
   },
   {
@@ -211,7 +214,7 @@
     "date": "2025-08-27",
     "opponent": "NC",
     "opponentSlug": "snc",
-    "homeAway": "",
+    "homeAway": "원정",
     "status": "예정"
   },
   {
@@ -219,7 +222,7 @@
     "date": "2025-08-28",
     "opponent": "NC",
     "opponentSlug": "snc",
-    "homeAway": "",
+    "homeAway": "원정",
     "status": "예정"
   },
   {
@@ -227,7 +230,7 @@
     "date": "2025-08-29",
     "opponent": "키움",
     "opponentSlug": "skiwoom",
-    "homeAway": "",
+    "homeAway": "홈",
     "status": "예정"
   },
   {
@@ -235,7 +238,7 @@
     "date": "2025-08-30",
     "opponent": "키움",
     "opponentSlug": "skiwoom",
-    "homeAway": "",
+    "homeAway": "홈",
     "status": "예정"
   },
   {
@@ -243,7 +246,7 @@
     "date": "2025-08-31",
     "opponent": "키움",
     "opponentSlug": "skiwoom",
-    "homeAway": "",
+    "homeAway": "홈",
     "status": "예정"
   }
 ]
