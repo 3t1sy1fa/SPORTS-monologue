@@ -48,17 +48,25 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 
 {% set today = "now" | date("yyyy-MM-dd") %}
 {% set nextWeek = (("now" | date("timestamp")) + (7 * 24 * 60 * 60 * 1000)) | date("yyyy-MM-dd") %}
+
 {% set weeklyGames = scheduleArray
   | selectattr("date", "defined")
   | selectattr("date", "ge", today)
   | selectattr("date", "le", nextWeek)
   | sort(attribute="date") %}
 
+{# 중복 날짜 모음 (map 없이) #}
+{% set dates = [] %}
+{% for game in weeklyGames %}
+  {% if game.date not in dates %}
+    {% set dates = dates.concat([ game.date ]) %}
+  {% endif %}
+{% endfor %}
+
 <section class="calendar-section">
   <h2>이번 주 경기 일정</h2>
-  {% if weeklyGames | length > 0 %}
+  {% if dates | length > 0 %}
     <div class="calendar-grid">
-      {% set dates = weeklyGames | map(attribute="date")  %}
       {% for date in dates %}
         <div class="calendar-day">
           <h3>{{ date | date("MM.dd (EEE)") }}</h3>
@@ -66,7 +74,7 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
             {% for game in weeklyGames if game.date == date %}
               <li>
                 <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
-                {{ game.home }} vs 
+                {{ game.home }} vs
                 <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
                 {{ game.away }}
                 <span class="status">
