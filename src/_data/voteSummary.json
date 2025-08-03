@@ -26,14 +26,14 @@
       "teamTotalVotes": 1
     },
     {
-      "teamSlug": "nc",
-      "teamName": "NC 다이노스",
-      "teamTotalVotes": 6
-    },
-    {
       "teamSlug": "kt",
       "teamName": "KT 위즈",
       "teamTotalVotes": 0
+    },
+    {
+      "teamSlug": "nc",
+      "teamName": "NC 다이노스",
+      "teamTotalVotes": 6
     },
     {
       "teamSlug": "samsung",
