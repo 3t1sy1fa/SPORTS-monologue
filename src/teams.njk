@@ -32,7 +32,11 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 <section class="teams-card-section">
   {% for team in teamsBoard | sort(attribute="rank") %}
     {% set vote = (voteSummary.teams | selectattr("teamSlug", "equalto", team.slug) | first) %}
-    {% set count = vote ? vote.teamTotalVotes : 0 %}
+    {% if vote %}
+      {% set count = vote.teamTotalVotes %}
+    {% else %}
+      {% set count = 0 %}
+    {% endif %}
     <div class="team-card team-{{ team.slug }}">
       <a href="/teams/{{ team.slug }}/">
         <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">

@@ -53,10 +53,13 @@ layout: layout.njk
 
   <section class="player-votes">
     <h2>인기 투표</h2>
-    {% set playerVote = (voteSummary.players 
-      | selectattr("playerSlug", "equalto", player.slug) 
-      | first) %}
-    <p>현재 투표 수: {{ playerVote ? playerVote.playerTotalVotes : 0 }}표</p>
+    {% set playerVote = (voteSummary.players | selectattr("playerSlug", "equalto", player.slug) | first) %}
+    {% if playerVote %}
+      {% set count = playerVote.playerTotalVotes %}
+    {% else %}
+      {% set count = 0 %}
+    {% endif %}
+    <p>현재 투표 수: {{ count }}표</p>
     <button 
       class="vote-btn" 
       data-type="player" 
