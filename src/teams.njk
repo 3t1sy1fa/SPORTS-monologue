@@ -12,18 +12,7 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 <h1 class="page-title">구단 분석</h1>
 
 {# 🏆 인기 구단 TOP3 카드 #}
-{% set topTeams = [] %}
-{% for slug, count in voteSummary.teams %}
-  {% set teamObj = teamsBoard | selectattr("slug", "equalto", slug) | first %}
-  {% if teamObj %}
-    {% set topTeams = topTeams.concat([{
-      teamSlug: slug,
-      teamName: teamObj.name,
-      teamTotalVotes: count
-    }]) %}
-  {% endif %}
-{% endfor %}
-{% set topTeams = topTeams | sort(attribute="teamTotalVotes", order="desc") %}
+{% set topTeams = voteSummary.teams | sort(attribute="teamTotalVotes", order="desc") %}
 
 <section class="podium-section">
   {% if topTeams | length > 0 %}
@@ -42,7 +31,8 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 {# 📊 구단 카드 리스트 #}
 <section class="teams-card-section">
   {% for team in teamsBoard | sort(attribute="rank") %}
-    {% set count = voteSummary.teams[team.slug] or 0 %}
+    {% set vote = (voteSummary.teams | selectattr("teamSlug", "equalto", team.slug) | first) %}
+    {% set count = vote ? vote.teamTotalVotes : 0 %}
     <div class="team-card team-{{ team.slug }}">
       <a href="/teams/{{ team.slug }}/">
         <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
