@@ -117,45 +117,54 @@ const fs = require("fs");
     fs.writeFileSync("./src/_data/votes.json", JSON.stringify(votes, null, 2));
 
     /* ----------------------------- 7️⃣ VoteSummary ----------------------------- */
-    const teams = {};
-    const playersCount = {};
+/* ----------------------------- 7️⃣ VoteSummary ----------------------------- */
+const teams = {};
+const playersCount = {};
 
-    // ✅ 팀 투표 집계
-    votes.forEach((vote) => {
-      if (vote.targetType === "team" && vote.teamSlug) {
-        const team = teamsBoard.find((t) => t.slug === vote.teamSlug);
-        if (!teams[vote.teamSlug]) {
-          teams[vote.teamSlug] = {
-            teamSlug: vote.teamSlug,
-            teamName: team ? team.name : vote.teamSlug,
-            teamTotalVotes: 0,
-          };
-        }
-        teams[vote.teamSlug].teamTotalVotes += 1;
-      }
-    });
+// ✅ 모든 팀 기본값 추가
+teamsBoard.forEach((team) => {
+  teams[team.slug] = {
+    teamSlug: team.slug,
+    teamName: team.name,
+    teamTotalVotes: 0,
+  };
+});
 
-    // ✅ 선수 투표 집계
-    votes.forEach((vote) => {
-      if (vote.targetType === "player" && vote.playerSlug) {
-        const player = players.find((p) => p.slug === vote.playerSlug);
-        if (!playersCount[vote.playerSlug]) {
-          playersCount[vote.playerSlug] = {
-            playerSlug: vote.playerSlug,
-            playerName: player ? player.name : vote.playerSlug,
-            playerTeamSlug: player ? player.teamSlug : "",
-            playerTotalVotes: 0,
-          };
-        }
-        playersCount[vote.playerSlug].playerTotalVotes += 1;
-      }
-    });
+// ✅ 모든 선수 기본값 추가
+players.forEach((player) => {
+  playersCount[player.slug] = {
+    playerSlug: player.slug,
+    playerName: player.name,
+    playerTeamSlug: player.teamSlug,
+    playerTotalVotes: 0,
+  };
+});
 
-    const voteSummary = {
-      teams: Object.values(teams),
-      players: Object.values(playersCount),
-    };
-    fs.writeFileSync("./src/_data/voteSummary.json", JSON.stringify(voteSummary, null, 2));
+// ✅ 팀 투표 합산
+votes.forEach((vote) => {
+  if (vote.targetType === "team" && vote.teamSlug) {
+    if (teams[vote.teamSlug]) {
+      teams[vote.teamSlug].teamTotalVotes++;
+    }
+  }
+});
+
+// ✅ 선수 투표 합산
+votes.forEach((vote) => {
+  if (vote.targetType === "player" && vote.playerSlug) {
+    if (playersCount[vote.playerSlug]) {
+      playersCount[vote.playerSlug].playerTotalVotes++;
+    }
+  }
+});
+
+const voteSummary = {
+  teams: Object.values(teams),
+  players: Object.values(playersCount),
+};
+
+fs.writeFileSync("./src/_data/voteSummary.json", JSON.stringify(voteSummary, null, 2));
+console.log("✅ VoteSummary 생성 완료");
 
     console.log("✅ 모든 JSON 파일 생성 완료 (상세 VoteSummary 포함)");
   } catch (error) {
