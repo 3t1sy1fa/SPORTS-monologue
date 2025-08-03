@@ -7,9 +7,20 @@ dist/
 
 # 환경 변수 파일
 .env
+.env.local
+.env.production
+.env.development
 
 # Google credentials (보안)
 credentials.json
 
-# 기타 캐시 파일
+# Netlify, npm, log 파일
+.netlify/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cache / OS files
 .DS_Store
+.cache/
+tmp/

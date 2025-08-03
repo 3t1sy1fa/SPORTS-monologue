@@ -14,17 +14,21 @@ layout: layout.njk
 {% block content %}
 <section class="player-detail-container">
   <header class="player-header">
-    <img src="/images/players/{{ player.slug }}.png" alt="{{ player.name }}" class="player-photo">
+    <img 
+      src="/images/players/{{ player.slug or 'default' }}.png" 
+      alt="{{ player.name or '이름 없음' }}" 
+      class="player-photo">
     <div class="player-info">
-      <h1>{{ player.name }}</h1>
-      <p class="player-position">{{ player.position }}</p>
-      <p class="player-number">등번호: {{ player.number }}</p>
+      <h1>{{ player.name or '이름 없음' }}</h1>
+      <p class="player-position">{{ player.position or '포지션 정보 없음' }}</p>
+      <p class="player-number">등번호: {{ player.number or '-' }}</p>
       {% if player.note %}
         <p class="player-note">"{{ player.note }}"</p>
       {% endif %}
     </div>
   </header>
 
+  {# ================== 최근 경기 기록 ================== #}
   <section class="player-stats">
     <h2>최근 경기 기록</h2>
     <table class="stats-table">
@@ -37,26 +41,40 @@ layout: layout.njk
         </tr>
       </thead>
       <tbody>
-        {% set statsArray = playerStats if playerStats is iterable else [] %}
-        {% for stat in statsArray %}
-          {% if stat.playerSlug == player.slug %}
+        {% if playerStats and (playerStats is iterable) %}
+          {% for stat in playerStats %}
+            {% if stat and stat.playerSlug == player.slug %}
+              <tr>
+                <td>
+                  <time datetime="{{ stat.date }}">{{ stat.date | date("MM.dd") }}</time>
+                </td>
+                <td>{{ stat.game or '경기 정보 없음' }}</td>
+                <td>{{ stat.record or '-' }}</td>
+                <td>{{ stat.rating or '-' }}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+        {% else %}
           <tr>
-            <td><time datetime="{{ stat.date }}">{{ stat.date | date("MM.dd") }}</time></td>
-            <td>{{ stat.game }}</td>
-            <td>{{ stat.record }}</td>
-            <td>{{ stat.rating }}</td>
+            <td colspan="4">경기 기록이 없습니다.</td>
           </tr>
-          {% endif %}
-        {% endfor %}
+        {% endif %}
       </tbody>
     </table>
   </section>
 
+  {# ================== 인기 투표 ================== #}
   <section class="player-votes">
     <h2>인기 투표</h2>
-    {% set playerVotes = voteSummary.players if voteSummary.players is iterable else [] %}
+    {% if voteSummary and voteSummary.players and (voteSummary.players is iterable) %}
+      {% set playerVotes = voteSummary.players %}
+    {% else %}
+      {% set playerVotes = [] %}
+    {% endif %}
+
     {% set playerVote = playerVotes | selectattr("playerSlug", "equalto", player.slug) | first %}
-    {% set count = playerVote ? playerVote.playerTotalVotes : 0 %}
+    {% set count = playerVote ? (playerVote.playerTotalVotes or 0) : 0 %}
+
     <p>현재 투표 수: {{ count }}표</p>
     <button class="vote-btn" data-type="player" data-slug="{{ player.slug }}">
       이 선수에게 투표하기
@@ -69,7 +87,13 @@ layout: layout.njk
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".vote-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
-        handleVote(btn.dataset.type, btn.dataset.slug);
+        const type = btn.dataset.type;
+        const slug = btn.dataset.slug;
+        if (!type || !slug) {
+          console.error("투표 데이터가 올바르지 않습니다.", { type, slug });
+          return;
+        }
+        handleVote(type, slug);
       });
     });
   });
