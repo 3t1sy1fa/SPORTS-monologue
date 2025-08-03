@@ -31,7 +31,7 @@ const fs = require("fs");
       lastGame: row[8] || "",
       homepage: row[9] || "",
     }));
-    fs.writeFileSync("./src/_data/teams-board.json", JSON.stringify(teamsBoard, null, 2));
+    fs.writeFileSync("./src/_data/teamsBoard.json", JSON.stringify(teamsBoard, null, 2));
     console.log("✅ TeamsBoard 생성 완료");
 
     // 2️⃣ LeagueSchedule
