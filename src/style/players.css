@@ -1,56 +1,55 @@
 /* ==============================
-   선수 분석 페이지 (목록)
-   ============================== */
+   선수 분석 페이지 (리디자인)
+============================== */
 .players-container {
-  max-width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 10%;
-  background: #fff;
-  min-height: 100vh;
+  padding: 30px 5%;
+  background: #f9f9fb;
   font-family: 'Mingijuk', 'SUIT', sans-serif;
-  color: #1a1a1a;
 }
 
 /* 페이지 타이틀 */
 .page-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+  font-size: 2.4rem;
+  font-weight: 800;
   text-align: center;
+  color: #222;
+  margin-bottom: 10px;
 }
-
 .page-meta {
-  font-size: 1rem;
-  color: #777;
+  font-size: 1.1rem;
+  color: #555;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 30px;
 }
 
 /* 팀 필터 */
 .filter-container {
-  margin: 1rem 0;
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 25px;
 }
-
 .filter-container label {
-  margin-right: 8px;
-  font-weight: 500;
+  margin-right: 10px;
+  font-weight: 600;
+  color: #333;
 }
-
 #teamFilter {
-  padding: 6px 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* 선수 카드 그리드 */
+/* 카드 그리드 */
 .players-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  justify-items: stretch;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
 }
 
 /* 카드 스타일 */
@@ -58,77 +57,91 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #fff;
-  border: 1.5px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
+  background: #ffffffcc;
+  backdrop-filter: blur(8px);
+  border: 2px solid #e3e3e3;
+  border-radius: 12px;
+  padding: 20px 16px;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease, background 0.3s ease;
-  width: 100%;
-  max-width: 220px;
-  position: relative;
-  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
 }
-
 .player-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* 팀별 마우스 오버 */
-.player-card.lg:hover { border-color: #C30452; background: linear-gradient(145deg, #fff, rgba(195, 4, 82, 0.08)); }
-.player-card.doosan:hover { border-color: #1A1748; background: linear-gradient(145deg, #fff, rgba(26, 23, 72, 0.08)); }
-.player-card.ssg:hover { border-color: #CE0E2D; background: linear-gradient(145deg, #fff, rgba(206, 14, 45, 0.08)); }
-.player-card.lotte:hover { border-color: #D00F31; background: linear-gradient(145deg, #fff, rgba(208, 15, 49, 0.08)); }
-.player-card.samsung:hover { border-color: #074CA1; background: linear-gradient(145deg, #fff, rgba(7, 76, 161, 0.08)); }
-.player-card.hanwha:hover { border-color: #FC4E00; background: linear-gradient(145deg, #fff, rgba(252, 78, 0, 0.08)); }
-.player-card.kia:hover { border-color: #EA0029; background: linear-gradient(145deg, #fff, rgba(234, 0, 41, 0.08)); }
-.player-card.kiwoom:hover { border-color: #570514; background: linear-gradient(145deg, #fff, rgba(87, 5, 20, 0.08)); }
-.player-card.nc:hover { border-color: #315288; background: linear-gradient(145deg, #fff, rgba(49, 82, 136, 0.08)); }
-.player-card.kt:hover { border-color: #EB1C24; background: linear-gradient(145deg, #fff, rgba(235, 28, 36, 0.08)); }
-
-/* 이미지 */
-.player-photo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-  border: 1.5px solid #e3e3e3;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
 /* 카드 내부 */
-.player-info { text-align: center; width: 100%; }
-.player-name { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.3rem; color: #333; }
-.player-team .team-logo { width: 28px; height: 28px; margin: 0.3rem 0; }
-.player-position { font-size: 0.95rem; color: #555; }
-.player-note { font-size: 0.9rem; color: #777; margin: 0.4rem 0; min-height: 32px; }
-.player-number { font-size: 0.85rem; color: #999; margin-bottom: 0.5rem; }
+.player-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+.player-info {
+  text-align: center;
+  width: 100%;
+}
+.player-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: #111;
+}
+.player-team .team-logo {
+  width: 30px;
+  height: 30px;
+  margin: 0.4rem 0;
+}
+.player-position {
+  font-size: 0.95rem;
+  color: #555;
+}
+.player-note {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0.4rem 0;
+  min-height: 34px;
+}
+.player-number {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 0.5rem;
+}
 
 /* 인기 점수 */
 .player-popularity {
   display: inline-block;
-  background: #ffeb3b;
+  background: linear-gradient(135deg, #ffe600, #ffc107);
   color: #333;
-  padding: 0.3rem 0.6rem;
+  padding: 0.35rem 0.8rem;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* 팀별 텍스트 색상 */
-.player-card.lg .player-name { color: #C30452; }
-.player-card.doosan .player-name { color: #1A1748; }
-.player-card.ssg .player-name { color: #CE0E2D; }
-.player-card.lotte .player-name { color: #041E42; }
-.player-card.samsung .player-name { color: #074CA1; }
-.player-card.hanwha .player-name { color: #FC4E00; }
-.player-card.kia .player-name { color: #EA0029; }
-.player-card.kiwoom .player-name { color: #570514; }
-.player-card.nc .player-name { color: #315288; }
-.player-card.kt .player-name { color: #EB1C24; }
+/* 팀별 호버 포인트 */
+.player-card.lg:hover { border-color: #C30452; background: linear-gradient(145deg, #fff, rgba(195, 4, 82, 0.05)); }
+.player-card.doosan:hover { border-color: #1A1748; background: linear-gradient(145deg, #fff, rgba(26, 23, 72, 0.05)); }
+.player-card.ssg:hover { border-color: #CE0E2D; background: linear-gradient(145deg, #fff, rgba(206, 14, 45, 0.05)); }
+.player-card.lotte:hover { border-color: #D00F31; background: linear-gradient(145deg, #fff, rgba(208, 15, 49, 0.05)); }
+.player-card.samsung:hover { border-color: #074CA1; background: linear-gradient(145deg, #fff, rgba(7, 76, 161, 0.05)); }
+.player-card.hanwha:hover { border-color: #FC4E00; background: linear-gradient(145deg, #fff, rgba(252, 78, 0, 0.05)); }
+.player-card.kia:hover { border-color: #EA0029; background: linear-gradient(145deg, #fff, rgba(234, 0, 41, 0.05)); }
+.player-card.kiwoom:hover { border-color: #570514; background: linear-gradient(145deg, #fff, rgba(87, 5, 20, 0.05)); }
+.player-card.nc:hover { border-color: #315288; background: linear-gradient(145deg, #fff, rgba(49, 82, 136, 0.05)); }
+.player-card.kt:hover { border-color: #EB1C24; background: linear-gradient(145deg, #fff, rgba(235, 28, 36, 0.05)); }
 
 /* 반응형 */
-@media (max-width: 1024px) { .players-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .players-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1024px) {
+  .players-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .players-grid { grid-template-columns: 1fr; }
+  .player-photo { width: 90px; height: 90px; }
+}
