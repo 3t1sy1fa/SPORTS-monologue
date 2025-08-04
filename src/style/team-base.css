@@ -128,12 +128,7 @@
   border-radius: 8px;
   padding: 12px;
   align-items: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.team-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .team-card img {
@@ -146,6 +141,18 @@
 .team-info p { margin: 4px 0; font-size: 0.85rem; color: #555; }
 .last-game { font-size: 0.75rem; color: #999; }
 
+/* ✅ 팀별 카드 hover 색상 */
+.team-lg:hover { border-color: #C30452; background: rgba(195, 4, 82, 0.05); }
+.team-doosan:hover { border-color: #1A1748; background: rgba(26, 23, 72, 0.05); }
+.team-lotte:hover { border-color: #041E42; background: rgba(4, 30, 66, 0.05); }
+.team-samsung:hover { border-color: #074CA1; background: rgba(7, 76, 161, 0.05); }
+.team-hanwha:hover { border-color: #FC4E00; background: rgba(252, 78, 0, 0.05); }
+.team-kia:hover { border-color: #EA0029; background: rgba(234, 0, 41, 0.05); }
+.team-ssg:hover { border-color: #CE0E2D; background: rgba(206, 14, 45, 0.05); }
+.team-nc:hover { border-color: #315288; background: rgba(49, 82, 136, 0.05); }
+.team-kt:hover { border-color: #000000; background: rgba(0, 0, 0, 0.05); }
+.team-kiwoom:hover { border-color: #570514; background: rgba(87, 5, 20, 0.05); }
+
 /* ✅ 투표 버튼 */
 .vote-btn {
   margin-left: auto;
@@ -156,9 +163,20 @@
   font-size: 0.75rem;
   cursor: pointer;
   color: #fff;
-  background: #555;
   transition: background 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
+.team-lg .vote-btn { background-color: #C30452; }
+.team-doosan .vote-btn { background-color: #1A1748; }
+.team-lotte .vote-btn { background-color: #041E42; }
+.team-samsung .vote-btn { background-color: #074CA1; }
+.team-hanwha .vote-btn { background-color: #FC4E00; }
+.team-kia .vote-btn { background-color: #EA0029; }
+.team-ssg .vote-btn { background-color: #CE0E2D; }
+.team-nc .vote-btn { background-color: #315288; }
+.team-kt .vote-btn { background-color: #000000; }
+.team-kiwoom .vote-btn { background-color: #570514; }
 
 .vote-btn:hover { opacity: 0.9; }
 
