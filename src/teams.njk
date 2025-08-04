@@ -11,37 +11,17 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
 {% block content %}
 <h1 class="page-title">구단 분석</h1>
 
-<!-- 🏆 인기 구단 포디움 -->
-<section class="vote-podium-section">
-  <h2>인기 구단 포디움</h2>
-  {% if topTeams | length > 0 %}
-    <div class="podium-wrapper">
-      {% for team in topTeams %}
-        <div class="podium-card podium-{{ loop.index }}">
-          <img src="/images/{{ team.teamSlug }}.png" alt="{{ team.teamName }}" class="team-logo">
-          <div class="team-info">
-            <h3>{{ loop.index }}위 {{ team.teamName }}</h3>
-            <p>{{ team.teamTotalVotes }}표</p>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p class="no-data">투표 데이터가 부족합니다.</p>
-  {% endif %}
-</section>
-
-<!-- 📅 이번 주 경기 일정 -->
-<section class="calendar-section">
-  <h2>이번 주 경기 일정</h2>
-  <div class="calendar-grid">
-    {% for day in weekDates %}
-      <div class="calendar-day">
-        <h3>{{ day.date | date("MM.dd (EEE)") }}</h3>
+<div class="teams-analysis-layout">
+  <!-- 왼쪽: 이번 주 경기 일정 -->
+  <aside class="weekly-schedule">
+    <h2>이번 주 경기 일정</h2>
+    <ul class="schedule-list">
+      {% for day in weekDates %}
         {% if day.games | length > 0 %}
-          <ul class="games-list">
+          <li class="schedule-day">
+            <strong>{{ day.date | date("MM.dd (EEE)") }}</strong>
             {% for game in day.games %}
-              <li>
+              <div class="match">
                 <span class="team
                   {% if game.winner and game.homeScore > game.awayScore %} winner
                   {% elseif game.winner and game.homeScore < game.awayScore %} loser {% endif %}">
@@ -55,49 +35,75 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
                   <img src="/images/s{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
                   {{ game.away }}
                 </span>
-              </li>
+              </div>
             {% endfor %}
-          </ul>
+          </li>
         {% else %}
-          <p class="no-games">경기 없음</p>
+          <li class="schedule-day no-games">
+            <strong>{{ day.date | date("MM.dd (EEE)") }}</strong>
+            <span>경기 없음</span>
+          </li>
         {% endif %}
-      </div>
-    {% endfor %}
-  </div>
-</section>
+      {% endfor %}
+    </ul>
+  </aside>
 
-<!-- 📋 전체 구단 카드 -->
-{% set voteTeams = voteSummary.teams if voteSummary and voteSummary.teams is iterable else [] %}
-<section class="teams-card-section">
-  {% for team in teamsBoard | sort(attribute="rank") %}
-    {% set voteCount = 0 %}
-    {% for vote in voteTeams %}
-      {% if vote.teamSlug == team.slug %}
-        {% set voteCount = vote.teamTotalVotes %}
-      {% endif %}
-    {% endfor %}
-    <div class="team-card team-{{ team.slug }}">
-      <a href="/teams/{{ team.slug }}/">
-        <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
-        <div class="team-info">
-          <h3>{{ team.name }}</h3>
-          <p>순위: {{ team.rank }}위 | 승률: {{ (team.winRate * 100) | round(1) }}%</p>
-          <span class="last-game 
-            {% if team.lastGame == '승' %}win
-            {% elseif team.lastGame == '패' %}lose
-            {% elseif team.lastGame == '무' %}draw
-            {% endif %}">
-            최근 경기: {{ team.lastGame }}
-          </span>
-          <span class="vote-count">투표 수: {{ voteCount }}표</span>
+  <!-- 오른쪽: 포디움 + 카드 -->
+  <div class="right-content">
+    <!-- 🏆 인기 구단 포디움 -->
+    <section class="vote-podium-section">
+      <h2>인기 구단 포디움</h2>
+      {% if topTeams | length > 0 %}
+        <div class="podium-wrapper">
+          {% for team in topTeams %}
+            <div class="podium-card podium-{{ loop.index }}">
+              <img src="/images/{{ team.teamSlug }}.png" alt="{{ team.teamName }}" class="team-logo">
+              <div class="team-info">
+                <h3>{{ loop.index }}위 {{ team.teamName }}</h3>
+                <p>{{ team.teamTotalVotes }}표</p>
+              </div>
+            </div>
+          {% endfor %}
         </div>
-      </a>
-      <button class="vote-btn" data-type="team" data-slug="{{ team.slug }}">
-        이 구단에 투표하기
-      </button>
-    </div>
-  {% endfor %}
-</section>
+      {% else %}
+        <p class="no-data">투표 데이터가 부족합니다.</p>
+      {% endif %}
+    </section>
+
+    <!-- 📋 전체 구단 카드 -->
+    {% set voteTeams = voteSummary.teams if voteSummary and voteSummary.teams is iterable else [] %}
+    <section class="teams-card-section">
+      {% for team in teamsBoard | sort(attribute="rank") %}
+        {% set voteCount = 0 %}
+        {% for vote in voteTeams %}
+          {% if vote.teamSlug == team.slug %}
+            {% set voteCount = vote.teamTotalVotes %}
+          {% endif %}
+        {% endfor %}
+        <div class="team-card team-{{ team.slug }}">
+          <a href="/teams/{{ team.slug }}/">
+            <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
+            <div class="team-info">
+              <h3>{{ team.name }}</h3>
+              <p>순위: {{ team.rank }}위 | 승률: {{ (team.winRate * 100) | round(1) }}%</p>
+              <span class="last-game 
+                {% if team.lastGame == '승' %}win
+                {% elseif team.lastGame == '패' %}lose
+                {% elseif team.lastGame == '무' %}draw
+                {% endif %}">
+                최근 경기: {{ team.lastGame }}
+              </span>
+              <span class="vote-count">투표 수: {{ voteCount }}표</span>
+            </div>
+          </a>
+          <button class="vote-btn" data-type="team" data-slug="{{ team.slug }}">
+            이 구단에 투표하기
+          </button>
+        </div>
+      {% endfor %}
+    </section>
+  </div>
+</div>
 
 <script type="module">
   import { handleVote } from "/scripts/voteHandler.js";

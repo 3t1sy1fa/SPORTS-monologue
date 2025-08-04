@@ -85,7 +85,7 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 8px;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 30px auto;
 }
 
@@ -244,4 +244,64 @@
   .podium-card { width: 100%; }
   .calendar-grid { grid-template-columns: repeat(2, 1fr); }
   .teams-card-section { grid-template-columns: 1fr; }
+}
+
+/* 🆕 구단 분석 레이아웃 */
+.teams-analysis-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+/* 왼쪽 일정 패널 */
+.weekly-schedule {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 0.9rem;
+}
+
+.schedule-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.schedule-day {
+  border-bottom: 1px solid #eee;
+  padding: 8px 0;
+}
+
+.schedule-day:last-child {
+  border-bottom: none;
+}
+
+.schedule-day .match {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+}
+
+.schedule-day .team-logo {
+  width: 16px;
+  height: 16px;
+}
+
+/* 기존 카드 2열로 제한 */
+.teams-card-section {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .teams-analysis-layout {
+    grid-template-columns: 1fr;
+  }
+  .teams-card-section {
+    grid-template-columns: 1fr;
+  }
 }
