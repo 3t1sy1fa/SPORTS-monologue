@@ -5,9 +5,10 @@ description: "스포츠 경영 공부 기록을 담은 페이지입니다."
 ---
 
 {% block content %}
-<main class="sports-container">
+<main class="sports-management-container">
+  <!-- 헤더 -->
   <div class="sports-header">
-    <h1>스포츠 경영</h1>
+    <h1 class="page-title">스포츠 경영</h1>
     <div class="topic-filter">
       <label for="topicSelect">주제별 보기</label>
       <select id="topicSelect">
@@ -19,30 +20,32 @@ description: "스포츠 경영 공부 기록을 담은 페이지입니다."
     </div>
   </div>
 
-  <div class="post-list" id="postList">
+  <!-- 게시글 목록 -->
+  <div class="management-list" id="postList">
     {% for post in collections.posts | reverse %}
       {% if post.data.category == "스포츠 경영" %}
-        <article class="post-item" data-topic="{{ post.data.topic or '기타' }}">
-          <h4>
-            <a href="{{ post.url }}" title="{{ post.data.title }}">
-              {{ post.data.title }}
-            </a>
-          </h4>
-          <p>
-            <strong>[{{ post.data.category }}]</strong> · 
+        <article class="management-item" data-topic="{{ post.data.topic or '기타' }}">
+          <div class="management-meta">
+            <span class="meta-topic">{{ post.data.topic or "기타" }}</span>
             <time datetime="{{ post.date | date('yyyy-MM-dd') }}">
               {{ post.date | date }}
             </time>
-          </p>
-          <p>{{ post.data.excerpt }}</p>
+          </div>
+          <div class="management-content">
+            <h4>
+              <a href="{{ post.url }}" title="{{ post.data.title }}">
+                {{ post.data.title }}
+              </a>
+            </h4>
+            <p class="excerpt">{{ post.data.excerpt or "내용 요약이 없습니다." }}</p>
+          </div>
         </article>
       {% endif %}
+    {% else %}
+      <p class="no-posts">게시된 글이 없습니다.</p>
     {% endfor %}
   </div>
 
   <script src="/scripts/sports-filter.js"></script>
-  
-</main>
-
 </main>
 {% endblock %}

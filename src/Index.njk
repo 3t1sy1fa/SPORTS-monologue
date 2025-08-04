@@ -5,6 +5,40 @@ description: "경기 그 이상을 보기 위해, 경영의 언어로 스포츠�
 isHome: true
 ---
 
+{% block styles %}
+<style>
+/* 홈 글 목록 */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.post-item {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 12px;
+}
+
+.post-item h4 {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+}
+
+.post-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.no-posts {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+}
+</style>
+{% endblock %}
+
 {% block content %}
 <p class="typing-slogan"><span id="typing-text" aria-live="polite"></span></p>
 
@@ -12,22 +46,24 @@ isHome: true
   <!-- ✅ 글 목록 -->
   <section class="post-list">
     {% set postsArray = collections.posts or [] %}
-    {% for post in postsArray | reverse %}
-      <article class="post-item">
-        <h4>
-          <a href="{{ post.url }}" title="{{ post.data.title }}">
-            {{ post.data.title }}
-          </a>
-        </h4>
-        <p>
-          <strong>[{{ post.data.category }}]</strong> · 
-          <time datetime="{{ post.date | date('yyyy-MM-dd') }}">{{ post.date | date }}</time>
-        </p>
-        <p>{{ post.data.excerpt or "" }}</p>
-      </article>
+    {% if postsArray | length > 0 %}
+      {% for post in postsArray | reverse %}
+        <article class="post-item">
+          <h4>
+            <a href="{{ post.url }}" title="{{ post.data.title }}">
+              {{ post.data.title }}
+            </a>
+          </h4>
+          <p>
+            <strong>[{{ post.data.category }}]</strong> · 
+            <time datetime="{{ post.date | date('yyyy-MM-dd') }}">{{ post.date | date }}</time>
+          </p>
+          <p>{{ post.data.excerpt or "" }}</p>
+        </article>
+      {% endfor %}
     {% else %}
-      <p>게시된 글이 없습니다.</p>
-    {% endfor %}
+      <p class="no-posts">게시된 글이 없습니다.</p>
+    {% endif %}
   </section>
 </main>
 
