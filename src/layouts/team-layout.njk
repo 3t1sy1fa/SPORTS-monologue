@@ -7,12 +7,7 @@
   <link rel="icon" href="/favicon.png" type="image/png">
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
 
-  {% if slug %}
-    {% set safeSlug = slug %}
-  {% else %}
-    {% set safeSlug = 'default' %}
-  {% endif %}
-
+  {% set safeSlug = slug or 'default' %}
   <title>{{ title or "구단 분석" }} | Sports Monologue</title>
   <meta name="description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
 
@@ -28,75 +23,75 @@
   <meta name="twitter:image" content="/images/og/{{ safeSlug }}.jpg">
   <meta name="twitter:domain" content="Sports Monologue">
 
-  <link rel="stylesheet" href="/style/main.css" />
-  <link rel="stylesheet" href="/style/teams.css" />
+  <link rel="stylesheet" href="/style/teams-common.css" />
+  <link rel="stylesheet" href="/style/team-layout.css" />
   <link rel="stylesheet" href="/style/team-{{ safeSlug }}.css" />
 </head>
 
 <body>
   {% include "header.njk" %}
 
-  {# ✅ leagueSchedule 배열 안전 처리 #}
-  {% if leagueSchedule and leagueSchedule is iterable %}
-    {% set scheduleArray = leagueSchedule %}
-  {% else %}
-    {% set scheduleArray = [] %}
-  {% endif %}
-
+  {# 안전 처리 #}
+{% if leagueSchedule and leagueSchedule is iterable %}
+  {% set scheduleArray = leagueSchedule %}
+{% else %}
+  {% set scheduleArray = [] %}
+{% endif %}
   {% set games = scheduleArray | teamGames(safeSlug) %}
   {% set recentGame = games | getRecentGame %}
   {% set homepage = teamsBoard | getHomepage(safeSlug) %}
-
-  {# ✅ collections.teamPosts 배열 안전 처리 #}
-  {% if collections.teamPosts %}
-    {% set postsArray = collections.teamPosts %}
-  {% else %}
-    {% set postsArray = [] %}
-  {% endif %}
+  {% set postsArray = collections.teamPosts or [] %}
   {% set filteredPosts = postsArray | getTeamPosts(safeSlug) %}
 
   <main class="team-layout">
-    <div class="team-left">
-      <div class="game-results">
-        <p class="game-date">
-          {% if recentGame %}
-            {{ recentGame.date | date }}
-          {% else %}
-            날짜 정보 없음
-          {% endif %}
-        </p>
-        <p class="game-summary">
-          {% if recentGame %}
-            {{ recentGame.home }} vs {{ recentGame.away }}
-            ({{ recentGame.homeScore }} - {{ recentGame.awayScore }})
-          {% else %}
-            최근 경기 정보가 없습니다.
-          {% endif %}
-        </p>
-        <a href="{{ homepage }}" class="team-btn" target="_blank" rel="noopener noreferrer">
-          구단 공식 홈페이지
-        </a>
+    <!-- 팀 헤더 -->
+    <section class="team-header">
+      <img src="/images/{{ safeSlug }}.png" alt="{{ title }}" class="team-logo-large">
+      <div class="team-header-info">
+        <h1 class="team-name">{{ title }}</h1>
+        <p class="team-slogan">경영의 언어로 분석하는 {{ title }}</p>
       </div>
+    </section>
 
-      <div class="team-post-list-wrapper">
-        {% if filteredPosts | length > 0 %}
-          <h3>상세 분석 목록</h3>
-          <ul class="team-post-list">
-            {% for post in filteredPosts %}
-              <li>
-                <a href="{{ post.url }}">{{ post.data.title }}</a>
-                <span class="date">{{ post.date | date }}</span>
-              </li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          <p>등록된 구단 분석글이 없습니다.</p>
-        {% endif %}
-      </div>
-    </div>
+    <div class="team-content">
+      <!-- 왼쪽 패널 -->
+      <aside class="team-left">
+        <div class="recent-game-card">
+          <h3>최근 경기 결과</h3>
+          {% if recentGame %}
+            <div class="match-score">
+              <span class="home">{{ recentGame.home }} ({{ recentGame.homeScore }})</span>
+              <strong>vs</strong>
+              <span class="away">{{ recentGame.away }} ({{ recentGame.awayScore }})</span>
+            </div>
+            <p class="game-date">{{ recentGame.date | date }}</p>
+          {% else %}
+            <p class="no-data">최근 경기 정보가 없습니다.</p>
+          {% endif %}
+          <a href="{{ homepage }}" class="team-btn" target="_blank" rel="noopener noreferrer">
+            구단 공식 홈페이지
+          </a>
+        </div>
 
-    <div class="team-right">
-      {{ content | safe }}
+        <div class="analysis-list">
+          <h3>구단 분석 아카이브</h3>
+          {% for post in filteredPosts %}
+            <article class="analysis-card">
+              <a href="{{ post.url }}">
+                <h4>{{ post.data.title }}</h4>
+                <time>{{ post.date | date }}</time>
+              </a>
+            </article>
+          {% else %}
+            <p class="no-data">등록된 구단 분석글이 없습니다.</p>
+          {% endfor %}
+        </div>
+      </aside>
+
+      <!-- 오른쪽 본문 -->
+      <section class="team-right">
+        {{ content | safe }}
+      </section>
     </div>
   </main>
 
