@@ -156,16 +156,16 @@
 .last-game { font-size: 0.75rem; color: #999; }
 
 /* ✅ 팀별 카드 hover 색상 */
-.team-lg:hover { border-color: #C30452; background: rgba(195, 4, 82, 0.05); }
-.team-doosan:hover { border-color: #1A1748; background: rgba(26, 23, 72, 0.05); }
-.team-lotte:hover { border-color: #041E42; background: rgba(4, 30, 66, 0.05); }
-.team-samsung:hover { border-color: #074CA1; background: rgba(7, 76, 161, 0.05); }
-.team-hanwha:hover { border-color: #FC4E00; background: rgba(252, 78, 0, 0.05); }
-.team-kia:hover { border-color: #EA0029; background: rgba(234, 0, 41, 0.05); }
-.team-ssg:hover { border-color: #CE0E2D; background: rgba(206, 14, 45, 0.05); }
-.team-nc:hover { border-color: #315288; background: rgba(49, 82, 136, 0.05); }
-.team-kt:hover { border-color: #000000; background: rgba(0, 0, 0, 0.05); }
-.team-kiwoom:hover { border-color: #570514; background: rgba(87, 5, 20, 0.05); }
+.team-card-lg:hover { border-color: #C30452; background: rgba(195, 4, 82, 0.05); }
+.team-card-doosan:hover { border-color: #1A1748; background: rgba(26, 23, 72, 0.05); }
+.team-card-lotte:hover { border-color: #041E42; background: rgba(4, 30, 66, 0.05); }
+.team-card-samsung:hover { border-color: #074CA1; background: rgba(7, 76, 161, 0.05); }
+.team-card-hanwha:hover { border-color: #FC4E00; background: rgba(252, 78, 0, 0.05); }
+.team-card-kia:hover { border-color: #EA0029; background: rgba(234, 0, 41, 0.05); }
+.team-card-ssg:hover { border-color: #CE0E2D; background: rgba(206, 14, 45, 0.05); }
+.team-card-nc:hover { border-color: #315288; background: rgba(49, 82, 136, 0.05); }
+.team-card-kt:hover { border-color: #000000; background: rgba(0, 0, 0, 0.05); }
+.team-card-kiwoom:hover { border-color: #570514; background: rgba(87, 5, 20, 0.05); }
 
 /* ✅ 투표 버튼 */
 .vote-btn {
