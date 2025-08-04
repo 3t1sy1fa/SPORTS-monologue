@@ -5,26 +5,30 @@ description: "KBO 리그 주요 경기 흐름과 전략을 해석하며 전력 �
 ---
 
 {% block content %}
-<section class="post-container">
-  <h1 class="post-title">경기 분석</h1>
-  <p class="post-meta">KBO 리그 주요 경기 흐름과 전략을 해석합니다.</p>
+<section class="analysis-container">
+  <header class="analysis-header">
+    <h1>경기 분석</h1>
+    <p class="subtitle">KBO 리그 주요 경기 흐름과 전략을 해석합니다.</p>
+  </header>
 
-  <div class="post-list">
+  <div class="analysis-list">
     {% for post in collections.posts | reverse %}
       {% if post.data.category == "경기 분석" %}
-        <article class="post-item">
-          <h4>
+        <article class="analysis-item">
+          <h2 class="analysis-title">
             <a href="{{ post.url }}" title="{{ post.data.title }}">
               {{ post.data.title }}
             </a>
-          </h4>
-          <p>
-            <strong>[{{ post.data.category }}]</strong> · 
+          </h2>
+          <div class="analysis-meta">
+            <span class="category">[{{ post.data.category }}]</span>
             <time datetime="{{ post.date | date('yyyy-MM-dd') }}">
               {{ post.date | date }}
             </time>
-          </p>
-          <p>{{ post.data.excerpt }}</p>
+          </div>
+          {% if post.data.excerpt %}
+            <p class="analysis-excerpt">{{ post.data.excerpt }}</p>
+          {% endif %}
         </article>
       {% endif %}
     {% endfor %}
