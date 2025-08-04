@@ -50,6 +50,7 @@
     "teamSlug": "lg",
     "position": "포수",
     "note": "2025 미스터 올스타",
+    "number": "27",
     "popularity": 0
   },
   {
@@ -62,7 +63,7 @@
     "popularity": 0
   },
   {
-    "name": "오스틴 딘",
+    "name": "오스틴",
     "slug": "ad",
     "teamSlug": "lg",
     "position": "내야수",
@@ -75,13 +76,15 @@
     "slug": "baek-sh",
     "teamSlug": "lg",
     "position": "투수",
+    "note": "",
+    "number": "61",
     "popularity": 0
   },
   {
     "name": "최원영",
     "slug": "choi-wy",
     "teamSlug": "lg",
-    "position": "",
+    "position": "외야수",
     "note": "",
     "number": "3",
     "popularity": 0
@@ -91,6 +94,8 @@
     "slug": "ham-dj",
     "teamSlug": "lg",
     "position": "투수",
+    "note": "",
+    "number": "11",
     "popularity": 0
   },
   {
@@ -98,7 +103,7 @@
     "slug": "hong-ck",
     "teamSlug": "lg",
     "position": "외야수",
-    "note": "",
+    "note": "창기 삼촌 우리 기다리고 있어요",
     "number": "51",
     "popularity": 0
   },
@@ -107,6 +112,8 @@
     "slug": "kim-js",
     "teamSlug": "lg",
     "position": "투수",
+    "note": "",
+    "number": "42",
     "popularity": 0
   },
   {
@@ -114,12 +121,17 @@
     "slug": "lee-jk",
     "teamSlug": "lg",
     "position": "투수",
+    "note": "",
+    "number": "32",
     "popularity": 0
   },
   {
     "name": "이영빈",
     "slug": "lee-yb",
     "teamSlug": "lg",
+    "position": "내야수",
+    "note": "",
+    "number": "7",
     "popularity": 0
   },
   {
@@ -136,6 +148,8 @@
     "slug": "moon-sj",
     "teamSlug": "lg",
     "position": "외야수",
+    "note": "",
+    "number": "8",
     "popularity": 0
   },
   {
@@ -143,6 +157,8 @@
     "slug": "park-mg",
     "teamSlug": "lg",
     "position": "투수",
+    "note": "",
+    "number": "39",
     "popularity": 0
   },
   {
@@ -159,12 +175,17 @@
     "slug": "son-jy",
     "teamSlug": "lg",
     "position": "투수",
+    "note": "",
+    "number": "29",
     "popularity": 0
   },
   {
     "name": "손용준",
     "slug": "son-yj",
     "teamSlug": "lg",
+    "position": "내야수",
+    "note": "",
+    "number": "52",
     "popularity": 0
   },
   {
@@ -172,6 +193,8 @@
     "slug": "song-sg",
     "teamSlug": "lg",
     "position": "투수",
+    "note": "",
+    "number": "13",
     "popularity": 0
   },
   {
@@ -179,6 +202,8 @@
     "slug": "yi-jy",
     "teamSlug": "lg",
     "position": "투수",
+    "note": "",
+    "number": "31",
     "popularity": 0
   },
   {
@@ -186,6 +211,560 @@
     "slug": "you-yc",
     "teamSlug": "lg",
     "position": "투수",
+    "note": "",
+    "number": "54",
+    "popularity": 0
+  },
+  {
+    "name": "문현빈",
+    "slug": "moon-hb-hw",
+    "teamSlug": "hanwha",
+    "position": "내야수",
+    "note": "꿈돌이 주루 꿈에 나옴",
+    "number": "51",
+    "popularity": 0
+  },
+  {
+    "name": "송성문",
+    "slug": "song-sm",
+    "teamSlug": "kiwoom",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "박민우",
+    "slug": "park-mw",
+    "teamSlug": "nc",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "박건우",
+    "slug": "park-gw-nc",
+    "teamSlug": "nc",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "전준우",
+    "slug": "jeon-jw",
+    "teamSlug": "lotte",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "오지환",
+    "slug": "oh-jw",
+    "teamSlug": "lg",
+    "position": "내야수",
+    "note": "거포 오지환 홈런을 날리다",
+    "number": "10",
+    "popularity": 0
+  },
+  {
+    "name": "강민호",
+    "slug": "kang-mh",
+    "teamSlug": "samsung",
+    "position": "포수",
+    "popularity": 0
+  },
+  {
+    "name": "안현민",
+    "slug": "an-hm",
+    "teamSlug": "kt",
+    "popularity": 0
+  },
+  {
+    "name": "이주형",
+    "slug": "lee-jh-kw",
+    "teamSlug": "kiwoom",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "최정",
+    "slug": "choi-j",
+    "teamSlug": "ssg",
+    "popularity": 0
+  },
+  {
+    "name": "디아즈",
+    "slug": "diaz",
+    "teamSlug": "samsung",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "김도영",
+    "slug": "kim-dy",
+    "teamSlug": "kia",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "원태인",
+    "slug": "won-ti",
+    "teamSlug": "samsung",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "구자욱",
+    "slug": "koo-jw",
+    "teamSlug": "samsung",
+    "position": "외야수",
+    "note": "",
+    "number": "5",
+    "popularity": 0
+  },
+  {
+    "name": "이재현",
+    "slug": "lee-jh-ss",
+    "teamSlug": "samsung",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "류지혁",
+    "slug": "ryu-jh",
+    "teamSlug": "samsung",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "김영웅",
+    "slug": "kim-yw-ss",
+    "teamSlug": "samsung",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "박병호",
+    "slug": "park-bh",
+    "teamSlug": "samsung",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "김지찬",
+    "slug": "kim-jc",
+    "teamSlug": "samsung",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "정우주",
+    "slug": "jung-wj",
+    "teamSlug": "hanwha",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "김서현",
+    "slug": "Kim-sh",
+    "teamSlug": "hanwha",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "심우준",
+    "slug": "shim-wj",
+    "teamSlug": "hanwha",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "이도윤",
+    "slug": "lee-dy",
+    "teamSlug": "hanwha",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "조동욱",
+    "slug": "jo-dw",
+    "teamSlug": "hanwha",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "노시환",
+    "slug": "",
+    "teamSlug": "hanwha",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "채은성",
+    "slug": "",
+    "teamSlug": "hanwha",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "손아섭",
+    "slug": "",
+    "teamSlug": "hanwha",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "박세웅",
+    "slug": "",
+    "teamSlug": "lotte",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "김원중",
+    "slug": "",
+    "teamSlug": "lotte",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "유강남",
+    "slug": "",
+    "teamSlug": "lotte",
+    "position": "포수",
+    "popularity": 0
+  },
+  {
+    "name": "정보근",
+    "slug": "",
+    "teamSlug": "lotte",
+    "position": "포수",
+    "popularity": 0
+  },
+  {
+    "name": "한태양",
+    "slug": "",
+    "teamSlug": "lotte",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "전민재",
+    "slug": "",
+    "teamSlug": "lotte",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "정훈",
+    "slug": "",
+    "teamSlug": "lotte",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "최항",
+    "slug": "",
+    "teamSlug": "lotte",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "나승엽",
+    "slug": "",
+    "teamSlug": "lotte",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "황성빈",
+    "slug": "",
+    "teamSlug": "lotte",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "윤동희",
+    "slug": "",
+    "teamSlug": "lotte",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "김건희",
+    "slug": "",
+    "teamSlug": "kiwoom",
+    "position": "포수",
+    "popularity": 0
+  },
+  {
+    "name": "김웅빈",
+    "slug": "",
+    "teamSlug": "kiwoom",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "박수종",
+    "slug": "",
+    "teamSlug": "kiwoom",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "이용규",
+    "slug": "",
+    "teamSlug": "kiwoom",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "임지열",
+    "slug": "",
+    "teamSlug": "kiwoom",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "배재환",
+    "slug": "",
+    "teamSlug": "nc",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "김녹원",
+    "slug": "",
+    "teamSlug": "nc",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "김휘집",
+    "slug": "",
+    "teamSlug": "nc",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "데이비슨",
+    "slug": "",
+    "teamSlug": "nc",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "권희동",
+    "slug": "",
+    "teamSlug": "nc",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "곽도규",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "투수",
+    "note": "",
+    "number": "0",
+    "popularity": 0
+  },
+  {
+    "name": "윤영철",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "양현종",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "네일",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "성영탁",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "김태군",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "포수",
+    "popularity": 0
+  },
+  {
+    "name": "박찬호",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "김선빈",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "위즈덤",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "오선우",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "서건창",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "최형우",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "김호령",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "나성범",
+    "slug": "",
+    "teamSlug": "kia",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "박치국",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "최승용",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "곽빈",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "이영하",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "콜 어빈",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "최원준",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "김택연",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "투수",
+    "popularity": 0
+  },
+  {
+    "name": "양의지",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "포수",
+    "popularity": 0
+  },
+  {
+    "name": "이유찬",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "박준순",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "내야수",
+    "popularity": 0
+  },
+  {
+    "name": "케이브",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "정수빈",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "김재환",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "김인태",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "조수행",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "외야수",
+    "popularity": 0
+  },
+  {
+    "name": "김민석",
+    "slug": "",
+    "teamSlug": "doosan",
+    "position": "외야수",
     "popularity": 0
   }
 ]
