@@ -1,4 +1,4 @@
-<!-- ✅ head 영역 -->
+<!-- ✅ head -->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -6,11 +6,22 @@
   <title>Sports Monologue</title>
   <link rel="stylesheet" href="/style/main.css" />
   <link rel="icon" href="/favicon.png" type="image/png">
-  <link rel="shortcut icon" href="/favicon.png" type="image/png">
 </head>
 
 <body>
-  <!-- ✅ 데스크탑 전용 헤더 -->
+  <!-- ✅ 공통 메뉴 항목 (include로 분리 권장) -->
+  {% set menuItems = [
+    { "url": "/about", "label": "소개" },
+    { "url": "/contact", "label": "문의" },
+    { "url": "/players", "label": "선수 분석" },
+    { "url": "/games", "label": "경기 분석" },
+    { "url": "/teams", "label": "구단 분석" },
+    { "url": "/vision", "label": "스포츠 경영" },
+    { "url": "/log", "label": "log" },
+    { "url": "/twins-tar", "label": "twins-tar" }
+  ] %}
+
+  <!-- ✅ 데스크탑 헤더 -->
   <header class="desktop-header">
     <div class="grid-container">
       <div class="left-top">
@@ -23,38 +34,38 @@
         <div class="divider-line"></div>
         <nav>
           <ul class="nav-menu">
-            <li><a href="/about">소개</a></li>
-            <li><a href="/contact">문의</a></li>
-            <li><a href="/players">선수 분석</a></li>
-            <li><a href="/games">경기 분석</a></li>
-            <li><a href="/teams">구단 분석</a></li>
-            <li><a href="/vision">스포츠 경영</a></li>
-            <li><a href="/log">log</a></li>
-            <li><a href="/twins-tar">twins-tar</a></li>
+            {% for item in menuItems %}
+              <li>
+                <a href="{{ item.url }}" 
+                   class="{% if page.url == item.url %}active{% endif %}">
+                   {{ item.label }}
+                </a>
+              </li>
+            {% endfor %}
           </ul>
         </nav>
       </div>
     </div>
   </header>
 
-  <!-- ✅ 모바일 전용 헤더 -->
+  <!-- ✅ 모바일 헤더 -->
   <header class="mobile-header">
     <div class="mobile-top">
       <a href="/" class="logo">SPORTS / M</a>
-      <button id="mobile-menu-btn" class="hamburger">
+      <button id="mobile-menu-btn" class="hamburger" aria-label="모바일 메뉴 열기">
         <span></span><span></span><span></span>
       </button>
     </div>
     <nav id="mobile-menu" class="mobile-menu">
       <ul>
-        <li><a href="/about">소개</a></li>
-        <li><a href="/contact">문의</a></li>
-        <li><a href="/players">선수 분석</a></li>
-        <li><a href="/games">경기 분석</a></li>
-        <li><a href="/teams">구단 분석</a></li>
-        <li><a href="/vision">스포츠 경영</a></li>
-        <li><a href="/log">log</a></li>
-        <li><a href="/twins-tar">twins-tar</a></li>
+        {% for item in menuItems %}
+          <li>
+            <a href="{{ item.url }}" 
+               class="{% if page.url == item.url %}active{% endif %}">
+               {{ item.label }}
+            </a>
+          </li>
+        {% endfor %}
       </ul>
     </nav>
   </header>
