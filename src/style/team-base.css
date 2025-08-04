@@ -110,10 +110,17 @@
   margin-bottom: 3px;
 }
 
-.match-logos img.team-logo {
+.match-logos img {
   width: 18px;
   height: 18px;
 }
+
+
+.team-logo img{
+  width: 18px;
+  height: 18px;
+}
+
 
 .no-game {
   font-size: 0.75rem;
