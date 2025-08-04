@@ -766,5 +766,12 @@
     "teamSlug": "doosan",
     "position": "외야수",
     "popularity": 0
+  },
+  {
+    "name": "천성호",
+    "slug": "cheon-sh",
+    "teamSlug": "lg",
+    "position": "내야수",
+    "popularity": 0
   }
 ]
