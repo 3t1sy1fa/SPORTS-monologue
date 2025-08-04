@@ -1,6 +1,3 @@
-/* ===============================
-   🔠 기본 설정 및 폰트
-================================== */
 body {
   margin: 0;
   padding: 0;
@@ -19,9 +16,6 @@ a { text-decoration: none; color: inherit; }
 @font-face { font-family: 'slog2'; src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2507-2@1.0/YeongwolTTF-Regular.woff2') format('woff2'); }
 @font-face { font-family: 'spomono'; src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2'); }
 
-/* ===============================
-   🏠 헤더 / 네비게이션
-================================== */
 .main-header {
   max-width: 100%;
   display: flex;
@@ -58,7 +52,6 @@ a { text-decoration: none; color: inherit; }
 .desktop-header { width: 100%; display: flex; }
 .mobile-header { display: none; }
 
-/* 모바일 헤더 */
 @media (max-width: 768px) {
   .desktop-header { display: none; }
   .mobile-header {
@@ -97,9 +90,6 @@ a { text-decoration: none; color: inherit; }
   .mobile-menu.active { display: block; }
 }
 
-/* ===============================
-   ✍️ 타이핑 슬로건
-================================== */
 .typing-slogan {
   font-size: 25px;
   font-weight: 500;
@@ -115,9 +105,8 @@ a { text-decoration: none; color: inherit; }
 #typing-text { display: inline-block; }
 @keyframes blink-caret { 50% { border-color: transparent; } }
 
-/* ===============================
-   📄 글 읽기 / 포스트
-================================== */
+/* ---------------------- 글 읽기 ---------------------- */
+
 .post-container { max-width: 100%; margin: 0; padding: 10px 20%; align-items: center; }
 .post-title { font-size: 2.1rem; font-weight: 700; margin-bottom: 10px; margin-top: 2rem;}
 .post-page { max-width: 100%; margin: 0; padding: 10px 30px; background: #fdfdfd; border: 1px solid #ddd; border-radius: 8px; }
@@ -137,16 +126,19 @@ a { text-decoration: none; color: inherit; }
   .post-body { line-height: 1.4; font-size: 1rem; font-weight: 100; }
 }
 
-/* ===============================
-   📰 스포츠 헤더 / 컨테이너
-================================== */
+
+
 .sports-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
 }
+
+
+
 .sports-container { max-width: 100%; margin: 0; padding: 10px 20%; align-items: center; }
+
 .topic-filter select {
   font-family: "mingijuk";
   padding: 5px;
@@ -154,35 +146,29 @@ a { text-decoration: none; color: inherit; }
   background-color: #e3e9ee;
   color: #535977;
 }
+
 @media (max-width: 768px) {
   .topic-filter select {
+    font-family: "mingijuk";
+    padding: 5px;
     font-size: 0.8rem;
+    background-color: #e3e9ee;
+    color: #535977;
   }
 }
 
-/* ===============================
-   🏠 메인 컨테이너
-================================== */
+
+/* ---------------------- 메인 컨테이너 ---------------------- */
 .main-container { max-width: 100%; margin: 0 auto; padding: 20px 20px; }
+
 @media (max-width: 480px) {
-  .main-container { padding: 20px 4px; }
+  .main-container { max-width: 100%; margin: 0 auto; padding: 20px 4px; }
 }
 
-/* ===============================
-   🦶 푸터
-================================== */
-.site-footer {
-  text-align: center;
-  font-size: 0.85rem;
-  color: #777;
-  padding: 32px 16px;
-  border-top: 1px solid #ccc;
-  margin-top: 80px;
-}
+/* ---------------------- 푸터 ---------------------- */
+.site-footer { text-align: center; font-size: 0.85rem; color: #777; padding: 32px 16px; border-top: 1px solid #ccc; margin-top: 80px; }
 
-/* ===============================
-   🏷️ 상단 타이틀
-================================== */
+/* ---------------------- 상단 타이틀 ---------------------- */
 .grid-container {
   width: 100%;
   display: grid;
@@ -192,8 +178,17 @@ a { text-decoration: none; color: inherit; }
   max-width: 1200px;
   margin: 0 auto;
 }
-.left-top { grid-area: left; border-right: 1.5px solid black; align-items: center; }
-.right-top { grid-area: right; }
+
+.left-top {
+  grid-area: left;
+  border-right: 1.5px solid black;
+  align-items: center;
+}
+
+.right-top {
+  grid-area: right;
+}
+
 .left-top, .right-top {
   padding: 24px;
   border-bottom: 1.5px solid black;
@@ -201,16 +196,18 @@ a { text-decoration: none; color: inherit; }
   flex-direction: column;
   justify-content: center;
 }
-.sports { font-size: 3rem; font-weight: 700; margin: -22px; letter-spacing: -6px; }
-.monologue { font-size: 2rem; color: #666; margin: -13px; }
+
+
+.sports { font-family: 'spomono', sans-serif; font-size: 3rem; font-weight: 700; margin: -22px; letter-spacing: -6px; }
+.monologue { font-family: 'spomono', sans-serif; font-size: 2rem; color: #666; margin: -13px; }
 .since { font-size: 0.9rem; color: #666; align-self: flex-start; }
-.log { font-size: 2rem; line-height: 1; align-self: flex-start;}
+.log { font-size: 2rem; font-family: 'spomono', sans-serif; line-height: 1; align-self: flex-start;}
+
 .divider-line { width: 100%; height: 1.4px; background-color: black; margin-top: 14px; }
 
-/* ===============================
-   📋 사이드바
-================================== */
+/* ---------------------- 사이드바 ---------------------- */
 .with-sidebar { display: flex; }
+
 .sidebar {
   width: 260px;
   background: #f9f9f9;
@@ -221,11 +218,13 @@ a { text-decoration: none; color: inherit; }
   height: 100vh;
   overflow-y: auto;
 }
+
 .content-area { flex: 1; padding: 20px; }
 
-/* 최신 경기 결과 */
+/* ✅ 최신 경기 결과 */
 .latest-games-section,
 .teams-board-section { margin-bottom: 24px; }
+
 .latest-games-section h3,
 .teams-board-section h3 {
   font-size: 1.2rem;
@@ -233,6 +232,7 @@ a { text-decoration: none; color: inherit; }
   padding-bottom: 6px;
   border-bottom: 2px solid #000;
 }
+
 .latest-games { list-style: none; padding: 0; margin: 0; }
 .latest-games li {
   display: flex;
@@ -241,12 +241,13 @@ a { text-decoration: none; color: inherit; }
   font-size: 0.95rem;
   border-bottom: 1px solid #eee;
 }
+
 .latest-games .match { flex: 2; }
-.latest-games .match img { width: 15px; height: 15px; }
+.latest-games .match img { width: 15px; height: 15px; object-fit: contain; }
 .latest-games .score { flex: 1; text-align: center; font-weight: bold; }
 .latest-games .date { flex: 0.8; text-align: right; color: #888; }
 
-/* 구단 보드 */
+/* ✅ 구단 보드 */
 .teams-board { display: flex; flex-direction: column; gap: 10px; }
 .team-card {
   display: flex;
@@ -258,19 +259,20 @@ a { text-decoration: none; color: inherit; }
   transition: background 0.2s;
 }
 .team-card:hover { background: #f0f0f0; }
-.team-card img { width: 30px; height: 30px; margin-right: 10px; }
+.team-card img { width: 30px; height: 30px; margin-right: 10px; transition: transform 0.2s ease; object-fit: contain; }
+.team-card img:hover { transform: scale(1.1); }
 .team-info { display: flex; flex-direction: column; font-size: 0.85rem; }
 
-/* 승/패 색상 */
+/* ✅ 승/패 색상 */
 .with-sidebar .last-game.승 { color: #008000; font-weight: bold; }
 .with-sidebar .last-game.패 { color: #ff0000; font-weight: bold; }
 .with-sidebar .last-game.휴식 { color: #919191; }
 
-.sidebar-toggle { display: none; }
+.sidebar-toggle {
+  display: none;
+}
 
-/* ===============================
-   📱 반응형
-================================== */
+/* ---------------------- 반응형 ---------------------- */
 @media (max-width: 480px) {
   body { font-size: 14px; }
   .with-sidebar { flex-direction: column; }
@@ -279,7 +281,27 @@ a { text-decoration: none; color: inherit; }
   .sports, .monologue { font-size: 2rem; }
   .post-title { font-size: 1.8rem; }
   .post-body { font-size: 1rem; }
+  post-page { margin: 0; }
 }
+
+@media (max-width: 480px) {
+  .typing-slogan {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'spomono', sans-serif;
+  white-space: nowrap;
+  border-right: 2px solid black;
+  overflow: hidden;
+  width: fit-content;
+  animation: blink-caret 0.75s step-end infinite;
+  margin: 24px 0;
+  min-height: 2em;
+  max-width: 468px;
+}
+#typing-text { display: inline-block; }
+@keyframes blink-caret { 50% { border-color: transparent; } }
+}
+
 @media (min-width: 481px) and (max-width: 768px) {
   body { font-size: 15px; }
   .with-sidebar { flex-direction: column; }
@@ -290,15 +312,16 @@ a { text-decoration: none; color: inherit; }
   .post-title { font-size: 2rem; }
   .post-body { font-size: 1.2rem; }
 }
+
 @media (min-width: 769px) {
   .with-sidebar { flex-direction: row; }
-  .sidebar { width: 220px; height: 100vh; }
+  .sidebar { width: 220px; height: 100vh; border-right: 1px solid #ddd; }
   .content-area { padding: 24px; }
   .sports { font-size: 4rem; }
   .monologue { font-size: 3rem; }
 }
 
-/* 모바일 사이드바 토글 */
+/* ---------------------- 사이드바 토글 (모바일 개선) ---------------------- */
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
@@ -306,39 +329,57 @@ a { text-decoration: none; color: inherit; }
     left: 0;
     width: 70%;
     height: 100%;
+    background: #fff;
+    border-right: 1px solid #ddd;
+    padding: 16px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     z-index: 1000;
+    display: block !important;
   }
   .sidebar.active { transform: translateX(0); }
+
+  .content-area {
+    position: relative;
+    transform: none !important;
+    padding: 16px;
+  }
+
   .sidebar-toggle {
     position: fixed;
     right: 20px;
     bottom: 20px;
+    width: auto;
     background: #000;
     color: #fff;
     border: none;
     padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
     border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     z-index: 1500;
     display: block;
   }
 }
 
-/* ===============================
-   📝 Log / Contact
-================================== */
-.log-container { max-width: 100%; margin: 0 auto; padding: 10px 20%; }
+
+
+/* ---------------------- log ---------------------- */
+.log-container { max-width: 100%; margin: 0 auto; padding: 10px 20%; align-self: flex-start; }
 .log-container h1 { font-size: 2.1rem; margin-bottom: 12px; }
 .log-desc { font-size: 16px; color: #666; margin-bottom: 20px; }
-.log-post { border-bottom: 1px solid #ddd; padding: 16px 0 10px; }
-.log-post-title { font-size: 1.1rem; }
+.log-post { border-bottom: 1px solid #ddd; border-width: auto; padding: 16px 0 10px; }
+.log-post-title { font-size: 1.1rem; margin: auto; }
 .log-post-date { font-size: 14px; color: #999; }
 .log-post-desc { margin-top: 6px; color: #444; }
 .log-post-category { font-size: 13px; color: #007acc; }
 .log-nav { display: flex; gap: 10px; margin-bottom: 1rem; }
 .log-nav button.active { font-weight: bold; border-bottom: 2px solid #000; }
 
+/* ---------------------- Contact ---------------------- */
 .contact-container { max-width: 100%; margin: 0 auto; padding: 10px 20%; }
 .contact-container h1 { font-size: 2.1rem; margin-bottom: 10px; }
 .contact-container p { margin-bottom: 20px; color: #555; }
@@ -360,19 +401,10 @@ a { text-decoration: none; color: inherit; }
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  align-self: flex-start;
 }
 
-/* ===============================
-   💻 노트북 화면 최적화
-================================== */
-@media (min-width: 769px) and (max-width: 1366px) {
-  .post-container,
-  .sports-container,
-  .log-container,
-  .contact-container { padding: 10px 10%; }
-  .grid-container { grid-template-columns: 1fr 1.5fr; max-width: 1000px; }
-  .sports { font-size: 3rem; }
-  .monologue { font-size: 2.2rem; }
-  .sidebar { width: 200px; }
+
+@media (max-width: 480px) {
+.log-container { max-width: 480px; margin: 0; padding: 10px 4px; align-self: flex-start; }
 }
-.main-container { max-width: 1200px; margin: 0 auto; padding: 20px 5%; }
