@@ -282,7 +282,7 @@
 .schedule-day .match {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 9px;
   font-size: 0.85rem;
 }
 
