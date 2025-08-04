@@ -1195,5 +1195,26 @@
     "teamSlug": "",
     "playerSlug": "kim-yw",
     "timestamp": "2025-08-03T12:09:56.109Z"
+  },
+  {
+    "voterId": "1754273597873",
+    "targetType": "team",
+    "teamSlug": "samsung",
+    "playerSlug": "",
+    "timestamp": "2025-08-04T02:13:17.873Z"
+  },
+  {
+    "voterId": "1754273598906",
+    "targetType": "team",
+    "teamSlug": "kt",
+    "playerSlug": "",
+    "timestamp": "2025-08-04T02:13:18.906Z"
+  },
+  {
+    "voterId": "1754273599541",
+    "targetType": "team",
+    "teamSlug": "nc",
+    "playerSlug": "",
+    "timestamp": "2025-08-04T02:13:19.541Z"
   }
 ]
