@@ -79,6 +79,10 @@
   font-size: 1rem;
 }
 
+.analysis-card p {
+  color: #777;
+}
+
 .team-right {
   background: #fff;
   border: 1px solid #ddd;
