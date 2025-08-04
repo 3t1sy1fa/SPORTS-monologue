@@ -44,9 +44,8 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
               <li>
                 <img src="/images/s{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
                 {{ game.home }} vs 
-                {{ game.away }}
                 <img src="/images/s{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
-            
+                {{ game.away }}
                 <span class="status">
                   {% if game.winner == "취소" %}
                     취소

@@ -103,6 +103,10 @@
   margin-bottom: 5px;
 }
 
+.calendar-day ul {
+  list-style: none;   /* 점(숫자, 마커) 제거 */
+}
+
 .match-logos {
   display: flex;
   justify-content: center;
