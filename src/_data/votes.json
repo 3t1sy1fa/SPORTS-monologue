@@ -1216,5 +1216,19 @@
     "teamSlug": "nc",
     "playerSlug": "",
     "timestamp": "2025-08-04T02:13:19.541Z"
+  },
+  {
+    "voterId": "1754280920788",
+    "targetType": "team",
+    "teamSlug": "doosan",
+    "playerSlug": "",
+    "timestamp": "2025-08-04T04:15:20.788Z"
+  },
+  {
+    "voterId": "1754281847440",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "park-hm",
+    "timestamp": "2025-08-04T04:30:47.440Z"
   }
 ]
