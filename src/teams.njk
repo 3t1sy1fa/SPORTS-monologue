@@ -42,9 +42,9 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
           <ul>
             {% for game in day.games %}
               <li>
-                <img src="/images/{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
+                <img src="/images/s{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
                 {{ game.home }} vs 
-                <img src="/images/{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
+                <img src="/images/s{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
                 {{ game.away }}
                 <span class="status">
                   {% if game.winner == "취소" %}
