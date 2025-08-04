@@ -82,18 +82,15 @@
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
 }
 
-/* 결과 색상 */
 .calendar-table td.win {
-  background: #e7ffe7;
-  font-weight: bold;
-}
+  background: #d4f4d2;
+} /* 초록 */
 .calendar-table td.lose {
-  background: #ffeaea;
-  font-weight: bold;
-}
+  background: #f8d7da;
+} /* 빨강 */
 .calendar-table td.scheduled {
-  background: #fff7d6;
-}
+  background: #e9ecef;
+} /* 회색 */
 
 /* ---------------- 선수 보드 ---------------- */
 .players-board {
