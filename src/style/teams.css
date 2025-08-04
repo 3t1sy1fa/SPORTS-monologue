@@ -1,65 +1,61 @@
+/* ===============================
+   📊 팀별 분석 보고서 레이아웃
+================================== */
 .team-layout {
   display: flex;
   gap: 2rem;
   padding: 2rem;
+  font-family: 'Mingijuk', 'SUIT', sans-serif;
 }
 
 /* 좌측 패널 */
 .team-left {
   flex: 1;
-  background-color: var(--team-subcolor);
-  border-radius: 8px;
-  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--team-subcolor), var(--team-maincolor));
+  border-radius: 10px;
+  padding: 1.8rem;
   color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  border: 2px solid var(--team-maincolor);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  border: none;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 }
 
-/* 최근 경기 결과 */
+/* 최근 경기 결과 카드 */
 .game-results {
-  background: rgba(255, 255, 255, 0.08);
-  padding: 1rem;
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 1.2rem;
+  border-radius: 8px;
   margin-bottom: 1.5rem;
-  border-left: 4px solid var(--team-maincolor);
+  border-left: 5px solid var(--team-maincolor);
+  backdrop-filter: blur(4px);
 }
 
 .game-results .game-date {
   font-size: 0.9rem;
-  color: #ddd;
-  margin-bottom: 0.5rem;
+  opacity: 0.9;
+  margin-bottom: 0.4rem;
 }
 
 .game-results .game-summary {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   margin-bottom: 0.8rem;
 }
 
 .game-results strong.score {
-  font-size: 1.4rem;
-  color: var(--team-maincolor);
-}
-
-/* 우측 패널 */
-.team-right {
-  flex: 2;
-  padding: 1.5rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  font-size: 1.5rem;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* 공식 홈페이지 버튼 */
 .team-btn {
   display: inline-block;
   margin-top: 1.2rem;
-  padding: 0.65rem 1.4rem;
-  background-color: var(--team-maincolor);
-  color: var(--team-setting);
+  padding: 0.7rem 1.5rem;
+  background-color: #fff;
+  color: var(--team-maincolor);
   text-decoration: none;
   border-radius: 6px;
   font-weight: 600;
@@ -70,23 +66,27 @@
 
 .team-btn:hover {
   background-color: var(--team-subcolor);
+  color: #fff;
   transform: translateY(-2px);
 }
 
-/* 분석글 리스트 */
+/* 분석글 리스트 카드 */
 .team-post-list-wrapper {
-  margin-top: 1rem;
-  padding: 1rem;
+  margin-top: 1.5rem;
+  padding: 1.2rem;
   background-color: #fff;
-  border: 1px solid #afafafad;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
 .team-post-list-wrapper h3 { 
   margin-bottom: 1rem; 
   color: var(--team-maincolor);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--team-maincolor);
+  padding-bottom: 0.4rem;
 }
 
 .team-post-list-wrapper ul { 
@@ -96,10 +96,18 @@
 }
 
 .team-post-list-wrapper li { 
-  margin-bottom: 0.6rem; 
+  margin-bottom: 0.8rem; 
   font-size: 0.95rem; 
   display: flex;
   justify-content: space-between;
+  padding: 0.6rem;
+  background: #fafafa;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.team-post-list-wrapper li:hover {
+  background: #f0f0f0;
 }
 
 .team-post-list-wrapper a { 
@@ -115,8 +123,20 @@
 
 .team-post-list-wrapper .date { 
   font-size: 0.8rem; 
-  color: #888; 
+  color: #999; 
   margin-left: 0.5rem; 
+}
+
+/* 우측 패널 (본문) */
+.team-right {
+  flex: 2;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  line-height: 1.6;
+  font-size: 1.05rem;
 }
 
 /* 반응형 */
@@ -127,6 +147,6 @@
   }
   .team-left, .team-right { 
     width: 100%; 
-    padding: 1rem; 
+    padding: 1.2rem; 
   }
 }
