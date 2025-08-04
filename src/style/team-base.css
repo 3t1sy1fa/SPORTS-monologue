@@ -105,7 +105,8 @@
 
 .calendar-day ul {
   list-style: none;   /* 점(숫자, 마커) 제거 */
-  justify-content: center;
+  padding-left: 0;    /* 기본 들여쓰기 제거 */
+  margin-left: 0;     /* 왼쪽 여백 제거 */
 }
 
 .match-logos {
