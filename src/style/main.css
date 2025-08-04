@@ -408,3 +408,90 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 480px) {
 .log-container { max-width: 480px; margin: 0; padding: 10px 4px; align-self: flex-start; }
 }
+
+
+/* ===============================
+   경기 분석 페이지 스타일
+================================== */
+.analysis-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+}
+
+.analysis-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.analysis-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.analysis-header .subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+.analysis-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.analysis-item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.analysis-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.analysis-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.analysis-title a {
+  text-decoration: none;
+  color: #222;
+}
+
+.analysis-title a:hover {
+  color: #C30452; /* LG Twins 포인트 컬러 */
+}
+
+.analysis-meta {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.analysis-meta .category {
+  color: #007acc;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.analysis-excerpt {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .analysis-container {
+    padding: 10px;
+  }
+}
