@@ -368,45 +368,168 @@ a { text-decoration: none; color: inherit; }
 
 
 /* ---------------------- log ---------------------- */
-.log-container { max-width: 100%; margin: 0 auto; padding: 10px 20%; align-self: flex-start; }
-.log-container h1 { font-size: 2.1rem; margin-bottom: 12px; }
-.log-desc { font-size: 16px; color: #666; margin-bottom: 20px; }
-.log-post { border-bottom: 1px solid #ddd; border-width: auto; padding: 16px 0 10px; }
-.log-post-title { font-size: 1.1rem; margin: auto; }
-.log-post-date { font-size: 14px; color: #999; }
-.log-post-desc { margin-top: 6px; color: #444; }
-.log-post-category { font-size: 13px; color: #007acc; }
-.log-nav { display: flex; gap: 10px; margin-bottom: 1rem; }
-.log-nav button.active { font-weight: bold; border-bottom: 2px solid #000; }
-
-/* ---------------------- Contact ---------------------- */
-.contact-container { max-width: 100%; margin: 0 auto; padding: 10px 20%; }
-.contact-container h1 { font-size: 2.1rem; margin-bottom: 10px; }
-.contact-container p { margin-bottom: 20px; color: #555; }
-.contact-container form { display: flex; flex-direction: column; gap: 5px; }
-.contact-container input,
-.contact-container textarea {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.contact-container button {
-  width: 120px;
-  padding: 12px;
-  font-size: 16px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.log-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px 20%;
   align-self: flex-start;
 }
 
+.log-container h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: center;
+}
 
+.log-desc {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.log-post {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.log-post:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.log-post-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.log-post-date {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.log-post-desc {
+  margin-top: 6px;
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.log-post-category {
+  font-size: 13px;
+  color: #007acc;
+  background: #eef6fb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.log-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.log-nav button.active {
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+}
+
+/* 반응형 */
 @media (max-width: 480px) {
-.log-container { max-width: 480px; margin: 0; padding: 10px 4px; align-self: flex-start; }
+  .log-container {
+    padding: 10px 4px;
+  }
+
+  .log-post {
+    padding: 12px;
+  }
+
+  .log-post-title {
+    font-size: 1rem;
+  }
+}
+.contact-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.contact-container h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.contact-desc {
+  text-align: center;
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.contact-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.contact-form label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #007acc;
+  outline: none;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #333;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+  .contact-container {
+    margin: 20px;
+    padding: 15px;
+  }
 }
 
 

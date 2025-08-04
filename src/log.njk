@@ -6,22 +6,29 @@ description: "Sports Monologue 사이트 제작 과정을 담은 페이지입니
 
 {% block content %}
 <main class="log-container">
-  <h1>log</h1>
-  <p>사이트 운영에 대한 기록을 남깁니다!</p>
+  <header class="log-header">
+    <h1>Log</h1>
+    <p class="log-subtitle">사이트 운영과 제작 과정을 기록합니다.</p>
+  </header>
 
   <!-- log 포스트 목록 -->
-  {% for post in collections.log | reverse %}
-    <article class="log-post">
-      <a href="{{ post.url }}" title="{{ post.data.title }}">
-        <h2 class="log-post-title">{{ post.data.title }}</h2>
-      </a>
-      <time class="log-post-date" datetime="{{ post.date | date('yyyy-MM-dd') }}">
-        {{ post.date | date("yyyy.MM.dd") }}
-      </time>
-      <p class="log-post-desc">
-        {{ post.data.description or "이 포스트는 사이트 운영 관련 기록을 다룹니다." }}
-      </p>
-    </article>
-  {% endfor %}
+  <section class="log-list">
+    {% for post in collections.log | reverse %}
+      <article class="log-item">
+        <a href="{{ post.url }}" title="{{ post.data.title }}" class="log-title-link">
+          <h2 class="log-title">{{ post.data.title }}</h2>
+        </a>
+        <div class="log-meta">
+          <time datetime="{{ post.date | date('yyyy-MM-dd') }}">
+            {{ post.date | date("yyyy.MM.dd") }}
+          </time>
+          <span class="log-category">#{{ post.data.category }}</span>
+        </div>
+        <p class="log-desc">
+          {{ post.data.description or "이 포스트는 사이트 운영 관련 기록을 다룹니다." }}
+        </p>
+      </article>
+    {% endfor %}
+  </section>
 </main>
 {% endblock %}
