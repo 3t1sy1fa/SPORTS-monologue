@@ -32,7 +32,6 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  row-gap: 10px;
 }
 
 .schedule-day {
@@ -47,7 +46,7 @@
 .schedule-day .match {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   font-size: 0.85rem;
 }
 
