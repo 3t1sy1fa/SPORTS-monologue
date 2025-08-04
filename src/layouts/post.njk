@@ -2,20 +2,20 @@
 
 {% block head %}
   <!-- ✅ SEO 메타태그 -->
-  <meta name="description" content="{{ description or (title ~ ' | ' ~ category ~ ' 분석 및 리뷰') }}">
-  
+  <meta name="description" content="{{ description | default(title ~ ' 분석 및 리뷰') }}">
+
   <!-- ✅ 오픈 그래프 -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="{{ title }}">
-  <meta property="og:description" content="{{ description or (title ~ ' | ' ~ category ~ ' 분석 및 리뷰') }}">
-  <meta property="og:image" content="{{ image or '/images/og-image.jpg' }}">
+  <meta property="og:description" content="{{ description | default(title ~ ' 분석 및 리뷰') }}">
+  <meta property="og:image" content="https://3t1sy1fa.com{{ image | default('/images/og-image.jpg') }}">
   <meta property="og:url" content="https://3t1sy1fa.com{{ page.url }}">
-  
+
   <!-- ✅ 트위터 카드 -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title }}">
-  <meta name="twitter:description" content="{{ description or (title ~ ' | ' ~ category ~ ' 분석 및 리뷰') }}">
-  <meta name="twitter:image" content="{{ image or '/images/og-image.jpg' }}">
+  <meta name="twitter:description" content="{{ description | default(title ~ ' 분석 및 리뷰') }}">
+  <meta name="twitter:image" content="https://3t1sy1fa.com{{ image | default('/images/og-image.jpg') }}">
 {% endblock %}
 
 {% block content %}
@@ -24,8 +24,8 @@
   <header class="post-header">
     <h1 class="post-title">{{ title }}</h1>
     <div class="post-meta">
-      <span class="post-category">[{{ category }}]</span>
-      <span class="post-date">| {{ date | date }}</span>
+      <span class="post-category">[{{ category | default('카테고리 미정') }}]</span>
+      <span class="post-date">| {{ date | date("yyyy.MM.dd") }}</span>
     </div>
   </header>
 
