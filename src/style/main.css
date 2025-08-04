@@ -367,75 +367,118 @@ a { text-decoration: none; color: inherit; }
 
 /* ---------------------- log ---------------------- */
 .log-container {
-  max-width: 800px;
-  margin: 40px auto;
+  max-width: 900px;
+  margin: 50px auto;
   padding: 20px;
   background: #fff;
+  position: relative;
+}
+
+/* 타임라인 라인 */
+.log-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 3px;
+  height: 100%;
+  background: #e4e4e4;
+}
+
+/* 헤더 */
+.log-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.log-subtitle {
+  font-size: 1rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* 로그 아이템 */
+.log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.log-item {
+  position: relative;
+  padding: 20px 20px 20px 60px;
   border: 1px solid #ddd;
   border-radius: 8px;
+  background: #fff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.log-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.log-container h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  text-align: center;
+/* 타임라인 동그라미 */
+.log-item::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 24px;
+  width: 16px;
+  height: 16px;
+  background: #007acc;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #e4e4e4;
 }
 
-.log-container p {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-/* 개별 로그 포스트 */
-.log-post {
-  border-bottom: 1px solid #eee;
-  padding: 16px 0;
-  transition: background 0.2s ease;
-}
-
-.log-post:last-child {
-  border-bottom: none;
-}
-
-.log-post:hover {
-  background: #fafafa;
-}
-
-.log-post-title {
-  font-size: 1.2rem;
-  margin: 0;
+/* 제목 */
+.log-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 8px;
   color: #000;
-  transition: color 0.2s ease;
 }
-
-.log-post-title:hover {
+.log-title-link:hover .log-title {
   color: #007acc;
 }
 
-.log-post-date {
-  display: block;
-  font-size: 0.85rem;
+/* 메타 정보 */
+.log-meta {
+  font-size: 0.9rem;
   color: #999;
-  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.log-category {
+  background: #eef6ff;
+  color: #007acc;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
 }
 
-.log-post-desc {
-  margin-top: 6px;
+/* 설명 */
+.log-desc {
   font-size: 0.95rem;
   color: #444;
+  line-height: 1.5;
 }
 
 /* 반응형 */
 @media (max-width: 480px) {
-  .log-container {
-    max-width: 95%;
-    padding: 15px;
+  .log-container::before {
+    left: 18px;
   }
-  .log-post-title {
-    font-size: 1rem;
+  .log-item {
+    padding-left: 50px;
+  }
+  .log-title {
+    font-size: 1.1rem;
   }
 }
 
