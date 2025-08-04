@@ -31,7 +31,7 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
             {% if twinsSchedule and twinsSchedule is iterable %}
               {% set scheduleArray = twinsSchedule %}
             {% endif %}
-            {% for week in scheduleArray | monthCalendar("2025-08") %}
+            {% for week in scheduleArray | monthCalendarLG("2025-08") %}
             <tr>
               {% for day in week %}
               <td class="{{ day.result }}">

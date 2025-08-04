@@ -68,6 +68,56 @@ module.exports = function (eleventyConfig) {
     return days;
   });
 
+
+  // LG 트윈스 전용 필터
+eleventyConfig.addFilter("monthCalendarLG", (schedule, month) => {
+  const teamSlug = "lg";
+  const start = moment(month).startOf("month").startOf("week");
+  const end = moment(month).endOf("month").endOf("week");
+  const days = [];
+  let current = start.clone();
+
+  while (current.isBefore(end)) {
+    const week = [];
+    for (let i = 0; i < 7; i++) {
+      const dateStr = current.format("YYYY-MM-DD");
+      const game = schedule.find(
+        (s) => s.date === dateStr && (s.homeSlug === teamSlug || s.awaySlug === teamSlug)
+      );
+
+      let opponent = null;
+      let opponentSlug = null;
+      let gameResult = "";
+      let gameStatus = "";
+
+      if (game) {
+        if (game.homeSlug === teamSlug) {
+          opponent = game.away;
+          opponentSlug = game.awaySlug;
+        } else {
+          opponent = game.home;
+          opponentSlug = game.homeSlug;
+        }
+
+        gameResult = game.status || "";
+        gameStatus = game.winner || "";
+      }
+
+      week.push({
+        day: current.date(),
+        result: gameResult,
+        status: gameStatus,
+        logo: opponentSlug,
+        opponent: opponent,
+        link: game ? game.link || "#" : null,
+      });
+      current.add(1, "day");
+    }
+    days.push(week);
+  }
+  return days;
+});
+
   // ✅ 최근 경기 필터
   eleventyConfig.addFilter("getRecentGame", (games) => {
     if (!Array.isArray(games)) return null;
