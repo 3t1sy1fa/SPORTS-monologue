@@ -341,7 +341,325 @@
       "playerTotalVotes": 0
     },
     {
-      "playerSlug": "",
+      "playerSlug": "hw-nsw",
+      "playerName": "노시환",
+      "playerTeamSlug": "hanwha",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "chae-es",
+      "playerName": "채은성",
+      "playerTeamSlug": "hanwha",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "son-as",
+      "playerName": "손아섭",
+      "playerTeamSlug": "hanwha",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "park-sw",
+      "playerName": "박세웅",
+      "playerTeamSlug": "lotte",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "kim-wj",
+      "playerName": "김원중",
+      "playerTeamSlug": "lotte",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "lt-ygn",
+      "playerName": "유강남",
+      "playerTeamSlug": "lotte",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "lt-jbg",
+      "playerName": "정보근",
+      "playerTeamSlug": "lotte",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "Han-ty",
+      "playerName": "한태양",
+      "playerTeamSlug": "lotte",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "jeon-mj",
+      "playerName": "전민재",
+      "playerTeamSlug": "lotte",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "jeong-h",
+      "playerName": "정훈",
+      "playerTeamSlug": "lotte",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "choi-h",
+      "playerName": "최항",
+      "playerTeamSlug": "lotte",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "na-sy",
+      "playerName": "나승엽",
+      "playerTeamSlug": "lotte",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "hwang-sb",
+      "playerName": "황성빈",
+      "playerTeamSlug": "lotte",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "yoon-dh",
+      "playerName": "윤동희",
+      "playerTeamSlug": "lotte",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "Kim-gh",
+      "playerName": "김건희",
+      "playerTeamSlug": "kiwoom",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "kim-wb",
+      "playerName": "김웅빈",
+      "playerTeamSlug": "kiwoom",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "park-sj",
+      "playerName": "박수종",
+      "playerTeamSlug": "kiwoom",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "lee-yg",
+      "playerName": "이용규",
+      "playerTeamSlug": "kiwoom",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "lim-jy",
+      "playerName": "임지열",
+      "playerTeamSlug": "kiwoom",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "bae-jw",
+      "playerName": "배재환",
+      "playerTeamSlug": "nc",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "Kim-nw",
+      "playerName": "김녹원",
+      "playerTeamSlug": "nc",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "kim-hj",
+      "playerName": "김휘집",
+      "playerTeamSlug": "nc",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "davison",
+      "playerName": "데이비슨",
+      "playerTeamSlug": "nc",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "nc-ghd",
+      "playerName": "권희동",
+      "playerTeamSlug": "nc",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "gwak-dg",
+      "playerName": "곽도규",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "yoon-yc",
+      "playerName": "윤영철",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "yang-hj",
+      "playerName": "양현종",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "nail",
+      "playerName": "네일",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "seong-yt",
+      "playerName": "성영탁",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "kim-tg",
+      "playerName": "김태군",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "park-ch",
+      "playerName": "박찬호",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "Kim-sb",
+      "playerName": "김선빈",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "wisdom",
+      "playerName": "위즈덤",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "Oh-sw",
+      "playerName": "오선우",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "seo-gc",
+      "playerName": "서건창",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "choi-hw",
+      "playerName": "최형우",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "kim-hr",
+      "playerName": "김호령",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "na-sb",
+      "playerName": "나성범",
+      "playerTeamSlug": "kia",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "park-cg",
+      "playerName": "박치국",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "choi-sy",
+      "playerName": "최승용",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "gwak-b",
+      "playerName": "곽빈",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "lee-yh",
+      "playerName": "이영하",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "cabin",
+      "playerName": "콜 어빈",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "choi-wj",
+      "playerName": "최원준",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "Kim-ty",
+      "playerName": "김택연",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "yang-ej",
+      "playerName": "양의지",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "lee-yc",
+      "playerName": "이유찬",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "park-js-ds",
+      "playerName": "박준순",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "Cave",
+      "playerName": "케이브",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "Jung-sb",
+      "playerName": "정수빈",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "kim-jw-ds",
+      "playerName": "김재환",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "kim-it",
+      "playerName": "김인태",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "Jo-sh",
+      "playerName": "조수행",
+      "playerTeamSlug": "doosan",
+      "playerTotalVotes": 0
+    },
+    {
+      "playerSlug": "kim-ms-ds",
       "playerName": "김민석",
       "playerTeamSlug": "doosan",
       "playerTotalVotes": 0
