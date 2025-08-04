@@ -64,9 +64,6 @@ module.exports = function (eleventyConfig) {
     return days;
   };
 
-  /* ---------------------------
-     ✅ LG 전용 캘린더
-  --------------------------- */
   const buildCalendarTwins = (schedule, month) => {
     const start = moment(month).startOf("month").startOf("week");
     const end = moment(month).endOf("month").endOf("week");
@@ -79,15 +76,15 @@ module.exports = function (eleventyConfig) {
         const dateStr = current.format("YYYY-MM-DD");
         const game = schedule.find((s) => s.date === dateStr);
 
+        let cssClass = "scheduled"; // 기본값(예정)
+        if (game?.status === "종료") {
+          cssClass = game.result === "승" ? "win" : "lose";
+        }
+
         week.push({
           day: current.date(),
           logo: game ? game.opponentSlug : null,
-          cssClass:
-            game?.status === "종료"
-              ? game.result === "승"
-                ? "win"
-                : "lose"
-              : "scheduled",
+          cssClass,
         });
         current.add(1, "day");
       }
@@ -96,10 +93,6 @@ module.exports = function (eleventyConfig) {
     return days;
   };
 
-  eleventyConfig.addFilter("monthCalendar", buildCalendar);
-  eleventyConfig.addFilter("monthCalendarLG", (schedule, month) =>
-    buildCalendar(schedule, month, "lg")
-  );
   eleventyConfig.addFilter("monthCalendarTwins", buildCalendarTwins);
 
   eleventyConfig.addFilter("map", (array, attribute) =>
