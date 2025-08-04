@@ -10,13 +10,15 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
 
 {% block content %}
 <section class="twins-tar-container">
+  <!-- 헤더 -->
   <header class="twins-tar-header">
     <p class="subtitle">무적 LG! 끝까지 Twins!</p>
     <h1>TWINS</h1>
   </header>
 
+  <!-- 레이아웃 -->
   <div class="twins-tar-layout">
-    <!-- 왼쪽 사이드 -->
+    <!-- 왼쪽 사이드 (캘린더) -->
     <aside class="twins-sidebar">
       <div class="calendar-section">
         <h3>이번 달 경기 일정</h3>
@@ -27,15 +29,16 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
             </tr>
           </thead>
           <tbody>
-            {% set scheduleArray = twinsSchedule if twinsSchedule and twinsSchedule is iterable else [] %}
-            {% for week in scheduleArray | monthCalendarLG("2025-08") %}
+            {% set scheduleArray = [] %}
+            {% if twinsSchedule and twinsSchedule is iterable %}
+              {% set scheduleArray = twinsSchedule %}
+            {% endif %}
+            {% for week in scheduleArray | monthCalendarTwins("2025-08") %}
             <tr>
               {% for day in week %}
-              <td class="{{ day.result }}">
-                {% if day.opponentSlug %}
-                  <a href="{{ day.link }}">
-                    <img src="/images/s{{ day.opponentSlug }}.png" alt="{{ day.opponent }}" class="team-logo">
-                  </a>
+              <td class="{{ day.cssClass }}">
+                {% if day.logo %}
+                  <img src="/images/s{{ day.logo }}.png" alt="{{ day.opponent }}" class="team-logo">
                 {% else %}
                   {{ day.day }}
                 {% endif %}
@@ -52,7 +55,10 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
     <div class="players-board">
       <h3>트윈스 선수단</h3>
       <div class="players-list">
-        {% set playerArray = players if players and players is iterable else [] %}
+        {% set playerArray = [] %}
+        {% if players and players is iterable %}
+          {% set playerArray = players %}
+        {% endif %}
         {% for player in playerArray | selectattr("teamSlug", "equalto", "lg") %}
         <a href="/players/{{ player.slug }}/" class="player-card">
           <img src="/images/players/{{ player.slug }}.png" alt="{{ player.name }}" class="player-photo">
@@ -71,7 +77,10 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
   <!-- twinS-TAR 선수별 기록 -->
   <div class="stat-section">
     <h2>twinS-TAR</h2>
-    {% set statsArray = playerStats if playerStats and playerStats is iterable else [] %}
+    {% set statsArray = [] %}
+    {% if playerStats and playerStats is iterable %}
+      {% set statsArray = playerStats %}
+    {% endif %}
     <table class="stats-table">
       <thead>
         <tr>
@@ -98,14 +107,25 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
   <div class="vote-section">
     <h2>인기 선수 TOP 3</h2>
     <div class="vote-cards">
-      {% set voteArray = voteSummary.players if voteSummary and voteSummary.players is iterable else [] %}
-      {% set lgVotes = voteArray | selectattr("playerTeamSlug", "equalto", "lg") | sort(attribute="playerTotalVotes", order="desc") %}
+      {% set lgVotes = [] %}
+      {% if voteSummary and voteSummary.players and voteSummary.players is iterable %}
+        {% for p in voteSummary.players %}
+          {% if p.playerTeamSlug == "lg" %}
+            {% set lgVotes = lgVotes.concat([{ 
+              "slug": p.playerSlug, 
+              "name": p.playerName, 
+              "votes": p.playerTotalVotes 
+            }]) %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% set lgVotes = lgVotes | sort(attribute="votes", order="desc") %}
       {% for vote in lgVotes | slice(0, 3) %}
         <div class="vote-card">
-          <img src="/images/players/{{ vote.playerSlug }}.png" alt="{{ vote.playerName }}" class="vote-player-photo">
+          <img src="/images/players/{{ vote.slug }}.png" alt="{{ vote.name }}" class="vote-player-photo">
           <div class="vote-info">
-            <span class="vote-player-name">{{ vote.playerName }}</span>
-            <span class="vote-count">{{ vote.playerTotalVotes }}표</span>
+            <span class="vote-player-name">{{ vote.name }}</span>
+            <span class="vote-count">{{ vote.votes }}표</span>
           </div>
         </div>
       {% endfor %}
