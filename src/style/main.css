@@ -365,13 +365,12 @@ a { text-decoration: none; color: inherit; }
   }
 }
 
-
 /* ---------------------- log ---------------------- */
 .log-container {
-  max-width: 800px;           /* 글 영역을 800px로 제한 */
-  margin: 40px auto;          /* 중앙 정렬 */
-  padding: 20px;              /* 기본 여백 */
-  background: #fff;           /* 카드 느낌 */
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -379,30 +378,37 @@ a { text-decoration: none; color: inherit; }
 
 .log-container h1 {
   font-size: 2rem;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-.log-desc {
-  font-size: 15px;
-  color: #666;
+.log-container p {
+  font-size: 1rem;
+  color: #555;
   margin-bottom: 20px;
   text-align: center;
 }
 
+/* 개별 로그 포스트 */
 .log-post {
   border-bottom: 1px solid #eee;
   padding: 16px 0;
+  transition: background 0.2s ease;
 }
 
 .log-post:last-child {
   border-bottom: none;
 }
 
+.log-post:hover {
+  background: #fafafa;
+}
+
 .log-post-title {
   font-size: 1.2rem;
   margin: 0;
-  color: #222;
+  color: #000;
+  transition: color 0.2s ease;
 }
 
 .log-post-title:hover {
@@ -410,29 +416,24 @@ a { text-decoration: none; color: inherit; }
 }
 
 .log-post-date {
-  font-size: 14px;
+  display: block;
+  font-size: 0.85rem;
   color: #999;
+  margin-top: 4px;
 }
 
 .log-post-desc {
   margin-top: 6px;
-  color: #444;
   font-size: 0.95rem;
-  line-height: 1.4;
+  color: #444;
 }
 
 /* 반응형 */
 @media (max-width: 480px) {
   .log-container {
     max-width: 95%;
-    margin: 20px auto;
     padding: 15px;
   }
-
-  .log-container h1 {
-    font-size: 1.6rem;
-  }
-
   .log-post-title {
     font-size: 1rem;
   }
