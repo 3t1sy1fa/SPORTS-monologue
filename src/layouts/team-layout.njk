@@ -7,7 +7,12 @@
   <link rel="icon" href="/favicon.png" type="image/png">
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
 
-  {% set safeSlug = slug or 'default' %}
+  {% if slug %}
+    {% set safeSlug = slug %}
+  {% else %}
+    {% set safeSlug = 'default' %}
+  {% endif %}
+
   <title>{{ title or "구단 분석" }} | Sports Monologue</title>
   <meta name="description" content="{{ description or (title ~ ' 전력 분석 및 경기 리뷰') }}">
 
@@ -31,11 +36,26 @@
 <body>
   {% include "header.njk" %}
 
-  {% set scheduleArray = (leagueSchedule and leagueSchedule is iterable) ? leagueSchedule : [] %}
+  {# ✅ leagueSchedule 안전 처리 #}
+  {% if leagueSchedule and leagueSchedule is iterable %}
+    {% set scheduleArray = leagueSchedule %}
+  {% else %}
+    {% set scheduleArray = [] %}
+  {% endif %}
+
   {% set games = scheduleArray | teamGames(safeSlug) %}
   {% set recentGame = games | getRecentGame %}
-  {% set homepage = teamsBoard | getHomepage(safeSlug) %}
-  {% set postsArray = collections.teamPosts or [] %}
+  {% set homepage = '' %}
+  {% if teamsBoard %}
+    {% set homepage = teamsBoard | getHomepage(safeSlug) %}
+  {% endif %}
+
+  {# ✅ collections.teamPosts 안전 처리 #}
+  {% if collections.teamPosts %}
+    {% set postsArray = collections.teamPosts %}
+  {% else %}
+    {% set postsArray = [] %}
+  {% endif %}
   {% set filteredPosts = postsArray | getTeamPosts(safeSlug) %}
 
   <main class="team-layout">
@@ -63,23 +83,27 @@
           {% else %}
             <p class="no-data">최근 경기 정보가 없습니다.</p>
           {% endif %}
-          <a href="{{ homepage }}" class="team-btn" target="_blank" rel="noopener noreferrer">
-            구단 공식 홈페이지
-          </a>
+          {% if homepage %}
+            <a href="{{ homepage }}" class="team-btn" target="_blank" rel="noopener noreferrer">
+              구단 공식 홈페이지
+            </a>
+          {% endif %}
         </div>
 
         <div class="analysis-list">
           <h3>구단 분석 아카이브</h3>
-          {% for post in filteredPosts %}
-            <article class="analysis-card">
-              <a href="{{ post.url }}">
-                <h4>{{ post.data.title }}</h4>
-                <time>{{ post.date | date }}</time>
-              </a>
-            </article>
+          {% if filteredPosts | length > 0 %}
+            {% for post in filteredPosts %}
+              <article class="analysis-card">
+                <a href="{{ post.url }}">
+                  <h4>{{ post.data.title }}</h4>
+                  <time>{{ post.date | date }}</time>
+                </a>
+              </article>
+            {% endfor %}
           {% else %}
             <p class="no-data">등록된 구단 분석글이 없습니다.</p>
-          {% endfor %}
+          {% endif %}
         </div>
       </aside>
 
