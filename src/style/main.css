@@ -598,3 +598,66 @@ a { text-decoration: none; color: inherit; }
     padding: 10px;
   }
 }
+
+
+/* ---------------------- 소개 페이지 ---------------------- */
+.about-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  line-height: 1.6;
+}
+
+.about-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.about-greeting {
+  font-size: 1.1rem;
+  color: #444;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-text {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.about-link {
+  color: #007acc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.about-link:hover {
+  text-decoration: underline;
+}
+
+.about-details {
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #444;
+  margin-top: 20px;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+  .about-container {
+    padding: 15px;
+    margin: 20px auto;
+  }
+  .about-title {
+    font-size: 1.6rem;
+  }
+}
