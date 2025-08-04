@@ -37,12 +37,12 @@
   color: #333;
 }
 #teamFilter {
-  padding: 8px 12px;
+  font-family: "Mingijuk";
+  padding: 6px 10px;
   font-size: 0.95rem;
-  border: 1px solid #bbb;
-  border-radius: 6px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: #f1f3f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 /* 카드 그리드 */
