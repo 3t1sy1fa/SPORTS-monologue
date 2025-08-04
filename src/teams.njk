@@ -52,7 +52,7 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
                   {% elseif game.winner == "예정" or (not game.homeScore and not game.awayScore) %}
                     예정
                   {% elseif game.status in ["승","패","무"] %}
-                    {{ game.status }}
+                    {{ game.winner }}
                   {% else %}
                     예정
                   {% endif %}
