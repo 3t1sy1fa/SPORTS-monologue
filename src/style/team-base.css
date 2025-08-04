@@ -1,26 +1,4 @@
 /* ===============================
-   📌 기본 텍스트 스타일
-================================== */
-.page-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-.page-meta {
-  font-size: 1rem;
-  color: #777;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.team-logo {
-  width: auto;
-  height: 18px;
-}
-
-/* ===============================
    🏆 포디움 카드 (Podium)
 ================================== */
 .vote-podium-section {
@@ -41,20 +19,20 @@
 .podium-wrapper {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .podium-card {
+  flex: 0 0 30%;
+  max-width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20%;
-  min-width: 120px;
   background: #f8f8f8;
   border: 1px solid #ddd;
   border-radius: 20px;
-  padding: 10px;
+  padding: 15px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 }
@@ -62,17 +40,17 @@
 
 .podium-card img.team-logo {
   height: 40px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .podium-card .team-info h3 {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
   text-align: center;
 }
 .podium-card .team-info p {
   margin: 3px 0 0;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #666;
 }
 
@@ -82,135 +60,8 @@
 .podium-3 { background: #f9ece3; border-color: #cd7f32; }
 
 /* ===============================
-   📅 캘린더 (이번 주 경기 일정)
+   📅 경기 일정
 ================================== */
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-  margin: 30px auto;
-}
-
-.calendar-day {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 6px;
-  text-align: center;
-  font-size: 0.8rem;
-}
-
-.calendar-day h3 {
-  font-size: 0.8rem;
-  margin-bottom: 5px;
-}
-
-.calendar-day ul,
-.schedule-list {
-  list-style: none;
-  padding: 0;
-  row-gap: 7px;
-  margin: 0;
-}
-
-.match-logos {
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-  margin-bottom: 3px;
-}
-.match-logos img { height: 18px; }
-
-.no-game {
-  font-size: 0.75rem;
-  color: #aaa;
-}
-
-.team.winner {
-  background: linear-gradient(to top, #a8f0b5 40%, transparent 40%);
-  font-weight: bold;
-}
-.team.loser {
-  background: linear-gradient(to top, #f8b5b5 40%, transparent 40%);
-  font-weight: bold;
-}
-
-/* ===============================
-   📊 구단 카드 리스트
-================================== */
-.teams-card-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  margin: 40px auto;
-}
-
-.team-card {
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  padding: 12px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-.team-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
-.team-card img { width: 45px; height: 45px; margin-bottom: 8px; }
-
-.team-card .team-info h3 { margin: 0; font-size: 1.1rem; }
-.team-card .team-info p {
-  margin: 4px 0;
-  font-size: 0.85rem;
-  color: #555;
-}
-.team-card .last-game { font-size: 0.75rem; color: #999; }
-
-/* ✅ 투표 버튼 */
-.vote-btn {
-  display: inline-block;
-  width: 80%;
-  margin-top: 10px;
-  padding: 6px 10px;
-  border: none;
-  border-radius: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  color: #fff;
-  text-align: center;
-  font-size: 0.8rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* 팀별 색상 */
-.team-lg .vote-btn { background-color: #C30452; }
-.team-doosan .vote-btn { background-color: #1A1748; }
-.team-lotte .vote-btn { background-color: #041E42; }
-.team-samsung .vote-btn { background-color: #074CA1; }
-.team-hanwha .vote-btn { background-color: #FC4E00; }
-.team-kia .vote-btn { background-color: #EA0029; }
-.team-ssg .vote-btn { background-color: #CE0E2D; }
-.team-nc .vote-btn { background-color: #315288; }
-.team-kt .vote-btn { background-color: #000; }
-.team-kiwoom .vote-btn { background-color: #570514; }
-.vote-btn:hover { opacity: 0.9; }
-
-/* ===============================
-   🆕 구단 분석 레이아웃
-================================== */
-.teams-analysis-layout {
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  gap: 20px;
-  max-width: 1200px;
-  margin: 40px auto;
-}
-
-/* 왼쪽 일정 패널 */
 .weekly-schedule {
   background: #fff;
   border: 1px solid #ddd;
@@ -218,6 +69,8 @@
   padding: 16px;
   font-size: 0.9rem;
 }
+
+.schedule-list { list-style: none; padding: 0; margin: 0; }
 .schedule-day {
   border-bottom: 1px solid #eee;
   padding: 8px 0;
@@ -233,17 +86,85 @@
 .schedule-day .team-logo { width: 16px; height: 16px; }
 
 /* ===============================
+   📊 구단 카드 (2개씩 5줄)
+================================== */
+.teams-card-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-top: 4px solid currentColor;
+}
+
+.team-card img {
+  width: 45px;
+  height: 45px;
+  margin-bottom: 8px;
+}
+
+.team-card .team-info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.team-card .team-info p {
+  margin: 4px 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+.team-card .last-game { font-size: 0.75rem; color: #999; }
+.vote-count { font-size: 0.8rem; color: #777; display: block; margin-top: 4px; }
+
+/* ✅ 투표 버튼 */
+.vote-btn {
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  color: #fff;
+  text-align: center;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.vote-btn:hover { opacity: 0.9; }
+
+/* 팀별 색상 */
+.team-lg .vote-btn { background-color: #C30452; }
+.team-doosan .vote-btn { background-color: #1A1748; }
+.team-lotte .vote-btn { background-color: #041E42; }
+.team-samsung .vote-btn { background-color: #074CA1; }
+.team-hanwha .vote-btn { background-color: #FC4E00; }
+.team-kia .vote-btn { background-color: #EA0029; }
+.team-ssg .vote-btn { background-color: #CE0E2D; }
+.team-nc .vote-btn { background-color: #315288; }
+.team-kt .vote-btn { background-color: #000; }
+.team-kiwoom .vote-btn { background-color: #570514; }
+
+/* ===============================
    반응형
 ================================== */
 @media (max-width: 768px) {
-  .podium-card { width: 40%; }
-  .calendar-grid { grid-template-columns: repeat(3, 1fr); }
-  .teams-card-section { grid-template-columns: 1fr 1fr; }
-  .teams-analysis-layout { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 480px) {
-  .podium-card { width: 100%; }
-  .calendar-grid { grid-template-columns: repeat(2, 1fr); }
   .teams-card-section { grid-template-columns: 1fr; }
+  .podium-card { flex: 0 0 80%; max-width: 80%; }
 }
