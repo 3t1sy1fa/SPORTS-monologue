@@ -133,6 +133,17 @@
   color: #aaa;
 }
 
+
+.team.winner {
+  background: linear-gradient(to top, #a8f0b5 40%, transparent 40%);
+  font-weight: bold;
+}
+
+.team.loser {
+  background: linear-gradient(to top, #f8b5b5 40%, transparent 40%);
+  font-weight: bold;
+}
+
 /* ===============================
    📊 구단 카드 리스트
 ================================== */

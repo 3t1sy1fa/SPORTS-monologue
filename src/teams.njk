@@ -39,23 +39,21 @@ description: "KBO 10개 구단의 전력 분석, 경기 일정, 최신 뉴스와
       <div class="calendar-day">
         <h3>{{ day.date | date("MM.dd (EEE)") }}</h3>
         {% if day.games | length > 0 %}
-          <ul>
+          <ul class="games-list">
             {% for game in day.games %}
               <li>
-                <img src="/images/s{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
-                {{ game.home }} vs 
-                <img src="/images/s{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
-                {{ game.away }}
-                <span class="status">
-                  {% if game.winner == "취소" %}
-                    취소
-                  {% elseif game.winner == "예정" or (not game.homeScore and not game.awayScore) %}
-                    예정
-                  {% elseif game.status in ["승","패","무"] %}
-                    {{ game.winner }}
-                  {% else %}
-                    예정
-                  {% endif %}
+                <span class="team
+                  {% if game.winner and game.homeScore > game.awayScore %} winner
+                  {% elseif game.winner and game.homeScore < game.awayScore %} loser {% endif %}">
+                  <img src="/images/s{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo">
+                  {{ game.home }}
+                </span>
+                vs
+                <span class="team
+                  {% if game.winner and game.awayScore > game.homeScore %} winner
+                  {% elseif game.winner and game.awayScore < game.homeScore %} loser {% endif %}">
+                  <img src="/images/s{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo">
+                  {{ game.away }}
                 </span>
               </li>
             {% endfor %}
