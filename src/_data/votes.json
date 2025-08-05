@@ -1230,5 +1230,313 @@
     "teamSlug": "",
     "playerSlug": "park-hm",
     "timestamp": "2025-08-04T04:30:47.440Z"
+  },
+  {
+    "voterId": "1754306239885",
+    "targetType": "team",
+    "teamSlug": "lotte",
+    "playerSlug": "",
+    "timestamp": "2025-08-04T11:17:19.885Z"
+  },
+  {
+    "voterId": "1754306244939",
+    "targetType": "team",
+    "teamSlug": "ssg",
+    "playerSlug": "",
+    "timestamp": "2025-08-04T11:17:24.939Z"
+  },
+  {
+    "voterId": "1754306248652",
+    "targetType": "team",
+    "teamSlug": "kt",
+    "playerSlug": "",
+    "timestamp": "2025-08-04T11:17:28.652Z"
+  },
+  {
+    "voterId": "1754306251052",
+    "targetType": "team",
+    "teamSlug": "nc",
+    "playerSlug": "",
+    "timestamp": "2025-08-04T11:17:31.052Z"
+  },
+  {
+    "voterId": "1754306254730",
+    "targetType": "team",
+    "teamSlug": "kiwoom",
+    "playerSlug": "",
+    "timestamp": "2025-08-04T11:17:34.730Z"
+  },
+  {
+    "voterId": "1754306323876",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "park-hm",
+    "timestamp": "2025-08-04T11:18:43.876Z"
+  },
+  {
+    "voterId": "1754306326401",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "park-hm",
+    "timestamp": "2025-08-04T11:18:46.401Z"
+  },
+  {
+    "voterId": "1754306334284",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:18:54.284Z"
+  },
+  {
+    "voterId": "1754306338099",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:18:58.099Z"
+  },
+  {
+    "voterId": "1754306338754",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:18:58.754Z"
+  },
+  {
+    "voterId": "1754306341569",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:01.569Z"
+  },
+  {
+    "voterId": "1754306342228",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:02.228Z"
+  },
+  {
+    "voterId": "1754306344561",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:04.561Z"
+  },
+  {
+    "voterId": "1754306345295",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:05.295Z"
+  },
+  {
+    "voterId": "1754306347963",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:07.963Z"
+  },
+  {
+    "voterId": "1754306349261",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:09.261Z"
+  },
+  {
+    "voterId": "1754306349892",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:09.892Z"
+  },
+  {
+    "voterId": "1754306353215",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:13.215Z"
+  },
+  {
+    "voterId": "1754306353850",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:13.850Z"
+  },
+  {
+    "voterId": "1754306354512",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:14.512Z"
+  },
+  {
+    "voterId": "1754306356637",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:16.637Z"
+  },
+  {
+    "voterId": "1754306357281",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:17.281Z"
+  },
+  {
+    "voterId": "1754306359849",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:19.849Z"
+  },
+  {
+    "voterId": "1754306360474",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:20.474Z"
+  },
+  {
+    "voterId": "1754306361408",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:21.408Z"
+  },
+  {
+    "voterId": "1754306364772",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:24.772Z"
+  },
+  {
+    "voterId": "1754306365391",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:25.391Z"
+  },
+  {
+    "voterId": "1754306368276",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:28.276Z"
+  },
+  {
+    "voterId": "1754306368924",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:28.924Z"
+  },
+  {
+    "voterId": "1754306371201",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "lim-ck",
+    "timestamp": "2025-08-04T11:19:31.202Z"
+  },
+  {
+    "voterId": "1754306467027",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:07.027Z"
+  },
+  {
+    "voterId": "1754306467752",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:07.752Z"
+  },
+  {
+    "voterId": "1754306469929",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:09.929Z"
+  },
+  {
+    "voterId": "1754306470584",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:10.584Z"
+  },
+  {
+    "voterId": "1754306473113",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:13.113Z"
+  },
+  {
+    "voterId": "1754306473706",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:13.706Z"
+  },
+  {
+    "voterId": "1754306474569",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:14.569Z"
+  },
+  {
+    "voterId": "1754306476371",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:16.371Z"
+  },
+  {
+    "voterId": "1754306478377",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:18.377Z"
+  },
+  {
+    "voterId": "1754306478997",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:18.997Z"
+  },
+  {
+    "voterId": "1754306480446",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:20.446Z"
+  },
+  {
+    "voterId": "1754306482160",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:22.160Z"
+  },
+  {
+    "voterId": "1754306483745",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:23.745Z"
+  },
+  {
+    "voterId": "1754306485144",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "moon-hb-hw",
+    "timestamp": "2025-08-04T11:21:25.144Z"
   }
 ]

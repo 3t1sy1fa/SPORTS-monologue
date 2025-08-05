@@ -65,7 +65,9 @@
     "opponent": "두산",
     "opponentSlug": "doosan",
     "homeAway": "홈",
-    "status": "예정"
+    "status": "종료",
+    "result": "승",
+    "score": "4 - 2"
   },
   {
     "season": "2025",

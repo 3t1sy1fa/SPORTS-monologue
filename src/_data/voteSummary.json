@@ -1,24 +1,24 @@
 {
   "teams": [
     {
-      "teamSlug": "hanwha",
-      "teamName": "한화 이글스",
-      "teamTotalVotes": 5
-    },
-    {
       "teamSlug": "lg",
       "teamName": "LG 트윈스",
       "teamTotalVotes": 35
     },
     {
+      "teamSlug": "hanwha",
+      "teamName": "한화 이글스",
+      "teamTotalVotes": 5
+    },
+    {
       "teamSlug": "lotte",
       "teamName": "롯데 자이언츠",
-      "teamTotalVotes": 1
+      "teamTotalVotes": 2
     },
     {
       "teamSlug": "ssg",
       "teamName": "SSG 랜더스",
-      "teamTotalVotes": 0
+      "teamTotalVotes": 1
     },
     {
       "teamSlug": "kia",
@@ -28,12 +28,12 @@
     {
       "teamSlug": "kt",
       "teamName": "KT 위즈",
-      "teamTotalVotes": 1
+      "teamTotalVotes": 2
     },
     {
       "teamSlug": "nc",
       "teamName": "NC 다이노스",
-      "teamTotalVotes": 7
+      "teamTotalVotes": 8
     },
     {
       "teamSlug": "samsung",
@@ -48,7 +48,7 @@
     {
       "teamSlug": "kiwoom",
       "teamName": "키움 히어로즈",
-      "teamTotalVotes": 1
+      "teamTotalVotes": 2
     }
   ],
   "players": [
@@ -62,7 +62,7 @@
       "playerSlug": "park-hm",
       "playerName": "박해민",
       "playerTeamSlug": "lg",
-      "playerTotalVotes": 48
+      "playerTotalVotes": 50
     },
     {
       "playerSlug": "gu-bh",
@@ -74,7 +74,7 @@
       "playerSlug": "lim-ck",
       "playerName": "임찬규",
       "playerTeamSlug": "lg",
-      "playerTotalVotes": 0
+      "playerTotalVotes": 23
     },
     {
       "playerSlug": "kim-yw",
@@ -200,7 +200,7 @@
       "playerSlug": "moon-hb-hw",
       "playerName": "문현빈",
       "playerTeamSlug": "hanwha",
-      "playerTotalVotes": 0
+      "playerTotalVotes": 14
     },
     {
       "playerSlug": "song-sm",
