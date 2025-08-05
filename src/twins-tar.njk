@@ -10,35 +10,37 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
 
 {% block content %}
 <section class="twins-tar-container">
-  <!-- HEADER -->
-  <header class="tt-header">
-    <div class="tt-header-inner">
-      <h1 class="tt-title">TWINS&lt;span&gt;TAR&lt;/span&gt;</h1>
-      <p class="tt-subtitle">무적 LG! 끝까지 Twins!</p>
-    </div>
+  <!-- 헤더 -->
+  <header class="twins-tar-header">
+    <p class="subtitle">무적 LG! 끝까지 Twins!</p>
+    <h1>TWINS</h1>
   </header>
 
-  <!-- MAIN DASHBOARD -->
-  <div class="tt-main">
-    <!-- Calendar -->
-    <aside class="tt-panel tt-calendar-panel">
-      <h2 class="panel-title">이번 달 경기 일정</h2>
-      <div class="calendar-wrapper">
-        <table class="calendar">
+  <!-- 메인 대시보드 -->
+  <div class="twins-tar-layout">
+    <!-- 왼쪽: 경기 캘린더 -->
+    <aside class="twins-sidebar">
+      <div class="calendar-section">
+        <h3>이번 달 경기 일정</h3>
+        <table class="calendar-table">
           <thead>
             <tr>
               <th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>
             </tr>
           </thead>
           <tbody>
-            {% for week in twinsSchedule | monthCalendarTwins("2025-08") %}
+            {% set twinsArray = [] %}
+            {% if twinsSchedule and twinsSchedule is iterable %}
+              {% set twinsArray = twinsSchedule %}
+            {% endif %}
+            {% for week in twinsArray | monthCalendarTwins("2025-08") %}
             <tr>
-              {% for d in week %}
-              <td class="{{ d.cssClass }}">
-                {% if d.logo %}
-                <img src="/images/s{{ d.logo }}.png" alt="로고" class="cal-logo" />
+              {% for day in week %}
+              <td class="{{ day.cssClass }}">
+                {% if day.logo %}
+                  <img src="/images/s{{ day.logo }}.png" alt="상대 팀 로고" class="team-logo">
                 {% else %}
-                <span>{{ d.day }}</span>
+                  {{ day.day }}
                 {% endif %}
               </td>
               {% endfor %}
@@ -49,56 +51,88 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
       </div>
     </aside>
 
-    <!-- Players -->
-    <section class="tt-panel tt-players-panel">
-      <h2 class="panel-title">트윈스 선수단</h2>
-      <div class="players-grid">
-        {% for p in players | selectattr("teamSlug","equalto","lg") %}
-        <a href="/players/{{ p.slug }}/" class="player-card">
-          <img src="/images/players/{{ p.slug }}.png" alt="{{ p.name }}" />
-          <div class="info">
-            <h3>{{ p.name }}</h3>
-            <p>{{ p.position }}</p>
+    <!-- 오른쪽: 선수단 -->
+    <div class="players-board">
+      <h3>트윈스 선수단</h3>
+      <div class="players-list">
+        {% set playersArray = [] %}
+        {% if players and players is iterable %}
+          {% set playersArray = players %}
+        {% endif %}
+        {% for player in playersArray | selectattr("teamSlug", "equalto", "lg") %}
+        <a href="/players/{{ player.slug }}/" class="player-card">
+          <img src="/images/players/{{ player.slug }}.png" alt="{{ player.name }}" class="player-photo">
+          <div class="player-info">
+            <div class="player-name">{{ player.name }}</div>
+            <div class="player-position">{{ player.position }}</div>
+            <hr class="player-divider">
+            <div class="player-note">{{ player.note }}</div>
           </div>
         </a>
         {% endfor %}
       </div>
-    </section>
+    </div>
   </div>
 
-  <!-- STATISTICS -->
-  <section class="tt-stats">
+  <!-- twinS-TAR 선수별 기록 -->
+  <div class="stat-section">
     <h2>twinS-TAR 기록</h2>
-    <div class="stats-grid">
-      {% for s in playerStats | selectattr("teamSlug","equalto","lg") %}
-      <div class="stat-card">
-        <div class="stat-header">
-          <h3>{{ s.playerName }}</h3>
-          <time datetime="{{ s.date }}">{{ s.date | date("MM.dd") }}</time>
-        </div>
-        <p class="game-desc">{{ s.game }}</p>
-        <p class="record">{{ s.record }}</p>
-        <div class="rating">{{ s.rating }}</div>
-      </div>
-      {% endfor %}
-    </div>
-  </section>
+    {% set statsArray = [] %}
+    {% if playerStats and playerStats is iterable %}
+      {% set statsArray = playerStats %}
+    {% endif %}
+    <table class="stats-table">
+      <thead>
+        <tr>
+          <th>선수</th>
+          <th>경기</th>
+          <th>기록</th>
+          <th>평점</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stat in statsArray | selectattr("teamSlug", "equalto", "lg") %}
+        <tr>
+          <td>{{ stat.playerName }}</td>
+          <td>
+            <time datetime="{{ stat.date }}">{{ stat.date | date("MM.dd") }}</time>
+            {{ stat.game }}
+          </td>
+          <td>{{ stat.record }}</td>
+          <td>{{ stat.rating }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
-  <!-- POPULAR PLAYERS -->
-  <section class="tt-votes">
+  <!-- 인기 선수 TOP 3 -->
+  <div class="vote-section">
     <h2>인기 선수 TOP 3</h2>
-    <div class="vote-cards">
-      {% set lgVotes = voteSummary.players | selectattr("playerTeamSlug","equalto","lg") | sort(attribute="playerTotalVotes", order="desc") | slice(0,3) %}
-      {% for v in lgVotes %}
-      <div class="vote-card">
-        <img src="/images/players/{{ v.playerSlug }}.png" alt="{{ v.playerName }}" />
-        <div class="vote-info">
-          <h3>{{ v.playerName }}</h3>
-          <span>{{ v.playerTotalVotes }}표</span>
+    <div class="top-votes">
+      {% set lgVotes = [] %}
+      {% if voteSummary and voteSummary.players and voteSummary.players is iterable %}
+        {% for p in voteSummary.players %}
+          {% if p.playerTeamSlug == "lg" %}
+            {% set lgVotes = lgVotes.concat([{
+              "slug": p.playerSlug,
+              "name": p.playerName,
+              "votes": p.playerTotalVotes
+            }]) %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% set lgVotes = lgVotes | sort(attribute="votes", order="desc") %}
+      {% for vote in lgVotes | slice(0, 3) %}
+        <div class="vote-card">
+          <img src="/images/players/{{ vote.slug }}.png" alt="{{ vote.name }}" class="vote-player-photo">
+          <div class="vote-info">
+            <span class="vote-player-name">{{ vote.name }}</span>
+            <span class="vote-count">{{ vote.votes }}표</span>
+          </div>
         </div>
-      </div>
       {% endfor %}
     </div>
-  </section>
+  </div>
 </section>
 {% endblock %}
