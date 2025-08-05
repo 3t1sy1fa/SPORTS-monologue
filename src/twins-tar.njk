@@ -16,9 +16,9 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
     <h1>TWINS</h1>
   </header>
 
-  <!-- 레이아웃 -->
+  <!-- 메인 대시보드 -->
   <div class="twins-tar-layout">
-    <!-- 왼쪽 사이드 (캘린더) -->
+    <!-- 왼쪽: 경기 캘린더 -->
     <aside class="twins-sidebar">
       <div class="calendar-section">
         <h3>이번 달 경기 일정</h3>
@@ -29,16 +29,16 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
             </tr>
           </thead>
           <tbody>
-            {% set scheduleArray = [] %}
+            {% set twinsArray = [] %}
             {% if twinsSchedule and twinsSchedule is iterable %}
-              {% set scheduleArray = twinsSchedule %}
+              {% set twinsArray = twinsSchedule %}
             {% endif %}
-            {% for week in scheduleArray | monthCalendarTwins("2025-08") %}
+            {% for week in twinsArray | monthCalendarTwins("2025-08") %}
             <tr>
               {% for day in week %}
               <td class="{{ day.cssClass }}">
                 {% if day.logo %}
-                  <img src="/images/s{{ day.logo }}.png" alt="{{ day.opponent }}" class="team-logo">
+                  <img src="/images/s{{ day.logo }}.png" alt="상대 팀 로고" class="team-logo">
                 {% else %}
                   {{ day.day }}
                 {% endif %}
@@ -51,15 +51,15 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
       </div>
     </aside>
 
-    <!-- 오른쪽 선수 보드 -->
+    <!-- 오른쪽: 선수단 -->
     <div class="players-board">
       <h3>트윈스 선수단</h3>
       <div class="players-list">
-        {% set playerArray = [] %}
+        {% set playersArray = [] %}
         {% if players and players is iterable %}
-          {% set playerArray = players %}
+          {% set playersArray = players %}
         {% endif %}
-        {% for player in playerArray | selectattr("teamSlug", "equalto", "lg") %}
+        {% for player in playersArray | selectattr("teamSlug", "equalto", "lg") %}
         <a href="/players/{{ player.slug }}/" class="player-card">
           <img src="/images/players/{{ player.slug }}.png" alt="{{ player.name }}" class="player-photo">
           <div class="player-info">
@@ -76,7 +76,7 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
 
   <!-- twinS-TAR 선수별 기록 -->
   <div class="stat-section">
-    <h2>twinS-TAR</h2>
+    <h2>twinS-TAR 기록</h2>
     {% set statsArray = [] %}
     {% if playerStats and playerStats is iterable %}
       {% set statsArray = playerStats %}
@@ -94,7 +94,10 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
         {% for stat in statsArray | selectattr("teamSlug", "equalto", "lg") %}
         <tr>
           <td>{{ stat.playerName }}</td>
-          <td><time datetime="{{ stat.date }}">{{ stat.date | date("MM.dd") }}</time> {{ stat.game }}</td>
+          <td>
+            <time datetime="{{ stat.date }}">{{ stat.date | date("MM.dd") }}</time>
+            {{ stat.game }}
+          </td>
           <td>{{ stat.record }}</td>
           <td>{{ stat.rating }}</td>
         </tr>
@@ -106,15 +109,15 @@ description: "LG 트윈스 전용 통계 페이지 twinS-TAR – 시즌별 주�
   <!-- 인기 선수 TOP 3 -->
   <div class="vote-section">
     <h2>인기 선수 TOP 3</h2>
-    <div class="vote-cards">
+    <div class="top-votes">
       {% set lgVotes = [] %}
       {% if voteSummary and voteSummary.players and voteSummary.players is iterable %}
         {% for p in voteSummary.players %}
           {% if p.playerTeamSlug == "lg" %}
-            {% set lgVotes = lgVotes.concat([{ 
-              "slug": p.playerSlug, 
-              "name": p.playerName, 
-              "votes": p.playerTotalVotes 
+            {% set lgVotes = lgVotes.concat([{
+              "slug": p.playerSlug,
+              "name": p.playerName,
+              "votes": p.playerTotalVotes
             }]) %}
           {% endif %}
         {% endfor %}
