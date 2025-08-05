@@ -1,74 +1,88 @@
-/* twins-tar.css - LG 트윈스 전용 스타일 */
-
-/* ---------------- 기본 ---------------- */
-.twins-tar-container {
-  padding: 25px 12px;
-  max-width: 1100px;
-  margin: auto;
-  font-family: "Mingijuk", sans-serif;
-  color: #111;
+/* ----------------------
+   기본 설정
+---------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-family: "Mingijuk", "SUIT", sans-serif;
 }
 
-/* ---------------- 헤더 ---------------- */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ----------------------
+   컨테이너
+---------------------- */
+.twins-tar-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+/* ----------------------
+   헤더
+---------------------- */
 .twins-tar-header {
   text-align: center;
   margin-bottom: 30px;
-  background: linear-gradient(135deg, #c30452, #7b0032);
-  padding: 25px;
-  border-radius: 10px;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.twins-tar-header h1 {
-  font-size: 58px;
-  letter-spacing: 3px;
-  margin: 0;
 }
 
 .twins-tar-header .subtitle {
-  font-size: 26px;
-  margin-top: 10px;
-  font-weight: 500;
-  opacity: 0.9;
+  font-size: 24px;
+  color: #666;
+  margin-bottom: 6px;
 }
 
-/* ---------------- 레이아웃 ---------------- */
+.twins-tar-header h1 {
+  font-size: 56px;
+  color: #c30452;
+  font-weight: 700;
+  border-bottom: 3px solid #c30452;
+  display: inline-block;
+  padding-bottom: 6px;
+  letter-spacing: 2px;
+}
+
+/* ----------------------
+   레이아웃
+---------------------- */
 .twins-tar-layout {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 20px;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
 }
 
-/* ---------------- 사이드 캘린더 ---------------- */
+/* ----------------------
+   캘린더 (왼쪽 사이드)
+---------------------- */
 .twins-sidebar {
   background: #fff;
-  border: 2px solid #c30452;
+  border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
-  box-shadow: 0 3px 10px rgba(195, 4, 82, 0.1);
 }
 
 .calendar-section h3 {
   font-size: 18px;
-  color: #c30452;
-  margin-bottom: 10px;
-  text-align: center;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 6px;
+  margin-bottom: 12px;
+  font-weight: 600;
 }
 
 .calendar-table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 14px;
 }
 
 .calendar-table th,
 .calendar-table td {
-  border: 1px solid #f0f0f0;
+  border: 1px solid #eee;
   text-align: center;
   padding: 6px;
-  font-size: 14px;
 }
 
 .calendar-table th {
@@ -77,196 +91,202 @@
 }
 
 .calendar-table td img.team-logo {
-  width: auto;
-  height: 22px;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
+/* 경기 결과 색상 */
 .calendar-table td.win {
-  background: #d4f4d2;
-} /* 초록 */
+  background: #e9f9e7;
+}
 .calendar-table td.lose {
-  background: #f8d7da;
-} /* 빨강 */
+  background: #fdecea;
+}
 .calendar-table td.scheduled {
-  background: #e9ecef;
-} /* 회색 */
+  background: #f7f7f7;
+}
 
-/* ---------------- 선수 보드 ---------------- */
+/* ----------------------
+   선수 보드
+---------------------- */
 .players-board {
   background: #fff;
-  border: 2px solid #c30452;
+  border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
-  height: 600px;
+  max-height: 600px;
   overflow-y: auto;
-  box-shadow: 0 3px 10px rgba(195, 4, 82, 0.1);
 }
 
 .players-board h3 {
-  color: #c30452;
+  font-size: 18px;
   margin-bottom: 12px;
-  text-align: center;
+  font-weight: 600;
 }
 
 .players-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .player-card {
   display: flex;
   background: #fafafa;
-  border: 1.5px solid #ddd;
+  border: 1px solid #eee;
   border-radius: 6px;
-  padding: 10px;
+  padding: 8px;
   align-items: center;
-  text-decoration: none;
-  color: inherit;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.2s ease;
 }
 
 .player-card:hover {
-  background: #fff;
-  border-color: #c30452;
-  box-shadow: 0 2px 6px rgba(195, 4, 82, 0.15);
+  background: #f1f1f1;
 }
 
 .player-photo {
-  width: 65px;
-  height: 65px;
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
   object-fit: cover;
-  border-radius: 50%;
   margin-right: 12px;
-  border: 2px solid #c30452;
 }
 
 .player-info {
   flex: 1;
 }
+
 .player-name {
-  font-weight: bold;
-  font-size: 1rem;
-  color: #111;
+  font-weight: 600;
+  font-size: 15px;
 }
+
 .player-position {
-  color: #777;
-  font-size: 0.85rem;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 4px;
 }
+
 .player-divider {
   margin: 4px 0;
   border: none;
-  border-top: 1px dashed #ddd;
-}
-.player-note {
-  color: #555;
-  font-size: 0.85rem;
+  border-top: 1px solid #ddd;
 }
 
-/* ---------------- twinS-TAR 통계 ---------------- */
+.player-note {
+  font-size: 13px;
+  color: #555;
+}
+
+/* ----------------------
+   twinS-TAR 기록 섹션
+---------------------- */
 .stat-section {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .stat-section h2 {
-  font-size: 24px;
+  font-size: 22px;
   margin-bottom: 12px;
-  border-left: 5px solid #c30452;
+  border-left: 4px solid #c30452;
   padding-left: 10px;
 }
 
 .stats-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .stats-table th {
   background: #c30452;
   color: white;
-  padding: 12px;
-  border: 1px solid #ccc;
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-weight: 600;
 }
 
 .stats-table td {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   text-align: center;
 }
 
 .stats-table tbody tr:nth-child(odd) {
-  background: #fdfdfd;
-}
-.stats-table tbody tr:hover {
   background: #f9f9f9;
 }
 
-/* ---------------- 인기 선수 TOP 3 ---------------- */
+/* ----------------------
+   인기 선수 TOP 3
+---------------------- */
 .vote-section {
   margin-top: 40px;
 }
 
 .vote-section h2 {
-  text-align: center;
-  color: #c30452;
-  margin-bottom: 20px;
+  font-size: 22px;
+  margin-bottom: 12px;
+  border-left: 4px solid #c30452;
+  padding-left: 10px;
 }
 
-.vote-cards {
+.top-votes {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
 .vote-card {
   background: #fff;
-  border: 2px solid #c30452;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  width: 170px;
-  padding: 16px;
+  width: 160px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 2px 6px rgba(195, 4, 82, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease;
 }
 
 .vote-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
+  border-color: #c30452;
 }
 
 .vote-player-photo {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   margin-bottom: 8px;
-  border: 2px solid #c30452;
+  object-fit: cover;
 }
 
-.vote-info {
-  text-align: center;
-}
 .vote-player-name {
   font-weight: 600;
-  display: block;
-}
-.vote-count {
-  font-size: 0.9rem;
-  color: #333;
+  margin-bottom: 4px;
 }
 
+.vote-count {
+  font-size: 13px;
+  color: #777;
+}
+
+/* ----------------------
+   반응형
+---------------------- */
 @media (max-width: 768px) {
   .twins-tar-layout {
     grid-template-columns: 1fr;
   }
   .players-board {
-    height: auto;
+    max-height: unset;
   }
   .stats-table th,
   .stats-table td {
-    font-size: 13px;
+    font-size: 12px;
+    padding: 8px;
   }
 }
