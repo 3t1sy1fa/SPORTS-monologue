@@ -31,7 +31,6 @@
     "slug": "koo-jw",
     "teamSlug": "samsung",
     "position": "외야수",
-    "note": "",
     "number": "5",
     "popularity": 0
   },
@@ -47,6 +46,7 @@
     "slug": "ryu-jh",
     "teamSlug": "samsung",
     "position": "내야수",
+    "note": "류 지혁이가 안타를 친다",
     "popularity": 0
   },
   {
@@ -75,6 +75,7 @@
     "slug": "park-mw",
     "teamSlug": "nc",
     "position": "내야수",
+    "note": "하솜 전국구 만들기 동참합니다",
     "popularity": 0
   },
   {
@@ -82,6 +83,7 @@
     "slug": "park-gw-nc",
     "teamSlug": "nc",
     "position": "외야수",
+    "note": "ㅃㄹ결혼 ㄱㄱ",
     "popularity": 0
   },
   {
@@ -117,6 +119,7 @@
     "slug": "nc-ghd",
     "teamSlug": "nc",
     "position": "외야수",
+    "note": "동동동동 엔씨희동",
     "popularity": 0
   },
   {
@@ -187,6 +190,7 @@
     "slug": "na-sy",
     "teamSlug": "lotte",
     "position": "내야수",
+    "note": "나승엽 갠팬 드갑니다",
     "popularity": 0
   },
   {
@@ -201,6 +205,7 @@
     "slug": "yoon-dh",
     "teamSlug": "lotte",
     "position": "외야수",
+    "note": "윤동희 흔들어봐",
     "popularity": 0
   },
   {
@@ -244,7 +249,7 @@
     "slug": "kim-yw",
     "teamSlug": "lg",
     "position": "투수",
-    "note": "",
+    "note": "늑실",
     "number": "67",
     "popularity": 0
   },
@@ -253,7 +258,7 @@
     "slug": "park-dw",
     "teamSlug": "lg",
     "position": "포수",
-    "note": "2025 미스터 올스타",
+    "note": "살아나라 동원동원",
     "number": "27",
     "popularity": 0
   },
@@ -271,7 +276,7 @@
     "slug": "ad",
     "teamSlug": "lg",
     "position": "내야수",
-    "note": "복귀 멀티히트 캬",
+    "note": "1회 투런 홈런 ",
     "number": "23",
     "popularity": 0
   },
@@ -289,7 +294,7 @@
     "slug": "choi-wy",
     "teamSlug": "lg",
     "position": "외야수",
-    "note": "",
+    "note": "해민 수제자",
     "number": "3",
     "popularity": 0
   },
@@ -316,7 +321,7 @@
     "slug": "kim-js",
     "teamSlug": "lg",
     "position": "투수",
-    "note": "",
+    "note": "내가 신이었네",
     "number": "42",
     "popularity": 0
   },
@@ -352,7 +357,7 @@
     "slug": "moon-sj",
     "teamSlug": "lg",
     "position": "외야수",
-    "note": "",
+    "note": "적시타는 문성주 다음 마킹은 문성주",
     "number": "8",
     "popularity": 0
   },
@@ -370,7 +375,7 @@
     "slug": "shin-mj",
     "teamSlug": "lg",
     "position": "내야수",
-    "note": "",
+    "note": "홍창기 리드오프 뺏어",
     "number": "4",
     "popularity": 0
   },
@@ -415,7 +420,7 @@
     "slug": "you-yc",
     "teamSlug": "lg",
     "position": "투수",
-    "note": "",
+    "note": "유영찬 크아 마킹 오프라인에서 내주세요",
     "number": "54",
     "popularity": 0
   },
@@ -433,6 +438,7 @@
     "slug": "cheon-sh",
     "teamSlug": "lg",
     "position": "내야수",
+    "note": "\"끝내기\"",
     "popularity": 0
   },
   {
@@ -446,6 +452,7 @@
     "slug": "song-sm",
     "teamSlug": "kiwoom",
     "position": "내야수",
+    "note": "승리의 문",
     "popularity": 0
   },
   {
@@ -618,6 +625,7 @@
     "slug": "Kim-sh",
     "teamSlug": "hanwha",
     "position": "투수",
+    "note": "어 더해봐",
     "popularity": 0
   },
   {
