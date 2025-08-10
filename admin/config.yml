@@ -3,8 +3,8 @@ backend:
   branch: main
   repo: 3t1sy1fa/SPORTS-monologue
 
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "/src/images/uploads"
+public_folder: "src/images/uploads"
 
 collections:
   - name: "posts"
