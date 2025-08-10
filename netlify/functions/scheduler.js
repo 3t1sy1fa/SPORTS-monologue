@@ -1,19 +1,30 @@
 // netlify/functions/scheduler.js
-export async function handler() {
-  try {
-    const response = await fetch("https://api.netlify.com/build_hooks/688b0ef2c994b77907a70af0", {
-      method: "POST",
-    });
-    if (!response.ok) throw new Error("Failed to trigger build");
+// Netlify Scheduled Function이 매일 정해진 시각(UTC)으로 실행
+// 내부에서 빌드 훅 POST 호출
 
-    return {
-      statusCode: 200,
-      body: "✅ Daily build triggered successfully!",
-    };
-  } catch (error) {
-    return {
-      statusCode: 500,
-      body: `❌ Error: ${error.message}`,
-    };
+exports.handler = async () => {
+  try {
+    const hook = process.env.NETLIFY_BUILD_HOOK;
+    if (!hook) {
+      return { statusCode: 500, body: "Missing NETLIFY_BUILD_HOOK" };
+    }
+
+    const res = await fetch(hook, { method: "POST" });
+    if (!res.ok) {
+      const text = await res.text();
+      return {
+        statusCode: 502,
+        body: JSON.stringify({
+          message: "Scheduled build hook failed",
+          status: res.status,
+          body: text,
+        }),
+      };
+    }
+
+    return { statusCode: 200, body: "Scheduled rebuild triggered" };
+  } catch (e) {
+    console.error(e);
+    return { statusCode: 500, body: "Scheduler failed" };
   }
-}
+};
