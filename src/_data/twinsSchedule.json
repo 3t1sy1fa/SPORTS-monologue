@@ -75,7 +75,9 @@
     "opponent": "두산",
     "opponentSlug": "doosan",
     "homeAway": "홈",
-    "status": "예정"
+    "status": "종료",
+    "result": "패",
+    "score": "8 - 10"
   },
   {
     "season": "2025",
@@ -83,7 +85,9 @@
     "opponent": "두산",
     "opponentSlug": "doosan",
     "homeAway": "홈",
-    "status": "예정"
+    "status": "종료",
+    "result": "승",
+    "score": "4 - 3"
   },
   {
     "season": "2025",
@@ -91,7 +95,9 @@
     "opponent": "한화",
     "opponentSlug": "hanwha",
     "homeAway": "홈",
-    "status": "예정"
+    "status": "종료",
+    "result": "승",
+    "score": "2 - 1"
   },
   {
     "season": "2025",
@@ -99,7 +105,9 @@
     "opponent": "한화",
     "opponentSlug": "hanwha",
     "homeAway": "홈",
-    "status": "예정"
+    "status": "종료",
+    "result": "승",
+    "score": "8 - 1"
   },
   {
     "season": "2025",

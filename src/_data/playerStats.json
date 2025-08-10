@@ -88,5 +88,23 @@
     "record": "역전 쓰리런!!!!",
     "rating": "4.9/5",
     "teamSlug": "lg"
+  },
+  {
+    "playerSlug": "cheon-sh",
+    "playerName": "천성호",
+    "date": "2025-08-08",
+    "game": "한화 주말 3연전-1차전",
+    "record": "10회 말 끝내기 안타",
+    "rating": "5/5",
+    "teamSlug": "lg"
+  },
+  {
+    "playerSlug": "ad",
+    "playerName": "오스틴",
+    "date": "2025-08-09",
+    "game": "한화 주말 3연전-2차전",
+    "record": "1회 말 투런 홈런",
+    "rating": "3.9/5",
+    "teamSlug": "lg"
   }
 ]

@@ -1538,5 +1538,19 @@
     "teamSlug": "",
     "playerSlug": "moon-hb-hw",
     "timestamp": "2025-08-04T11:21:25.144Z"
+  },
+  {
+    "voterId": "1754405644761",
+    "targetType": "team",
+    "teamSlug": "lotte",
+    "playerSlug": "",
+    "timestamp": "2025-08-05T14:54:04.761Z"
+  },
+  {
+    "voterId": "1754405646310",
+    "targetType": "team",
+    "teamSlug": "kia",
+    "playerSlug": "",
+    "timestamp": "2025-08-05T14:54:06.310Z"
   }
 ]
