@@ -2,7 +2,7 @@ const moment = require("moment");
 require("dotenv").config();
 
 module.exports = function (eleventyConfig) {
-  ["src/style", "src/scripts", "src/images", "src/fonts", "src/admin"].forEach(
+  ["src/style", "src/scripts", "src/images", "src/fonts", "admin"].forEach(
     (path) => {
       eleventyConfig.addPassthroughCopy(path);
     }
