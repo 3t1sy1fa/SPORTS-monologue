@@ -1552,5 +1552,19 @@
     "teamSlug": "kia",
     "playerSlug": "",
     "timestamp": "2025-08-05T14:54:06.310Z"
+  },
+  {
+    "voterId": "1754798117815",
+    "targetType": "team",
+    "teamSlug": "lg",
+    "playerSlug": "",
+    "timestamp": "2025-08-10T03:55:17.815Z"
+  },
+  {
+    "voterId": "1754798122753",
+    "targetType": "team",
+    "teamSlug": "hanwha",
+    "playerSlug": "",
+    "timestamp": "2025-08-10T03:55:22.753Z"
   }
 ]
