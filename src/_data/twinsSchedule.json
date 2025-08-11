@@ -115,7 +115,9 @@
     "opponent": "한화",
     "opponentSlug": "hanwha",
     "homeAway": "홈",
-    "status": "예정"
+    "status": "종료",
+    "result": "패",
+    "score": "4 - 5"
   },
   {
     "season": "2025",

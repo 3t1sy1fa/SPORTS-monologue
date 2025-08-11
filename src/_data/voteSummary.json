@@ -3,12 +3,12 @@
     {
       "teamSlug": "lg",
       "teamName": "LG 트윈스",
-      "teamTotalVotes": 35
+      "teamTotalVotes": 36
     },
     {
       "teamSlug": "hanwha",
       "teamName": "한화 이글스",
-      "teamTotalVotes": 5
+      "teamTotalVotes": 6
     },
     {
       "teamSlug": "lotte",
@@ -21,13 +21,13 @@
       "teamTotalVotes": 1
     },
     {
-      "teamSlug": "kia",
-      "teamName": "KIA 타이거즈",
+      "teamSlug": "kt",
+      "teamName": "KT 위즈",
       "teamTotalVotes": 2
     },
     {
-      "teamSlug": "kt",
-      "teamName": "KT 위즈",
+      "teamSlug": "kia",
+      "teamName": "KIA 타이거즈",
       "teamTotalVotes": 2
     },
     {
