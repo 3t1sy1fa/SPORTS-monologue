@@ -8,7 +8,7 @@
     "draws": 2,
     "winRate": "0.607",
     "gamesBehind": "0",
-    "lastGame": "승",
+    "lastGame": "패",
     "homepage": "https://www.lgtwins.com"
   },
   {
@@ -20,7 +20,7 @@
     "draws": 3,
     "winRate": "0.592",
     "gamesBehind": "2",
-    "lastGame": "패",
+    "lastGame": "승",
     "homepage": "https://www.hanwhaeagles.co.kr"
   },
   {
@@ -68,7 +68,7 @@
     "draws": 4,
     "winRate": "0.5",
     "gamesBehind": "11.5",
-    "lastGame": "승",
+    "lastGame": "패",
     "homepage": "https://www.ktwiz.co.kr"
   },
   {
@@ -116,7 +116,7 @@
     "draws": 4,
     "winRate": "0.311",
     "gamesBehind": "31.5",
-    "lastGame": "패",
+    "lastGame": "승",
     "homepage": "https://www.heroesbaseball.co.kr"
   }
 ]
