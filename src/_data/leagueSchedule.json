@@ -633,10 +633,11 @@
     "homeSlug": "doosan",
     "away": "nc",
     "awaySlug": "nc",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "2",
+    "awayScore": "3",
+    "status": "패",
+    "winner": "종료",
+    "doubleHeader": "nc"
   },
   {
     "season": "2025",
@@ -646,10 +647,11 @@
     "homeSlug": "ssg",
     "away": "키움",
     "awaySlug": "kiwoom",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "3",
+    "awayScore": "1",
+    "status": "승",
+    "winner": "종료",
+    "doubleHeader": "ssg"
   },
   {
     "season": "2025",
@@ -659,10 +661,11 @@
     "homeSlug": "samsung",
     "away": "KIA",
     "awaySlug": "kia",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "1",
+    "awayScore": "5",
+    "status": "패",
+    "winner": "종료",
+    "doubleHeader": "kia"
   },
   {
     "season": "2025",
@@ -672,10 +675,11 @@
     "homeSlug": "kt",
     "away": "LG",
     "awaySlug": "lg",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "2",
+    "awayScore": "11",
+    "status": "패",
+    "winner": "종료",
+    "doubleHeader": "lg"
   },
   {
     "season": "2025",
@@ -685,10 +689,11 @@
     "homeSlug": "hanwha",
     "away": "롯데",
     "awaySlug": "lotte",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "2",
+    "awayScore": "0",
+    "status": "승",
+    "winner": "종료",
+    "doubleHeader": "hanwha"
   },
   {
     "season": "2025",
@@ -698,10 +703,10 @@
     "homeSlug": "doosan",
     "away": "nc",
     "awaySlug": "nc",
-    "homeScore": "",
-    "awayScore": "",
+    "homeScore": "-",
+    "awayScore": "-",
     "status": "",
-    "winner": "예정"
+    "winner": "취소"
   },
   {
     "season": "2025",
@@ -711,10 +716,10 @@
     "homeSlug": "ssg",
     "away": "키움",
     "awaySlug": "kiwoom",
-    "homeScore": "",
-    "awayScore": "",
+    "homeScore": "-",
+    "awayScore": "-",
     "status": "",
-    "winner": "예정"
+    "winner": "취소"
   },
   {
     "season": "2025",
@@ -724,10 +729,11 @@
     "homeSlug": "samsung",
     "away": "KIA",
     "awaySlug": "kia",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "1",
+    "awayScore": "9",
+    "status": "패",
+    "winner": "종료",
+    "doubleHeader": "kia"
   },
   {
     "season": "2025",
@@ -737,10 +743,10 @@
     "homeSlug": "kt",
     "away": "LG",
     "awaySlug": "lg",
-    "homeScore": "",
-    "awayScore": "",
+    "homeScore": "-",
+    "awayScore": "-",
     "status": "",
-    "winner": "예정"
+    "winner": "취소"
   },
   {
     "season": "2025",
@@ -750,10 +756,11 @@
     "homeSlug": "hanwha",
     "away": "롯데",
     "awaySlug": "lotte",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "6",
+    "awayScore": "0",
+    "status": "승",
+    "winner": "종료",
+    "doubleHeader": "hanwha"
   },
   {
     "season": "2025",
@@ -763,10 +770,11 @@
     "homeSlug": "doosan",
     "away": "nc",
     "awaySlug": "nc",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "6",
+    "awayScore": "5",
+    "status": "승",
+    "winner": "종료",
+    "doubleHeader": "doosan"
   },
   {
     "season": "2025",
@@ -776,10 +784,11 @@
     "homeSlug": "ssg",
     "away": "키움",
     "awaySlug": "kiwoom",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "0",
+    "awayScore": "2",
+    "status": "패",
+    "winner": "종료",
+    "doubleHeader": "kiwoom"
   },
   {
     "season": "2025",
@@ -789,10 +798,11 @@
     "homeSlug": "samsung",
     "away": "KIA",
     "awaySlug": "kia",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "4",
+    "awayScore": "10",
+    "status": "패",
+    "winner": "종료",
+    "doubleHeader": "kia"
   },
   {
     "season": "2025",
@@ -802,10 +812,10 @@
     "homeSlug": "kt",
     "away": "LG",
     "awaySlug": "lg",
-    "homeScore": "",
-    "awayScore": "",
+    "homeScore": "-",
+    "awayScore": "-",
     "status": "",
-    "winner": "예정"
+    "winner": "취소"
   },
   {
     "season": "2025",
@@ -815,10 +825,11 @@
     "homeSlug": "hanwha",
     "away": "롯데",
     "awaySlug": "lotte",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "5",
+    "awayScore": "4",
+    "status": "승",
+    "winner": "종료",
+    "doubleHeader": "hanwha"
   },
   {
     "season": "2025",
@@ -828,10 +839,11 @@
     "homeSlug": "doosan",
     "away": "KIA",
     "awaySlug": "kia",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "6",
+    "awayScore": "5",
+    "status": "승",
+    "winner": "종료",
+    "doubleHeader": "doosan"
   },
   {
     "season": "2025",
@@ -841,10 +853,11 @@
     "homeSlug": "ssg",
     "away": "LG",
     "awaySlug": "lg",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "3",
+    "awayScore": "5",
+    "status": "패",
+    "winner": "종료",
+    "doubleHeader": "lg"
   },
   {
     "season": "2025",
@@ -854,10 +867,11 @@
     "homeSlug": "lotte",
     "away": "삼성",
     "awaySlug": "samsung",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "4",
+    "awayScore": "10",
+    "status": "패",
+    "winner": "종료",
+    "doubleHeader": "samsung"
   },
   {
     "season": "2025",
@@ -867,10 +881,11 @@
     "homeSlug": "nc",
     "away": "한화",
     "awaySlug": "hanwha",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "2",
+    "awayScore": "9",
+    "status": "패",
+    "winner": "종료",
+    "doubleHeader": "hanwha"
   },
   {
     "season": "2025",
@@ -880,10 +895,11 @@
     "homeSlug": "kiwoom",
     "away": "KT",
     "awaySlug": "kt",
-    "homeScore": "",
-    "awayScore": "",
-    "status": "",
-    "winner": "예정"
+    "homeScore": "7",
+    "awayScore": "3",
+    "status": "승",
+    "winner": "종료",
+    "doubleHeader": "kiwoom"
   },
   {
     "season": "2025",

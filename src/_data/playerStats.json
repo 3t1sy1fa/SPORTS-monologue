@@ -106,5 +106,12 @@
     "record": "1회 말 투런 홈런",
     "rating": "3.9/5",
     "teamSlug": "lg"
+  },
+  {
+    "playerSlug": "oh-Jw",
+    "playerName": "오지환",
+    "date": "2025-08-16",
+    "game": "SSG 주말 3연전-2차전",
+    "record": "6회 초 만루 홈런"
   }
 ]
