@@ -5,33 +5,47 @@ description: "KBO 리그 주요 경기 흐름과 전략을 해석하며 전력 �
 ---
 
 {% block content %}
-<section class="analysis-container">
+<section class="analysis-container" aria-labelledby="analysis-title">
   <header class="analysis-header">
-    <h1>경기 분석</h1>
+    <h1 id="analysis-title">경기 분석</h1>
     <p class="subtitle">KBO 리그 주요 경기 흐름과 전략을 해석합니다.</p>
   </header>
 
-  <div class="analysis-list">
-    {% for post in collections.posts | reverse %}
-      {% if post.data.category == "경기 분석" %}
+  {% set postsArr = collections.posts or [] %}
+  {% set gameAnalyses = [] %}
+  {% for p in postsArr %}
+    {% if p.data and p.data.category == "경기 분석" %}
+      {% set gameAnalyses = gameAnalyses.concat([p]) %}
+    {% endif %}
+  {% endfor %}
+
+  {% if gameAnalyses.length == 0 %}
+    <p>아직 ‘경기 분석’ 글이 없습니다. 곧 업데이트될 예정입니다.</p>
+  {% else %}
+    <div class="analysis-list">
+      {# 최신 글이 위로 오도록 역순 #}
+      {% for post in gameAnalyses | reverse %}
         <article class="analysis-item">
           <h2 class="analysis-title">
             <a href="{{ post.url }}" title="{{ post.data.title }}">
               {{ post.data.title }}
             </a>
           </h2>
+
           <div class="analysis-meta">
             <span class="category">[{{ post.data.category }}]</span>
-            <time datetime="{{ post.date | date('yyyy-MM-dd') }}">
-              {{ post.date | date }}
+            {# 날짜 필터: 레이아웃의 date 필터가 "yyyy-MM-dd" 미지원이면 "yyyy-MM-dd" 대신 "YYYY-MM-DD" 사용 #}
+            <time datetime="{{ post.date | date('YYYY-MM-DD') }}">
+              {{ post.date | date('YYYY.MM.DD') }}
             </time>
           </div>
+
           {% if post.data.excerpt %}
             <p class="analysis-excerpt">{{ post.data.excerpt }}</p>
           {% endif %}
         </article>
-      {% endif %}
-    {% endfor %}
-  </div>
+      {% endfor %}
+    </div>
+  {% endif %}
 </section>
 {% endblock %}

@@ -3,7 +3,7 @@
     {
       "teamSlug": "lg",
       "teamName": "LG 트윈스",
-      "teamTotalVotes": 36
+      "teamTotalVotes": 37
     },
     {
       "teamSlug": "hanwha",
@@ -338,7 +338,7 @@
       "playerSlug": "shin-mj",
       "playerName": "신민재",
       "playerTeamSlug": "lg",
-      "playerTotalVotes": 0
+      "playerTotalVotes": 1
     },
     {
       "playerSlug": "son-jy",
@@ -368,19 +368,19 @@
       "playerSlug": "you-yc",
       "playerName": "유영찬",
       "playerTeamSlug": "lg",
-      "playerTotalVotes": 0
+      "playerTotalVotes": 1
     },
     {
       "playerSlug": "oh-jw",
       "playerName": "오지환",
       "playerTeamSlug": "lg",
-      "playerTotalVotes": 0
+      "playerTotalVotes": 1
     },
     {
       "playerSlug": "cheon-sh",
       "playerName": "천성호",
       "playerTeamSlug": "lg",
-      "playerTotalVotes": 0
+      "playerTotalVotes": 1
     },
     {
       "playerSlug": "an-hm",
@@ -392,7 +392,7 @@
       "playerSlug": "song-sm",
       "playerName": "송성문",
       "playerTeamSlug": "kiwoom",
-      "playerTotalVotes": 0
+      "playerTotalVotes": 1
     },
     {
       "playerSlug": "lee-jh-kw",

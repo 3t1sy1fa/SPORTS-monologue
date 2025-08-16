@@ -1566,5 +1566,47 @@
     "teamSlug": "hanwha",
     "playerSlug": "",
     "timestamp": "2025-08-10T03:55:22.753Z"
+  },
+  {
+    "voterId": "1754960498950",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "shin-mj",
+    "timestamp": "2025-08-12T01:01:38.950Z"
+  },
+  {
+    "voterId": "1754960502759",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "you-yc",
+    "timestamp": "2025-08-12T01:01:42.759Z"
+  },
+  {
+    "voterId": "1754960505091",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "oh-jw",
+    "timestamp": "2025-08-12T01:01:45.091Z"
+  },
+  {
+    "voterId": "1754960507229",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "cheon-sh",
+    "timestamp": "2025-08-12T01:01:47.229Z"
+  },
+  {
+    "voterId": "1754960510361",
+    "targetType": "player",
+    "teamSlug": "",
+    "playerSlug": "song-sm",
+    "timestamp": "2025-08-12T01:01:50.361Z"
+  },
+  {
+    "voterId": "1755333126343",
+    "targetType": "team",
+    "teamSlug": "lg",
+    "playerSlug": "",
+    "timestamp": "2025-08-16T08:32:06.343Z"
   }
 ]
