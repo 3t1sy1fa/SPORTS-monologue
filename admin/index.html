@@ -5,10 +5,48 @@
     <title>Content Manager</title>
     <link rel="stylesheet" href="/style/main.css" />
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <!-- CMS 프리뷰에서도 하이라이트가 명확히 보이도록 약간의 스타일 추가 -->
+    <style>
+      /* 에디터/미리보기에서 하이라이트 표시 */
+      mark {
+        background: #fff3a3;
+        padding: 0 0.15em;
+        border-radius: 0.2em;
+      }
+    </style>
   </head>
   <body>
+    <!-- Netlify CMS 본체 -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-  </body>
 
-  
+    <script>
+      // ===== 하이라이트(EditorComponent) 등록 =====
+      // 마크다운 본문에서 <mark>내용</mark> 을 손쉽게 삽입/편집
+      if (window.CMS) {
+        CMS.registerEditorComponent({
+          id: "highlight",
+          label: "하이라이트",
+          // 본문에서 이미 있는 <mark>...</mark> 패턴도 인식해서 편집 가능
+          pattern: /<mark>([\s\S]*?)<\/mark>/,
+          fromBlock(match) {
+            return { text: match && match[1] ? match[1] : "" };
+          },
+          toBlock(obj) {
+            const txt = obj && obj.text ? obj.text : "";
+            return `<mark>${txt}</mark>`;
+          },
+          toPreview(obj) {
+            const txt = obj && obj.text ? obj.text : "";
+            return `<mark>${txt}</mark>`;
+          },
+          // 사이드 패널에서 텍스트를 입력할 수 있게 필드 제공
+          fields: [{ label: "텍스트", name: "text", widget: "text" }],
+        });
+      }
+
+      // (선택) 로그인 위젯 자동 오픈 방지 등 기본 설정이 필요하면 여기에 추가
+      // window.netlifyIdentity?.on("init", user => { ... });
+    </script>
+  </body>
 </html>
