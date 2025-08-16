@@ -13,14 +13,18 @@ description: "KBO 선수들의 전력과 가능성, 잠재력을 분석합니다
   <h1 id="players-title" class="page-title">선수 분석</h1>
   <p class="page-meta">KBO 리그 선수들의 전력과 가능성, 잠재력을 분석합니다.</p>
 
+  {# ✅ 데이터 가드: 객체일 수도 있으니 배열로 강제 #}
+  {% set teamsArr = teamsBoard | toArray %}
+  {% set playersArr = players | toArray %}
+
   <!-- 🔽 팀 선택 필터 -->
   <div class="filter-container">
     <label for="teamFilter">팀별 보기:</label>
     <select id="teamFilter" aria-label="팀 필터">
       <option value="all">전체</option>
-      {% if teamsBoard %}
-        {% for team in teamsBoard %}
-          <option value="{{ team.slug }}">{{ team.name }}</option>
+      {% if teamsArr and teamsArr.length %}
+        {% for team in teamsArr %}
+          <option value="{{ team.slug | default('') }}">{{ team.name | default(team.slug) }}</option>
         {% endfor %}
       {% endif %}
     </select>
@@ -28,27 +32,30 @@ description: "KBO 선수들의 전력과 가능성, 잠재력을 분석합니다
 
   <!-- 🧑‍💼 선수 카드 그리드 -->
   <div class="players-grid">
-    {% if players %}
-      {% for player in players %}
-        <a href="/players/{{ player.slug }}/"
-           class="player-card {{ player.teamSlug }}"
-           data-team="{{ player.teamSlug }}"
-           aria-label="{{ player.name }} 프로필로 이동">
+    {% if playersArr and playersArr.length %}
+      {% for player in playersArr %}
+        {% set pslug = player.slug | default('no-image') %}
+        {% set tslug = player.teamSlug | default('default-team') %}
+        {% set cardClass = 'player-card ' ~ tslug %}
+        <a href="/players/{{ pslug }}/"
+           class="{{ cardClass }}"
+           data-team="{{ tslug }}"
+           aria-label="{{ player.name | default('선수') }} 프로필로 이동">
           <img
-            src="/images/players/{{ player.slug | default('no-image') }}.png"
-            alt="{{ player.name }} 프로필"
+            src="/images/players/{{ pslug }}.png"
+            alt="{{ player.name | default('선수') }} 프로필"
             class="player-photo"
             loading="lazy"
             decoding="async"
-            onerror="this.style.opacity=0.25"
+            onerror="this.onerror=null;this.src='/images/players/no-image.png';this.style.opacity=0.5;"
           >
 
           <div class="player-info">
-            <h3 class="player-name">{{ player.name }}</h3>
+            <h3 class="player-name">{{ player.name | default('이름 미정') }}</h3>
 
             <p class="player-team" aria-hidden="true">
               <img
-                src="/images/{{ player.teamSlug | default('default-team') }}.png"
+                src="/images/{{ tslug }}.png"
                 alt=""
                 class="team-logo"
                 loading="lazy"
@@ -56,10 +63,12 @@ description: "KBO 선수들의 전력과 가능성, 잠재력을 분석합니다
               >
             </p>
 
-            <p class="player-position">{{ player.position or '포지션 미정' }}</p>
+            <p class="player-position">{{ player.position | default('포지션 미정') }}</p>
+
             {% if player.note %}
               <p class="player-note">{{ player.note }}</p>
             {% endif %}
+
             {% if player.number %}
               <p class="player-number">#{{ player.number }}</p>
             {% endif %}
@@ -70,122 +79,28 @@ description: "KBO 선수들의 전력과 가능성, 잠재력을 분석합니다
           </div>
         </a>
       {% endfor %}
+    {% else %}
+      <p>선수 데이터가 없습니다.</p>
     {% endif %}
   </div>
 </section>
 
-<!-- ✅ 필터 스크립트 -->
+<!-- ✅ 필터 스크립트 (숨길 때만 display:none) -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const filter = document.getElementById("teamFilter");
     const cards  = document.querySelectorAll(".player-card");
 
-    const apply = () => {
+    function apply() {
       const selected = filter.value;
       cards.forEach(card => {
         const matched = (selected === "all") || (card.dataset.team === selected);
-        // 숨길 때만 none, 보여줄 때는 기본값(스타일시트에 맡김)
         card.style.display = matched ? "" : "none";
       });
-    };
+    }
 
     filter.addEventListener("change", apply);
-    apply(); // 초기 1회 적용
-  });
-</script>
-{% endblock %}---
-title: 선수 분석
-layout: layout.njk
-description: "KBO 선수들의 전력과 가능성, 잠재력을 분석합니다."
----
-
-{% block styles %}
-  <link rel="stylesheet" href="/style/players.css">
-{% endblock %}
-
-{% block content %}
-<section class="players-container" aria-labelledby="players-title">
-  <h1 id="players-title" class="page-title">선수 분석</h1>
-  <p class="page-meta">KBO 리그 선수들의 전력과 가능성, 잠재력을 분석합니다.</p>
-
-  <!-- 🔽 팀 선택 필터 -->
-  <div class="filter-container">
-    <label for="teamFilter">팀별 보기:</label>
-    <select id="teamFilter" aria-label="팀 필터">
-      <option value="all">전체</option>
-      {% if teamsBoard %}
-        {% for team in teamsBoard %}
-          <option value="{{ team.slug }}">{{ team.name }}</option>
-        {% endfor %}
-      {% endif %}
-    </select>
-  </div>
-
-  <!-- 🧑‍💼 선수 카드 그리드 -->
-  <div class="players-grid">
-    {% if players %}
-      {% for player in players %}
-        <a href="/players/{{ player.slug }}/"
-           class="player-card {{ player.teamSlug }}"
-           data-team="{{ player.teamSlug }}"
-           aria-label="{{ player.name }} 프로필로 이동">
-          <img
-            src="/images/players/{{ player.slug | default('no-image') }}.png"
-            alt="{{ player.name }} 프로필"
-            class="player-photo"
-            loading="lazy"
-            decoding="async"
-            onerror="this.style.opacity=0.25"
-          >
-
-          <div class="player-info">
-            <h3 class="player-name">{{ player.name }}</h3>
-
-            <p class="player-team" aria-hidden="true">
-              <img
-                src="/images/{{ player.teamSlug | default('default-team') }}.png"
-                alt=""
-                class="team-logo"
-                loading="lazy"
-                onerror="this.style.opacity=0.25"
-              >
-            </p>
-
-            <p class="player-position">{{ player.position or '포지션 미정' }}</p>
-            {% if player.note %}
-              <p class="player-note">{{ player.note }}</p>
-            {% endif %}
-            {% if player.number %}
-              <p class="player-number">#{{ player.number }}</p>
-            {% endif %}
-
-            <div class="player-popularity">
-              인기 점수: {{ player.popularity | default(0) }}
-            </div>
-          </div>
-        </a>
-      {% endfor %}
-    {% endif %}
-  </div>
-</section>
-
-<!-- ✅ 필터 스크립트 -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const filter = document.getElementById("teamFilter");
-    const cards  = document.querySelectorAll(".player-card");
-
-    const apply = () => {
-      const selected = filter.value;
-      cards.forEach(card => {
-        const matched = (selected === "all") || (card.dataset.team === selected);
-        // 숨길 때만 none, 보여줄 때는 기본값(스타일시트에 맡김)
-        card.style.display = matched ? "" : "none";
-      });
-    };
-
-    filter.addEventListener("change", apply);
-    apply(); // 초기 1회 적용
+    apply();
   });
 </script>
 {% endblock %}
