@@ -1,0 +1,267 @@
+/* ====== 공통 카드/레이아웃 ====== */
+.analysis-container {
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 0 20px;
+}
+.analysis-header {
+  border-bottom: 2px solid #000;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+.analysis-header .subtitle {
+  color: #666;
+  margin: 6px 0 0;
+}
+.analysis-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 20px;
+}
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 14px;
+}
+
+/* ====== 주간 일정 ====== */
+.weekly-schedule h2 {
+  margin: 0 0 10px;
+}
+.schedule-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.schedule-day {
+  border: 1px dashed #e9e9e9;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fafafa;
+}
+.schedule-day.no-games {
+  background: #f5f5f5;
+  color: #777;
+}
+.schedule-date {
+  display: inline-block;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.match {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+.team {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  line-height: 1.1;
+}
+.team-logo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+/* 승/패 하이라이트 — 홈승: 홈에게 초록, 원정승: 원정에게 빨강 */
+.team.winner {
+  background: #e9f7ef; /* 은은한 초록 */
+  color: #066a32;
+  font-weight: 700;
+  border: 1px solid #d6efe0;
+}
+.team.loser {
+  background: #fdecef; /* 은은한 빨강 */
+  color: #9b1c31;
+  font-weight: 700;
+  border: 1px solid #f6d3da;
+}
+.vs {
+  color: #999;
+  font-weight: 600;
+}
+.score {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #333;
+  font-weight: 700;
+}
+
+/* ====== 포디움 ====== */
+.vote-podium-section h2 {
+  margin: 0 0 10px;
+}
+.podium-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.podium-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fff;
+}
+.podium-card img.team-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+/* ====== 팀 카드 ====== */
+.teams-card-section h2 {
+  margin: 0 0 10px;
+}
+.teams-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.team-card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fff;
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+.team-card-link {
+  display: contents;
+}
+.team-card-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+.team-card .team-info h3 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+}
+.team-card .muted {
+  color: #777;
+  margin: 0 0 6px;
+}
+.last-game {
+  display: inline-block;
+  margin-right: 8px;
+}
+.last-game.win {
+  color: #028a0f;
+  font-weight: 700;
+}
+.last-game.lose {
+  color: #e0182d;
+  font-weight: 700;
+}
+.last-game.draw {
+  color: #919191;
+}
+.vote-count {
+  color: #555;
+}
+.vote-btn {
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+/* ====== 분석 글 목록 ====== */
+.analysis-list-section h2 {
+  margin: 0 0 10px;
+}
+.analysis-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.analysis-item {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 12px;
+  background: #fff;
+}
+.analysis-title {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+.analysis-meta {
+  display: flex;
+  gap: 10px;
+  color: #777;
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+}
+.analysis-excerpt {
+  color: #444;
+}
+
+/* ====== 반응형 ====== */
+@media (max-width: 1024px) {
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+  .teams-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .match {
+    grid-template-columns: 1fr auto;
+    grid-auto-rows: auto;
+    row-gap: 6px;
+  }
+  .score {
+    grid-column: 1 / -1;
+    text-align: left;
+    padding-left: 6px;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .card,
+  .schedule-day,
+  .match,
+  .team-card,
+  .analysis-item {
+    background: #1b1c20;
+    border-color: #2a2a2e;
+  }
+  .schedule-day {
+    background: #16171a;
+  }
+  .team.winner {
+    background: #0f2b18;
+    color: #9fe2b0;
+    border-color: #214b31;
+  }
+  .team.loser {
+    background: #3a1a22;
+    color: #ffb3bf;
+    border-color: #5a2a36;
+  }
+  .vs {
+    color: #aaa;
+  }
+  .score {
+    color: #e8e8e8;
+  }
+}

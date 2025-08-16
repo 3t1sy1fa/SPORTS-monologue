@@ -1,8 +1,13 @@
 ---
-title: 경기 분석
 layout: layout.njk
+title: 경기 분석
 description: "KBO 리그 주요 경기 흐름과 전략을 해석하며 전력 분석을 제공합니다."
 ---
+
+{% block styles %}
+<link rel="stylesheet" href="/style/team-base.css" />
+<link rel="stylesheet" href="/style/analysis.css" />
+{% endblock %}
 
 {% block content %}
 <section class="analysis-container" aria-labelledby="analysis-title">
@@ -11,41 +16,177 @@ description: "KBO 리그 주요 경기 흐름과 전략을 해석하며 전력 �
     <p class="subtitle">KBO 리그 주요 경기 흐름과 전략을 해석합니다.</p>
   </header>
 
-  {% set postsArr = collections.posts or [] %}
-  {% set gameAnalyses = [] %}
-  {% for p in postsArr %}
-    {% if p.data and p.data.category == "경기 분석" %}
-      {% set gameAnalyses = gameAnalyses.concat([p]) %}
-    {% endif %}
-  {% endfor %}
+  <div class="analysis-grid">
+    <!-- 왼쪽: 이번 주 경기 일정 -->
+    <aside class="weekly-schedule card">
+      <h2>이번 주 경기 일정</h2>
+      <ul class="schedule-list">
+        {% for day in weekDates %}
+          {% if day.games and (day.games | length) > 0 %}
+            <li class="schedule-day">
+              <strong class="schedule-date">{{ day.date | date("MM.dd (EEE)") }}</strong>
 
-  {% if gameAnalyses.length == 0 %}
-    <p>아직 ‘경기 분석’ 글이 없습니다. 곧 업데이트될 예정입니다.</p>
-  {% else %}
-    <div class="analysis-list">
-      {# 최신 글이 위로 오도록 역순 #}
-      {% for post in gameAnalyses | reverse %}
-        <article class="analysis-item">
-          <h2 class="analysis-title">
-            <a href="{{ post.url }}" title="{{ post.data.title }}">
-              {{ post.data.title }}
-            </a>
-          </h2>
+              {% for game in day.games %}
+                <div class="match">
+                  {# 홈팀 #}
+                  {% set homeClass = "team" %}
+                  {% if game.winner and game.homeScore > game.awayScore %}
+                    {% set homeClass = "team winner" %}
+                  {% elseif game.winner and game.homeScore < game.awayScore %}
+                    {% set homeClass = "team loser" %}
+                  {% endif %}
 
-          <div class="analysis-meta">
-            <span class="category">[{{ post.data.category }}]</span>
-            {# 날짜 필터: 레이아웃의 date 필터가 "yyyy-MM-dd" 미지원이면 "yyyy-MM-dd" 대신 "YYYY-MM-DD" 사용 #}
-            <time datetime="{{ post.date | date('YYYY-MM-DD') }}">
-              {{ post.date | date('YYYY.MM.DD') }}
-            </time>
-          </div>
+                  {# 원정팀 #}
+                  {% set awayClass = "team" %}
+                  {% if game.winner and game.awayScore > game.homeScore %}
+                    {% set awayClass = "team winner" %}
+                  {% elseif game.winner and game.awayScore < game.homeScore %}
+                    {% set awayClass = "team loser" %}
+                  {% endif %}
 
-          {% if post.data.excerpt %}
-            <p class="analysis-excerpt">{{ post.data.excerpt }}</p>
+                  <span class="{{ homeClass }}">
+                    <img src="/images/s{{ game.homeSlug }}.png" alt="{{ game.home }}" class="team-logo" loading="lazy" decoding="async">
+                    {{ game.home }}
+                  </span>
+
+                  <span class="vs">vs</span>
+
+                  <span class="{{ awayClass }}">
+                    <img src="/images/s{{ game.awaySlug }}.png" alt="{{ game.away }}" class="team-logo" loading="lazy" decoding="async">
+                    {{ game.away }}
+                  </span>
+
+                  <span class="score">
+                    {% if game.homeScore != null and game.awayScore != null %}
+                      {{ game.homeScore }} : {{ game.awayScore }}
+                    {% else %}
+                      예정
+                    {% endif %}
+                  </span>
+                </div>
+              {% endfor %}
+            </li>
+          {% else %}
+            <li class="schedule-day no-games">
+              <strong class="schedule-date">{{ day.date | date("MM.dd (EEE)") }}</strong>
+              <span>경기 없음</span>
+            </li>
           {% endif %}
-        </article>
-      {% endfor %}
+        {% endfor %}
+      </ul>
+    </aside>
+
+    <!-- 오른쪽: 포디움 + 카드 -->
+    <div class="right-content">
+      <!-- 🏆 인기 구단 포디움 -->
+      <section class="vote-podium-section card">
+        <h2>인기 순위</h2>
+        {% if topTeams and (topTeams | length) > 0 %}
+          <div class="podium-wrapper">
+            {% for team in topTeams %}
+              <div class="podium-card podium-{{ loop.index }}">
+                <img src="/images/{{ team.teamSlug }}.png" alt="{{ team.teamName }}" class="team-logo" loading="lazy" decoding="async">
+                <div class="team-info">
+                  <h3>{{ loop.index }}위 {{ team.teamName }}</h3>
+                  <p>{{ team.teamTotalVotes }}표</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p class="no-data">투표 데이터가 부족합니다.</p>
+        {% endif %}
+      </section>
+
+      <!-- 📋 전체 구단 카드 -->
+      {% if voteSummary and voteSummary.teams and voteSummary.teams is iterable %}
+        {% set voteTeams = voteSummary.teams %}
+      {% else %}
+        {% set voteTeams = [] %}
+      {% endif %}
+
+      <section class="teams-card-section card">
+        <h2>전체 구단</h2>
+        <div class="teams-card-grid">
+          {% for team in teamsBoard | sort(attribute="rank") %}
+            {% set voteCount = 0 %}
+            {% for vote in voteTeams %}
+              {% if vote.teamSlug == team.slug %}
+                {% set voteCount = vote.teamTotalVotes %}
+              {% endif %}
+            {% endfor %}
+
+            <div class="team-card team-{{ team.slug }}">
+              <a class="team-card-link" href="/teams/{{ team.slug }}/">
+                <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}" class="team-card-logo" loading="lazy" decoding="async">
+                <div class="team-info">
+                  <h3>{{ team.name }}</h3>
+                  <p class="muted">
+                    순위: {{ team.rank }}위 · 승률: {{ (team.winRate * 100) | round(1) }}%
+                  </p>
+                  <span class="last-game
+                    {% if team.lastGame == '승' %}win
+                    {% elseif team.lastGame == '패' %}lose
+                    {% elseif team.lastGame == '무' %}draw
+                    {% endif %}">
+                    최근 경기: {{ team.lastGame }}
+                  </span>
+                  <span class="vote-count">투표 수: {{ voteCount }}표</span>
+                </div>
+              </a>
+              <button class="vote-btn" data-type="team" data-slug="{{ team.slug }}">
+                이 구단에 투표하기
+              </button>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- ✍️ 경기 분석 글 목록 (collections.posts에서 바로 필터링) -->
+      <section class="analysis-list-section card">
+        <h2>최신 경기 분석</h2>
+        {% set postsArr = collections.posts or [] %}
+        {% set anyPost = false %}
+        <div class="analysis-list">
+          {% for post in postsArr | reverse %}
+            {% if post.data and post.data.category == "경기 분석" %}
+              {% set anyPost = true %}
+              <article class="analysis-item">
+                <h3 class="analysis-title">
+                  <a href="{{ post.url }}" title="{{ post.data.title }}">
+                    {{ post.data.title }}
+                  </a>
+                </h3>
+                <div class="analysis-meta">
+                  <span class="category">[{{ post.data.category }}]</span>
+                  <time datetime="{{ post.date | date('YYYY-MM-DD') }}">
+                    {{ post.date | date('YYYY.MM.DD') }}
+                  </time>
+                </div>
+                {% if post.data.excerpt %}
+                  <p class="analysis-excerpt">{{ post.data.excerpt }}</p>
+                {% endif %}
+              </article>
+            {% endif %}
+          {% endfor %}
+
+          {% if not anyPost %}
+            <p class="no-data">아직 ‘경기 분석’ 글이 없습니다. 곧 업데이트될 예정입니다.</p>
+          {% endif %}
+        </div>
+      </section>
     </div>
-  {% endif %}
+  </div>
 </section>
+
+<script type="module">
+  import { handleVote } from "/scripts/voteHandler.js";
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".vote-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        handleVote(btn.dataset.type, btn.dataset.slug);
+      });
+    });
+  });
+</script>
 {% endblock %}
