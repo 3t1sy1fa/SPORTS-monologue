@@ -1,86 +1,65 @@
-/* =========================================
-   Twins Dashboard (main.css 톤에 맞춘 버전)
-   Breakpoints: 1200 / 1024 / 768 / 480
-========================================= */
-
-/* 테마 변수: main.css 느낌(중립/저채도, 최소 그림자) */
+/* Twins Dashboard — main.css 톤 */
 :root {
   --brand: #c30452;
-  --text-1: #1a1a1a;
-  --text-2: #555;
-  --text-3: #777;
-  --bg: #fff;
+  --text: #1a1a1a;
+  --muted: #777;
   --line: #ddd;
-  --line-soft: #eee;
-
-  --win-bg: #eaf7ea;
-  --lose-bg: #fbe9eb;
-  --sched-bg: #f3f5f7;
-
-  --radius: 8px;
-  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05);
+  --line2: #eee;
+  --bg: #fff;
+  --win: #eaf7ea;
+  --lose: #fbe9eb;
+  --sched: #f3f5f7;
+  --r: 8px;
 }
-
-/* ---------- 기본 래퍼 ---------- */
 .twins-dashboard {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  color: var(--text);
   font-family: "Mingijuk", "SUIT", sans-serif;
-  color: var(--text-1);
 }
-
-/* 헤더(메인 타이틀 크기/두께를 main.css 톤에 맞춤) */
 .dashboard-header {
   text-align: center;
   margin-bottom: 20px;
 }
 .slogan {
   font-size: 18px;
-  color: var(--text-2);
+  color: #555;
   margin: 0 0 6px;
 }
 .main-title {
   font-size: 2.2rem;
   font-weight: 700;
   color: var(--brand);
-  letter-spacing: 0;
   margin: 0;
+  letter-spacing: 0;
 }
-
-/* ---------- 레이아웃 ---------- */
 .dashboard-layout {
   display: grid;
-  grid-template-columns: 1fr 2fr; /* sidebar | main */
+  grid-template-columns: 1fr 2fr;
   gap: 20px;
 }
-
-/* ---------- 사이드바 ---------- */
 .sidebar {
   background: var(--bg);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--r);
   padding: 16px;
 }
-
-/* 사이드 섹션 타이틀 (main.css 섹션 헤더 톤) */
 .calendar-card h3,
 .recent-matches h3 {
   font-size: 1.1rem;
   margin: 0 0 10px;
   padding-bottom: 6px;
   border-bottom: 2px solid #000;
-  color: var(--text-1);
 }
-
-/* ---------- 캘린더 ---------- */
+/* calendar */
 .calendar-table {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
   margin: 0 0 16px;
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--r);
   overflow: hidden;
 }
 .calendar-table thead th {
@@ -90,8 +69,8 @@
 }
 .calendar-table th,
 .calendar-table td {
-  border-right: 1px solid var(--line-soft);
-  border-bottom: 1px solid var(--line-soft);
+  border-right: 1px solid var(--line2);
+  border-bottom: 1px solid var(--line2);
   text-align: center;
   padding: 8px 6px;
   font-size: 13px;
@@ -104,11 +83,10 @@
 .calendar-table tr:last-child td {
   border-bottom: 0;
 }
-
 .calendar-table td .cal-day {
   display: block;
   font-size: 12px;
-  color: var(--text-3);
+  color: var(--muted);
   margin-bottom: 4px;
 }
 .calendar-table td img.team-logo {
@@ -116,19 +94,15 @@
   height: 22px;
   object-fit: contain;
 }
-
-/* 경기 상태 색 (저채도) */
 .calendar-table td.win {
-  background: var(--win-bg);
+  background: var(--win);
 }
 .calendar-table td.lose {
-  background: var(--lose-bg);
+  background: var(--lose);
 }
 .calendar-table td.scheduled {
-  background: var(--sched-bg);
+  background: var(--sched);
 }
-
-/* ---------- 최근 경기 ---------- */
 .recent-matches ul {
   list-style: none;
   padding: 0;
@@ -139,7 +113,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 6px 0;
-  border-bottom: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line2);
   font-size: 14px;
 }
 .match-item:last-child {
@@ -156,8 +130,6 @@
 .match-item .score {
   font-variant-numeric: tabular-nums;
 }
-
-/* 공식 버튼 (main.css 버튼 느낌) */
 .official-btn {
   display: block;
   margin-top: 12px;
@@ -168,18 +140,15 @@
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.2s ease;
+  transition: background 0.2s;
 }
 .official-btn:hover {
   background: #333;
 }
-
-/* ---------- 메인 패널 ---------- */
+/* main */
 .main-panel section {
   margin-bottom: 24px;
 }
-
-/* TOP 3 영역 (카드 톤 다운) */
 .top-player-cards {
   display: flex;
   gap: 16px;
@@ -187,11 +156,11 @@
 .player-card {
   background: var(--bg);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--r);
   text-align: center;
   padding: 12px;
   flex: 1;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s;
 }
 .player-card:hover {
   transform: translateY(-2px);
@@ -203,8 +172,6 @@
   border-radius: 50%;
   border: 2px solid #fff;
 }
-
-/* 전체 선수단 (main.css 카드 리스트 톤) */
 .players-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -228,24 +195,21 @@
   margin: 0 0 2px;
   font-size: 16px;
   font-weight: 700;
-  color: var(--text-1);
+  color: var(--text);
 }
 .info h4 span {
-  color: var(--text-3);
+  color: var(--muted);
   font-weight: 600;
   margin-left: 4px;
 }
-.info .pos {
-  font-size: 13px;
-  color: var(--text-2);
-}
+.info .pos,
 .info .note {
   font-size: 13px;
-  color: var(--text-2);
+  color: #555;
+}
+.info .note {
   margin-top: 2px;
 }
-
-/* 투표 버튼 (사이트 공통 버튼 톤) */
 .vote-btn {
   background: #000;
   color: #fff;
@@ -256,22 +220,17 @@
   cursor: pointer;
   margin-top: 6px;
   font-weight: 600;
-  transition: background 0.2s ease;
+  transition: background 0.2s;
 }
 .vote-btn:hover {
   background: #333;
 }
-
-/* ---------- 반응형 ---------- */
-
-/* <=1200: 패딩만 살짝 */
+/* responsive */
 @media (max-width: 1200px) {
   .twins-dashboard {
     padding: 20px 16px;
   }
 }
-
-/* 1024px 이하시: 그리드 비율 살짝 좁힘 */
 @media (max-width: 1024px) {
   .dashboard-layout {
     grid-template-columns: 1fr 1.6fr;
@@ -293,8 +252,6 @@
     grid-template-columns: 1fr;
   }
 }
-
-/* 768px 이하시: 단열, 타이포/여백 축소 (main.css 모바일 톤) */
 @media (max-width: 768px) {
   .twins-dashboard {
     padding: 16px 12px;
@@ -309,7 +266,6 @@
   .slogan {
     font-size: 16px;
   }
-
   .calendar-table td .cal-day {
     font-size: 11px;
   }
@@ -321,7 +277,6 @@
     grid-template-columns: 1fr;
     gap: 12px;
   }
-
   .player-card.full {
     padding: 8px;
   }
@@ -334,8 +289,6 @@
     font-size: 15px;
   }
 }
-
-/* 480px 이하시: 더 압축 */
 @media (max-width: 480px) {
   .main-title {
     font-size: 1.6rem;
@@ -351,12 +304,5 @@
   .calendar-table td img.team-logo {
     width: 20px;
     height: 20px;
-  }
-}
-
-/* 접근성: 모션 감소 */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
   }
 }
