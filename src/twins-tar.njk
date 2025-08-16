@@ -6,7 +6,7 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
 
 {# NOTE: twins-tar.css는 layout.njk에서 title == '트윈스타'일 때 이미 로드됨. 중복 로드 금지 #}
 
-{% set monthISO %}2025-08{% endset %}
+{% set monthISO = "2025-08" %}
 {% set twinsArray = twinsSchedule or [] %}
 {% if voteSummary and voteSummary.players %}
   {% set allVotes = voteSummary.players %}
@@ -174,22 +174,8 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
       <section class="all-players">
         <h2>👥 전체 선수단</h2>
         <div class="players-grid">
-          {# ----------------------------
-             ⚠ 폴백 로직
-             1) lgRoster 에 데이터가 있으면 그것 사용
-             2) 없으면 playersAll | toArray 로 강제 배열화 후 그 안에서 LG만 렌더
-          ----------------------------- #}
-          {% set useRoster = lgRoster %}
-          {% if not (useRoster and (useRoster | length) > 0) %}
-            {% set useRoster = playersAll | toArray %}
-          {% endif %}
-
-          {% set anyLG = false %}
-          {% for p in useRoster %}
-            {% set team = (p.teamSlug or p.playerTeamSlug or p.team or p.team_code or '') | lower %}
-            {% if team == 'lg' %}
-              {% set anyLG = true %}
-              {# 안전 폴백: slug/name/number/position/note #}
+          {% if lgRoster and (lgRoster | length) > 0 %}
+            {% for p in lgRoster %}
               {% set pslug = p.slug or p.playerSlug or p.id or p.code or 'no-image' %}
               {% set pname = p.name or p.playerName or p.fullName or p.korName or p.enName or p.nickname or '이름 미정' %}
               {% set pnum  = p.number or p.uniformNumber or p.no or p.backNumber %}
@@ -214,10 +200,8 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
                   <button class="vote-btn" data-type="player" data-slug="{{ pslug }}">투표하기</button>
                 </div>
               </div>
-            {% endif %}
-          {% endfor %}
-
-          {% if not anyLG %}
+            {% endfor %}
+          {% else %}
             <p class="empty">LG 선수단 데이터가 없습니다.</p>
           {% endif %}
         </div>
