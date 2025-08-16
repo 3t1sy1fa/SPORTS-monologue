@@ -125,7 +125,9 @@
     "opponent": "KT",
     "opponentSlug": "kt",
     "homeAway": "원정",
-    "status": "예정"
+    "status": "종료",
+    "result": "승",
+    "score": "2 - 11"
   },
   {
     "season": "2025",
@@ -133,7 +135,9 @@
     "opponent": "KT",
     "opponentSlug": "kt",
     "homeAway": "원정",
-    "status": "예정"
+    "status": "종료",
+    "result": "취소",
+    "score": "-"
   },
   {
     "season": "2025",
@@ -141,7 +145,9 @@
     "opponent": "KT",
     "opponentSlug": "kt",
     "homeAway": "원정",
-    "status": "예정"
+    "status": "종료",
+    "result": "취소",
+    "score": "-"
   },
   {
     "season": "2025",
@@ -149,7 +155,8 @@
     "opponent": "SSG",
     "opponentSlug": "ssg",
     "homeAway": "원정",
-    "status": "예정"
+    "status": "종료",
+    "result": "승"
   },
   {
     "season": "2025",
