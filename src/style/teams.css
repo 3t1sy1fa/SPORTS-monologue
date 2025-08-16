@@ -1,112 +1,244 @@
+/* =========================================
+   Team Layout (main.css 스타일 가이드 정렬)
+   - grid, spacing, radius, shadow, breakpoints 통일
+   - main.css: 1200 / 1024 / 768 / 480 기준
+========================================= */
+
+/* 1) 기본 변수 (fallback) */
+:root {
+  --team-maincolor: #C30452;  /* 포인트 */
+  --team-subcolor:  #f6e7ee;  /* 서브 배경 */
+  --card-bg: #fff;
+  --card-border: #ddd;
+  --card-radius: 8px;
+  --shadow-sm: 0 2px 6px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 10px rgba(0,0,0,0.08);
+  --text-1: #111;
+  --text-2: #555;
+  --text-3: #777;
+}
+
+/* 2) 팀별 테마 변수(페이지/루트에 클래스만 바꿔 붙이면 끝) */
+.team-lg { --team-maincolor:#C30452; --team-subcolor:#f8e9ef; }
+.team-doosan { --team-maincolor:#1A1748; --team-subcolor:#eaecf7; }
+.team-kiwoom { --team-maincolor:#570514; --team-subcolor:#f4e7ea; }
+.team-lotte { --team-maincolor:#D00F31; --team-subcolor:#fdebee; }
+.team-hanwha { --team-maincolor:#FC4E00; --team-subcolor:#fff0e8; }
+.team-samsung { --team-maincolor:#074CA1; --team-subcolor:#e6eef9; }
+.team-nc { --team-maincolor:#315288; --team-subcolor:#e8eef7; }
+.team-kia { --team-maincolor:#EA0029; --team-subcolor:#fde9ec; }
+.team-kt { --team-maincolor:#EB1C24; --team-subcolor:#fee9ea; }
+.team-ssg { --team-maincolor:#CE0E2D; --team-subcolor:#fde8ea; }
+
+/* 3) 래퍼 */
 .team-layout {
-  max-width: 1200px;
+  max-width: 1200px;           /* main.css 상단 컨테이너 규격과 일치 */
   margin: 40px auto;
   padding: 20px;
 }
 
+/* 4) 헤더 카드 */
 .team-header {
   display: flex;
   align-items: center;
   gap: 20px;
   margin-bottom: 30px;
-  background: #fff;
-  border: 1px solid #ddd;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   padding: 20px;
-  border-radius: 8px;
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-sm);
 }
-
 .team-logo-large {
   height: 80px;
+  width: auto;
+  object-fit: contain;
 }
-
 .team-meta h1 {
   font-size: 2rem;
   font-weight: 700;
+  color: var(--text-1);
+  margin: 0;
 }
-
 .team-meta .team-slogan {
   font-size: 1rem;
-  color: #777;
-  margin-top: 4px;
+  color: var(--text-3);
+  margin-top: 6px;
 }
 
+/* 5) 콘텐츠 그리드 (좌측 사이드 + 본문) */
 .team-content {
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 20px;
+  align-items: start;
 }
 
+/* 6) 좌측 패널 */
 .team-left {
   background-color: var(--team-subcolor);
-  border-radius: 8px;
+  border-radius: var(--card-radius);
   padding: 1.5rem;
-  color: #fff;
+  color: #222;
   border: 2px solid var(--team-maincolor);
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
+/* 최근 경기 카드 */
 .recent-game-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(6px);
   padding: 16px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  border-left: 4px solid var(--team-maincolor);
+  border-radius: var(--card-radius);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: var(--shadow-sm);
+  margin: 0;
 }
-
+.recent-game-card .title {
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-1);
+}
 .match-score {
   display: flex;
   justify-content: space-between;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--text-1);
+}
+.match-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-3);
+  font-size: 0.9rem;
+  margin-top: 6px;
 }
 
+/* 7) 분석 리스트(좌측/우측 어디든 재사용) */
 .analysis-list {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
   padding: 16px;
+  box-shadow: var(--shadow-sm);
 }
-
+.analysis-list .section-title {
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: var(--text-1);
+}
 .analysis-card {
   border-bottom: 1px solid #eee;
-  padding: 8px 0;
+  padding: 10px 0;
 }
-
 .analysis-card:last-child { border-bottom: none; }
-
 .analysis-card a h4 {
   margin: 0;
   font-size: 1rem;
+  color: var(--text-1);
 }
-
+.analysis-card a h4:hover { color: var(--team-maincolor); }
 .analysis-card p {
-  color: #777;
+  color: var(--text-3);
+  font-size: 0.95rem;
+  margin: 6px 0 0;
 }
 
+/* 8) 우측 본문 패널 */
 .team-right {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
   padding: 20px;
+  box-shadow: var(--shadow-sm);
 }
 
+/* 9) 공통 버튼 */
 .team-btn {
   display: inline-block;
   margin-top: 12px;
-  padding: 8px 14px;
+  padding: 10px 16px;
   background-color: var(--team-maincolor);
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
-  transition: background-color 0.2s ease;
+  transition: transform 0.08s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: var(--shadow-sm);
 }
-
 .team-btn:hover {
-  background-color: var(--team-subcolor);
+  background-color: color-mix(in srgb, var(--team-maincolor) 90%, #000 10%);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.team-btn:focus-visible {
+  outline: 2px solid var(--team-maincolor);
+  outline-offset: 2px;
 }
 
+/* 10) 작은 배지/칩 */
+.team-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #f5f5f5;
+  border: 1px solid #eee;
+  color: #444;
+  font-size: 0.85rem;
+}
+
+/* 11) 테이블(분석 표 등) */
+.team-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.team-table th, .team-table td {
+  padding: 10px 12px;
+  border: 1px solid #eee;
+  text-align: center;
+}
+.team-table th {
+  background: #f7f7f7;
+  color: #333;
+  font-weight: 700;
+}
+
+/* 12) 포커스/상태 색 */
+.state-win { color:#008000; font-weight:700; }
+.state-lose { color:#ff0000; font-weight:700; }
+.state-draw { color:#919191; }
+
+/* 13) 이미지 공통 */
+.team-logo, .team-logo-large, .team-img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* =========================
+   Breakpoints (main.css 기준)
+========================= */
+
+/* <= 1200px: 내부 패딩 조정 */
+@media (max-width: 1200px) {
+  .team-layout { padding: 20px 16px; }
+}
+
+/* <= 1024px: 좌측폭 살짝 키워 가독성 유지 */
+@media (max-width: 1024px) {
+  .team-content {
+    grid-template-columns: 280px 1fr;
+    gap: 16px;
+  }
+  .team-header { padding: 16px; }
+  .team-meta h1 { font-size: 1.8rem; }
+}
+
+/* <= 768px: 단열로 변경 (main.css 모바일 규칙과 일치) */
 @media (max-width: 768px) {
   .team-content {
     grid-template-columns: 1fr;
@@ -114,4 +246,304 @@
   .team-left, .team-right {
     width: 100%;
   }
+  .team-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+  .team-logo-large { height: 64px; }
+}
+
+/* <= 480px: 타이포/여백 압축 */
+@media (max-width: 480px) {
+  .team-layout { margin: 24px auto; padding: 12px; }
+  .team-meta h1 { font-size: 1.5rem; }
+  .team-meta .team-slogan { font-size: 0.95rem; }
+  .team-left { padding: 14px; }
+  .team-right { padding: 14px; }
+  .recent-game-card { padding: 12px; }
+  .analysis-card { padding: 8px 0; }
+}
+
+/* =========================
+   optional: 작은 인터랙션
+========================= */
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}/* =========================================
+   Team Layout (main.css 스타일 가이드 정렬)
+   - grid, spacing, radius, shadow, breakpoints 통일
+   - main.css: 1200 / 1024 / 768 / 480 기준
+========================================= */
+
+/* 1) 기본 변수 (fallback) */
+:root {
+  --team-maincolor: #C30452;  /* 포인트 */
+  --team-subcolor:  #f6e7ee;  /* 서브 배경 */
+  --card-bg: #fff;
+  --card-border: #ddd;
+  --card-radius: 8px;
+  --shadow-sm: 0 2px 6px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 10px rgba(0,0,0,0.08);
+  --text-1: #111;
+  --text-2: #555;
+  --text-3: #777;
+}
+
+/* 2) 팀별 테마 변수(페이지/루트에 클래스만 바꿔 붙이면 끝) */
+.team-lg { --team-maincolor:#C30452; --team-subcolor:#f8e9ef; }
+.team-doosan { --team-maincolor:#1A1748; --team-subcolor:#eaecf7; }
+.team-kiwoom { --team-maincolor:#570514; --team-subcolor:#f4e7ea; }
+.team-lotte { --team-maincolor:#D00F31; --team-subcolor:#fdebee; }
+.team-hanwha { --team-maincolor:#FC4E00; --team-subcolor:#fff0e8; }
+.team-samsung { --team-maincolor:#074CA1; --team-subcolor:#e6eef9; }
+.team-nc { --team-maincolor:#315288; --team-subcolor:#e8eef7; }
+.team-kia { --team-maincolor:#EA0029; --team-subcolor:#fde9ec; }
+.team-kt { --team-maincolor:#EB1C24; --team-subcolor:#fee9ea; }
+.team-ssg { --team-maincolor:#CE0E2D; --team-subcolor:#fde8ea; }
+
+/* 3) 래퍼 */
+.team-layout {
+  max-width: 1200px;           /* main.css 상단 컨테이너 규격과 일치 */
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* 4) 헤더 카드 */
+.team-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 20px;
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-sm);
+}
+.team-logo-large {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+}
+.team-meta h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-1);
+  margin: 0;
+}
+.team-meta .team-slogan {
+  font-size: 1rem;
+  color: var(--text-3);
+  margin-top: 6px;
+}
+
+/* 5) 콘텐츠 그리드 (좌측 사이드 + 본문) */
+.team-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* 6) 좌측 패널 */
+.team-left {
+  background-color: var(--team-subcolor);
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  color: #222;
+  border: 2px solid var(--team-maincolor);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 최근 경기 카드 */
+.recent-game-card {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(6px);
+  padding: 16px;
+  border-radius: var(--card-radius);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: var(--shadow-sm);
+  margin: 0;
+}
+.recent-game-card .title {
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-1);
+}
+.match-score {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  color: var(--text-1);
+}
+.match-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-3);
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+/* 7) 분석 리스트(좌측/우측 어디든 재사용) */
+.analysis-list {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.analysis-list .section-title {
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: var(--text-1);
+}
+.analysis-card {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+.analysis-card:last-child { border-bottom: none; }
+.analysis-card a h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-1);
+}
+.analysis-card a h4:hover { color: var(--team-maincolor); }
+.analysis-card p {
+  color: var(--text-3);
+  font-size: 0.95rem;
+  margin: 6px 0 0;
+}
+
+/* 8) 우측 본문 패널 */
+.team-right {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* 9) 공통 버튼 */
+.team-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 16px;
+  background-color: var(--team-maincolor);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: transform 0.08s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+.team-btn:hover {
+  background-color: color-mix(in srgb, var(--team-maincolor) 90%, #000 10%);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.team-btn:focus-visible {
+  outline: 2px solid var(--team-maincolor);
+  outline-offset: 2px;
+}
+
+/* 10) 작은 배지/칩 */
+.team-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #f5f5f5;
+  border: 1px solid #eee;
+  color: #444;
+  font-size: 0.85rem;
+}
+
+/* 11) 테이블(분석 표 등) */
+.team-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.team-table th, .team-table td {
+  padding: 10px 12px;
+  border: 1px solid #eee;
+  text-align: center;
+}
+.team-table th {
+  background: #f7f7f7;
+  color: #333;
+  font-weight: 700;
+}
+
+/* 12) 포커스/상태 색 */
+.state-win { color:#008000; font-weight:700; }
+.state-lose { color:#ff0000; font-weight:700; }
+.state-draw { color:#919191; }
+
+/* 13) 이미지 공통 */
+.team-logo, .team-logo-large, .team-img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* =========================
+   Breakpoints (main.css 기준)
+========================= */
+
+/* <= 1200px: 내부 패딩 조정 */
+@media (max-width: 1200px) {
+  .team-layout { padding: 20px 16px; }
+}
+
+/* <= 1024px: 좌측폭 살짝 키워 가독성 유지 */
+@media (max-width: 1024px) {
+  .team-content {
+    grid-template-columns: 280px 1fr;
+    gap: 16px;
+  }
+  .team-header { padding: 16px; }
+  .team-meta h1 { font-size: 1.8rem; }
+}
+
+/* <= 768px: 단열로 변경 (main.css 모바일 규칙과 일치) */
+@media (max-width: 768px) {
+  .team-content {
+    grid-template-columns: 1fr;
+  }
+  .team-left, .team-right {
+    width: 100%;
+  }
+  .team-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+  .team-logo-large { height: 64px; }
+}
+
+/* <= 480px: 타이포/여백 압축 */
+@media (max-width: 480px) {
+  .team-layout { margin: 24px auto; padding: 12px; }
+  .team-meta h1 { font-size: 1.5rem; }
+  .team-meta .team-slogan { font-size: 0.95rem; }
+  .team-left { padding: 14px; }
+  .team-right { padding: 14px; }
+  .recent-game-card { padding: 12px; }
+  .analysis-card { padding: 8px 0; }
+}
+
+/* =========================
+   optional: 작은 인터랙션
+========================= */
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
