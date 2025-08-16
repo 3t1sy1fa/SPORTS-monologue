@@ -1,53 +1,51 @@
 /* =========================================
-   Twins Dashboard — Full Responsive CSS
-   Breakpoints:
-   - 💻 Laptop / Desktop: ≥ 1025px
-   - 📱 Tablet: 769–1024px
-   - 📞 Phone: ≤ 768px (세분화: ≤ 480px)
+   Twins Dashboard (main.css 톤에 맞춘 버전)
+   Breakpoints: 1200 / 1024 / 768 / 480
 ========================================= */
 
-/* ---------- CSS 변수(테마) ---------- */
+/* 테마 변수: main.css 느낌(중립/저채도, 최소 그림자) */
 :root {
   --brand: #c30452;
-  --text: #222;
-  --muted: #555;
+  --text-1: #1a1a1a;
+  --text-2: #555;
+  --text-3: #777;
   --bg: #fff;
   --line: #ddd;
   --line-soft: #eee;
 
-  --win-bg: #d4f4d2;
-  --lose-bg: #f8d7da;
-  --sched-bg: #e9ecef;
+  --win-bg: #eaf7ea;
+  --lose-bg: #fbe9eb;
+  --sched-bg: #f3f5f7;
 
   --radius: 8px;
-  --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* ---------- 기본 ---------- */
+/* ---------- 기본 래퍼 ---------- */
 .twins-dashboard {
   max-width: 1200px;
-  margin: auto;
-  padding: 24px 20px;
-  font-family: "Spoqa Han Sans Neo", "SUIT", system-ui, -apple-system, Segoe UI,
-    Roboto, Helvetica, Arial, sans-serif;
-  color: var(--text);
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Mingijuk", "SUIT", sans-serif;
+  color: var(--text-1);
 }
 
+/* 헤더(메인 타이틀 크기/두께를 main.css 톤에 맞춤) */
 .dashboard-header {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 .slogan {
-  font-size: 20px;
-  color: var(--muted);
-  animation: fadeIn 0.9s ease-in-out both;
+  font-size: 18px;
+  color: var(--text-2);
+  margin: 0 0 6px;
 }
 .main-title {
-  font-size: 48px;
+  font-size: 2.2rem;
+  font-weight: 700;
   color: var(--brand);
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  margin: 6px 0 0;
+  letter-spacing: 0;
+  margin: 0;
 }
 
 /* ---------- 레이아웃 ---------- */
@@ -63,42 +61,54 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 16px;
-  box-shadow: var(--shadow);
 }
 
+/* 사이드 섹션 타이틀 (main.css 섹션 헤더 톤) */
 .calendar-card h3,
 .recent-matches h3 {
+  font-size: 1.1rem;
   margin: 0 0 10px;
-  font-size: 18px;
-  color: #333;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #000;
+  color: var(--text-1);
 }
 
-/* 캘린더 */
+/* ---------- 캘린더 ---------- */
 .calendar-table {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
-  margin-bottom: 16px;
-  background: #fff;
-  border-radius: 10px;
+  margin: 0 0 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow);
+}
+.calendar-table thead th {
+  background: #f9f9f9;
+  font-weight: 700;
+  border-bottom: 1px solid var(--line);
 }
 .calendar-table th,
 .calendar-table td {
-  border: 1px solid var(--line-soft);
+  border-right: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
   text-align: center;
-  padding: 6px;
+  padding: 8px 6px;
   font-size: 13px;
   vertical-align: middle;
 }
-.calendar-table thead th {
-  background: #fafafa;
-  font-weight: 700;
+.calendar-table th:last-child,
+.calendar-table td:last-child {
+  border-right: 0;
 }
+.calendar-table tr:last-child td {
+  border-bottom: 0;
+}
+
 .calendar-table td .cal-day {
+  display: block;
   font-size: 12px;
-  color: #888;
+  color: var(--text-3);
   margin-bottom: 4px;
 }
 .calendar-table td img.team-logo {
@@ -107,7 +117,7 @@
   object-fit: contain;
 }
 
-/* 경기 결과 색상 */
+/* 경기 상태 색 (저채도) */
 .calendar-table td.win {
   background: var(--win-bg);
 }
@@ -118,7 +128,7 @@
   background: var(--sched-bg);
 }
 
-/* 최근 경기 */
+/* ---------- 최근 경기 ---------- */
 .recent-matches ul {
   list-style: none;
   padding: 0;
@@ -136,42 +146,40 @@
   border-bottom: 0;
 }
 .match-item.win {
-  color: #067a00;
+  color: #0b6d0b;
   font-weight: 600;
 }
 .match-item.lose {
-  color: #c21807;
+  color: #b02020;
   font-weight: 600;
 }
 .match-item .score {
   font-variant-numeric: tabular-nums;
 }
 
-/* 공식 버튼 */
+/* 공식 버튼 (main.css 버튼 느낌) */
 .official-btn {
   display: block;
-  margin-top: 14px;
-  padding: 10px 12px;
+  margin-top: 12px;
+  padding: 8px 14px;
   text-align: center;
-  background: var(--brand);
+  background: #000;
   color: #fff;
   border-radius: 6px;
   text-decoration: none;
-  font-weight: 700;
-  box-shadow: var(--shadow);
-  transition: transform 0.12s ease, opacity 0.12s ease;
+  font-weight: 600;
+  transition: background 0.2s ease;
 }
 .official-btn:hover {
-  transform: translateY(-1px);
-  opacity: 0.95;
+  background: #333;
 }
 
 /* ---------- 메인 패널 ---------- */
 .main-panel section {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
-/* TOP 3 */
+/* TOP 3 영역 (카드 톤 다운) */
 .top-player-cards {
   display: flex;
   gap: 16px;
@@ -181,25 +189,22 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
   text-align: center;
-  padding: 14px 12px;
+  padding: 12px;
   flex: 1;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-  box-shadow: var(--shadow);
+  transition: transform 0.15s ease;
 }
 .player-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 .player-img {
-  width: 84px;
-  height: 84px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* 전체 선수단 */
+/* 전체 선수단 (main.css 카드 리스트 톤) */
 .players-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -208,13 +213,13 @@
 .player-card.full {
   display: flex;
   align-items: center;
-  padding: 12px;
+  padding: 10px;
   text-align: left;
 }
 .player-card.full img {
-  width: 64px;
-  height: 64px;
-  margin-right: 12px;
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #fff;
@@ -222,51 +227,58 @@
 .info h4 {
   margin: 0 0 2px;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 700;
+  color: var(--text-1);
 }
 .info h4 span {
-  color: #666;
+  color: var(--text-3);
   font-weight: 600;
   margin-left: 4px;
 }
 .info .pos {
   font-size: 13px;
-  color: #777;
+  color: var(--text-2);
 }
 .info .note {
   font-size: 13px;
-  color: #555;
+  color: var(--text-2);
   margin-top: 2px;
 }
 
-/* 투표 버튼 */
+/* 투표 버튼 (사이트 공통 버튼 톤) */
 .vote-btn {
-  background: var(--brand);
+  background: #000;
   color: #fff;
   border: 0;
-  padding: 6px 10px;
+  padding: 6px 12px;
   font-size: 12px;
   border-radius: 999px;
   cursor: pointer;
   margin-top: 6px;
-  font-weight: 700;
-  transition: transform 0.12s ease, opacity 0.12s ease;
+  font-weight: 600;
+  transition: background 0.2s ease;
 }
 .vote-btn:hover {
-  transform: translateY(-1px);
-  opacity: 0.92;
+  background: #333;
 }
 
 /* ---------- 반응형 ---------- */
 
-/* Tablet: 769–1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .main-title {
-    font-size: 40px;
+/* <=1200: 패딩만 살짝 */
+@media (max-width: 1200px) {
+  .twins-dashboard {
+    padding: 20px 16px;
   }
+}
+
+/* 1024px 이하시: 그리드 비율 살짝 좁힘 */
+@media (max-width: 1024px) {
   .dashboard-layout {
     grid-template-columns: 1fr 1.6fr;
     gap: 16px;
+  }
+  .main-title {
+    font-size: 2rem;
   }
   .calendar-table th,
   .calendar-table td {
@@ -274,40 +286,36 @@
     font-size: 12px;
   }
   .player-img {
-    width: 76px;
-    height: 76px;
+    width: 72px;
+    height: 72px;
   }
   .players-grid {
     grid-template-columns: 1fr;
-  } /* 카드 한 줄 */
+  }
 }
 
-/* Phone: ≤ 768px */
+/* 768px 이하시: 단열, 타이포/여백 축소 (main.css 모바일 톤) */
 @media (max-width: 768px) {
   .twins-dashboard {
-    padding: 20px 14px;
-  }
-  .main-title {
-    font-size: 32px;
-    letter-spacing: 0;
-  }
-  .slogan {
-    font-size: 18px;
+    padding: 16px 12px;
   }
   .dashboard-layout {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-
-  .calendar-table {
-    font-size: 12px;
+  .main-title {
+    font-size: 1.8rem;
   }
+  .slogan {
+    font-size: 16px;
+  }
+
   .calendar-table td .cal-day {
     font-size: 11px;
   }
-
   .top-player-cards {
     flex-direction: column;
+    gap: 12px;
   }
   .players-grid {
     grid-template-columns: 1fr;
@@ -315,7 +323,7 @@
   }
 
   .player-card.full {
-    padding: 10px;
+    padding: 8px;
   }
   .player-card.full img {
     width: 56px;
@@ -327,13 +335,13 @@
   }
 }
 
-/* Small Phone: ≤ 480px */
+/* 480px 이하시: 더 압축 */
 @media (max-width: 480px) {
   .main-title {
-    font-size: 28px;
+    font-size: 1.6rem;
   }
   .slogan {
-    font-size: 16px;
+    font-size: 15px;
   }
   .calendar-table th,
   .calendar-table td {
@@ -346,41 +354,9 @@
   }
 }
 
-/* ---------- 접근성/모션 ---------- */
+/* 접근성: 모션 감소 */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation: none !important;
     transition: none !important;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ---------- 다크 모드(선택) ---------- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #e8e8e8;
-    --muted: #bdbdbd;
-    --bg: #17171a;
-    --line: #2a2a2e;
-    --line-soft: #2a2a2e;
-    --win-bg: #0f2b18;
-    --lose-bg: #431a1f;
-    --sched-bg: #24262a;
-  }
-  .calendar-table thead th {
-    background: #1d1f23;
-  }
-  .official-btn {
-    box-shadow: none;
   }
 }
