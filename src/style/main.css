@@ -334,6 +334,7 @@ textarea {
   padding-bottom: 6px;
   border-bottom: 2px solid #000;
 }
+
 .latest-games {
   list-style: none;
   margin: 0;
@@ -436,6 +437,7 @@ textarea {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 6px; /* 간격 추가 */
 }
 .right-top {
   grid-area: right;
@@ -446,18 +448,21 @@ textarea {
   justify-content: center;
 }
 
+/* ★ 겹침 해결: 음수 마진 제거 + 안정적인 line-height/letter-spacing */
 .sports {
   font-family: "spomono", sans-serif;
   font-size: 3rem;
   font-weight: 700;
-  margin: -22px;
-  letter-spacing: -6px;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -2px;
 }
 .monologue {
   font-family: "spomono", sans-serif;
   font-size: 2rem;
   color: #666;
-  margin: -13px;
+  margin: 4px 0 0;
+  line-height: 1.15;
 }
 .since {
   font-size: 0.9rem;
@@ -1300,12 +1305,18 @@ textarea {
   .right-top {
     padding: 16px;
   }
+
+  /* ★ 폰에서 간격 유지 */
   .sports {
     font-size: 2.2rem;
-    margin: -10px;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -1px;
   }
   .monologue {
     font-size: 1.7rem;
+    margin-top: 3px;
+    line-height: 1.15;
   }
 
   .twins-tar {
@@ -1359,5 +1370,46 @@ textarea {
   .r-avatar {
     width: 50px;
     height: 50px;
+  }
+}
+
+/* ---------- 접근성/모션 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- 다크 모드 ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-text: #e8e8e8;
+    --c-muted: #bdbdbd;
+    --c-bg: #17171a;
+    --c-border: #2a2a2e;
+    --c-soft: #1e1f23;
+  }
+  .latest-games li {
+    border-bottom-color: #2a2a2e;
+  }
+  .team-card {
+    background: #1b1c20;
+    border-color: #2a2a2e;
+  }
+  .post-page,
+  .about-container,
+  .contact-container,
+  .log-container,
+  .sports-management-container {
+    background: #1b1c20;
+    border-color: #2a2a2e;
+  }
+  .cal thead th {
+    background: #1d1f23;
+  }
+  .btn-primary {
+    background: #eaeaea;
+    color: #000;
   }
 }
