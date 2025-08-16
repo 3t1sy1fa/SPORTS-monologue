@@ -8,6 +8,8 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
 
 {% set monthISO = "2025-08" %}
 {% set twinsArray = twinsSchedule or [] %}
+
+{# 투표 / 선수 데이터 가드 #}
 {% if voteSummary and voteSummary.players %}
   {% set allVotes = voteSummary.players %}
 {% else %}
@@ -15,11 +17,13 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
 {% endif %}
 {% set playersAll = players | default([]) %}
 
-{# ============================
-   LG 로스터 (배열/객체 모두 지원 + 키 폴백)
-============================ #}
+{# ========= 공통: 배열 강제화 ========= #}
+{% set playersArr = playersAll | toArray %}
+{% set votesArr   = allVotes   | toArray %}
+
+{# ========= LG 로스터 (대소문자 무시) ========= #}
 {% set lgRoster = [] %}
-{% for _k, p in playersAll %}
+{% for p in playersArr %}
   {% if p %}
     {% set team = (p.teamSlug or p.playerTeamSlug or p.team or p.team_code or '') | lower %}
     {% if team == 'lg' %}
@@ -28,14 +32,11 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
   {% endif %}
 {% endfor %}
 
-{# ============================
-   인기 TOP3 (단일 루프, 키 변동 대응)
-============================ #}
+{# ========= 인기 TOP3 (단일 루프, 키 폴백) ========= #}
 {% set t1 = null %}{% set t1v = -1 %}
 {% set t2 = null %}{% set t2v = -1 %}
 {% set t3 = null %}{% set t3v = -1 %}
-
-{% for v in allVotes %}
+{% for v in votesArr %}
   {% set teamV = (v.playerTeamSlug or v.teamSlug or v.team or '') | lower %}
   {% if teamV == "lg" %}
     {% set votes = (v.playerTotalVotes or v.votes or 0) + 0 %}
@@ -52,9 +53,7 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
   {% endif %}
 {% endfor %}
 
-{# ============================
-   최근 경기 3개 (버퍼)
-============================ #}
+{# ========= 최근 경기 3개 (버퍼) ========= #}
 {% set r1 = null %}{% set r2 = null %}{% set r3 = null %}
 {% for g in twinsArray %}
   {% if g and (g.status == "종료" or g.state == "done") %}
