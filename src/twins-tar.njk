@@ -7,20 +7,24 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
 {# NOTE: twins-tar.css는 layout.njk에서 title == '트윈스타'일 때 이미 로드됨. 중복 로드 금지 #}
 
 {% set monthISO %}2025-08{% endset %}
+
+{# 원본 데이터 가드 #}
 {% set twinsArray = twinsSchedule or [] %}
 {% if voteSummary and voteSummary.players %}
   {% set allVotes = voteSummary.players %}
 {% else %}
   {% set allVotes = [] %}
 {% endif %}
-{% set playersAll = players | default([]) %}
+
+{# ✅ players를 배열로 강제 변환 (객체로 올 때 대비) #}
+{% set playersArr = (players or []) | toArray %}
 
 {# ============================
    LG 로스터 (대소문자 무시 수동 필터)
 ============================ #}
 {% set lgRoster = [] %}
-{% for p in playersAll %}
-  {% if p.teamSlug and (p.teamSlug | lower) == "lg" %}
+{% for p in playersArr %}
+  {% if p and p.teamSlug and (p.teamSlug | lower) == "lg" %}
     {% set lgRoster = lgRoster + [p] %}
   {% endif %}
 {% endfor %}
@@ -49,7 +53,7 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
 {% endfor %}
 
 {# ============================
-   최근 경기 3개 (버퍼 방식, reverse/slice 불필요)
+   최근 경기 3개 (버퍼 방식)
    twinsArray가 시간순(과거→현재)이라고 가정
 ============================ #}
 {% set r1 = null %}{% set r2 = null %}{% set r3 = null %}
@@ -116,7 +120,6 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
           {% for game in out %}
             {% if game %}
               {% set any = true %}
-              {# ▼▼▼ 여기(기존 line 115) 삼항 제거 ▼▼▼ #}
               {% set cls = "" %}
               {% if game.result == "승" %}
                 {% set cls = "win" %}
@@ -145,8 +148,7 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
       <section class="top-players">
         <h2>🔥 인기 선수 TOP 3</h2>
         <div class="top-player-cards">
-          {% set anyTop = (t1v >= 0) %}
-          {% if anyTop %}
+          {% if t1 or t2 or t3 %}
             {% if t1 %}
               <div class="player-card">
                 <img
@@ -201,16 +203,17 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
       <section class="all-players">
         <h2>👥 전체 선수단</h2>
         <div class="players-grid">
+          {# ✅ 여기가 핵심: toArray → LG 필터 결과만 루프 #}
           {% if lgRoster and (lgRoster | length) > 0 %}
             {% for p in lgRoster %}
               <div class="player-card full">
                 <img
-                  src="/images/players/{{ p.slug }}.png"
+                  src="/images/players/{{ p.slug | default('no-image') }}.png"
                   class="player-img"
                   alt="{{ p.name }}"
                   loading="lazy"
                   decoding="async"
-                  onerror="this.style.opacity=0.25"
+                  onerror="this.onerror=null;this.src='/images/players/no-image.png';this.style.opacity=0.4;"
                 >
                 <div class="info">
                   <h4>
