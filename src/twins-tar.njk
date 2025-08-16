@@ -7,38 +7,38 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
 {# NOTE: twins-tar.css는 layout.njk에서 title == '트윈스타'일 때 이미 로드됨. 중복 로드 금지 #}
 
 {% set monthISO %}2025-08{% endset %}
-
-{# 원본 데이터 가드 #}
 {% set twinsArray = twinsSchedule or [] %}
 {% if voteSummary and voteSummary.players %}
   {% set allVotes = voteSummary.players %}
 {% else %}
   {% set allVotes = [] %}
 {% endif %}
-
-{# ✅ players를 배열로 강제 변환 (객체로 올 때 대비) #}
-{% set playersArr = (players or []) | toArray %}
+{% set playersAll = players | default([]) %}
 
 {# ============================
-   LG 로스터 (대소문자 무시 수동 필터)
+   LG 로스터 (배열/객체 모두 지원 + 키 폴백)
 ============================ #}
 {% set lgRoster = [] %}
-{% for p in playersArr %}
-  {% if p and p.teamSlug and (p.teamSlug | lower) == "lg" %}
-    {% set lgRoster = lgRoster + [p] %}
+{% for _k, p in playersAll %}
+  {% if p %}
+    {% set team = (p.teamSlug or p.playerTeamSlug or p.team or p.team_code or '') | lower %}
+    {% if team == 'lg' %}
+      {% set lgRoster = lgRoster + [p] %}
+    {% endif %}
   {% endif %}
 {% endfor %}
 
 {# ============================
-   인기 TOP3 (정렬/필터 미사용, 한 번의 루프)
+   인기 TOP3 (단일 루프, 키 변동 대응)
 ============================ #}
 {% set t1 = null %}{% set t1v = -1 %}
 {% set t2 = null %}{% set t2v = -1 %}
 {% set t3 = null %}{% set t3v = -1 %}
 
 {% for v in allVotes %}
-  {% if v.playerTeamSlug and (v.playerTeamSlug | lower) == "lg" %}
-    {% set votes = (v.playerTotalVotes or 0) + 0 %}
+  {% set teamV = (v.playerTeamSlug or v.teamSlug or v.team or '') | lower %}
+  {% if teamV == "lg" %}
+    {% set votes = (v.playerTotalVotes or v.votes or 0) + 0 %}
     {% if votes > t1v %}
       {% set t3 = t2 %}{% set t3v = t2v %}
       {% set t2 = t1 %}{% set t2v = t1v %}
@@ -53,8 +53,7 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
 {% endfor %}
 
 {# ============================
-   최근 경기 3개 (버퍼 방식)
-   twinsArray가 시간순(과거→현재)이라고 가정
+   최근 경기 3개 (버퍼)
 ============================ #}
 {% set r1 = null %}{% set r2 = null %}{% set r3 = null %}
 {% for g in twinsArray %}
@@ -120,12 +119,9 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
           {% for game in out %}
             {% if game %}
               {% set any = true %}
-              {% set cls = "" %}
-              {% if game.result == "승" %}
-                {% set cls = "win" %}
-              {% elseif game.result == "패" %}
-                {% set cls = "lose" %}
-              {% endif %}
+              {% set cls = '' %}
+              {% if game.result == '승' %}{% set cls = 'win' %}{% endif %}
+              {% if game.result == '패' %}{% set cls = 'lose' %}{% endif %}
               <li class="match-item {{ cls }}">
                 <span>{{ game.date or "-" }} – {{ game.opponent or game.opponentName or "상대 미정" }}</span>
                 <span class="score">{{ game.score or "-" }}</span>
@@ -149,51 +145,26 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
         <h2>🔥 인기 선수 TOP 3</h2>
         <div class="top-player-cards">
           {% if t1 or t2 or t3 %}
-            {% if t1 %}
-              <div class="player-card">
-                <img
-                  src="/images/players/{{ t1.playerSlug }}.png"
-                  class="player-img"
-                  alt="{{ t1.playerName }}"
-                  loading="lazy"
-                  decoding="async"
-                  onerror="this.style.opacity=0.25"
-                >
-                <h4>{{ t1.playerName }}</h4>
-                <p>투표 수: {{ t1.playerTotalVotes or 0 }}</p>
-                <button class="vote-btn" data-type="player" data-slug="{{ t1.playerSlug }}">응원하기</button>
-              </div>
-            {% endif %}
-            {% if t2 %}
-              <div class="player-card">
-                <img
-                  src="/images/players/{{ t2.playerSlug }}.png"
-                  class="player-img"
-                  alt="{{ t2.playerName }}"
-                  loading="lazy"
-                  decoding="async"
-                  onerror="this.style.opacity=0.25"
-                >
-                <h4>{{ t2.playerName }}</h4>
-                <p>투표 수: {{ t2.playerTotalVotes or 0 }}</p>
-                <button class="vote-btn" data-type="player" data-slug="{{ t2.playerSlug }}">응원하기</button>
-              </div>
-            {% endif %}
-            {% if t3 %}
-              <div class="player-card">
-                <img
-                  src="/images/players/{{ t3.playerSlug }}.png"
-                  class="player-img"
-                  alt="{{ t3.playerName }}"
-                  loading="lazy"
-                  decoding="async"
-                  onerror="this.style.opacity=0.25"
-                >
-                <h4>{{ t3.playerName }}</h4>
-                <p>투표 수: {{ t3.playerTotalVotes or 0 }}</p>
-                <button class="vote-btn" data-type="player" data-slug="{{ t3.playerSlug }}">응원하기</button>
-              </div>
-            {% endif %}
+            {% for top in [t1, t2, t3] %}
+              {% if top %}
+                {% set topSlug = top.playerSlug or top.slug or top.id %}
+                {% set topName = top.playerName or top.name or '이름 미정' %}
+                {% set topVotes = top.playerTotalVotes or top.votes or 0 %}
+                <div class="player-card">
+                  <img
+                    src="/images/players/{{ topSlug }}.png"
+                    class="player-img"
+                    alt="{{ topName }}"
+                    loading="lazy"
+                    decoding="async"
+                    onerror="this.style.opacity=0.25"
+                  >
+                  <h4>{{ topName }}</h4>
+                  <p>투표 수: {{ topVotes }}</p>
+                  <button class="vote-btn" data-type="player" data-slug="{{ topSlug }}">응원하기</button>
+                </div>
+              {% endif %}
+            {% endfor %}
           {% else %}
             <p class="empty">아직 투표 데이터가 없습니다.</p>
           {% endif %}
@@ -203,25 +174,31 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
       <section class="all-players">
         <h2>👥 전체 선수단</h2>
         <div class="players-grid">
-          {# ✅ 여기가 핵심: toArray → LG 필터 결과만 루프 #}
           {% if lgRoster and (lgRoster | length) > 0 %}
             {% for p in lgRoster %}
+              {# 안전 폴백: slug/name/number/position/note #}
+              {% set pslug = p.slug or p.playerSlug or p.id or p.code or 'no-image' %}
+              {% set pname = p.name or p.playerName or p.fullName or p.korName or p.enName or p.nickname or '이름 미정' %}
+              {% set pnum  = p.number or p.uniformNumber or p.no or p.backNumber %}
+              {% set ppos  = p.position or p.primaryPosition or p.pos or '포지션 미정' %}
+              {% set pnote = p.note or p.bio or p.comment %}
+
               <div class="player-card full">
                 <img
-                  src="/images/players/{{ p.slug | default('no-image') }}.png"
+                  src="/images/players/{{ pslug }}.png"
                   class="player-img"
-                  alt="{{ p.name }}"
+                  alt="{{ pname }}"
                   loading="lazy"
                   decoding="async"
                   onerror="this.onerror=null;this.src='/images/players/no-image.png';this.style.opacity=0.4;"
                 >
                 <div class="info">
                   <h4>
-                    {{ p.name }}{% if p.number %} <span>#{{ p.number }}</span>{% endif %}
+                    {{ pname }}{% if pnum %} <span>#{{ pnum }}</span>{% endif %}
                   </h4>
-                  <p class="pos">{{ p.position or "포지션 미정" }}</p>
-                  {% if p.note %}<p class="note">{{ p.note }}</p>{% endif %}
-                  <button class="vote-btn" data-type="player" data-slug="{{ p.slug }}">투표하기</button>
+                  <p class="pos">{{ ppos }}</p>
+                  {% if pnote %}<p class="note">{{ pnote }}</p>{% endif %}
+                  <button class="vote-btn" data-type="player" data-slug="{{ pslug }}">투표하기</button>
                 </div>
               </div>
             {% endfor %}
