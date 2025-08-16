@@ -15,6 +15,50 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
 {% endif %}
 {% set playersAll = players | default([]) %}
 
+{# ============================
+   LG 로스터 (대소문자 무시 수동 필터)
+============================ #}
+{% set lgRoster = [] %}
+{% for p in playersAll %}
+  {% if p.teamSlug and (p.teamSlug | lower) == "lg" %}
+    {% set lgRoster = lgRoster + [p] %}
+  {% endif %}
+{% endfor %}
+
+{# ============================
+   인기 TOP3 (정렬/필터 미사용, 한 번의 루프)
+============================ #}
+{% set t1 = null %}{% set t1v = -1 %}
+{% set t2 = null %}{% set t2v = -1 %}
+{% set t3 = null %}{% set t3v = -1 %}
+
+{% for v in allVotes %}
+  {% if v.playerTeamSlug and (v.playerTeamSlug | lower) == "lg" %}
+    {% set votes = (v.playerTotalVotes or 0) + 0 %}
+    {% if votes > t1v %}
+      {% set t3 = t2 %}{% set t3v = t2v %}
+      {% set t2 = t1 %}{% set t2v = t1v %}
+      {% set t1 = v  %}{% set t1v = votes %}
+    {% elseif votes > t2v %}
+      {% set t3 = t2 %}{% set t3v = t2v %}
+      {% set t2 = v  %}{% set t2v = votes %}
+    {% elseif votes > t3v %}
+      {% set t3 = v  %}{% set t3v = votes %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{# ============================
+   최근 경기 3개 (버퍼 방식, reverse/slice 불필요)
+   twinsArray가 시간순(과거→현재)이라고 가정
+============================ #}
+{% set r1 = null %}{% set r2 = null %}{% set r3 = null %}
+{% for g in twinsArray %}
+  {% if g and (g.status == "종료" or g.state == "done") %}
+    {% set r3 = r2 %}{% set r2 = r1 %}{% set r1 = g %}
+  {% endif %}
+{% endfor %}
+
 {% block content %}
 <section class="twins-dashboard">
   <header class="dashboard-header">
@@ -25,7 +69,7 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
   <div class="dashboard-layout">
     <!-- 사이드바 -->
     <aside class="sidebar">
-      <!-- ✅ 달력으로 교체 (최소 수정) -->
+      <!-- ✅ 달력 -->
       <div class="calendar-card">
         <h3>📅 경기 캘린더</h3>
         <table class="calendar-table" aria-label="월간 경기 캘린더">
@@ -44,7 +88,7 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
                     <div class="cal-day">{{ day.day }}</div>
                     {% if day.logo %}
                       <img
-                        src="/images/s{{ day.logo }}.png"
+                        src="/images/{{ day.logo }}.png"
                         class="team-logo"
                         alt="상대팀 로고"
                         loading="lazy"
@@ -63,30 +107,29 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
         </table>
       </div>
 
-      <!-- 기존 '최근 경기 3개' 유지 -->
+      <!-- ✅ 최근 경기 3개 (r1 최신) -->
       <div class="recent-matches">
         <h3>⚾ 최근 경기</h3>
         <ul>
-          {% set done3_scan = twinsArray | reverse | slice(0, 10) %}
-          {% set filtered = [] %}
-          {% for game in done3_scan %}
-            {% if (game.status == "종료" or game.state == "done") and (filtered | length) < 3 %}
-              {% set filtered = filtered + [game] %}
-            {% endif %}
-          {% endfor %}
-
-          {% if filtered | length > 0 %}
-            {% for game in filtered %}
+          {% set out = [r1, r2, r3] %}
+          {% set any = false %}
+          {% for game in out %}
+            {% if game %}
+              {% set any = true %}
+              {# ▼▼▼ 여기(기존 line 115) 삼항 제거 ▼▼▼ #}
               {% set cls = "" %}
-              {% if game.result == "승" %}{% set cls = "win" %}
-              {% elseif game.result == "패" %}{% set cls = "lose" %}
+              {% if game.result == "승" %}
+                {% set cls = "win" %}
+              {% elseif game.result == "패" %}
+                {% set cls = "lose" %}
               {% endif %}
               <li class="match-item {{ cls }}">
                 <span>{{ game.date or "-" }} – {{ game.opponent or game.opponentName or "상대 미정" }}</span>
                 <span class="score">{{ game.score or "-" }}</span>
               </li>
-            {% endfor %}
-          {% else %}
+            {% endif %}
+          {% endfor %}
+          {% if not any %}
             <li class="empty">표시할 최근 경기 결과가 없습니다.</li>
           {% endif %}
         </ul>
@@ -102,28 +145,53 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
       <section class="top-players">
         <h2>🔥 인기 선수 TOP 3</h2>
         <div class="top-player-cards">
-          {# LG만 추출 후 득표수 내림차순 #}
-          {% set lgVotes = allVotes 
-              | selectattr("playerTeamSlug","equalto","lg") 
-              | sort(attribute="playerTotalVotes") 
-              | reverse %}
-
-          {% if lgVotes | length > 0 %}
-            {% for v in lgVotes | slice(0,3) %}
+          {% set anyTop = (t1v >= 0) %}
+          {% if anyTop %}
+            {% if t1 %}
               <div class="player-card">
                 <img
-                  src="/images/players/{{ v.playerSlug }}.png"
+                  src="/images/players/{{ t1.playerSlug }}.png"
                   class="player-img"
-                  alt="{{ v.playerName }}"
+                  alt="{{ t1.playerName }}"
                   loading="lazy"
                   decoding="async"
                   onerror="this.style.opacity=0.25"
                 >
-                <h4>{{ v.playerName }}</h4>
-                <p>투표 수: {{ v.playerTotalVotes }}</p>
-                <button class="vote-btn" data-type="player" data-slug="{{ v.playerSlug }}">응원하기</button>
+                <h4>{{ t1.playerName }}</h4>
+                <p>투표 수: {{ t1.playerTotalVotes or 0 }}</p>
+                <button class="vote-btn" data-type="player" data-slug="{{ t1.playerSlug }}">응원하기</button>
               </div>
-            {% endfor %}
+            {% endif %}
+            {% if t2 %}
+              <div class="player-card">
+                <img
+                  src="/images/players/{{ t2.playerSlug }}.png"
+                  class="player-img"
+                  alt="{{ t2.playerName }}"
+                  loading="lazy"
+                  decoding="async"
+                  onerror="this.style.opacity=0.25"
+                >
+                <h4>{{ t2.playerName }}</h4>
+                <p>투표 수: {{ t2.playerTotalVotes or 0 }}</p>
+                <button class="vote-btn" data-type="player" data-slug="{{ t2.playerSlug }}">응원하기</button>
+              </div>
+            {% endif %}
+            {% if t3 %}
+              <div class="player-card">
+                <img
+                  src="/images/players/{{ t3.playerSlug }}.png"
+                  class="player-img"
+                  alt="{{ t3.playerName }}"
+                  loading="lazy"
+                  decoding="async"
+                  onerror="this.style.opacity=0.25"
+                >
+                <h4>{{ t3.playerName }}</h4>
+                <p>투표 수: {{ t3.playerTotalVotes or 0 }}</p>
+                <button class="vote-btn" data-type="player" data-slug="{{ t3.playerSlug }}">응원하기</button>
+              </div>
+            {% endif %}
           {% else %}
             <p class="empty">아직 투표 데이터가 없습니다.</p>
           {% endif %}
@@ -133,9 +201,7 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
       <section class="all-players">
         <h2>👥 전체 선수단</h2>
         <div class="players-grid">
-          {% set lgRoster = playersAll | selectattr("teamSlug","equalto","lg") | list %}
-
-          {% if lgRoster | length > 0 %}
+          {% if lgRoster and (lgRoster | length) > 0 %}
             {% for p in lgRoster %}
               <div class="player-card full">
                 <img
