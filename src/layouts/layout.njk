@@ -1,10 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title or "SPORTS monologue" }}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  {# 공통 스타일 (단 한 번) #}
+  <link rel="stylesheet" href="/style/main.css">
+
+  {# 트윈스타 페이지일 때만 추가 #}
+  {% if title == "트윈스타" %}
+    <link rel="stylesheet" href="/style/twins-tar.css">
+  {% endif %}
+
+  {# 페이지에서 추가로 넣을 CSS는 여기 한 곳에서만 확장 #}
+  {% block styles %}{% endblock %}
+</head>
 <body>
   {% include "header.njk" %}
-
-  <link rel="stylesheet" href="/style/main.css" />
-  {% if title == "트윈스타" %}
-    <link rel="stylesheet" href="/style/twins-tar.css" />
-  {% endif %}
 
   <main class="main-container {% if isHome %}with-sidebar{% endif %}">
     {% if isHome %}
@@ -41,51 +54,56 @@
 
         <!-- ✅ 구단 보드 -->
         <div class="teams-board-section">
-         <h3>구단 보드</h3>
-         <div class="teams-board">
+          <h3>구단 보드</h3>
+          <div class="teams-board">
             {% for team in teamsBoard | sort(attribute="rank") %}
-             <div class="team-card">
+              <div class="team-card">
                 <a href="/teams/{{ team.slug }}/">
-                 <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
-                 <div class="team-info">
-                   <span class="team-name">{{ team.name }}</span>
+                  <img src="/images/{{ team.slug }}.png" alt="{{ team.name }}">
+                  <div class="team-info">
+                    <span class="team-name">{{ team.name }}</span>
                     <span class="team-rank">{{ team.rank }}위</span>
                     <span class="team-record">
-                     {{ team.wins }}승 {{ team.losses }}패 {{ team.draws }}무
-                     ({{ (team.winRate * 100) | round(1) }}%)
-                   </span>
+                      {{ team.wins }}승 {{ team.losses }}패 {{ team.draws }}무
+                      ({{ (team.winRate * 100) | round(1) }}%)
+                    </span>
                     <span class="last-game 
-                     {% if team.lastGame == '승' %}win
-                     {% elseif team.lastGame == '패' %}lose
+                      {% if team.lastGame == '승' %}win
+                      {% elseif team.lastGame == '패' %}lose
                       {% elseif team.lastGame == '무' %}draw
                       {% endif %}">
-                     최근: {{ team.lastGame }}
-                   </span>
+                      최근: {{ team.lastGame }}
+                    </span>
                   </div>
                 </a>
-             </div>
-           {% endfor %}
+              </div>
+            {% endfor %}
           </div>
         </div>
       </aside>
     {% endif %}
 
-    <!-- ✅ 본문 영역 -->
+    <!-- ✅ 본문 영역 (페이지가 여기만 덮어씀) -->
     <section class="content-area">
-      {% block content %}
-        {{ content | safe }}
-      {% endblock %}
+      {% block content %}{% endblock %}
     </section>
   </main>
 
   {% include "footer.njk" %}
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const toggleBtn = document.getElementById("sidebar-toggle");
       const sidebar = document.querySelector(".sidebar");
-      toggleBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("active");
-      });
+      if (toggleBtn && sidebar) {
+        toggleBtn.addEventListener("click", () => {
+          sidebar.classList.toggle("active");
+        });
+      }
     });
   </script>
+
+  {# 페이지별 JS는 여기서만 확장 #}
+  {% block scripts %}{% endblock %}
 </body>
+</html>
