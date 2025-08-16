@@ -25,43 +25,45 @@ description: "무적 LG, 끝까지 Twins! TwinS-TAR 대시보드"
   <div class="dashboard-layout">
     <!-- 사이드바 -->
     <aside class="sidebar">
+      <!-- ✅ 달력으로 교체 (최소 수정) -->
       <div class="calendar-card">
-        <h3>📅 이달 경기(간단 목록)</h3>
-        <ul class="recent">
-          {# YYYY-MM 필터로 이달 경기만 출력 #}
-          {% set monthGames = [] %}
-          {% for g in twinsArray %}
-            {% if g.date and (monthISO in g.date) %}
-              {% set monthGames = monthGames + [g] %}
-            {% endif %}
-          {% endfor %}
-
-          {% if monthGames | length > 0 %}
-            {% for g in monthGames %}
-              {% set cls = "" %}
-              {% if g.result == "승" %}{% set cls = "win" %}
-              {% elseif g.result == "패" %}{% set cls = "lose" %}
-              {% else %}{% set cls = "scheduled" %}
-              {% endif %}
-              <li class="match-item {{ cls }}">
-                <span>{{ g.date or "-" }} – {{ g.opponent or g.opponentName or "상대 미정" }}</span>
-                <span class="score">
-                  {% if g.score %}
-                    {{ g.score }}
-                  {% elseif g.status == "예정" or g.state == "planned" %}
-                    예정
-                  {% else %}
-                    -
-                  {% endif %}
-                </span>
-              </li>
+        <h3>📅 경기 캘린더</h3>
+        <table class="calendar-table" aria-label="월간 경기 캘린더">
+          <thead>
+            <tr>
+              <th scope="col">일</th><th scope="col">월</th><th scope="col">화</th>
+              <th scope="col">수</th><th scope="col">목</th><th scope="col">금</th><th scope="col">토</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for week in twinsArray | monthCalendarTwins(monthISO) %}
+            <tr>
+              {% for day in week %}
+                {% if day %}
+                  <td class="{{ day.cssClass }}">
+                    <div class="cal-day">{{ day.day }}</div>
+                    {% if day.logo %}
+                      <img
+                        src="/images/{{ day.logo }}.png"
+                        class="team-logo"
+                        alt="상대팀 로고"
+                        loading="lazy"
+                        decoding="async"
+                        onerror="this.style.opacity=0.25"
+                      >
+                    {% endif %}
+                  </td>
+                {% else %}
+                  <td class="is-empty" aria-hidden="true"></td>
+                {% endif %}
+              {% endfor %}
+            </tr>
             {% endfor %}
-          {% else %}
-            <li class="empty">이달 경기 데이터가 없습니다.</li>
-          {% endif %}
-        </ul>
+          </tbody>
+        </table>
       </div>
 
+      <!-- 기존 '최근 경기 3개' 유지 -->
       <div class="recent-matches">
         <h3>⚾ 최근 경기</h3>
         <ul>
